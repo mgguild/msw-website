@@ -391,6 +391,7 @@ mark,
   max-width: 100%;
   height: auto; }
 
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
@@ -2482,7 +2483,7 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem; }
+  padding: 0.1rem 0rem; }
   .nav-link:hover, .nav-link:focus {
     text-decoration: none; }
   .nav-link.disabled {
@@ -2520,7 +2521,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #2b164f; }
+  background-color: #ffffff; }
 
 .nav-fill .nav-item {
   flex: 1 1 auto;
@@ -2560,16 +2561,12 @@ input[type="button"].btn-block {
     align-items: center;
     justify-content: space-between; }
 
-.navbar-brand {
-  display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap; }
-  .navbar-brand:hover, .navbar-brand:focus {
-    text-decoration: none; }
+  .navbar-brand {
+      position: relative;
+      width: 170px;
+      left: 60px;
+      background-size: contain;
+  }
 
 .navbar-nav {
   display: flex;
@@ -4100,11 +4097,12 @@ a.close.disabled {
   }  
 .bg-homepage {
    background-image: url('../assets/img/sample.png');
-   background-size: 110%;
-   background-color: rgba(0, 0, 0); opacity:0.9;
+   background-size: cover;
    background-repeat: no-repeat;
-   
+   background-position-x: center;
 }
+
+
 
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -6679,10 +6677,10 @@ h3 {
       margin-top: 0; }
     #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
       color: #fff;
-      background: #2b164f; }
+      background: #5bc0de; }
       #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
         color: #fff;
-        background: #2b164f; }
+        background: #5bc0de; }
   #mainNav.navbar-shrink {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem; }
@@ -6698,9 +6696,9 @@ h3 {
   .home .home-subheading {
     font-size: 1.25rem; }
   .home .home-avatar {
-    width: 25rem; }
+    width: 20rem; }
 
-@media (min-width: 592px) {
+@media (min-width: 200px) {
   .home {
     padding-top: calc(6rem + 104px);
     padding-bottom: 6rem; }
@@ -6806,3 +6804,4 @@ form .row:first-child .floating-label-form-group {
 {
   margin-top: 10%;
 }
+
