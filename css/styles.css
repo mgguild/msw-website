@@ -31,7 +31,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "SB Body", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family: 'Fira Sans Condensed', sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -40,7 +40,7 @@
   box-sizing: border-box; }
 
 html {
-  font-family: sans-serif;
+  font-family: 'Fira Sans Condensed', sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -50,7 +50,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "SB Body", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -71,6 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem; }
 
 p {
+  font-family: 'Fira Sans Condensed', sans-serif;
   margin-top: 0;
   margin-bottom: 1rem; }
 
@@ -297,7 +298,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "SB Heading", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Passion One', cursive;
   font-weight: 500;
   line-height: 1.5; }
 
@@ -352,7 +353,9 @@ hr {
 small,
 .small {
   font-size: 80%;
-  font-weight: 400; }
+  font-weight: 300; 
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
 
 mark,
 .mark {
@@ -3667,8 +3670,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "SB Body", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-style: normal;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
@@ -3752,7 +3754,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "SB Body", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6647,8 +6649,8 @@ h3 {
 #mainNav {
   padding-top: 0.01rem;
   padding-bottom: 1rem;
-  font-family: "SB Heading", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-weight: 700; }
+  font-family: 'Passion One', cursive;
+  font-weight: 400; }
   #mainNav .navbar-brand {
     color: #fff; }
   #mainNav .navbar-nav {
@@ -6662,7 +6664,7 @@ h3 {
       #mainNav .navbar-nav li.nav-item a.nav-link.active {
         color: #5bc0de; }
   #mainNav .navbar-toggler {
-    font-size: 80%;
+    font-size: 90%;
     padding: 0.8rem; }
 
 @media (min-width: 992px) {
@@ -6671,7 +6673,7 @@ h3 {
     padding-bottom: 0.2rem;
     transition: padding-top 0.3s, padding-bottom 0.3s; }
     #mainNav .navbar-brand {
-      font-size: 1.75em;
+      font-size: 2.75em;
       transition: font-size 0.3s; }
     #mainNav .navbar-nav {
       margin-top: 0; }
@@ -6696,7 +6698,7 @@ h3 {
   .home .home-subheading {
     font-size: 1.25rem; }
   .home .home-avatar {
-    width: 20rem; }
+    width: 25rem; }
 
 @media (min-width: 200px) {
   .home {
@@ -6785,24 +6787,14 @@ form .row:first-child .floating-label-form-group {
     text-align: center;
 }
 .how-img img{
-    width: 40%;
+    width: 70%;
 }
 
 .how-section1{
-  margin-top:-15%;
-  padding: 10%;
-}
-.how-section1 h4{
-  color: #ffa500;
-  font-weight: bold;
-  font-size: 30px;
-}
-.how-section1 .subheading{
-  color: #3931af;
-  font-size: 20px;
-}
-.how-section1 .row
-{
   margin-top: 10%;
+  padding: 0%;
 }
 
+.link-info{
+  color: #5bc0de;
+}
