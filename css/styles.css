@@ -309,7 +309,7 @@ h2, .h2 {
   font-size: 2rem; }
 
 h3, .h3 {
-  font-size: 1.75rem; }
+  font-size: 1.7rem; }
 
 h4, .h4 {
   font-size: 1.5rem; }
@@ -6698,7 +6698,7 @@ h3 {
   .home .home-subheading {
     font-size: 1.25rem; }
   .home .home-avatar {
-    width: 25rem; }
+    width: 30rem; }
 
 @media (min-width: 200px) {
   .home {
