@@ -6799,13 +6799,15 @@ form .row:first-child .floating-label-form-group {
 
 .how-img {
     text-align: center;
+    margin-top: 5%;
+    padding: 0%
 }
 .how-img img{
     width: 70%;
 }
 
 .how-section1{
-  margin-top: 10%;
+  margin-top: 15%;
   padding: 0%;
 }
 
