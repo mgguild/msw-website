@@ -6641,7 +6641,7 @@ h3 {
   font-size: 1.25rem; }
 
 .btn-social {
-  
+  border-radius: 100%;
   display: inline-flex;
   width: 3.25rem;
   height: 3.25rem;
@@ -6661,7 +6661,7 @@ h3 {
     line-height: 3.1rem; }
 
 #mainNav {
-  padding-top: 0.01rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   font-family: 'Passion One', cursive;
   font-weight: 400; }
@@ -6672,19 +6672,19 @@ h3 {
     #mainNav .navbar-nav li.nav-item a.nav-link {
       color: #fff; }
       #mainNav .navbar-nav li.nav-item a.nav-link:hover {
-        color: #5bc0de; }
+        color: #2b164f; }
       #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
         color: #fff; }
       #mainNav .navbar-nav li.nav-item a.nav-link.active {
-        color: #5bc0de; }
+        color: #2b164f; }
   #mainNav .navbar-toggler {
     font-size: 90%;
     padding: 0.8rem; }
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     transition: padding-top 0.3s, padding-bottom 0.3s; }
     #mainNav .navbar-brand {
       font-size: 2.75em;
@@ -6768,14 +6768,14 @@ form .row:first-child .floating-label-form-group {
   border-top: 1px solid #e9ecef; }
 
 .footer {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   background-color: #0f0015;
   color: #fff; 
 }
 
 .copyright {
-  background-color: #0f0015; }
+  background-color: black; }
 
 #brandImage {
   height: 2rem; }
@@ -6790,9 +6790,19 @@ form .row:first-child .floating-label-form-group {
 .pre-wrap {
   white-space: pre-wrap; }
 
+.icon-contact {
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background-color: #2b164f;
+  color: #fff;
+  border-radius: 100%; }
 
 .navbar-brand img {
-  max-width: 15.5rem; }
+  max-width: 13.5rem; }
 
 .btn-social {
   margin-bottom: 0.2rem; }
