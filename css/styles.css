@@ -4,7 +4,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -610,83 +610,7 @@ pre {
   flex: 0 0 100%;
   max-width: 100%; }
 
-.order-first {
-  order: -1; }
 
-.order-last {
-  order: 13; }
-
-.order-0 {
-  order: 0; }
-
-.order-1 {
-  order: 1; }
-
-.order-2 {
-  order: 2; }
-
-.order-3 {
-  order: 3; }
-
-.order-4 {
-  order: 4; }
-
-.order-5 {
-  order: 5; }
-
-.order-6 {
-  order: 6; }
-
-.order-7 {
-  order: 7; }
-
-.order-8 {
-  order: 8; }
-
-.order-9 {
-  order: 9; }
-
-.order-10 {
-  order: 10; }
-
-.order-11 {
-  order: 11; }
-
-.order-12 {
-  order: 12; }
-
-.offset-1 {
-  margin-left: 8.3333333333%; }
-
-.offset-2 {
-  margin-left: 16.6666666667%; }
-
-.offset-3 {
-  margin-left: 25%; }
-
-.offset-4 {
-  margin-left: 33.3333333333%; }
-
-.offset-5 {
-  margin-left: 41.6666666667%; }
-
-.offset-6 {
-  margin-left: 50%; }
-
-.offset-7 {
-  margin-left: 58.3333333333%; }
-
-.offset-8 {
-  margin-left: 66.6666666667%; }
-
-.offset-9 {
-  margin-left: 75%; }
-
-.offset-10 {
-  margin-left: 83.3333333333%; }
-
-.offset-11 {
-  margin-left: 91.6666666667%; }
 
 @media (min-width: 576px) {
   .col-sm {
@@ -751,60 +675,7 @@ pre {
   .col-sm-12 {
     flex: 0 0 100%;
     max-width: 100%; }
-  .order-sm-first {
-    order: -1; }
-  .order-sm-last {
-    order: 13; }
-  .order-sm-0 {
-    order: 0; }
-  .order-sm-1 {
-    order: 1; }
-  .order-sm-2 {
-    order: 2; }
-  .order-sm-3 {
-    order: 3; }
-  .order-sm-4 {
-    order: 4; }
-  .order-sm-5 {
-    order: 5; }
-  .order-sm-6 {
-    order: 6; }
-  .order-sm-7 {
-    order: 7; }
-  .order-sm-8 {
-    order: 8; }
-  .order-sm-9 {
-    order: 9; }
-  .order-sm-10 {
-    order: 10; }
-  .order-sm-11 {
-    order: 11; }
-  .order-sm-12 {
-    order: 12; }
-  .offset-sm-0 {
-    margin-left: 0; }
-  .offset-sm-1 {
-    margin-left: 8.3333333333%; }
-  .offset-sm-2 {
-    margin-left: 16.6666666667%; }
-  .offset-sm-3 {
-    margin-left: 25%; }
-  .offset-sm-4 {
-    margin-left: 33.3333333333%; }
-  .offset-sm-5 {
-    margin-left: 41.6666666667%; }
-  .offset-sm-6 {
-    margin-left: 50%; }
-  .offset-sm-7 {
-    margin-left: 58.3333333333%; }
-  .offset-sm-8 {
-    margin-left: 66.6666666667%; }
-  .offset-sm-9 {
-    margin-left: 75%; }
-  .offset-sm-10 {
-    margin-left: 83.3333333333%; }
-  .offset-sm-11 {
-    margin-left: 91.6666666667%; } }
+  }
 
 @media (min-width: 768px) {
   .col-md {
@@ -4414,7 +4285,7 @@ button.bg-dark:focus {
   font-size: 1.25rem; }
 
 .btn-social {
-  border-radius: 100%;
+  
   display: inline-flex;
   width: 3.25rem;
   height: 3.25rem;
@@ -4434,7 +4305,7 @@ button.bg-dark:focus {
     line-height: 3.1rem; }
 
 #mainNav {
-  padding-top: 1rem;
+  padding-top: 0.01rem;
   padding-bottom: 1rem;
   font-family: 'Passion One', cursive;
   font-weight: 400; }
@@ -4456,8 +4327,8 @@ button.bg-dark:focus {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     transition: padding-top 0.3s, padding-bottom 0.3s; }
     #mainNav .navbar-brand {
       font-size: 2.75em;
@@ -4499,14 +4370,14 @@ button.bg-dark:focus {
     }
 
 .footer {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: #0f0015;
   color: #fff; 
 }
 
 .copyright {
-  background-color: black; }
+  background-color: #0f0015; }
 
 #brandImage {
   height: 2rem; }
@@ -4539,7 +4410,7 @@ button.bg-dark:focus {
     }  
 
 .navbar-brand img {
-  max-width: 13.5rem; }
+  max-width: 15.5rem; }
 
 .btn-social {
   margin-bottom: 0.2rem; }
@@ -4550,17 +4421,27 @@ button.bg-dark:focus {
     padding: 0%
 }
 .how-img img{
-    width: 96%;
+    width: 90%;
 }
 @media only screen and (max-width: 480px){
-  .how-img, .how-img img{
+  .how-img img{
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
-  
+
+  @media only screen and (max-width: 480px){
+    .how-img img{
+      width: 100%;
+      margin: 0;
+      padding-bottom: 10%;
+      overflow-x: hidden;
+    }
+  }  
+
+
 }
 .how-section1{
   margin-top: 15%;
@@ -4605,7 +4486,7 @@ button.bg-dark:focus {
   .footer{
     font-size: 90%;
     padding-top: 1rem;
-    padding-bottom: 0%;
+    padding-bottom: 5%;
     background-color: #0f0015;
     color: #fff; 
   }
