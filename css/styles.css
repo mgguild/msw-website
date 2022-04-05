@@ -1718,7 +1718,7 @@ fieldset:disabled a.btn {
   .nav-tabs .nav-item {
     margin-bottom: -0.125rem; }
   .nav-tabs .nav-link {
-    border: 0.125rem solid transparent;
+    border: 0.15rem solid transparent;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem; }
     .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
@@ -4322,7 +4322,7 @@ button.bg-dark:focus {
       #mainNav .navbar-nav li.nav-item a.nav-link.active {
         color: #5bc0de; }
   #mainNav .navbar-toggler {
-    font-size: 90%;
+    font-size: 100%;
     padding: 0.8rem; }
 
 @media (min-width: 992px) {
@@ -4345,7 +4345,7 @@ button.bg-dark:focus {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem; }
     #mainNav.navbar-shrink .navbar-brand {
-      font-size: 1.5em; } }
+      font-size: 3.5em; } }
 
 .home {
   padding-top: calc(1rem + 70px);
