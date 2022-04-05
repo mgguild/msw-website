@@ -4465,12 +4465,19 @@ button.bg-dark:focus {
     width: 20rem; }
 }
 
-/*This adjusts the image size of sections: Game Overview and Story & Narrative*/
+/*This adjusts the image size of section Story & Narrative*/
 .img {
   max-width: 100%;
   height: auto; 
 }
 
+/*This adjusts the image size of section Game Overview*/
+.img-gif{
+  max-width: 40%;
+  height: auto; 
+}
+
+/*This adjusts the image size of section Story & Narrative mobile view*/
   @media only screen and (max-width: 480px) {
     .img {
       display: block;
@@ -4480,6 +4487,13 @@ button.bg-dark:focus {
       padding: auto;
     }
   }
+/*This adjusts the image size of section Game Overview mobile view*/
+  @media only screen and (max-width: 480px) {
+    .img-gif {
+      max-width: 70%;
+      height: auto;
+    }
+  }  
  
 
 @media only screen and (max-width: 480px) {  
