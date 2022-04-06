@@ -980,6 +980,7 @@ pre {
 
 .btn {
   display: inline-block;
+  right: 120px;
   color: #ffffff;
   text-align: center;
   vertical-align: middle;
@@ -995,7 +996,13 @@ pre {
 
 @media (prefers-reduced-motion: reduce) {
   .btn {
-    transition: none; } }
+    transition: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  } 
+  }
   .btn:hover {
     color: #212529;
     text-decoration: none; }
@@ -4368,15 +4375,21 @@ button.bg-dark:focus {
     .home .home-subheading {
       font-size: 1.5rem; } 
     }
-
+    
+/*Footer Body*/
 .footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: #0f0015;
   color: #fff; 
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .copyright {
+  font-size: small;
+  position: relative;
   background-color: #0f0015; }
 
 #brandImage {
@@ -4465,6 +4478,23 @@ button.bg-dark:focus {
     width: 20rem; }
 }
 
+
+/*This adjusts the image size of footer logo*/
+.footer-img {
+    position: relative;
+    width: 170px;
+    left: 120px;
+    background-size: contain;
+}  
+
+@media only screen and (max-width: 480px) {
+.footer-img {
+  position: relative;
+  width: 170px;
+  left: 0px;
+  background-size: contain;
+}  
+}
 /*This adjusts the image size of section Story & Narrative*/
 .img {
   max-width: 100%;
@@ -4487,6 +4517,7 @@ button.bg-dark:focus {
       padding: auto;
     }
   }
+
 /*This adjusts the image size of section Game Overview mobile view*/
   @media only screen and (max-width: 480px) {
     .img-gif {
@@ -4494,14 +4525,16 @@ button.bg-dark:focus {
       height: auto;
     }
   }  
- 
+
+
 
 @media only screen and (max-width: 480px) {  
   .footer{
     font-size: 90%;
     padding-top: 1rem;
-    padding-bottom: 5%;
+    padding-bottom: 1%;
     background-color: #0f0015;
     color: #fff; 
   }
 }
+
