@@ -315,7 +315,9 @@ h4, .h4 {
   font-size: 1.5rem; }
 
 h5, .h5 {
-  font-size: 1.25rem; }
+  font-size: 1.25rem; 
+ 
+}
 
 h6, .h6 {
   font-size: 1rem; }
@@ -388,7 +390,8 @@ mark,
 
 .img-fluid {
   max-width: 100%;
-  height: auto; }
+  height: auto; 
+}
 
 
 .img-thumbnail {
@@ -4502,6 +4505,7 @@ button.bg-dark:focus {
   height: auto; 
 }
 
+
 /*This adjusts the image size of section Game Overview*/
 .img-gif{
   max-width: 40%;
@@ -4528,7 +4532,6 @@ button.bg-dark:focus {
   }  
 
 
-
 @media only screen and (max-width: 480px) {  
   .footer{
     font-size: 90%;
@@ -4539,4 +4542,3 @@ button.bg-dark:focus {
     padding-right: 0px;
   }
 }
-
