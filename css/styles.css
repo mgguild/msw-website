@@ -452,6 +452,8 @@ pre {
   margin-left: auto; 
 }
 
+
+
 /* MOBILE RESPONSIVE
  This fixes white space on the right
 */
@@ -2211,6 +2213,37 @@ a.close.disabled {
 .bg-gradient {
   background-image: radial-gradient(#2b164f, #0f0015);}
 
+
+.grad4{
+  background: rgb(15,0,21);
+  background: radial-gradient(circle, rgba(15,0,21,1) 0%, rgba(43,22,79,1) 36%, rgba(0,0,0,1) 84%);
+}
+
+.grad7{
+  background: rgb(43,22,79);
+background: radial-gradient(circle, rgba(43,22,79,1) 10%, rgba(76,165,179,1) 25%, rgba(43,22,79,1) 36%, rgba(55,74,115,1) 52%, rgba(52,60,106,1) 67%);
+}
+
+.grad8{
+background: rgb(43,22,79);
+background: linear-gradient(231deg, rgba(43,22,79,1) 15%, rgba(55,74,115,1) 26%, rgba(76,165,179,1) 38%, rgba(52,60,106,1) 53%, rgba(43,22,79,1) 67%);
+}
+
+.grad3{
+  background: rgb(112,76,179);
+background: radial-gradient(circle, rgba(112,76,179,1) 12%, rgba(43,22,79,1) 28%);
+}
+
+.grad2{
+background: rgb(76,165,179);
+background: radial-gradient(circle, rgba(76,165,179,1) 1%, rgba(43,22,79,1) 19%, rgba(15,0,21,1) 45%);
+}
+
+.grad5{
+background: rgb(76,165,179);
+background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%);
+}
+
 .bg-line {
     background-image: linear-gradient( #0f0015, #2b164f);
   }
@@ -2240,6 +2273,8 @@ button.bg-primary:focus {
 
 .bg-secondary {
   background-color: #0f0015 !important; }
+
+
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
@@ -4368,6 +4403,9 @@ button.bg-dark:focus {
   .home .home-avatar {
     width: 30rem; }
 
+.hero .home-avatar {
+    width: 30rem; }
+
 @media (min-width: 200px) {
   .home {
     padding-top: calc(6rem + 104px);
@@ -4478,7 +4516,7 @@ button.bg-dark:focus {
 }
 
 @media only screen and (max-width: 480px) {
-  .home .home-avatar {
+  .hero .home-avatar {
     width: 20rem; }
 }
 
@@ -4548,11 +4586,14 @@ button.bg-dark:focus {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: rgba(0, 0, 0, 0, 0.25);
   margin-top: 100px;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
 }
 
 .video-bg{
@@ -4563,11 +4604,37 @@ button.bg-dark:focus {
   transform: translate(-50%, -50%);
   min-width: 100%;
   min-height: 100%;
+  object-fit: cover;
+  background-position-x: center;
+  
 }
 
-.intro{
-  text-align: center;
-  width: 80%;
-  margin: 0 auto;
-  max-width: 960px;
+
+.team-img{
+  display: block;
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto; 
+  padding: auto;
+  align-items: center;
+}
+
+
+
+@media only screen and (max-width: 480px){
+  .team-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; 
+    padding: auto;
+    max-width: 50%;
+    height: auto; 
+    align-items: center;
+}
+}
+
+.filter-shadow {
+  filter: drop-shadow(0 0 0.75rem rgb(3, 2, 8));
 }
