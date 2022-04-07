@@ -4385,6 +4385,7 @@ button.bg-dark:focus {
   bottom: 0;
   width: 100%;
   text-align: center;
+  padding-right: 100px;
 }
 
 .copyright {
@@ -4483,7 +4484,7 @@ button.bg-dark:focus {
 .footer-img {
     position: relative;
     width: 170px;
-    left: 120px;
+    left: 100px;
     background-size: contain;
 }  
 
@@ -4535,6 +4536,7 @@ button.bg-dark:focus {
     padding-bottom: 1%;
     background-color: #0f0015;
     color: #fff; 
+    padding-right: 0px;
   }
 }
 
