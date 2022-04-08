@@ -17,9 +17,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
        
     </head>
     <body id="page-top">
@@ -27,7 +24,8 @@
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
             <!--NavBar Logo-->
-            <a class="navbar-brand" href="#home"><img src="assets\img\MSW_Logo2.png" alt="" class="w-50 px-xl-0"></a>
+            <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#home"><img src="assets\img\MSW_Logo2.png" alt="" class="w-50 px-xl-0"></a>
                 <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-prima text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <!--NavBar Menu-->
@@ -125,8 +123,8 @@
        
         <!--GAMEPLAY SECTION -->
         <section class="page-section bg-line text-white mb-0" id="gameplay">
-            <div class="container">
-            
+            <div class="container py-xl-4 ">
+                <div class="container d-flex align-items-center flex-column">
                 <!-- Gameplay Section Heading-->
                 <div class="text-center mt-4 py-xl-4 ">
                     <h2 class="page-section-heading d-inline-block text-white">GAMEPLAY</h2>
@@ -134,11 +132,11 @@
                
                 <div class="container mt-4 ">
                         <div class="row justify-content-center">
-                                <!-- Gameplay IMAGES-->
-                              
+                               
+                           
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <p class="pre-wrap">The game begins on the main menu where the player can see his collection of characters and freely select. After choosing a character, a selection screen will be displayed allowing the player to pick between PvE, Boss Raid, and PvP game modes.
+                                    <div class="col-md-6 y">
+                                        <p class="text-gp">The game begins on the main menu where the player can see his collection of characters and freely select. After choosing a character, a selection screen will be displayed allowing the player to pick between PvE, Boss Raid, and PvP game modes.
             
 In the PvE mode, the player has to complete multiple levels until he reaches and defeats the final boss which then the game loops from the beginning with increased difficulty. The loop continues until the character dies.
             
@@ -153,12 +151,17 @@ In Boss Raid mode, players can fight against powerful bosses. These bosses will 
 PvP mode is where players can test their skills. Players fight against each other in order to be on top of the leaderboard. High-ranking players will receive a bunch of loot and rewards.
                                         </p> 
                                     </div>
-                                    <div class="col-md-6 how-section1">
-                                        <img src="assets\img\Group 916.png" class="img-fluid filter-shadow" alt=""/>
+                                    <div class="jumbotron bg-transparent col-md-6">
+                                    <div class="col-md-6 mt-4 py-xl-6">
+                                    <div class="container-vid">
+                                        <iframe width="560" height="315" src="vid\MSWSneakPeekFinal.mp4"></iframe>
+                                    </div>
                                     </div>
                                 </div>
-                                   
+                                </div>
+                             
                     </div>
+                </div>
         </section>
 
         <!--STORY AND NARRATIVE-->
@@ -285,7 +288,7 @@ PvP mode is where players can test their skills. Players fight against each othe
         </section>
         
         <!--TEAM-->
-          <section class="page-section bg-primary text-white mb-0" id="team">
+          <section class="page-section grad1 text-white mb-0" id="team">
             <div class="container py-xl-4 ">
                 <!--  TEAM Section Heading-->
                 <div class="text-center mt-4 py-xl-4 ">
@@ -296,8 +299,8 @@ PvP mode is where players can test their skills. Players fight against each othe
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-4 col-lg-2 ">
-                      <div class="img-filter mb-5">
-                        <img src="assets\img\Andy Agnas, CEO.png" class="team-img " >
+                      <div class="img-block mb-5">
+                        <img src="assets\img\Andy Agnas, CEO.png" class="team-img filter-shadow-white" >
                         <div class="content mt-2">
                           <h4>Andy Agnas</h4>
                           <p class="text-muted">CEO</p>
@@ -306,7 +309,7 @@ PvP mode is where players can test their skills. Players fight against each othe
                     </div>
                     <div class="col-md-4 col-lg-2 ">
                       <div class="img-block mb-5">
-                        <img src="assets\img\Rico Zuñiga, CTO.png" class="team-img " >
+                        <img src="assets\img\Rico Zuñiga, CTO.png" class="team-img filter-shadow-white" >
                         <div class="content mt-2">
                           <h4>Rico Zuñiga</h4>
                           <p class="text-muted">CTO</p>
@@ -317,7 +320,7 @@ PvP mode is where players can test their skills. Players fight against each othe
                 <div class="row justify-content-center">-->   
                     <div class="col-md-4 col-lg-2">
                         <div class="img-block mb-5">
-                          <img src="assets\img\Mike Reñevo, Lead Game Designer.png" class="team-img " >
+                          <img src="assets\img\Mike Reñevo, Lead Game Designer.png" class="team-img filter-shadow-white" >
                           <div class="content mt-2">
                             <h4>Mike Reñevo</h4>
                             <p class="text-muted">Lead Game Designer</p>
@@ -326,7 +329,7 @@ PvP mode is where players can test their skills. Players fight against each othe
                       </div>
                       <div class="col-md-4 col-lg-2 ">
                         <div class="img-block mb-5">
-                          <img src="assets\img\Harvin Cadag, Game Artist.png" class="team-img " >
+                          <img src="assets\img\Harvin Cadag, Game Artist.png" class="team-img filter-shadow-white " >
                           <div class="content mt-2">
                             <h4>Harvin Cadag</h4>
                             <p class="text-muted">Game Artist</p>
@@ -337,7 +340,7 @@ PvP mode is where players can test their skills. Players fight against each othe
                       <div class="row justify-content-center">
                       <div class="col-md-4 col-lg-2 ">
                         <div class="img-block mb-5">
-                          <img src="assets\img\John Carlo Ariola, Game Developer.png" class="team-img" >
+                          <img src="assets\img\John Carlo Ariola, Game Developer.png" class="team-img filter-shadow-white" >
                           <div class="content mt-2">
                             <h4>John Carlo Ariola</h4>
                             <p class="text-muted">Game Developer</p>
@@ -348,7 +351,7 @@ PvP mode is where players can test their skills. Players fight against each othe
                  <div class="row justify-content-center"> -->     
                       <div class="col-md-4 col-lg-2 ">
                         <div class="img-block mb-5">
-                          <img src="assets\img\Aldrick Bonaobra, Blockchain Developer.png" class="team-img " >
+                          <img src="assets\img\Aldrick Bonaobra, Blockchain Developer.png" class="team-img filter-shadow-white " >
                           <div class="content mt-2">
                             <h4>Aldrick Bonaobra</h4>
                             <p class="text-muted">Blockchain Developer</p>
@@ -357,10 +360,10 @@ PvP mode is where players can test their skills. Players fight against each othe
                       </div>
                       <div class="col-md-4 col-lg-2 ">
                         <div class="img-block mb-5">
-                          <img src="assets\img\John Anthony Balbin, Cute and Pogi.png" class="team-img " >
+                          <img src="assets\img\John Anthony Balbin, Cute and Pogi.png" class="team-img filter-shadow-white" >
                           <div class="content mt-2">
                             <h4>John Anthony Balbin</h4>
-                            <p class="text-muted">Cute and Pogi</p>
+                            <p class="text-muted">QA Specialist </p>
                           </div>
                         </div>
                       </div>
