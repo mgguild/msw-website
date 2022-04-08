@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>MetaSaga Warriors</title>
         <!--MSW Icon-->
@@ -17,32 +19,38 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-       
+        <script src="jquery/jquery.js"></script>
+        <script type="text/javascript" src='js/bootstrap.min.js'></script>
+        <link rel="stylesheet" href="css/bootstrap.css" />
     </head>
     <body id="page-top">
         
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
             <!--NavBar Logo-->
-            <a class="navbar-brand" href="#home"><img src="assets\img\MSW_Logo2.png" alt="" class="w-50 px-xl-0"></a>
-                <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-prima text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+            <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#home"><img src="assets\img\MSW_Logo2.png" alt="" class="w-50 px-xl-0"></a>
+                <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-info text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <!--NavBar Menu-->
                     <ul class="navbar-nav nav-center">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#home">Home</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#game_overview">Game Overview</a>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#game_overview">Game Overview</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#gameplay">Gameplay</a>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#gameplay">Gameplay</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#story_and_narrative">Story and Narrative</a>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#story_and_narrative">Story and Narrative</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#nft_char">NFT Characters</a>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#nft_char">NFT Characters</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#team">Team</a>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#team">Team</a>
                         </li>
                         <!-- 
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#partners">Partners</a>
@@ -54,7 +62,7 @@
         </nav>
         <div class="hero" id="home">
               <video class="video-bg" autoplay muted loop >
-                <source src="vid\Unity Builds 2022.04.07 - 16.16.18.10.mp4" type="video/mp4">
+                <source src="vid\Unity Builds 2022.04.07 - 16.16.18.10.webm" type="video/mp4">
               </video>
 
               <div class="container d-flex align-items-center flex-column">
@@ -62,7 +70,7 @@
                 <!-- Home Heading-Logo -->
                 <img class="home-avatar " src="assets\img\MSW_Logo2.png" > 
                             
-                <p class="h4 pre-wrap text-center text-white">MetaSaga Warrior is a Rougelike Plat-To-Earn game where you venture into ever shifting dungeons 
+                <p class="h4 pre-wrap text-center text-white">MetaSaga Warrior is a Rougelike Play-And-Earn game where you venture into ever shifting dungeons 
     packed with unique challenges on a quest to vanquish the creatures corrupting the lands.
                 </p> 
             
@@ -126,7 +134,7 @@
         <!--GAMEPLAY SECTION -->
         <section class="page-section bg-line text-white mb-0" id="gameplay">
             <div class="container">
-            
+                <div class="container d-flex align-items-center flex-column">
                 <!-- Gameplay Section Heading-->
                 <div class="text-center mt-4 py-xl-4 ">
                     <h2 class="page-section-heading d-inline-block text-white">GAMEPLAY</h2>
@@ -134,10 +142,7 @@
                
                 <div class="container mt-4 ">
                         <div class="row justify-content-center">
-                                <!-- Gameplay IMAGES-->
-                              
-                                <div class="row">
-                                    <div class="col-md-6">
+                               
                                         <p class="pre-wrap">The game begins on the main menu where the player can see his collection of characters and freely select. After choosing a character, a selection screen will be displayed allowing the player to pick between PvE, Boss Raid, and PvP game modes.
             
 In the PvE mode, the player has to complete multiple levels until he reaches and defeats the final boss which then the game loops from the beginning with increased difficulty. The loop continues until the character dies.
@@ -152,13 +157,15 @@ In Boss Raid mode, players can fight against powerful bosses. These bosses will 
             
 PvP mode is where players can test their skills. Players fight against each other in order to be on top of the leaderboard. High-ranking players will receive a bunch of loot and rewards.
                                         </p> 
-                                    </div>
-                                    <div class="col-md-6 how-section1">
-                                        <img src="assets\img\Group 916.png" class="img-fluid filter-shadow" alt=""/>
-                                    </div>
-                                </div>
                                    
-                    </div>
+                                        <!--Video SneakPeekFinal -->  
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <video height="256" loop autoplay muted controls id="vid" src="vid\MSWSneakPeekFinal.mp4"></video>
+                                        </div> 
+                              
+                                   
+                        </div>
+                </div>
         </section>
 
         <!--STORY AND NARRATIVE-->
@@ -285,7 +292,7 @@ PvP mode is where players can test their skills. Players fight against each othe
         </section>
         
         <!--TEAM-->
-          <section class="page-section bg-primary text-white mb-0" id="team">
+          <section class="page-section grad1 text-white mb-0" id="team">
             <div class="container py-xl-4 ">
                 <!--  TEAM Section Heading-->
                 <div class="text-center mt-4 py-xl-4 ">
@@ -360,7 +367,7 @@ PvP mode is where players can test their skills. Players fight against each othe
                           <img src="assets\img\John Anthony Balbin, Cute and Pogi.png" class="team-img " >
                           <div class="content mt-2">
                             <h4>John Anthony Balbin</h4>
-                            <p class="text-muted">Cute and Pogi</p>
+                            <p class="text-muted">QA Specialist </p>
                           </div>
                         </div>
                       </div>
@@ -425,5 +432,8 @@ PvP mode is where players can test their skills. Players fight against each othe
         <script src="assets/mail/contact_me.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script>
+            document.getElementById('vid').play();
+        </script>
     </body>
 </html>
