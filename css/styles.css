@@ -43,7 +43,7 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  -webkit-tap-highlight-color: rgba(243, 196, 196, 0); }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
@@ -4455,8 +4455,10 @@ button.bg-dark:focus {
   
     @media only screen and (max-width: 480px) {
       .text-gp  {
-        white-space: pre-wrap;
-        margin: 9rem; 
+       white-space: pre-wrap;
+       margin-left: 9rem;
+       margin-right: 9rem;
+       margin-top: 2rem;
       } 
     }
 
@@ -4662,19 +4664,46 @@ button.bg-dark:focus {
 }
 */
 
-.container-vid {
-  margin-top: 160px;
+.embed-container { 
+  padding-bottom: 56.25%; 
+  height: 0; 
+  overflow: hidden; 
+  max-width: 100%; 
+} 
+
+.embed-container iframe, .embed-container object, .embed-container embed { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; }
+
+.hero-video {
+  margin-top: 0px;
   padding: 0rem 0rem;
   margin-bottom: 0rem;
   }
 
  @media only screen and (max-width: 480px) {
-  .container-vid{
+  .hero-video {
+    max-width: 0%;
     margin-top: 0px;
-    padding: 1rem rem;
-    margin-bottom: 2rem;
-    border-radius: 0.75rem; 
-    margin-left: 10px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
   }
-    
  } 
+
+ @media screen and (max-width: 650px) {
+  #hero-video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 4rem 2rem; } }
