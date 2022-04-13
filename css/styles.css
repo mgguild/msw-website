@@ -854,9 +854,31 @@ pre {
   .col-md-4 {
     flex: 0 0 33.3333333333%;
     max-width: 33.3333333333%; }
+
   .col-md-5 {
-    flex: 0 0 41.6666666667%;
-    max-width: 41.6666666667%; }
+    flex: 0 0 37.6666666667%;
+    max-width: 37.6666666667%; }
+
+    @media only screen and (max-width: 720px) {
+      .col-md-5 {
+        flex: 0 0 33.3333333333%;
+        max-width: 33.3333333333%; }
+    }  
+  
+    @media only screen and (max-width: 860px) {
+      .col-md-5 {
+        flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;}
+    }
+  
+    @media only screen and (max-width: 960px) {
+      .col-md-5 {
+        flex: 0 0 33.3333333333%;
+        max-width: 33.3333333333%; 
+      }  
+
+    }
+
   .col-md-6 {
     flex: 0 0 50%;
     max-width: 50%; }
@@ -8477,7 +8499,7 @@ h3 {
   .navbar-brand { 
       position: relative;
       width: 170px;
-      left: 45px;
+      left: 60px;
   }
 }
 
@@ -8507,7 +8529,7 @@ h3 {
 .footer-img {
   position: relative;
   width: 170px;
-  left: 1px;
+  left: 0px;
   background-size: contain;
 }  
 }
@@ -8654,9 +8676,9 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%; 
+    width: 70%; 
     padding: auto;
-    max-width: 50%;
+    max-width: 80%;
     height: auto; 
     align-items: center;
 }
@@ -8668,25 +8690,14 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%; 
-    padding: auto;
-    max-width: 50%;
-    height: auto; 
-    align-items: center;
-}
-}
-
-@media only screen and (max-width: 760px){
-  .team-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 70%; 
     padding: auto;
     max-width: 80%;
     height: auto; 
     align-items: center;
 }
 }
+
 
 
 
@@ -8877,3 +8888,113 @@ h3 {
       #mainNav.navbar-shrink .navbar-brand {
         font-size: 1.5em; } }
  
+      
+
+        @media (max-width: 480px) {
+          #mainNav {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            transition: padding-top 0.3s, padding-bottom 0.3s; }
+            #mainNav .navbar-brand {
+              font-size: 1.75em;
+              transition: font-size 0.3s; 
+            left: 0%;
+            }
+            #mainNav .navbar-nav {
+              margin-top: 0; }
+            #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+              color: #fff;
+              background: #5bc0de; 
+             
+            }
+              #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+                color: #fff;
+                background: #5210bd; 
+               
+              }
+          #mainNav.navbar-shrink {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem; }
+            #mainNav.navbar-shrink .navbar-brand {
+              font-size: 1.5em; } }
+              
+    @media (max-width: 992px) {
+      #mainNav {
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        transition: padding-top 0.3s, padding-bottom 0.3s; }
+        #mainNav .navbar-brand {
+          font-size: 2.75em;
+          transition: font-size 0.3s; 
+          left: 0%;
+        }
+        #mainNav .navbar-nav {
+          margin-top: 0; }
+        #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+          color: #fff;
+          background: #5bc0de; 
+        }
+          #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+            color: #fff;
+            background: #5bc0de; 
+            
+          }
+      #mainNav.navbar-shrink {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem; }
+        #mainNav.navbar-shrink .navbar-brand {
+          font-size: 3.5em; } }
+    
+          
+      @media (max-width: 720px) {
+        #mainNav {
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+          transition: padding-top 0.3s, padding-bottom 0.3s; }
+          #mainNav .navbar-brand {
+            font-size: 1.75em;
+            transition: font-size 0.3s; 
+            left: 0%;}
+          #mainNav .navbar-nav {
+            margin-top: 0; }
+          #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+            color: #fff;
+            background: #5bc0de; 
+          }
+            #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+              color: #fff;
+              background: #5210bd; 
+            
+            }
+        #mainNav.navbar-shrink {
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem; }
+          #mainNav.navbar-shrink .navbar-brand {
+            font-size: 1.5em; } }     
+            
+            @media (max-width: 8220x) {
+              #mainNav {
+                padding-top: 0.2rem;
+                padding-bottom: 0.2rem;
+                transition: padding-top 0.3s, padding-bottom 0.3s; }
+                #mainNav .navbar-brand {
+                  font-size: 2.75em;
+                  transition: font-size 0.3s; 
+                  left: 0%;
+                }
+                #mainNav .navbar-nav {
+                  margin-top: 0; }
+                #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+                  color: #fff;
+                  background: #5bc0de; 
+                }
+                  #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+                    color: #fff;
+                    background: #5bc0de; 
+                    
+                  }
+              #mainNav.navbar-shrink {
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem; }
+                #mainNav.navbar-shrink .navbar-brand {
+                  font-size: 3.5em; } }
