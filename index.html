@@ -22,6 +22,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
         <script src="jquery/jquery.js"></script>
         <link rel="stylesheet" href="css/bootstrap.css" />
+        <script src="https://unpkg.com/scrollreveal"></script>
     </head>
     <body id="page-top">
         
@@ -75,7 +76,7 @@
             
                 <!--Download Button-->
                     <div class="text-center mt-4">
-                        <a class="btn btn-xl btn-info" href="#">
+                        <a class="button btn btn-xl btn-info" href="#">
                             Coming Soon!
                         </a>
                     </div>
@@ -408,8 +409,28 @@ This is an ongoing project and gameplay mechanics are subject to change.
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script>
+
             document.getElementById('vid').play();
+             
+            ScrollReveal({
+                reset: true,
+                distance: '60px',
+                duration: 2500,
+                delay: 400
+            });
+
+            ScrollReveal().reveal('.home-avatar', { delay: 500, origin: 'right' });
+                ScrollReveal().reveal('.pre-wrap', { delay: 500, origin: 'right' });
+                    
+            ScrollReveal().reveal('.font-italic', { delay: 500, origin: 'left' });   
+                ScrollReveal().reveal('.h4', { delay: 500, origin: 'left' });
+                    ScrollReveal().reveal('.page-section-heading', { delay: 500, origin: 'left' });
             
+            ScrollReveal().reveal('.button', { delay: 500 });
+                ScrollReveal().reveal('.embed-responsive', { delay: 500 });
+                    ScrollReveal().reveal('.filter-shadow', { delay: 500 });
+                        ScrollReveal().reveal('.img-gif', { delay: 500 });   
+                            ScrollReveal().reveal('.img-block', { delay: 500 });
         </script>
     </body>
 </html>
