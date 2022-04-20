@@ -8560,6 +8560,14 @@ h3 {
   }
 }
 
+@media only screen and (max-width: 1080px){
+  .navbar-brand { 
+      position: relative;
+      width: 170px;
+      left: 45px;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   .hero .home-avatar {
     width: 20rem; }
@@ -8664,6 +8672,17 @@ h3 {
 }
 
 @media only screen and (max-width: 780px) {  
+  .footer{
+    font-size: 90%;
+    padding-top: 1rem;
+    padding-bottom: 1%;
+    background-color: #0f0015;
+    color: #fff; 
+    padding-right: 0px;
+  }
+}
+
+@media only screen and (max-width: 1080px) {  
   .footer{
     font-size: 90%;
     padding-top: 1rem;
