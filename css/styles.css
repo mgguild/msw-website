@@ -882,6 +882,7 @@ pre {
   .col-md-6 {
     flex: 0 0 50%;
     max-width: 50%; }
+    
 
   @media only screen and (max-width: 720px) {
     .col-md-6 {
@@ -4561,8 +4562,7 @@ input[type="button"].btn-block {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #e9ecef;
-  border-radius: 0.75rem; }
+   }
 
 @media (min-width: 576px) {
   .jumbotron {
@@ -9029,3 +9029,7 @@ h3 {
                       
                   }
 
+
+.bg-overlay{
+  background-image: url('../assets/img/vertical_poster_720.png');
+}                
