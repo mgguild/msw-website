@@ -8449,7 +8449,8 @@ h3 {
     padding: 0%
 }
 .how-img img{
-    width: 103%;
+    width: 110%;
+    padding-right: 5%;
 }
 @media only screen and (max-width: 480px){
   .how-img img{
