@@ -1,16 +1,3 @@
-
-
-.bg-overlay{
-    background-image: url('../assets/img/vertical_poster_720.png');
-    background-repeat: no-repeat;
-    position: relative;
-    object-fit: cover;
-    background-position-x: center;
-    background-color: var(--primary);
-    background-size: 39%;
-  }                
-  
-  
   .bg-scroll {
     background-image: url('../assets/img/164171560-e3148c85-daac-4a29-8e5d-87dac243c411.png');
     background-repeat: no-repeat;
