@@ -84,82 +84,6 @@ main {
   
 }
   
-@media only screen and (max-width: 375px) {
-  #carousel {
-    position: relative;
-    height: 300px;
-    top: 30%;
-    transform: translateY(-50%);
-    overflow: hidden; }
-    #carousel div {
-      position: absolute;
-      transition: transform 1s, left 1s, opacity 1s, z-index 0s;
-      opacity: 1; }
-      #carousel div img {
-        width: 300px;
-        transition: width 1s; }
-  
-      #carousel div.hideLeft {
-        left: 0%;
-        opacity: 0;
-        transform: translateY(50%) translateX(-50%); }
-        #carousel div.hideLeft img {
-          width: 50px; }
-  
-      #carousel div.hideRight {
-        left: 100%;
-        opacity: 0;
-        transform: translateY(50%) translateX(-50%); }
-        #carousel div.hideRight img {
-          width: 50px; }
-  
-      #carousel div.prev {
-        z-index: 5;
-        left: 30%;
-        opacity: .0;
-        transform: translateY(50px) translateX(-50%); }
-        #carousel div.prev img {
-          width: 50px; }
-  
-      #carousel div.prevLeftSecond {
-        z-index: 4;
-        left: 15%;
-        transform: translateY(50%) translateX(-50%);
-        opacity: .0; }
-        #carousel div.prevLeftSecond img {
-          width: 50px; }
-  
-      #carousel div.selected {
-        z-index: 10;
-        left: 50%;
-        transform: translateY(0px) translateX(-50%); }
-  
-      #carousel div.next {
-        z-index: 5;
-        left: 70%;
-        opacity: .0;
-        transform: translateY(50px) translateX(-50%); }
-        #carousel div.next img {
-          width: 50px; }
-          
-      #carousel div.nextRightSecond {
-        z-index: 4;
-        left: 85%;
-        transform: translateY(50%) translateX(-50%);
-        opacity: .0; }
-        #carousel div.nextRightSecond img {
-          width: 50px; }
-  
-  .buttons {
-    position: relative;
-    left: 45%;
-    right: 40%;
-    align-items: center;
-    bottom: 10px; 
-    
-  }
-    
-}
 
 
 @media only screen and (max-width: 480px) {
@@ -241,7 +165,7 @@ main {
 
 
   
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   #carousel {
     position: relative;
     height: 300px;
@@ -276,7 +200,7 @@ main {
         opacity: .3;
         transform: translateY(50px) translateX(-50%); }
         #carousel div.prev img {
-          width: 100px; }
+          width: 150px; }
   
       #carousel div.prevLeftSecond {
         z-index: 4;
@@ -297,7 +221,7 @@ main {
         opacity: .3;
         transform: translateY(50px) translateX(-50%); }
         #carousel div.next img {
-          width: 100px; }
+          width: 150px; }
           
       #carousel div.nextRightSecond {
         z-index: 4;
@@ -309,7 +233,7 @@ main {
   
   .buttons {
     position: relative;
-    left: 35%;
+    left: 45%;
     right: 50%;
     align-items: center;
     bottom: 10px; 
@@ -352,7 +276,7 @@ main {
       #carousel div.prev {
         z-index: 5;
         left: 30%;
-        opacity: .7;
+        opacity: .5;
         transform: translateY(50px) translateX(-50%); }
         #carousel div.prev img {
           width: 150px; }
@@ -373,7 +297,7 @@ main {
       #carousel div.next {
         z-index: 5;
         left: 70%;
-        opacity: .7;
+        opacity: .5;
         transform: translateY(50px) translateX(-50%); }
         #carousel div.next img {
           width: 150px; }
@@ -388,7 +312,84 @@ main {
   
   .buttons {
     position: relative;
-    left: 40%;
+    left: 43%;
+    right: 50%;
+    align-items: center;
+    bottom: 10px; 
+    
+  }
+}
+
+  
+@media only screen and (max-width: 760px) {
+  #carousel {
+    position: relative;
+    height: 300px;
+    top: 30%;
+    transform: translateY(-50%);
+    overflow: hidden; }
+    #carousel div {
+      position: absolute;
+      transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+      opacity: 1; }
+      #carousel div img {
+        width: 300px;
+        transition: width 1s; }
+  
+      #carousel div.hideLeft {
+        left: 0%;
+        opacity: 0;
+        transform: translateY(50%) translateX(-50%); }
+        #carousel div.hideLeft img {
+          width: 50px; }
+  
+      #carousel div.hideRight {
+        left: 100%;
+        opacity: 0;
+        transform: translateY(50%) translateX(-50%); }
+        #carousel div.hideRight img {
+          width: 50px; }
+  
+      #carousel div.prev {
+        z-index: 5;
+        left: 30%;
+        opacity: .0;
+        transform: translateY(50px) translateX(-50%); }
+        #carousel div.prev img {
+          width: 150px; }
+  
+      #carousel div.prevLeftSecond {
+        z-index: 4;
+        left: 15%;
+        transform: translateY(50%) translateX(-50%);
+        opacity: .0; }
+        #carousel div.prevLeftSecond img {
+          width: 100px; }
+  
+      #carousel div.selected {
+        z-index: 10;
+        left: 50%;
+        transform: translateY(0px) translateX(-50%); }
+  
+      #carousel div.next {
+        z-index: 5;
+        left: 70%;
+        opacity: .0;
+        transform: translateY(50px) translateX(-50%); }
+        #carousel div.next img {
+          width: 150px; }
+          
+      #carousel div.nextRightSecond {
+        z-index: 4;
+        left: 85%;
+        transform: translateY(50%) translateX(-50%);
+        opacity: .0; }
+        #carousel div.nextRightSecond img {
+          width: 100px; }
+  
+  .buttons {
+    position: relative;
+    left: 30%;
     right: 50%;
     align-items: center;
     bottom: 10px; 
