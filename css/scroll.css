@@ -1,3 +1,5 @@
+
+
 .bg-overlay{
     background-image: url('../assets/img/vertical_poster_720.png');
     background-repeat: no-repeat;
@@ -16,6 +18,7 @@
     background-position-x: center;
     padding: 8rem 6rem;
     width: 52.5%;
+    display: block;
   }
   
    
@@ -43,16 +46,15 @@
     padding-right: 0rem;
   }
   
+  @media only screen and (max-width: 360px) {
+    .bg-scroll {
+      background-image: url('../assets/img/164171560-e3148c85-daac-4a29-8e5d-87dac243c411.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position-x: center;
+      padding: 8rem 6rem;
+      width: 52.5%;
+      display: none;
+    }
+  }
   
-  @media only screen and (min-width: 420px) {
-
-      
-  .bg-scroll {
-    background-image: url('../assets/img/164171560-e3148c85-daac-4a29-8e5d-87dac243c411.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-x: center;
-    padding: 8rem 6rem;
-    width: 52.5%;
-  }
-  }
