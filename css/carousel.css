@@ -575,7 +575,84 @@ main {
       transition: transform 1s, left 1s, opacity 1s, z-index 0s;
       opacity: 1; }
       #carousel div img {
-        width: 300px;
+        width: 250px;
+        transition: width 1s; }
+  
+      #carousel div.hideLeft {
+        left: 0%;
+        opacity: 0;
+        transform: translateY(50%) translateX(-50%); }
+        #carousel div.hideLeft img {
+          width: 100px; }
+  
+      #carousel div.hideRight {
+        left: 100%;
+        opacity: 0;
+        transform: translateY(50%) translateX(-50%); }
+        #carousel div.hideRight img {
+          width: 100px; }
+  
+      #carousel div.prev {
+        z-index: 5;
+        left: 30%;
+        opacity: .0;
+        transform: translateY(50px) translateX(-50%); }
+        #carousel div.prev img {
+          width: 200px; }
+  
+      #carousel div.prevLeftSecond {
+        z-index: 4;
+        left: 15%;
+        transform: translateY(50%) translateX(-50%);
+        opacity: .0; }
+        #carousel div.prevLeftSecond img {
+          width: 150px; }
+  
+      #carousel div.selected {
+        z-index: 10;
+        left: 50%;
+        transform: translateY(0px) translateX(-50%); }
+  
+      #carousel div.next {
+        z-index: 5;
+        left: 70%;
+        opacity: .0;
+        transform: translateY(50px) translateX(-50%); }
+        #carousel div.next img {
+          width: 200px; }
+          
+      #carousel div.nextRightSecond {
+        z-index: 4;
+        left: 85%;
+        transform: translateY(50%) translateX(-50%);
+        opacity: .0; }
+        #carousel div.nextRightSecond img {
+          width: 150px; }
+  
+  .buttons {
+    position: relative;
+    left: 30%;
+    right: 50%;
+    align-items: center;
+    bottom: 10px; 
+    cursor: pointer;
+  
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  #carousel {
+    position: relative;
+    height: 400px;
+    top: 40%;
+    transform: translateY(-50%);
+    overflow: hidden; }
+    #carousel div {
+      position: absolute;
+      transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+      opacity: 1; }
+      #carousel div img {
+        width: 250px;
         transition: width 1s; }
   
       #carousel div.hideLeft {
