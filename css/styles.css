@@ -319,7 +319,7 @@ h4, .h4 {
   text-shadow: 2px 2px #000000;}
 
 h5, .h5 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   text-shadow: 2px 2px #000000;
 }
 
@@ -1042,7 +1042,9 @@ pre {
     max-width: 8.3333333333%; }
   .col-lg-2 {
     flex: 0 0 16.6666666667%;
-    max-width: 17.6666666667%; }
+    max-width: 17.6666666667%;
+    padding: 0%; 
+  }
   .col-lg-3 {
     flex: 0 0 25%;
     max-width: 25%; }
@@ -8624,7 +8626,8 @@ h3 {
 
 /*This adjusts the image size of section Game Overview*/
 .img-gif{
-  max-width: 40%;
+  max-width: 100%;
+  margin-top: 30%;
   height: auto; 
 }
 
@@ -8642,8 +8645,9 @@ h3 {
 /*This adjusts the image size of section Game Overview mobile view*/
   @media only screen and (max-width: 480px) {
     .img-gif {
-      max-width: 70%;
+      max-width: 100%;
       height: auto;
+      margin-top: 10%;
     }
   }  
 
