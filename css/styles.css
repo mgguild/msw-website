@@ -8626,8 +8626,7 @@ h3 {
 
 /*This adjusts the image size of section Game Overview*/
 .img-gif{
-  max-width: 100%;
-  margin-top: 30%;
+  max-width: 95%;
   height: auto; 
 }
 
@@ -8647,7 +8646,7 @@ h3 {
     .img-gif {
       max-width: 100%;
       height: auto;
-      margin-top: 10%;
+      
     }
   }  
 
