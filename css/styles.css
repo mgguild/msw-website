@@ -55,7 +55,7 @@ body {
   max-width: 100%;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 1.10rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5;
   color: #212529;
   text-align: left;
@@ -319,7 +319,7 @@ h4, .h4 {
   text-shadow: 2px 2px #000000;}
 
 h5, .h5 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   text-shadow: 2px 2px #000000;
 }
 
@@ -1050,7 +1050,9 @@ pre {
     max-width: 8.3333333333%; }
   .col-lg-2 {
     flex: 0 0 16.6666666667%;
-    max-width: 16.6666666667%; }
+    max-width: 17.6666666667%;
+    padding: 0%; 
+  }
   .col-lg-3 {
     flex: 0 0 25%;
     max-width: 25%; }
@@ -5728,7 +5730,14 @@ background: radial-gradient(circle, rgba(76,165,179,1) 1%, rgba(43,22,79,1) 19%,
 
 .grad5{
 background: rgb(76,165,179);
-background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%);
+background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 25%);
+}
+
+@media only screen and (max-width:480px) {
+  .grad5{
+    background: rgb(76,165,179);
+    background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%);
+    }
 }
 
 .bg-line {
@@ -8774,7 +8783,7 @@ h3 {
 
 /*This adjusts the image size of section Game Overview*/
 .img-gif{
-  max-width: 40%;
+  max-width: 95%;
   height: auto; 
 }
 
@@ -8792,8 +8801,9 @@ h3 {
 /*This adjusts the image size of section Game Overview mobile view*/
   @media only screen and (max-width: 480px) {
     .img-gif {
-      max-width: 70%;
+      max-width: 100%;
       height: auto;
+      
     }
   }  
 
