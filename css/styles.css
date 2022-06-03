@@ -9208,14 +9208,14 @@ h3 {
 }
 }
 
-
+/*Trailer Button*/
 .modal-dialog {max-width: 1200px;margin: 30px auto;}
 .modal-body {position:relative;padding:0px;}
 .close {position:absolute;right:-30px;top:0;z-index:999;font-size:32px;font-weight: normal;color:red;opacity:1;background:white;}
 .play-btn {
   width: 100px;
   height: 100px;
-  background: radial-gradient( rgba(0, 0, 0, 0.8) 60%, rgba(255, 255, 255, 1) 62%);
+  background: radial-gradient( rgb(112,76,179, 0.8) 60%, rgba(255, 255, 255, 1) 62%);
   border-radius: 50%;
   position: relative;
   display: block;
@@ -9262,7 +9262,7 @@ h3 {
   animation-timing-function: steps;
   opacity: 1;
   border-radius: 50%;
-  border: 5px solid #830C0F;
+  border: 5px solid #fff;
   top: -25%;
   left: -25%;
   background: whitesmoke;
