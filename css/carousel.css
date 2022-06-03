@@ -716,3 +716,61 @@ main {
   
   }
 }
+
+
+h3 {
+  font-family: lato;
+  font-weight: 600;
+  margin: 20px auto 10px auto;
+  color: white;
+}
+.carousel-item {
+  padding: 15px;
+  cursor: -webkit-grabbing;
+}
+.carousel-item img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%; 
+  padding-right: 9%;
+  padding-left: 9%;
+  padding-bottom: 15%;
+  max-width: 100%;
+  height: auto; 
+  align-items: center;
+}
+.carousel-item:hover img {
+  transform: translatey(-1%);
+}
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #000 \9;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #fff;
+  border-radius: 10px;
+  margin: 2px;
+  position: relative;
+  top: 30px;
+}
+.carousel-indicators li.active {
+  background: #fff;
+}
+@media only screen and (max-width: 650px) {
+  .carousel-item img {
+    height: auto;
+ }
+}
+.carousel-control-prev {
+  left: -50px;
+  margin: 0 -25px;
+}
+.carousel-control-next {
+  right: -50px;
+  margin: 0 -25px;
+}
