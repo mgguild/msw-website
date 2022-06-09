@@ -312,7 +312,8 @@ h2, .h2 {
   font-size: 2rem; }
 
 h3, .h3 {
-  font-size:  1.7rem; } 
+  font-size:  1.7rem; 
+  text-shadow: 2px 2px #000000;} 
 
 h4, .h4 {
   font-size: 1.5rem; 
@@ -4232,7 +4233,7 @@ input[type="button"].btn-block {
         position: relative;
         display: none;
         float: left;
-        width: 100%;
+        width: 25%;
         margin-right: -100%;
         backface-visibility: hidden;
         transition: transform 0.6s ease-in-out; }
@@ -9100,7 +9101,7 @@ h3 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 85%; 
+  width: 50%; 
   padding-right: 9%;
   padding-left: 9%;
   padding-bottom: 15%;

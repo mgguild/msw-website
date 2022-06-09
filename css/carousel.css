@@ -718,24 +718,19 @@ main {
 }
 
 
-h3 {
-  font-family: lato;
-  font-weight: 600;
-  margin: 20px auto 10px auto;
-  color: white;
-}
+
 .carousel-item {
-  padding: 15px;
+  padding: 10px;
   cursor: -webkit-grabbing;
 }
 .carousel-item img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%; 
+  width: 68%; 
   padding-right: 9%;
   padding-left: 9%;
-  padding-bottom: 15%;
+  padding-bottom: 5%;
   max-width: 100%;
   height: auto; 
   align-items: center;
@@ -764,6 +759,12 @@ h3 {
 @media only screen and (max-width: 650px) {
   .carousel-item img {
     height: auto;
+ }
+}
+@media only screen and (max-width: 420px) {
+  .carousel-item img {
+    height: auto;
+    width: 68%;
  }
 }
 .carousel-control-prev {
