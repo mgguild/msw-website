@@ -553,6 +553,7 @@ pre {
   margin-right: -1.5rem;
   margin-left: -1.5rem; }
 
+  
 .no-gutters {
   margin-right: 0;
   margin-left: 0; }
@@ -3870,147 +3871,7 @@ input[type="button"].btn-block {
       .toast-body {
         padding: 0.75rem; }
       
-      .modal-open {
-        overflow: hidden; }
-        .modal-open .modal {
-          overflow-x: hidden;
-          overflow-y: auto; }
-      
-      .modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1050;
-        display: none;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        outline: 0; }
-      
-      .modal-dialog {
-        position: relative;
-        width: auto;
-        margin: 0.5rem;
-        pointer-events: none; }
-        .modal.fade .modal-dialog {
-          transition: transform 0.3s ease-out;
-          transform: translate(0, -50px); }
-      
-      @media (prefers-reduced-motion: reduce) {
-        .modal.fade .modal-dialog {
-          transition: none; } }
-        .modal.show .modal-dialog {
-          transform: none; }
-        .modal.modal-static .modal-dialog {
-          transform: scale(1.02); }
-      
-      .modal-dialog-scrollable {
-        display: flex;
-        max-height: calc(100% - 1rem); }
-        .modal-dialog-scrollable .modal-content {
-          max-height: calc(100vh - 1rem);
-          overflow: hidden; }
-        .modal-dialog-scrollable .modal-header,
-      .modal-dialog-scrollable .modal-footer {
-          flex-shrink: 0; }
-        .modal-dialog-scrollable .modal-body {
-          overflow-y: auto; }
-      
-      .modal-dialog-centered {
-        display: flex;
-        align-items: center;
-        min-height: calc(100% - 1rem); }
-        .modal-dialog-centered::before {
-          display: block;
-          height: calc(100vh - 1rem);
-          content: ""; }
-        .modal-dialog-centered.modal-dialog-scrollable {
-          flex-direction: column;
-          justify-content: center;
-          height: 100%; }
-          .modal-dialog-centered.modal-dialog-scrollable .modal-content {
-            max-height: none; }
-          .modal-dialog-centered.modal-dialog-scrollable::before {
-            content: none; }
-      
-      .modal-content {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        pointer-events: auto;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 0 solid rgba(0, 0, 0, 0.2);
-        border-radius: 0.75rem;
-        outline: 0; }
-      
-      .modal-backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1040;
-        width: 100vw;
-        height: 100vh;
-        background-color: #000; }
-        .modal-backdrop.fade {
-          opacity: 0; }
-        .modal-backdrop.show {
-          opacity: 0.5; }
-      
-      .modal-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding: 1rem 1rem;
-        border-bottom: 0 solid #dee2e6;
-        border-top-left-radius: 0.75rem;
-        border-top-right-radius: 0.75rem; }
-        .modal-header .close {
-          padding: 1rem 1rem;
-          margin: -1rem -1rem -1rem auto; }
-      
-      .modal-title {
-        margin-bottom: 0;
-        line-height: 1.5; }
-      
-      .modal-body {
-        position: relative;
-        flex: 1 1 auto;
-        padding: 4rem 1rem; }
-      
-      
-      
-      .modal-scrollbar-measure {
-        position: absolute;
-        top: -9999px;
-        width: 50px;
-        height: 50px;
-        overflow: scroll; }
-      
-      @media (min-width: 576px) {
-        .modal-dialog {
-          max-width: 500px;
-          margin: 1.75rem auto; }
-        .modal-dialog-scrollable {
-          max-height: calc(100% - 3.5rem); }
-          .modal-dialog-scrollable .modal-content {
-            max-height: calc(100vh - 3.5rem); }
-        .modal-dialog-centered {
-          min-height: calc(100% - 3.5rem); }
-          .modal-dialog-centered::before {
-            height: calc(100vh - 3.5rem); }
-        .modal-sm {
-          max-width: 300px; } }
-      
-      @media (min-width: 992px) {
-        .modal-lg,
-      .modal-xl {
-          max-width: 800px; } }
-      
-      @media (min-width: 1200px) {
-        .modal-xl {
-          max-width: 1140px; } }
+     
       
       .tooltip {
         position: absolute;
@@ -4236,7 +4097,7 @@ input[type="button"].btn-block {
         position: relative;
         display: none;
         float: left;
-        width: 25%;
+        width: 100%;
         margin-right: -100%;
         backface-visibility: hidden;
         transition: transform 0.6s ease-in-out; }
@@ -5062,147 +4923,7 @@ a.close.disabled {
 .toast-body {
   padding: 0.75rem; }
 
-.modal-open {
-  overflow: hidden; }
-  .modal-open .modal {
-    overflow-x: hidden;
-    overflow-y: auto; }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1050;
-  display: none;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  outline: 0; }
-
-.modal-dialog {
-  position: relative;
-  width: auto;
-  margin: 0.5rem;
-  pointer-events: none; }
-  .modal.fade .modal-dialog {
-    transition: transform 0.3s ease-out;
-    transform: translate(0, -50px); }
-
-@media (prefers-reduced-motion: reduce) {
-  .modal.fade .modal-dialog {
-    transition: none; } }
-  .modal.show .modal-dialog {
-    transform: none; }
-  .modal.modal-static .modal-dialog {
-    transform: scale(1.02); }
-
-.modal-dialog-scrollable {
-  display: flex;
-  max-height: calc(100% - 1rem); }
-  .modal-dialog-scrollable .modal-content {
-    max-height: calc(100vh - 1rem);
-    overflow: hidden; }
-  .modal-dialog-scrollable .modal-header,
-.modal-dialog-scrollable .modal-footer {
-    flex-shrink: 0; }
-  .modal-dialog-scrollable .modal-body {
-    overflow-y: auto; }
-
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - 1rem); }
-  .modal-dialog-centered::before {
-    display: block;
-    height: calc(100vh - 1rem);
-    content: ""; }
-  .modal-dialog-centered.modal-dialog-scrollable {
-    flex-direction: column;
-    justify-content: center;
-    height: 100%; }
-    .modal-dialog-centered.modal-dialog-scrollable .modal-content {
-      max-height: none; }
-    .modal-dialog-centered.modal-dialog-scrollable::before {
-      content: none; }
-
-.modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  pointer-events: auto;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 0 solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.75rem;
-  outline: 0; }
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1040;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000; }
-  .modal-backdrop.fade {
-    opacity: 0; }
-  .modal-backdrop.show {
-    opacity: 0.5; }
-
-.modal-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 1rem 1rem;
-  border-bottom: 0 solid #dee2e6;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem; }
-  .modal-header .close {
-    padding: 1rem 1rem;
-    margin: -1rem -1rem -1rem auto; }
-
-.modal-title {
-  margin-bottom: 0;
-  line-height: 1.5; }
-
-.modal-body {
-  position: relative;
-  flex: 1 1 auto;
-  padding: 4rem 1rem; }
-
-
-
-.modal-scrollbar-measure {
-  position: absolute;
-  top: -9999px;
-  width: 50px;
-  height: 50px;
-  overflow: scroll; }
-
-@media (min-width: 576px) {
-  .modal-dialog {
-    max-width: 500px;
-    margin: 1.75rem auto; }
-  .modal-dialog-scrollable {
-    max-height: calc(100% - 3.5rem); }
-    .modal-dialog-scrollable .modal-content {
-      max-height: calc(100vh - 3.5rem); }
-  .modal-dialog-centered {
-    min-height: calc(100% - 3.5rem); }
-    .modal-dialog-centered::before {
-      height: calc(100vh - 3.5rem); }
-  .modal-sm {
-    max-width: 300px; } }
-
-@media (min-width: 992px) {
-  .modal-lg,
-.modal-xl {
-    max-width: 800px; } }
-
-@media (min-width: 1200px) {
-  .modal-xl {
-    max-width: 1140px; } }
 
 .tooltip {
   position: absolute;
@@ -8035,7 +7756,8 @@ a.text-dark:hover, a.text-dark:focus {
   text-align: right !important; }
 
 .text-center {
-  text-align: center !important; }
+  text-align: center !important; 
+}
 
 @media (min-width: 576px) {
   .text-sm-left {
@@ -8255,6 +7977,13 @@ h3 {
   margin: 0 auto;
   width: 80%;
 }
+
+.gameplay-center {
+  margin-top: 8%;
+  padding: 70px 0;
+  text-align: center;
+}
+
 
 @media (min-width: 992px) {
   .page-section .page-section-heading {
@@ -8819,6 +8548,7 @@ h3 {
 
 
 .filter-shadow {
+  max-width: 100%;
   filter: drop-shadow(0 0 0.75rem rgb(3, 2, 8));
 }
 
@@ -9207,9 +8937,9 @@ h3 {
 }
 }
 
-/*Trailer Button*/
-.modal-dialog {max-width: 1200px;margin: 30px auto;}
-.modal-body {position:relative;padding:0px;}
+/*Mobile and Web pop-up middle*/
+.modal-dialog {max-width: 1200px;margin: 250px auto;}
+.modal-body {position:relative;padding:0px;z-index:999; display: block;}
 .close {position:absolute;right:-30px;top:0;z-index:999;font-size:32px;font-weight: normal;color:red;opacity:1;background:white;}
 .play-btn {
   width: 100px;
@@ -9327,3 +9057,5 @@ h3 {
 .back {
   transform: rotateY(180deg);
 }
+
+
