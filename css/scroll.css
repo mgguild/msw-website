@@ -45,3 +45,120 @@
     }
   }
   
+
+
+.car {
+    position: relative;
+    margin-top: 26px;
+}
+
+.car-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.car-open:checked + .car-item {
+    position: static;
+    opacity: 100;
+}
+
+.car-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+}
+
+.car-item img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.car-control {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-size: 40px;
+    height: 40px;
+    line-height: 35px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 10;
+}
+
+.car-control.prev {
+    left: 2%;
+}
+
+.car-control.next {
+    right: 2%;
+}
+
+.car-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #aaaaaa;
+}
+
+#car-1:checked ~ .control-1,
+#car-2:checked ~ .control-2,
+#car-3:checked ~ .control-3 {
+    display: block;
+}
+
+.car-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.car-indicators li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.car-bullet {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 35px;
+}
+
+.car-bullet:hover {
+    color: #aaaaaa;
+}
+
+#car-1:checked ~ .control-1 ~ .car-indicators li:nth-child(1) .car-bullet,
+#car-2:checked ~ .control-2 ~ .car-indicators li:nth-child(2) .car-bullet,
+#car-3:checked ~ .control-3 ~ .car-indicators li:nth-child(3) .car-bullet {
+    color: #428bca;
+}
+
+/* Make the images wide and responsive */
+.slider-inner img {
+  height: auto;
+  width: 100%;
+}
+
+
+.paragraph_5{
+  padding-left: 0rem;
+  padding-right: 1rem;
+  padding-top: 7%;
+
+}

@@ -718,14 +718,9 @@ main {
 }
 
 
-h3 {
-  font-family: lato;
-  font-weight: 600;
-  margin: 20px auto 10px auto;
-  color: white;
-}
+
 .carousel-item {
-  padding: 15px;
+  padding: 10px;
   cursor: -webkit-grabbing;
 }
 .carousel-item img {
@@ -735,7 +730,7 @@ h3 {
   width: 100%; 
   padding-right: 9%;
   padding-left: 9%;
-  padding-bottom: 15%;
+  padding-bottom: 5%;
   max-width: 100%;
   height: auto; 
   align-items: center;
@@ -766,6 +761,12 @@ h3 {
     height: auto;
  }
 }
+@media only screen and (max-width: 420px) {
+  .carousel-item img {
+    height: auto;
+    width: 68%;
+ }
+}
 .carousel-control-prev {
   left: -50px;
   margin: 0 -25px;
@@ -773,4 +774,59 @@ h3 {
 .carousel-control-next {
   right: -50px;
   margin: 0 -25px;
+}
+
+
+
+@media only screen and (max-width: 480px){
+  .cont {
+    display: block;
+    padding: 0;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+}
+
+@media only screen and (max-width: 960px){
+  .cont {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+}
+
+@media only screen and (max-width: 760px){
+  .cont {
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media only screen and (max-width: 820px){
+  .cont {
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media only screen and (max-width: 960px){
+  .cont {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0%;
+    margin-right: 0%;
+}
 }

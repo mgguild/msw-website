@@ -46,8 +46,11 @@
                             <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#gameplay">Gameplay</a>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#story_and_narrative">Story and Narrative</a>
+                          <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#story_and_narrative">Story and Narrative</a>
                         </li>
+                        <!--<li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#lore">Lore</a>
+                        </li>-->
                         <li class="nav-item mx-0 mx-lg-1">
                             <a class="nav-link py-3 px-lg-3 rounded js-scroll-trigger" href="#nft_char">NFT Characters</a>
                         </li>
@@ -76,10 +79,13 @@
                             
                
                 <div class="container">
+                  
                   <!-- Button trigger modal -->
-                <button type="button" style="padding:0px; margin-bottom:0px;line-height:0px;border:0px!important;background-color:transparent!important;" class="btn btn-primary video-btn" data-toggle="modal" data-src="vid/MSWSneakPeekFinal.mp4" data-target="#myModal">
+                <button type="button" style="padding:0px; margin-bottom:0px;line-height:0px;border:0px!important;background-color:transparent!important;" 
+                class="btn btn-primary video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/_WlVM0vx7u0" data-target="#myModal">
                   <a class="play-btn" href="#"></a>
                   </button>
+
                  <!-- Modal -->
                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                    <div class="modal-dialog" role="document">
@@ -89,18 +95,19 @@
                            <span aria-hidden="true">&times;</span>
                          </button>        
                          <!-- 16:9 aspect ratio -->
-                           <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen></iframe>
-                           </div>
-            
+                         <div class="embed-responsive embed-responsive-16by9 ">
+                          <iframe id="video" width="450" height="350" src="https://www.youtube.com/embed/_WlVM0vx7u0" title="YouTube video player" frameborder="0" allow="accelerometer; 
+                          autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                         </div>
                          </div>
                        </div>
                      </div>
                    </div>
                  </div>
+                 
 
                  <!--Home Text-->
-                 <p class="h4 pre-wrap text-center text-white">MetaSaga Warrior is a Rougelike Play-And-Earn game where you venture into ever shifting dungeons packed with unique challenges on a quest to vanquish the creatures corrupting the lands.
+                <p class="h4 pre-wrap text-center text-white">MetaSaga Warrior is a Rougelike Play-And-Earn game where you venture into ever shifting dungeons packed with unique challenges on a quest to vanquish the creatures corrupting the lands.
                 </p> 
             
                 <!--Download Button-->
@@ -160,86 +167,119 @@
                             <h2 class="page-section-heading d-inline-block text-white">GAMEPLAY</h2>
                         </div>
                 
-
-
-                        <div class="container mt-4 mx-xl-auto py-xl-4">
-                                <div class="row justify-content-center">
-                                
-                                    <div class="container mt-4 mx-xl-auto py-xl-4">
-                                        <div class="row justify-content-center">
+                                  <div class="row">
+                                     <div class="col-lg-10 col-md-8 col-sm-12 mx-auto my-5">
+                                      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                            </ol>
+                                             <!--Gameplay Carousel-->
+                                            <div class="carousel-inner">
+                                            
+                                             <!--Dungeon Crawling-->
+                                              <div class="carousel-item active">
+                                                <div class="row cont">
+                                                      <div class="col-md-3 col-md-6">
+                                                        <div class="content mx-auto">
+                                                          <img src="assets/img/Dungeon_Crawling.png" class="how-img filter-shadow" alt="...">
+                                                        </div> 
+                                                      </div>
+                                                      <div class="col-md-5 gameplay-center">
+                                                          <h3>Dungeon Crawling</h3>
+                                                          <p class="text-center">Gather your own team and explore challenging dungeons. Find various loot to upgrade your arsenal!</p>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                              <!--End Dungeon Crawling-->
+                                              
+                                              <!--Boss Raid-->
+                                              <div class="carousel-item">
+                                                <div class="row cont"> 
+                                                      <div class="col-md-3 col-md-6">
+                                                        <div class="content mx-auto">
+                                                          <img src="assets/img/Boss_Raid.png" class="how-img filter-shadow" alt="...">
+                                                        </div> 
+                                                      </div>
+                                                      <div class="col-md-5 gameplay-center">
+                                                          <h3>Boss Raids</h3>
+                                                          <p class="text-center">Fight against epic bosses and obtain unique and powerful items!</p>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                              <!--End Boss Raid-->
+                                              
+                                              <!--PVP Battle-->
+                                              <div class="carousel-item">
+                                                <div class="row cont">
+                                                      <div class="col-md-3 col-md-6">
+                                                        <div class="content mx-auto">
+                                                          <img src="assets/img/PVP_Battle.png" class="how-img filter-shadow" alt="...">
+                                                        </div> 
+                                                      </div>
+                                                      <div class="col-md-5 gameplay-center">
+                                                          <h3>PvP Battles</h3>
+                                                          <p class="text-center">Battle against other players and earn exciting prices!</p>
+                                                      </div>
+                                                </div>
+                                                <!--End PVP Battle-->
+                                              </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                              <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                              <span class="sr-only">Next</span>
+                                            </a>
+                                          </div>
+                                              
+                                            </div>
+                                          </div>
+                                            
                                     
-
-                                    <div class="row justify-content-center">   
-                                        <div class="col-lg-4 col-md-4 mb-4">
-                                            <div class="img-block mx-auto">
-                                              <img src="assets/img/Dungeon_Crawling.png" class="gameplay-img filter-shadow" alt="gameplay-img">
-                                              <div class="content mx-auto">
-                                                <h5>Dungeon Crawling</h5>
-                                                <p class="text-center">Gather your own team and explore challenging dungeons.
-                                                    Find various loot to upgrade your arsenal!</p>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 mb-4">
-                                            <div class="img-block mx-auto">
-                                              <img src="assets/img/Boss_Raid.png" class="gameplay-img filter-shadow" alt="gameplay-img">
-                                              <div class="content mx-auto">
-                                                <h5>Boss Raids</h5>
-                                                <p class="text-center">Fight against epic bosses and obtain unique and powerful items!</p>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="col-lg-4  col-md-4 mb-4">
-                                            <div class="img-block mx-auto">
-                                              <img src="assets/img/PVP_Battle.png" class="gameplay-img filter-shadow" alt="gameplay-img">
-                                              <div class="content mx-auto">
-                                                <h5>PvP Battles</h5>
-                                                <p class="text-center">Battle against other players and earn exciting prices!</p>
-                                              </div>
-                                            </div>
-                                          </div>
-                                    </div>
-                                   
                                         <!--Video SneakPeekFinal 
                                         <div class="embed-responsive embed-responsive-16by9">
                                             <video height="256" loop autoplay muted controls id="vid" src="vid/MSWSneakPeekFinal.mp4"></video>
                                         </div> 
                                         -->  
                                    
-                                     </div>
-                        </div>
+                                    
+                        
                 </div>
             </div>
         </section>
-        <!--STORY AND NARRATIVE-->    
-        
-        <section class="page-section grad3 text-white mb-0" id="story_and_narrative">
-            <div class="container">
-         
-                    <div class="text-center mt-4 py-xl-4 ">
-                        <h2 class="page-section-heading d-inline-block text-white">STORY AND NARRATIVE</h2>
-                    </div>
-                    <div class="d-lg-none d-sm-block ">
-                      <img  class="poster-img" src="assets/img/vertical_poster_720.png" alt="poster-img"/>
-                      <div class="text-center text-light">
-                        <h6 class="pre-wrap">A long time ago, a crystal meteor crashed into the earth. It crawled, sank, and melded into the ground as if it was breathing. </h6> 
-                        <h6 class="pre-wrap">For years, the crash site pulsated, and it was felt throughout the world attracting diggler kind. Diggler built communities around the site, harvesting the crystal fragments and digging deeper into the earth. The crystals are dangerous in their unstable form, it causes physical and mental deterioration, decay, and death, just by holding them in one’s hand. But with their knowledge of the arcane and recent use of technology, they managed to stabilize, contain, and control it. They used the crystals for magical energy, transport, power, even weapons. It enhanced their innate elemental properties coupled with their advanced technology. They also established cave systems in layers, and became content with their home, until one diggler dug too deep and unearthed the meteor’s core.</h6>
-                        <h6 class="pre-wrap">With one strike, the core released dreadful energy corrupting all the layers that the digglers once called oasis. The surviving digglers tend to the entrance, fighting off corruption, monsters, and catastrophes coming through for decades.</h6>
-                        <h6 class="pre-wrap">Today, we will venture into the caves and strike the core again.</h6>
-                     </div>  
-                    </div>
-                    <div class="d-none d-xl-block bg-scroll mx-auto">
-                        <div class="text-center text-dark">
-                            <h6 class="pre-wrap paragraph_1 ">A long time ago, a crystal meteor crashed into the earth. It crawled, sank, and melded into the ground as if it was breathing. </h6> 
-                            <h6 class="pre-wrap paragraph_2 ">For years, the crash site pulsated, and it was felt throughout the world attracting diggler kind. Diggler built communities around the site, harvesting the crystal fragments and digging deeper into the earth. The crystals are dangerous in their unstable form, it causes physical and mental deterioration, decay, and death, just by holding them in one’s hand. But with their knowledge of the arcane and recent use of technology, they managed to stabilize, contain, and control it. They used the crystals for magical energy, transport, power, even weapons. <h6 class="pre-wrap paragraph_3"> It enhanced their innate elemental properties coupled with their advanced technology. They also established cave systems in layers, and became content with their home, until one diggler dug too deep and unearthed the meteor’s core.</h6></h6>
-                            <h6 class="pre-wrap paragraph_3 ">With one strike, the core released dreadful energy corrupting all the layers that the digglers once called oasis. The surviving digglers tend to the entrance, fighting off corruption, monsters, and catastrophes coming through for decades.</h6>
-                            <h6 class="pre-wrap paragraph_4 ">Today, we will venture into the caves and strike the core again.</h6>
-                         </div>     
-                    </div>
-              
-            </div>
-        </section>
 
+         <!--STORY AND NARRATIVE-->    
+        
+         <section class="page-section grad3 text-white mb-0" id="story_and_narrative">
+          <div class="container">
+       
+                  <div class="text-center mt-4 py-xl-4 ">
+                      <h2 class="page-section-heading d-inline-block text-white">STORY AND NARRATIVE</h2>
+                  </div>
+                  <div class="d-lg-none d-sm-block ">
+                    <img  class="poster-img" src="assets/img/vertical_poster_720.png" alt="poster-img"/>
+                    <div class="text-center text-light">
+                      <h6 class="pre-wrap">A long time ago, a crystal meteor crashed into the earth. It crawled, sank, and melded into the ground as if it was breathing. </h6> 
+                      <h6 class="pre-wrap">For years, the crash site pulsated, and it was felt throughout the world attracting diggler kind. Diggler built communities around the site, harvesting the crystal fragments and digging deeper into the earth. The crystals are dangerous in their unstable form, it causes physical and mental deterioration, decay, and death, just by holding them in one’s hand. But with their knowledge of the arcane and recent use of technology, they managed to stabilize, contain, and control it. They used the crystals for magical energy, transport, power, even weapons. It enhanced their innate elemental properties coupled with their advanced technology. They also established cave systems in layers, and became content with their home, until one diggler dug too deep and unearthed the meteor’s core.</h6>
+                      <h6 class="pre-wrap">With one strike, the core released dreadful energy corrupting all the layers that the digglers once called oasis. The surviving digglers tend to the entrance, fighting off corruption, monsters, and catastrophes coming through for decades.</h6>
+                      <h6 class="pre-wrap">Today, we will venture into the caves and strike the core again.</h6>
+                   </div>  
+                  </div>
+                  <div class="d-none d-xl-block bg-scroll mx-auto">
+                      <div class="text-center text-dark">
+                          <h6 class="pre-wrap paragraph_1 ">A long time ago, a crystal meteor crashed into the earth. It crawled, sank, and melded into the ground as if it was breathing. </h6> 
+                          <h6 class="pre-wrap paragraph_2 ">For years, the crash site pulsated, and it was felt throughout the world attracting diggler kind. Diggler built communities around the site, harvesting the crystal fragments and digging deeper into the earth. The crystals are dangerous in their unstable form, it causes physical and mental deterioration, decay, and death, just by holding them in one’s hand. But with their knowledge of the arcane and recent use of technology, they managed to stabilize, contain, and control it. They used the crystals for magical energy, transport, power, even weapons. <h6 class="pre-wrap paragraph_3"> It enhanced their innate elemental properties coupled with their advanced technology. They also established cave systems in layers, and became content with their home, until one diggler dug too deep and unearthed the meteor’s core.</h6></h6>
+                          <h6 class="pre-wrap paragraph_3 ">With one strike, the core released dreadful energy corrupting all the layers that the digglers once called oasis. The surviving digglers tend to the entrance, fighting off corruption, monsters, and catastrophes coming through for decades.</h6>
+                          <h6 class="pre-wrap paragraph_4 ">Today, we will venture into the caves and strike the core again.</h6>
+                       </div>     
+                  </div>
+            
+          </div>
+      </section>
 
          <!--NFT CHARACTERS-->
         <section class="page-section grad5 text-white mb-0" id="nft_char">
@@ -318,7 +358,7 @@
                             </div>
                 </div> 
         </section>
-        
+
         <!--TEAM-->
           <section class="page-section grad1 text-white mb-0" id="team">
             <div class="container py-xl-4 ">

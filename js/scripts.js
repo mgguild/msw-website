@@ -126,7 +126,7 @@
       // autoplay video on modal load  
       $('#myModal').on('shown.bs.modal', function (e) {
       // youtube iframe configuration and settings
-      $("#video").attr('src',$videoSrc ); 
+      $("#video").attr('src',$videoSrc + "?autoplay=1&rel=0&controls=1&loop=1&modestbranding=1" ); 
       })
       // stop playing the youtube video when modal closed
       $('#myModal').on('hide.bs.modal', function (e) {
@@ -134,6 +134,22 @@
           $("#video").attr('src', ''); 
       }) 
       });
+
+      document.querySelector(".card-flip").classList.toggle("flip");
+
+      /* 
+      * Holder.js for demo image
+      * Just for demo purpose
+      */
+      Holder.addTheme('gray', {
+        bg: '#777',
+        fg: 'rgba(255,255,255,.75)',
+        font: 'Helvetica',
+        fontweight: 'normal'
+      });
+
+
+      
     
   })(jQuery); // End of use strict
   
