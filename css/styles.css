@@ -547,13 +547,6 @@ pre {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1140px; } }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -1.5rem;
-  margin-left: -1.5rem; }
-
-  
 .no-gutters {
   margin-right: 0;
   margin-left: 0; }
@@ -8938,7 +8931,7 @@ h3 {
 }
 
 /*Mobile and Web pop-up middle*/
-.modal-dialog {max-width: 1200px;margin: 250px auto;}
+.modal-dialog {max-width: 1200px;margin: 200px auto;}
 .modal-body {position:relative;padding:0px;z-index:999; display: block;}
 .close {position:absolute;right:-30px;top:0;z-index:999;font-size:32px;font-weight: normal;color:red;opacity:1;background:white;}
 .play-btn {
