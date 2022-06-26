@@ -162,3 +162,252 @@
   padding-top: 7%;
 
 }
+
+
+
+
+/* Nft Carousel*/
+
+.carl{
+  position: relative;
+  margin-top: 30px;
+}
+
+.carl-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carl-open:checked + .carl-item {
+  position: static;
+  opacity: 100;
+}
+
+.carl-item {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.s ease-out;
+  transition: opacity 0.s ease-out;
+}
+
+.carl-item img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.carl-control {
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 40px;
+  height: 40px;
+  line-height: 35px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  cursor: pointer;
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  text-align: center;
+  width: 40px;
+  z-index: 10;
+}
+
+.carl-control.prev {
+  left: 2%;
+}
+
+.carl-control.next {
+  right: 2%;
+}
+
+.carl-control:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #aaaaaa;
+}
+
+#carl-1:checked ~ .control-1,
+#carl-2:checked ~ .control-2,
+#carl-3:checked ~ .control-3 {
+  display: block;
+}
+
+.carl-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+.carl-indicators li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.carl-bullet {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 35px;
+}
+
+.carl-bullet:hover {
+  color: #aaaaaa;
+}
+
+#carl-1:checked ~ .control-1 ~ .carl-indicators li:nth-child(1) .carl-bullet,
+#carl-2:checked ~ .control-2 ~ .carl-indicators li:nth-child(2) .carl-bullet,
+#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet {
+  color: #428bca;
+}
+
+
+.carl-caption {
+  top: 60%;
+  bottom: auto;
+  color: rgb(0, 0, 0);
+}
+
+.carl-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: rgb(0, 0, 0);
+  text-align: center; }
+
+
+@media only screen and (max-width: 420px){
+        
+.carl{
+  position: relative;
+  margin-top: 30px;
+}
+
+.carl-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carl-open:checked + .carl-item {
+  position: static;
+  opacity: 100;
+}
+
+.carl-item {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.s ease-out;
+  transition: opacity 0.s ease-out;
+}
+
+.carl-item img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.carl-control {
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 40px;
+  height: 40px;
+  line-height: 35px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  cursor: pointer;
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  text-align: center;
+  width: 40px;
+  z-index: 10;
+}
+
+.carl-control.prev {
+  left: 2%;
+}
+
+.carl-control.next {
+  right: 2%;
+}
+
+.carl-control:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #aaaaaa;
+}
+
+#carl-1:checked ~ .control-1,
+#carl-2:checked ~ .control-2,
+#carl-3:checked ~ .control-3 {
+  display: block;
+}
+
+.carl-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+.carl-indicators li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.carl-bullet {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 35px;
+}
+
+.carl-bullet:hover {
+  color: #aaaaaa;
+}
+
+#carl-1:checked ~ .control-1 ~ .carl-indicators li:nth-child(1) .carl-bullet,
+#carl-2:checked ~ .control-2 ~ .carl-indicators li:nth-child(2) .carl-bullet,
+#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet {
+  color: #428bca;
+}
+
+
+.carl-caption {
+  top: 60%;
+  bottom: auto;
+  color: rgb(0, 0, 0);
+}
+
+.carl-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: rgb(0, 0, 0);
+  text-align: center; }
+  }
