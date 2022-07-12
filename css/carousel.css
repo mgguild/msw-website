@@ -80,6 +80,7 @@ main {
   cursor: pointer;
   border: none;
   outline: none;
+  -webkit-backface-visibility: visible;
   backface-visibility: visible;
   margin: 10px auto;
   background: rgb(35, 181, 218);
@@ -763,6 +764,7 @@ main {
     width: 100%;
  }
 }
+
 .carousel-control-prev {
   left: -25px;
   margin: 0 -25px;
@@ -772,6 +774,16 @@ main {
   margin: 0 -25px;
 }
 
+@media only screen and (max-width: 480px){
+  .carousel-control-prev {
+    left: -12px;
+    margin: 0 -25px;
+  }
+  .carousel-control-next {
+    right: -12px;
+    margin: 0 -25px;
+  }
+}
 
 
 @media only screen and (max-width: 480px){
