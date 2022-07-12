@@ -338,8 +338,15 @@ h7, .h7 {
   font-size: 1.7rem; }  
 
 h8, .h8{
-  font-size: 1.3rem; 
+  font-size: 135%; 
 }
+
+@media only screen and (max-width: 820px) {
+  h8, .h8{
+    font-size: 88%; 
+  }
+}
+ 
 .lead {
   font-size: 1.25rem;
   font-weight: 300; }
@@ -430,7 +437,7 @@ small,
 
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
-    max-width: 720px; } }
+    max-width: 820px; } }
 
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
@@ -5590,6 +5597,14 @@ a.text-dark:hover, a.text-dark:focus {
 .shadow-none {
   box-shadow: none !important; }
 
+.w-5 {
+    width: 30% !important; }
+
+    @media only screen and (max-width: 820px){
+      .w-5 {
+        width: 15% !important; }
+    }
+
 .w-25 {
   width: 25% !important; }
  
@@ -8419,9 +8434,11 @@ h3 {
 }
 
 .img-torch-left{
-  background-image: url('../assets/img/left-torch.png');
   background-repeat: no-repeat;
-  background-position: left;
+  width: 500px;
+  height: 200px;
+  background-size: 30%;
+  background-position: top left;
 }
 
 
@@ -8558,3 +8575,18 @@ h3 {
   font-size: small;
   position: relative;
 }
+
+@media only screen and (max-width: 820px) {
+.card-flex{
+display: -webkit-box; 
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: nowrap;
+margin-right: -15px;
+margin-left: -15px;
+flex-direction: row;
+justify-content: center;
+align-content: center;
+align-items: center;
+}}
