@@ -148,8 +148,6 @@
         fontweight: 'normal'
       });
 
-      
-      
     
   })(jQuery); // End of use strict
   
