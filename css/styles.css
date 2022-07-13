@@ -48,6 +48,7 @@ html {
   text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
   overflow-x:hidden;
+  scroll-behavior: smooth
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -333,10 +334,6 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 1rem; }
-
-h7, .h7 {
-  font-size: 1.7rem; }  
-
 
  
 .lead {
@@ -8548,6 +8545,7 @@ h3 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background: opacity(20% 50% 100%);
 }
  
 
@@ -8593,3 +8591,5 @@ align-items: center;
     }
   }
    
+  .scroll-text {
+    font-size: 1.7rem; }  
