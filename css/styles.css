@@ -478,7 +478,7 @@ pre {
 
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
-    max-width: 720px; } }
+    max-width: 750px; } }
 
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
@@ -4318,6 +4318,17 @@ input[type="button"].btn-block {
         padding-bottom: 20px;
         color: #fff;
         text-align: center; }
+
+        .carousel-caption-mid {
+          position: absolute;
+          right: 15%;
+          bottom: 20px;
+          left: 15%;
+          z-index: 10;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          color: #fff;
+          text-align: center; }
       
       @keyframes spinner-border {
         to {
@@ -5452,6 +5463,12 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 25%)
 
 .carousel-caption {
   top: 15%;
+  bottom: auto;
+  color: #000;
+}
+
+.carousel-caption-mid {
+  top: 30%;
   bottom: auto;
   color: #000;
 }
@@ -8389,9 +8406,9 @@ h3 {
     }
   }  
 
-  @media only screen and (max-width: 768px){
-    .how-img{
-      width: 50%;
+  @media only screen and (max-width: 820px){
+    .how-img img{
+      width: 100%;
       margin: 0;
       padding-bottom: 10%;
       overflow-x: hidden;
@@ -8403,6 +8420,64 @@ h3 {
   margin-top: 15%;
   padding: 0%;
 }
+
+
+/*This adjusts the image size of section Story & Narrative*/
+.img {
+  max-width: 100%;
+  height: auto; 
+}
+
+
+/*This adjusts the image size of section Game Overview*/
+.img-gif{
+  max-width: 88%;
+  height: auto; 
+}
+
+@media only screen and (max-width: 820px) {
+  .img-gif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; 
+    padding-right: 9%;
+    padding-left: 9%;
+    padding-bottom: 0%;
+    max-width: 80%;
+    height: auto; 
+    align-items: center;
+  }
+}  
+
+/*This adjusts the image size of section Game Overview mobile view*/
+  @media only screen and (max-width: 480px) {
+    .img-gif {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%; 
+      padding-right: 9%;
+      padding-left: 9%;
+      padding-bottom: 0%;
+      max-width: 100%;
+      height: auto; 
+      align-items: center;
+    }
+  }  
+
+
+/*This adjusts the image size of section Story & Narrative mobile view*/
+@media only screen and (max-width: 480px) {
+  .img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; 
+    padding: auto;
+  }
+}
+
 
 .link-info{
   color: #5bc0de;
@@ -8490,39 +8565,6 @@ h3 {
       }  
       }  
 
-/*This adjusts the image size of section Story & Narrative*/
-.img {
-  max-width: 100%;
-  height: auto; 
-}
-
-
-/*This adjusts the image size of section Game Overview*/
-.img-gif{
-  max-width: 95%;
-  height: auto; 
-}
-
-/*This adjusts the image size of section Story & Narrative mobile view*/
-  @media only screen and (max-width: 480px) {
-    .img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%; 
-      padding: auto;
-    }
-  }
-
-/*This adjusts the image size of section Game Overview mobile view*/
-  @media only screen and (max-width: 480px) {
-    .img-gif {
-      max-width: 100%;
-      height: auto;
-      
-    }
-  }  
-
 
 @media only screen and (max-width: 480px) {  
   .footer{
@@ -8599,18 +8641,7 @@ h3 {
 
 
 
-@media only screen and (max-width: 480px){
-  .team-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%; 
-    padding: auto;
-    max-width: 50%;
-    height: auto; 
-    align-items: center;
-}
-}
+
 
 @media only screen and (max-width: 780px){
   .team-img {
@@ -8639,8 +8670,27 @@ h3 {
 }
 }
 
+@media only screen and (max-width: 480px){
+  .team-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%; 
+    padding: auto;
+    max-width: 50%;
+    height: auto; 
+    align-items: center;
+}
+}
 
-
+@media only screen and (max-width: 480px){
+.img-block{
+margin-left: 0!important;
+margin-right: 0!important;
+width: 50%;
+float: left;
+}
+}
 
 @media only screen and (max-width: 480px){
   .box {
@@ -9051,9 +9101,9 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%; 
+    width: 95%; 
     padding-top: 10%;
-    max-width: 50%;
+    max-width: 100%;
     height: auto; 
     align-items: center;
 }
@@ -9064,9 +9114,9 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%; 
+    width: 80%; 
     padding: auto;
-    max-width: 80%;
+    max-width: 100%;
     height: auto; 
     align-items: center;
 }
@@ -9078,9 +9128,9 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%; 
+    width: 95%; 
     padding: auto;
-    max-width: 80%;
+    max-width: 100%;
     height: auto; 
     align-items: center;
 }
@@ -9207,7 +9257,7 @@ h3 {
   transform: rotateY(180deg);
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 820px) {
   .card-flip {
     perspective: 1000px;
   }
@@ -9216,7 +9266,7 @@ h3 {
   }
   .card-flip, .front, .back {
     width: 100%;
-    height: 480px;
+    height: 360px;
   }
   .flip {
     transition: 0.6s;
@@ -9281,42 +9331,8 @@ h3 {
   background-position: bottom right;
  
 }
-@media only screen and (max-width: 480px) {
-  .img-crystals-left{
-    background-image: url('../assets/img/crystal2.png');
-    background-repeat: no-repeat;
-    height: 112vh;
-    margin-bottom: -9%;
-    background-size: 25%;
-    background-position: bottom left;
-  }
-  .img-crystals-right{
-    background-image: url('../assets/img/crystal1.png');
-    background-repeat: no-repeat;
-    height: 112vh;
-    margin-bottom: -9%;
-    background-size: 25%;
-    background-position: bottom right;
-  }
-}
-@media only screen and (max-width: 820px) {
-  .img-crystals-left{
-    background-image: url('../assets/img/crystal2.png');
-    background-repeat: no-repeat;
-    height: 85vh;
-    margin-bottom: -2%;
-    background-size: 40%;
-    background-position: bottom left;
-  }
-  .img-crystals-right{
-    background-image: url('../assets/img/crystal1.png');
-    background-repeat: no-repeat;
-    height: 85vh;
-    margin-bottom: -2%;
-    background-size: 40%;
-    background-position: bottom right;
-  }
-}
+
+
 .gray-stones-left{
   background-image: url('../assets/img/stalactite1.png');
   background-repeat: no-repeat;
@@ -9334,14 +9350,45 @@ h3 {
   background-size: 20%;
   background-position: bottom right;
 }
+
+@media only screen and (max-width: 820px) {
+  .img-crystals-left{
+    background-image: url('../assets/img/crystal2.png');
+    background-repeat: no-repeat;
+    height: 109vh;
+    margin-bottom: -2%;
+    background-size: 40%;
+    background-position: bottom left;
+  }
+  .img-crystals-right{
+    background-image: url('../assets/img/crystal1.png');
+    background-repeat: no-repeat;
+    height: 109vh;
+    margin-bottom: -2%;
+    background-size: 40%;
+    background-position: bottom right;
+  }
+}
+
 @media only screen and (max-width: 820px) {
   .gray-stones-left{
     background-image: url('../assets/img/stalactite1.png');
-  background-repeat: no-repeat;
-  height: 87vh;
-  margin-bottom: -1%;
+    background-repeat: no-repeat;
+    height: 112vh;
+    margin-bottom: -1%;
+    background-size: 30%;
   }
   }
+
+  @media only screen and (max-width: 820px) {
+    .gray-stones-right{
+      background-image: url('../assets/img/stalactite2.png');
+      background-repeat: no-repeat;
+      height: 112vh;
+      margin-bottom: -1%;
+      background-size: 30%;
+    }
+    }
 
 .page-section-team {
   padding: 1.0rem 0; }
@@ -9386,148 +9433,6 @@ h3 {
   border: 0.0rem solid rgba(0, 0, 0, 0.125);
   border-radius: 0.0rem; }
   
-  .card > hr {
-    margin-right: 0;
-    margin-left: 0; }
-  .card > .list-group:first-child .list-group-item:first-child {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem; }
-  .card > .list-group:last-child .list-group-item:last-child {
-    border-bottom-right-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem; }
-
-.card-body {
-  flex: 1 1 auto;
-  
-  }
-
-.card-title {
-  margin-bottom: 0.75rem; }
-
-.card-subtitle {
-  margin-top: -0.375rem;
-  margin-bottom: 0; }
-
-.card-text:last-child {
-  margin-bottom: 0; }
-
-.card-link:hover {
-  text-decoration: none; }
-
-.card-link + .card-link {
-  margin-left: 1.25rem; }
-
-.card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.125); }
-  .card-header:first-child {
-    border-radius: 0.375rem 0.375rem 0 0; }
-  .card-header + .list-group .list-group-item:first-child {
-    border-top: 0; }
-
-.card-footer {
-  padding: 0.75rem 1.25rem;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 0.125rem solid rgba(0, 0, 0, 0.125); }
-  .card-footer:last-child {
-    border-radius: 0 0 0.375rem 0.375rem; }
-
-.card-header-tabs {
-  margin-right: -0.625rem;
-  margin-bottom: -0.75rem;
-  margin-left: -0.625rem;
-  border-bottom: 0; }
-
-.card-header-pills {
-  margin-right: -0.625rem;
-  margin-left: -0.625rem; }
-
-.card-img-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1.25rem; }
-
-.card-img,
-.card-img-top,
-.card-img-bottom {
-  flex-shrink: 0;
-  width: 100%; }
-
-.card-img,
-.card-img-top {
-  border-top-left-radius: 0.375rem;
-  border-top-right-radius: 0.375rem; }
-
-.card-img,
-.card-img-bottom {
-  border-bottom-right-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem; }
-
-.card-deck .card {
-  margin-bottom: 1.5rem; }
-
-@media (min-width: 576px) {
-  .card-deck {
-    display: flex;
-    flex-flow: row wrap;
-    margin-right: -1.5rem;
-    margin-left: -1.5rem; }
-    .card-deck .card {
-      flex: 1 0 0%;
-      margin-right: 1.5rem;
-      margin-bottom: 0;
-      margin-left: 1.5rem; } }
-
-.card-group > .card {
-  margin-bottom: 1.5rem; }
-
-@media (min-width: 576px) {
-  .card-group {
-    display: flex;
-    flex-flow: row wrap; }
-    .card-group > .card {
-      flex: 1 0 0%;
-      margin-bottom: 0; }
-      .card-group > .card + .card {
-        margin-left: 0;
-        border-left: 0; }
-      .card-group > .card:not(:last-child) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0; }
-        .card-group > .card:not(:last-child) .card-img-top,
-.card-group > .card:not(:last-child) .card-header {
-          border-top-right-radius: 0; }
-        .card-group > .card:not(:last-child) .card-img-bottom,
-.card-group > .card:not(:last-child) .card-footer {
-          border-bottom-right-radius: 0; }
-      .card-group > .card:not(:first-child) {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0; }
-        .card-group > .card:not(:first-child) .card-img-top,
-.card-group > .card:not(:first-child) .card-header {
-          border-top-left-radius: 0; }
-        .card-group > .card:not(:first-child) .card-img-bottom,
-.card-group > .card:not(:first-child) .card-footer {
-          border-bottom-left-radius: 0; } }
-
-.card-columns .card {
-  margin-bottom: 0.75rem; }
-
-@media (min-width: 576px) {
-  .card-columns {
-    column-count: 3;
-    column-gap: 1.25rem;
-    orphans: 1;
-    widows: 1; }
-    .card-columns .card {
-      display: inline-block;
-      width: 100%; } }
-
       
 @media only screen and (max-width: 820px) {
   .card-flex{
@@ -9569,7 +9474,7 @@ h3 {
     
   @media only screen and (max-width: 820px) {
       .char{
-        font-size: 88%; 
+        font-size: 79%; 
       }
     }
      
