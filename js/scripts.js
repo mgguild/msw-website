@@ -49,16 +49,6 @@
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
   
-    // Floating label headings for the contact form
-    $(function() {
-      $("body").on("input propertychange", ".floating-label-form-group", function(e) {
-        $(this).toggleClass("floating-label-form-group-with-value", !!$(e.target).val());
-      }).on("focus", ".floating-label-form-group", function() {
-        $(this).addClass("floating-label-form-group-with-focus");
-      }).on("blur", ".floating-label-form-group", function() {
-        $(this).removeClass("floating-label-form-group-with-focus");
-      });
-    });
   
     function moveToSelected(element) {
 
@@ -137,19 +127,7 @@
 
       document.querySelector(".card-flip").classList.toggle("flip");
 
-      /* 
-      * Holder.js for demo image
-      * Just for demo purpose
-      */
-      Holder.addTheme('gray', {
-        bg: '#777',
-        fg: 'rgba(255,255,255,.75)',
-        font: 'Helvetica',
-        fontweight: 'normal'
-      });
+      document.querySelector(".mobile-card-flip").classList.toggle("mobile-flip");
 
-
-      
-    
   })(jQuery); // End of use strict
   
