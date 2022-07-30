@@ -8675,7 +8675,7 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 55%; 
+    width: 60%; 
     padding: auto;
     max-width: 60%;
     height: auto; 
@@ -9361,7 +9361,7 @@ float: left;
   .img-crystals-left{
     background-image: url('../assets/img/crystal2.png');
     background-repeat: no-repeat;
-    height: 109vh;
+    height: 102vh;
     margin-bottom: -2%;
     background-size: 40%;
     background-position: bottom left;
@@ -9369,7 +9369,7 @@ float: left;
   .img-crystals-right{
     background-image: url('../assets/img/crystal1.png');
     background-repeat: no-repeat;
-    height: 109vh;
+    height: 102vh;
     margin-bottom: -2%;
     background-size: 40%;
     background-position: bottom right;
@@ -9386,14 +9386,14 @@ float: left;
   .gray-stones-left{
     background-image: url('../assets/img/stalactite1.png');
     background-repeat: no-repeat;
-    height: 112vh;
+    height: 104vh;
     margin-bottom: -1%;
     background-size: 30%;
   }
     .gray-stones-right{
       background-image: url('../assets/img/stalactite2.png');
       background-repeat: no-repeat;
-      height: 112vh;
+      height: 104vh;
       margin-bottom: -1%;
       background-size: 30%;
     }
@@ -9531,3 +9531,9 @@ float: left;
       text-align: center; }
     
   
+      .team-text{
+        font-family: 'Fira Sans Condensed', sans-serif;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        font-size: 85%;
+      }
