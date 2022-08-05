@@ -111,7 +111,8 @@
 
 #car-1:checked ~ .control-1,
 #car-2:checked ~ .control-2,
-#car-3:checked ~ .control-3 {
+#car-3:checked ~ .control-3,
+#car-4:checked ~ .control-4 {
     display: block;
 }
 
@@ -145,7 +146,8 @@
 
 #car-1:checked ~ .control-1 ~ .car-indicators li:nth-child(1) .car-bullet,
 #car-2:checked ~ .control-2 ~ .car-indicators li:nth-child(2) .car-bullet,
-#car-3:checked ~ .control-3 ~ .car-indicators li:nth-child(3) .car-bullet {
+#car-3:checked ~ .control-3 ~ .car-indicators li:nth-child(3) .car-bullet,
+#car-4:checked ~ .control-4 ~ .car-indicators li:nth-child(4) .car-bullet {
     color: #428bca;
 }
 
@@ -242,7 +244,8 @@
 
 #carl-1:checked ~ .control-1,
 #carl-2:checked ~ .control-2,
-#carl-3:checked ~ .control-3 {
+#carl-3:checked ~ .control-3, 
+#carl-4:checked ~ .control-4 {
   display: block;
 }
 
@@ -276,7 +279,8 @@
 
 #carl-1:checked ~ .control-1 ~ .carl-indicators li:nth-child(1) .carl-bullet,
 #carl-2:checked ~ .control-2 ~ .carl-indicators li:nth-child(2) .carl-bullet,
-#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet {
+#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet,
+#carl-4:checked ~ .control-4 ~ .carl-indicators li:nth-child(4) .carl-bullet {
   color: #428bca;
 }
 
@@ -377,7 +381,8 @@
 
 #carl-1:checked ~ .control-1,
 #carl-2:checked ~ .control-2,
-#carl-3:checked ~ .control-3 {
+#carl-3:checked ~ .control-3,
+#carl-4:checked ~ .control-4 {
   display: block;
 }
 
@@ -411,7 +416,8 @@
 
 #carl-1:checked ~ .control-1 ~ .carl-indicators li:nth-child(1) .carl-bullet,
 #carl-2:checked ~ .control-2 ~ .carl-indicators li:nth-child(2) .carl-bullet,
-#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet {
+#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet, 
+#carl-4:checked ~ .control-4 ~ .carl-indicators li:nth-child(4) .carl-bullet {
   color: #428bca;
 }
 
