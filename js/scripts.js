@@ -135,5 +135,7 @@
 
       document.querySelector(".mobile-card-flip").classList.toggle("mobile-flip");
 
+      
+
   })(jQuery); // End of use strict
   

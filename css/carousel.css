@@ -10,7 +10,7 @@
   padding-right: 9%;
   padding-left: 9%;
   padding-bottom: 5%;
-  max-width: 100%;
+  max-width: 480px;
   height: auto; 
   align-items: center;
 }
@@ -48,11 +48,11 @@
 }
 
 .carousel-control-prev {
-  left: -25px;
+  left: -60px;
   margin: 0 -25px;
 }
 .carousel-control-next {
-  right: -25px;
+  right: -60px;
   margin: 0 -25px;
 }
 
@@ -355,3 +355,5 @@
   
 
 }
+
+
