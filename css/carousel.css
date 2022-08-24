@@ -10,7 +10,7 @@
   padding-right: 9%;
   padding-left: 9%;
   padding-bottom: 5%;
-  max-width: 480px;
+  max-width: 500px;
   height: auto; 
   align-items: center;
 }
@@ -45,6 +45,14 @@
     height: auto;
     width: 100%;
  }
+ .carousel-control-prev {
+  left: -12px;
+  margin: 0 -25px;
+}
+.carousel-control-next {
+  right: -12px;
+  margin: 0 -25px;
+}
 }
 
 .carousel-control-prev {
@@ -58,12 +66,12 @@
 
 @media only screen and (max-width: 480px){
   .carousel-control-prev {
-    left: -12px;
-    margin: 0 -25px;
+    left: 12px;
+    margin: 0 -12px;
   }
   .carousel-control-next {
-    right: -12px;
-    margin: 0 -25px;
+    right: 12px;
+    margin: 0 -12px;
   }
 }
 
