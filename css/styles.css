@@ -4390,7 +4390,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
   @media only screen and (max-width: 480px){
     .w-25 {
-      width: 90% !important; }
+      width: 98% !important; }
   }
 
 .w-50 {
