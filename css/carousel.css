@@ -134,7 +134,7 @@
 @media only screen and (max-width: 420px) {  
 
   .mobile-char{
-    font-size: 65%; 
+    font-size: 75%; 
     font-family: 'MagicMedieval', sans-serif;
     font-weight: 700;
 }
@@ -259,7 +259,7 @@
 .mobile-carrousel-item img {
   display: block;
   height: auto;
-  max-width: 100%;
+  max-width: 115%;
 }
 
 .mobile-carrousel-control {
@@ -287,7 +287,7 @@
 }
 
 .mobile-carrousel-control.next {
-  right: 2%;
+  right: 0%;
 }
 
 .mobile-carrousel-control:hover {
@@ -352,9 +352,9 @@
 
 .mobile-carrousel-caption {
   position: absolute;
-  right: 15%;
+  right: -10%;
   bottom: 20px;
-  left: 15%;
+  left: 0%;
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;

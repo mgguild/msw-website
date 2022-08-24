@@ -1716,10 +1716,11 @@ textarea.form-control {
 
 .form-inline {
   display: flex;
-  flex-flow: row wrap;
-  align-items: center; }
-  .form-inline .form-check {
-    width: 100%; }
+    flex-flow: row wrap;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+  }
 
 @media (min-width: 576px) {
   .form-inline label {
@@ -6042,7 +6043,7 @@ h3 {
     border-color: #dee2e6; } }
 
 .page-section {
-  padding: 3rem 0; }
+  padding: 1rem 0; }
   .page-section .page-section-heading {
     font-size: 2.25rem;
     line-height: 2rem; }
@@ -6526,6 +6527,19 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     width: 50%; 
+    padding: auto;
+    max-width: 50%;
+    height: auto; 
+    align-items: center;
+}
+}
+
+@media only screen and (max-width: 480px){
+  .team-img-solo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 36%; 
     padding: auto;
     max-width: 50%;
     height: auto; 
@@ -7826,3 +7840,12 @@ h3 {
   margin-top:10px;
 }
 
+
+.upper{
+  display: flex;
+  flex-wrap: nowrap;
+  margin-right: -1.5rem;
+  margin-left: -1.5rem;
+  justify-content: space-between;
+  align-content: stretch;
+}

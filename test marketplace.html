@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <title>MetaSaga Warriors</title>
+      <!--MSW Icon-->
+      <link rel="icon" type="image/x-icon" href="assets/img/MSW_Logo2.png"/>
+      <!-- Font Awesome icons (free version)-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+      <!-- Core theme CSS (includes Bootstrap)-->
+      <link href="css/styles.css" type="text/css" rel="stylesheet">
+      <link href="css/carousel.css" type="text/css" rel="stylesheet">
+      <link href="css/scroll.css" type="text/css" rel="stylesheet">
+      <!-- Fonts CSS-->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="http://fonts.cdnfonts.com/css/magicmedieval" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
+      <script src="jquery/jquery.js"></script>
+      <link rel="stylesheet" href="css/bootstrap.css" />
+      <script src="https://unpkg.com/scrollreveal"></script>
+   </head>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQWCR8SZMG"></script>
+   <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-LQWCR8SZMG');
+   </script>
+
+
+<main>
+
+  <div class="page-section brown-bg  text-white mb-0" id="game_overview">
+    <div class="container-xl align-items-center flex-column">
+       <!-- Game Overview Section Heading-->
+       
+       <div class="upper">
+
+        <h4>Filter All</h4>
+
+        <button onClick="clear()">Clear All</button>
+
+        <div class="search-container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+
+        <form action="nft">
+          <label for="nft">Sort By</label>
+          <select name="nft" id="nft">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </form>
+      </ul>
+      
+       </div>
+       <div class="mt-4 mx-xl-auto py-xl-4">
+          <div class="row">
+            
+          </div>
+       </div>
+    
+
+    
+
+
+  <!--Main layout-->
+  <div class="container">
+    <div class="row">
+
+      <!--Sidebar-->
+      <div class="col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+
+          <div class="card align-items-center flex-column">
+                           <form>
+                              <fieldset>
+                                <form action="nft">
+                                  <label for="nft">Classes</label>
+                                  <select name="nft" id="nft">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                  </select>
+                                </form>
+                              
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Archer</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Artillery</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Berseker</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Dark Knight</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Elemental</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Engineer</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Knight</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Magitek</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Musketeer</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Plague Doctor</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Vicar</label>
+                              </div>
+                              <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Wizard</label>
+                              </div>
+                      
+                              </fieldset>
+
+                              <fieldset>
+                                <form action="nft">
+                                  <label for="nft">RARITY</label>
+                                  <select name="nft" id="nft">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                  </select>
+                                </form>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Legendary</label>
+                                 </div>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Epic</label>
+                                 </div>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Rare</label>
+                                 </div>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Common</label>
+                                 </div>
+                                 </fieldset>
+
+                                 <fieldset>
+                                  <form action="nft">
+                                    <label for="nft">MISSION/RESCUE #</label>
+                                    <select name="nft" id="nft">
+                                      <option value=""></option>
+                                      <option value=""></option>
+                                    </select>
+                                  </form>
+                                    <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">1</label>
+                                    </div>
+                                    <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">2</label>
+                                    </div>
+                                    <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">3 </label>
+                                    </div>
+                                    <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">4 </label>
+                                    </div>
+                                 </fieldset>
+
+                                 <fieldset>
+                                  <form action="nft">
+                                    <label for="nft">Spell Elements</label>
+                                    <select name="nft" id="nft">
+                                      <option value=""></option>
+                                      <option value=""></option>
+                                    </select>
+                                  </form>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Lighting</label>
+                                 </div>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Wind</label>
+                                 </div>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Poison</label>
+                                 </div>
+                                 <div>
+                                 <input type="checkbox" id="" name="source" value="">
+                                 <label for="">Fire</label>
+                                 </div>
+                                 <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">Frost</label>
+                                 </div>
+                                 <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">Earth</label>
+                                 </div>
+                                 <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">Water</label>
+                                 </div>
+                                 </fieldset>
+
+                                 <fieldset>
+                                  <form action="nft">
+                                    <label for="nft">Combat Type</label>
+                                    <select name="nft" id="nft">
+                                      <option value=""></option>
+                                      <option value=""></option>
+                                    </select>
+                                  </form>
+                                    <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">Attacker</label>
+                                    </div>
+                                    <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">Defender</label>
+                                    </div>
+                                    <div>
+                                    <input type="checkbox" id="" name="source" value="">
+                                    <label for="">Utility</label>
+                                    </div>
+                                 
+                                 </fieldset>
+
+                           </form>
+                              
+                           </div>
+
+
+      </div>
+      <!--/.Sidebar-->
+
+      <!--Main column-->
+      <div class="col-lg-8">
+
+     
+        <!--/.First row-->
+        <br>
+        <hr class="extra-margins">
+
+        <!--Second row-->
+        <div class="row">
+          <!--First columnn-->
+          <div class="col-lg-4">
+            <!--Card-->
+            <div class="card wow fadeIn" data-wow-delay="0.2s">
+
+              <!--Card image-->
+              <div class="view overlay hm-white-slight">
+                <img src="assets\img\Altillery.png" class="img-fluid" alt="">
+                <a href="#">
+                  <div class="mask"></div>
+                </a>
+              </div>
+              <!--/.Card image-->
+
+              <!--Card content-->
+              <div class="card-block">
+                <!--Title-->
+                <h4 class="card-title">Artillery</h4>
+                <!--Text-->
+                <p class="card-text">Current Price</p>
+            
+              </div>
+              <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+          </div>
+          <!--First columnn-->
+
+          <!--Second columnn-->
+          <div class="col-lg-4">
+            <!--Card-->
+            <div class="card  wow fadeIn" data-wow-delay="0.4s">
+
+              <!--Card image-->
+              <div class="view overlay hm-white-slight">
+                <img src="assets\img\Vicar.png" class="img-fluid" alt="">
+                <a href="#">
+                  <div class="mask"></div>
+                </a>
+              </div>
+              <!--/.Card image-->
+
+              <!--Card content-->
+              <div class="card-block">
+                <!--Title-->
+                <h4 class="card-title">Vicar</h4>
+                <!--Text-->
+                <p class="card-text">Current Price</p>
+                
+              </div>
+              <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+          </div>
+          <!--Second columnn-->
+
+          <!--Third columnn-->
+          <div class="col-lg-4">
+            <!--Card-->
+            <div class="card  wow fadeIn" data-wow-delay="0.6s">
+
+              <!--Card image-->
+              <div class="view overlay hm-white-slight">
+                <img src="assets\img\wizard.png" class="img-fluid" alt="">
+                <a href="#">
+                  <div class="mask"></div>
+                </a>
+              </div>
+              <!--/.Card image-->
+
+              <!--Card content-->
+              <div class="card-block">
+                <!--Title-->
+                <h4 class="card-title">Wizard</h4>
+                <!--Text-->
+                <p class="card-text">Current Price</p>
+                
+              </div>
+              <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+          </div>
+          <!--Third columnn-->
+        </div>
+        <!--/.Second row-->
+
+      </div>
+      <!--/.Main column-->
+
+    </div>
+  </div>
+  <!--/.Main layout-->
+
+
+
+ </div>
+</div>
+</main>
+</html>
