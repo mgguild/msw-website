@@ -6113,8 +6113,8 @@ h3 {
     line-height: 3.1rem; }
 
 #mainNav {
-  padding-top: 0.01rem;
-  padding-bottom: 0.1rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
   font-family: 'Passion One', cursive;
   font-weight: 400; }
   #mainNav .navbar-brand {
@@ -6131,7 +6131,7 @@ h3 {
         color: #5bc0de; }
   #mainNav .navbar-toggler {
     font-size: 100%;
-    padding: 0.2rem; }
+    padding: 1.0rem; }
 
 
 .home {
@@ -6687,32 +6687,6 @@ h3 {
 
 
 
-  @media (min-width: 480px) {
-      #mainNav {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-        transition: padding-top 0.3s, padding-bottom 0.3s; }
-        #mainNav .navbar-brand {
-          font-size: 1.75em;
-          transition: font-size 0.3s; }
-        #mainNav .navbar-nav {
-          margin-top: 0; }
-        #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
-          color: #fff;
-          background: #5bc0de; 
-         
-        }
-          #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
-            color: #fff;
-            background: #5210bd; 
-           
-          }
-      #mainNav.navbar-shrink {
-        padding-top: 0.2rem;
-        padding-bottom: 0.2rem; }
-        #mainNav.navbar-shrink .navbar-brand {
-          font-size: 1.5em; } }
-          
 @media (min-width: 992px) {
   #mainNav {
     padding-top: 0.5rem;
@@ -6975,7 +6949,7 @@ h3 {
 .img-crystals-left{
   background-image: url('../assets/img/crystal2.png');
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 94vh;
   margin-bottom: -1%;
   background-size: 30%;
   background-position: bottom left;
@@ -6983,7 +6957,7 @@ h3 {
 .img-crystals-right{
   background-image: url('../assets/img/crystal1.png');
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 94vh;
   margin-bottom: -1%;
   background-size: 30%;
   background-position: bottom right;
@@ -6993,7 +6967,7 @@ h3 {
 .gray-stones-left{
   background-image: url('../assets/img/stalactite1.png');
   background-repeat: no-repeat;
-  height: 93vh;
+  height: 97vh;
   margin-bottom: -1%;
   background-size: 20%;
   background-position: bottom left;
@@ -7002,7 +6976,7 @@ h3 {
 .gray-stones-right{
   background-image: url('../assets/img/stalactite2.png');
   background-repeat: no-repeat;
-  height: 93vh;
+  height: 97vh;
   margin-bottom: -1%;
   background-size: 20%;
   background-position: bottom right;
