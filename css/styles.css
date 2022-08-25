@@ -6975,7 +6975,7 @@ h3 {
 .img-crystals-left{
   background-image: url('../assets/img/crystal2.png');
   background-repeat: no-repeat;
-  height: 86vh;
+  height: 90vh;
   margin-bottom: -1%;
   background-size: 30%;
   background-position: bottom left;
@@ -6983,7 +6983,7 @@ h3 {
 .img-crystals-right{
   background-image: url('../assets/img/crystal1.png');
   background-repeat: no-repeat;
-  height: 86vh;
+  height: 90vh;
   margin-bottom: -1%;
   background-size: 30%;
   background-position: bottom right;
@@ -6993,7 +6993,7 @@ h3 {
 .gray-stones-left{
   background-image: url('../assets/img/stalactite1.png');
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 93vh;
   margin-bottom: -1%;
   background-size: 20%;
   background-position: bottom left;
@@ -7002,7 +7002,7 @@ h3 {
 .gray-stones-right{
   background-image: url('../assets/img/stalactite2.png');
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 93vh;
   margin-bottom: -1%;
   background-size: 20%;
   background-position: bottom right;
