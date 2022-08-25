@@ -6114,13 +6114,13 @@ h3 {
 
 #mainNav {
   padding-top: 0.01rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.1rem;
   font-family: 'Passion One', cursive;
   font-weight: 400; }
   #mainNav .navbar-brand {
     color: #fff; }
   #mainNav .navbar-nav {
-    margin-top: 1rem; }
+    margin-top: 0.1rem; }
     #mainNav .navbar-nav li.nav-item a.nav-link {
       color: #fff; }
       #mainNav .navbar-nav li.nav-item a.nav-link:hover {
@@ -6131,7 +6131,7 @@ h3 {
         color: #5bc0de; }
   #mainNav .navbar-toggler {
     font-size: 100%;
-    padding: 0.8rem; }
+    padding: 0.2rem; }
 
 
 .home {
@@ -6715,8 +6715,8 @@ h3 {
           
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 1.2rem;
-    padding-bottom: 1.2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     transition: padding-top 0.3s, padding-bottom 0.3s; }
     #mainNav .navbar-brand {
       font-size: 2.75em;
@@ -6733,8 +6733,8 @@ h3 {
         
       }
   #mainNav.navbar-shrink {
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem; }
+    padding-top: 0.02rem;
+    padding-bottom: 0.02rem; }
     #mainNav.navbar-shrink .navbar-brand {
       font-size: 1.5em; } }
 
@@ -6798,8 +6798,8 @@ h3 {
           
       @media (max-width: 720px) {
         #mainNav {
-          padding-top: 1.5rem;
-          padding-bottom: 1.5rem;
+          padding-top: 0.2rem;
+          padding-bottom: 0.2rem;
           transition: padding-top 0.3s, padding-bottom 0.3s; }
           #mainNav .navbar-brand {
             font-size: 1.75em;
