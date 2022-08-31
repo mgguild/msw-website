@@ -3535,9 +3535,6 @@ button.bg-dark:focus {
   background-color: #fff !important; }
 
   
-.bg-transparent {
-  background-color: transparent !important; }
-
 .border {
   border: 0.125rem solid #dee2e6 !important; }
 
@@ -7748,6 +7745,14 @@ h3 {
   }
   
   
+
+
+@media only screen and (max-width: 480px) {
+  
+  .cave{
+    display: none;
+  }
+}
   
   .img-background {
     max-width: 83%;
@@ -7797,15 +7802,106 @@ h3 {
       height: 104vh;
       margin-bottom: -1%;
       background-size: 30%;
-    }
+    }  
+      
 }
 
 
+.cave{
+  width: 100%;
+  height: 600px;
+  top: 730px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+}
+
+
+.bg-transparent {
+  background-color: transparent !important; 
+  height: 280px;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 480px) {
+    .bg-transparent {
+      display:none;
+     }
+}
+
+@media only screen and (max-width: 920px) {
+    
+  .bg-transparent {
+    background-color: transparent !important; 
+    height: 245px;
+  }
+  .cave{
+    width: 120%;
+    height: 520px;
+    top: 910px;
+    left: -100px;
+    right: 0px;
+    position: absolute
+    }
+
+}
+
+@media only screen and (max-width: 820px) {
+    
+  .bg-transparent {
+    background-color: transparent !important; 
+    height: 135px;
+  }
+  .cave{
+    width: 112%;
+        height: 420px;
+        top: 810px;
+        left: -55px;
+        right: 0px;
+        position: absolute;
+      }
+
+      @media only screen and (max-width: 780px) {
+    
+        .bg-transparent {
+          background-color: transparent !important; 
+          height: 135px;
+        }
+        .cave{
+          width: 112%;
+              height: 400px;
+              top: 800px;
+              left: -55px;
+              right: 0px;
+              position: absolute;
+            }
+        }
+
+        @media only screen and (max-width: 540px) {
+    
+          .bg-transparent {
+            background-color: transparent !important; 
+            height: 135px;
+          }
+          .cave{
+              width: 130%;
+              height: 400px;
+              top: 874px;
+              left: -86px;
+              right: 0px;
+              position: absolute;
+              }
+          }
+      
+  }
   
 .link-info{
   color: #5bc0de;
 }
-
 
 
 .form-control { 
@@ -7828,3 +7924,4 @@ h3 {
   justify-content: space-between;
   align-content: stretch;
 }
+
