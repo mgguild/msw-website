@@ -6182,7 +6182,6 @@ h3 {
     bottom: 0;
     width: 100%;
     text-align: center;
-    padding-right: 100px;
   }
 }
 
@@ -7924,4 +7923,115 @@ h3 {
   justify-content: space-between;
   align-content: stretch;
 }
+
+
+
+.wrapper{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#subscribebox{
+  width: 700px;
+  max-width: 100%;
+  margin: auto;
+  background: #B4CDED;
+  text-align: center;
+  border-radius: 4px;
+  padding: 60px 20px;
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+}
+
+
+h3{
+  color: #344966;
+  font-size: 22px;
+  text-align: center;
+  font-weight: 700;
+  font-family: inherit;
+}
+
+#email-input{
+  width: 280px;
+  max-width: 100%;
+  font-family: inherit;
+  color: #344966;
+  text-align: left;
+  font-weight: 500;
+  border-radius: 10px 0px 0px 10px;
+  border: 0px;
+  padding: 15px 0px 15px 20px;
+  font-size: 14px;
+  background: #F0F4EF;
+}
+
+#email-input:focus, #email-input:hover{
+  outline: 0px;
+}
+
+#subscribe-button{
+    border: 54px;
+    width: 100px;
+    max-width: 100%;
+    font-size: 700;
+    padding: 16px;
+    font-size: 14px;
+    color: #F0F4EF;
+    font-family: inherit;
+    background: #17a2b8;
+    cursor: pointer;
+    border-radius: 0px 10px 10px 0px;
+    outline: 0;
+    transition: all 0.2s;
+}
+
+#subscribe-button:hover{
+  background: #213144;
+}
+
+@media screen and (max-width: 700px) {
+  #subscribe-button{
+    width: 98%;
+    margin: 5px;
+    border-radius: 2px;
+  }
+  #email-input{
+    width: 98%;
+    margin: 5px;
+    text-align: center;
+  }
+  #subscribebox{
+    width: 100%;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  #subscribe-button{
+    width: 25%;
+    margin: -10px;
+    border-radius: 5px;
+  }
+  #email-input{
+    width: 54%;
+    margin: 4px;
+    text-align: center;
+    font-size: 10px;
+  }
+  #subscribebox{
+    width: 100%;
+  }
+}
+
 
