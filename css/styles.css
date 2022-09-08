@@ -7914,7 +7914,6 @@ h3 {
   margin-top:10px;
 }
 
-
 .upper{
   display: flex;
   flex-wrap: nowrap;
@@ -7923,8 +7922,6 @@ h3 {
   justify-content: space-between;
   align-content: stretch;
 }
-
-
 
 .wrapper{
   width: 100%;
@@ -7956,7 +7953,7 @@ form{
 
 
 
-#email-input{
+#mce-EMAIL{
   width: 280px;
   max-width: 100%;
   font-family: inherit;
@@ -7970,11 +7967,11 @@ form{
   background: #F0F4EF;
 }
 
-#email-input:focus, #email-input:hover{
+#mce-EMAIL:focus, #mce-EMAIL:hover{
   outline: 0px;
 }
 
-#subscribe-button{
+#mc-embedded-subscribe{
     border: 54px;
     width: 100px;
     max-width: 100%;
@@ -7990,17 +7987,17 @@ form{
     transition: all 0.2s;
 }
 
-#subscribe-button:hover{
+#mc-embedded-subscribe:hover{
   background: #213144;
 }
 
 @media screen and (max-width: 700px) {
-  #subscribe-button{
+  #mc-embedded-subscribe{
     width: 98%;
     margin: 5px;
     border-radius: 2px;
   }
-  #email-input{
+  #mce-EMAIL{
     width: 98%;
     margin: 5px;
     text-align: center;
@@ -8012,12 +8009,12 @@ form{
 }
 
 @media screen and (max-width: 480px) {
-  #subscribe-button{
+  #mc-embedded-subscribe{
     width: 25%;
     margin: -10px;
     border-radius: 5px;
   }
-  #email-input{
+  #mce-EMAIL{
     width: 54%;
     margin: 10px;
     text-align: center;
@@ -8105,3 +8102,116 @@ form{
   padding-right:0px;
 }
 }
+
+span{
+  color: #000000;
+  display: block;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap');
+
+
+form input {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    height: 68px;
+    padding: 15px;
+    background: #242D3B;
+    color: #fff;
+    transition: 0.5s;
+}
+
+form input:focus {
+    outline: none;
+    box-shadow: 0px 10px 30px -20px #89fcf3;
+    filter: contrast(85%)
+}
+
+form label {
+    color: #CCCDCF;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+form .subscribe {
+    max-width: 300px;
+    height: auto;
+    background: #151515;
+    border: #89fcf3 2px solid;
+    border-radius: 45px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0 auto -80px;
+}
+
+form .subscribe:hover {
+    background: #89fcf3;
+    color: #151515;
+    cursor: pointer;
+
+}
+
+/* Mailchimp CSS */
+
+form .mc-field-group {
+    margin-bottom: 35px;
+}
+
+form .indicates-required {
+    color: #CCCDCF;
+    font-size: 0.5em;
+    margin: 35px 0;
+    text-align: center;
+}
+
+form input + .mce_inline_error {
+    display: inline-block;
+    font-size: 0.5em;
+    position: relative;
+}
+
+form input + .mce_inline_error:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #6B0505;
+    position: absolute;
+    top: -10px;
+}
+
+form #mce-success-response {
+    background: green;
+    padding: 25px;
+    text-align: center;
+    color: #fff;
+    border-radius: 12px;
+    transition: 1s;
+    animation: response 1s forwards;
+}
+
+form #mce-error-response {
+    background: #6B0505;
+    padding: 25px;
+    text-align: center;
+    color: #fff;
+    border-radius: 12px;
+    transition: 1s;
+    animation: response 1s forwards;
+}
+form #mce-error-response a {
+    color: #fff;
+}
+
+form label .asterisk {
+    color: #89fcf3;
+    font-size: 0.5em;
+    vertical-align: super;
+}
+
+
