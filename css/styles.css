@@ -8010,13 +8010,13 @@ form{
 
 @media screen and (max-width: 480px) {
   #mc-embedded-subscribe{
-    width: 25%;
-    margin: -10px;
+    width: 82%;
+    margin: 10px;
     border-radius: 5px;
   }
   #mce-EMAIL{
-    width: 54%;
-    margin: 10px;
+    width: 100%;
+    margin: 15px;
     text-align: center;
     font-size: 10px;
   }
