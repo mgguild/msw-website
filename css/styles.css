@@ -481,6 +481,17 @@ pre {
   }
 }
 
+@media only screen and (max-width: 1860px){
+  html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+
 /*
 @media (min-width: 576px) {
   .container {
@@ -7823,9 +7834,6 @@ h3 {
 
 
 
-
-
-
 @media only screen and (max-width: 480px) {
     .bg-transparent {
       display:none;
@@ -7962,7 +7970,7 @@ form{
   font-weight: 500;
   border-radius: 10px 0px 0px 10px;
   border: 0px;
-  padding: 15px 0px 15px 20px;
+  padding: 15px 0px 15px 0px;
   font-size: 14px;
   background: #F0F4EF;
 }
@@ -8010,15 +8018,16 @@ form{
 
 @media screen and (max-width: 480px) {
   #mc-embedded-subscribe{
-    width: 82%;
-    margin: 10px;
-    border-radius: 5px;
+    width: 75%;
+    margin: 15px;
+    border-radius: 8px;
   }
   #mce-EMAIL{
     width: 100%;
-    margin: 15px;
+    margin: 21px;
     text-align: center;
-    font-size: 10px;
+    font-size: 11px;
+    padding: 8px 18px 8px 8px;
   }
   #subscribebox{
     width: 100%;
