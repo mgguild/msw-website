@@ -8030,9 +8030,9 @@ form{
   padding:20px;
   padding-top:0px;
   padding-bottom:0px;
-  background-color: #0f0015;
-  opacity: 80%;
+  background-color: rgba(15, 0, 21, 0.60);
   border-bottom:solid 1px #ebebeb;
+  border-radius: 10px 10px 10px 10px;
 }
 .open{
   cursor:pointer;
@@ -8043,16 +8043,16 @@ form{
   opacity:0.7;
 }
 .expanded{
-  background-color:#f5f5f5;
+  background-color: rgba(15, 0, 21, 0.75);
   transition: all .3s ease-in-out;
 }
 .question{
   padding-top:30px;
   padding-right: 40px;
   padding-bottom:20px;
-  font-size: 18px;
+  font-size: 25px;
   font-weight:500;
-  color: #526ee4;
+  color: #ffffff;
 }
 .answer{
   font-size:16px;
@@ -8062,7 +8062,7 @@ form{
   text-align:justify;
   padding-left:20px;
   padding-right:20px;
-  color: #000;
+  color: #ffffff;
 }
 .faq-t{
   -moz-transform: rotate(-45deg);
@@ -8214,4 +8214,72 @@ form label .asterisk {
     vertical-align: super;
 }
 
+/*gameplay section text*/
 
+.one li {
+  list-style-type: none;
+  position: relative;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.one li:before {
+  content: ".";
+  position: relative;
+  left: -1rem;
+  bottom: 0;
+  font-size: 270%;
+}
+
+.gameplay-text {
+  font-size: 2.6rem; 
+  text-shadow: #000000;
+}
+
+  @media only screen and (max-width: 480px) {
+    .gameplay-text {
+      font-size: 2.5rem; 
+      text-align: center;
+    }
+
+      .one li {
+        list-style-type: none;
+        position: relative;
+        line-height: 1;
+        margin-bottom: 20px;
+        font-size: px;
+      }
+      .one li:before {
+        content: ".";
+        position: relative;
+        left: -1rem;
+        bottom: 0;
+        font-size: 220%;
+      }
+  }
+    
+  @media only screen and (max-width: 820px) {
+    .one li {
+      list-style-type: none;
+      position: relative;
+      line-height: 1;
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+    .one li:before {
+      content: ".";
+      position: relative;
+      left: -1rem;
+      bottom: 0;
+      font-size: 270%;
+    }
+    
+    .gameplay-text {
+      font-size: 2.6rem; 
+      text-align: center;
+    }
+  }
+
+  .about-text{
+    font-size: 2.2rem;
+    text-align: center; }
