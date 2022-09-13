@@ -6898,7 +6898,13 @@ h3 {
   
   }}
   
-  
+  @font-face {
+    font-family: 'MagicMedieval';
+    font-style: normal;
+    font-weight: 400;
+    src: local('MagicMedieval'), url('https://fonts.cdnfonts.com/s/25407/Magim___.woff') format('woff');
+}
+
   .char{
     font-size: 135%; 
     font-family: 'MagicMedieval', sans-serif;
