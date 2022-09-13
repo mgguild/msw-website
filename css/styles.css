@@ -40,18 +40,26 @@
   box-sizing: border-box; }
 
 html {
+  width: 100%;
   font-family: sans-serif;
   line-height: 1.15;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
+
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
   min-height: 100%;
+  width: 100%;
   max-width: 100%;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 1.25rem;
@@ -480,6 +488,9 @@ pre {
     overflow-x: hidden;
   }
 }
+
+
+
 
 /*
 @media (min-width: 576px) {
@@ -7823,9 +7834,6 @@ h3 {
 
 
 
-
-
-
 @media only screen and (max-width: 480px) {
     .bg-transparent {
       display:none;
@@ -7958,11 +7966,11 @@ form{
   max-width: 100%;
   font-family: inherit;
   color: #344966;
-  text-align: left;
+  text-align: center;
   font-weight: 500;
   border-radius: 10px 0px 0px 10px;
   border: 0px;
-  padding: 15px 0px 15px 20px;
+  padding: 15px 0px 15px 0px;
   font-size: 14px;
   background: #F0F4EF;
 }
@@ -8010,15 +8018,16 @@ form{
 
 @media screen and (max-width: 480px) {
   #mc-embedded-subscribe{
-    width: 82%;
-    margin: 10px;
-    border-radius: 5px;
+    width: 75%;
+    margin: 15px;
+    border-radius: 8px;
   }
   #mce-EMAIL{
     width: 100%;
-    margin: 15px;
+    margin: 21px;
     text-align: center;
-    font-size: 10px;
+    font-size: 11px;
+    padding: 8px 18px 8px 8px;
   }
   #subscribebox{
     width: 100%;
@@ -8030,9 +8039,9 @@ form{
   padding:20px;
   padding-top:0px;
   padding-bottom:0px;
-  background-color: #0f0015;
-  opacity: 80%;
+  background-color: rgba(15, 0, 21, 0.60);
   border-bottom:solid 1px #ebebeb;
+  border-radius: 10px 10px 10px 10px;
 }
 .open{
   cursor:pointer;
@@ -8043,16 +8052,16 @@ form{
   opacity:0.7;
 }
 .expanded{
-  background-color:#f5f5f5;
+  background-color: rgba(15, 0, 21, 0.75);
   transition: all .3s ease-in-out;
 }
 .question{
   padding-top:30px;
   padding-right: 40px;
   padding-bottom:20px;
-  font-size: 18px;
+  font-size: 25px;
   font-weight:500;
-  color: #526ee4;
+  color: #ffffff;
 }
 .answer{
   font-size:16px;
@@ -8062,7 +8071,7 @@ form{
   text-align:justify;
   padding-left:20px;
   padding-right:20px;
-  color: #000;
+  color: #ffffff;
 }
 .faq-t{
   -moz-transform: rotate(-45deg);
@@ -8214,4 +8223,72 @@ form label .asterisk {
     vertical-align: super;
 }
 
+/*gameplay section text*/
 
+.one li {
+  list-style-type: none;
+  position: relative;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.one li:before {
+  content: ".";
+  position: relative;
+  left: -1rem;
+  bottom: 0;
+  font-size: 270%;
+}
+
+.gameplay-text {
+  font-size: 2.6rem; 
+  text-shadow: #000000;
+}
+
+  @media only screen and (max-width: 480px) {
+    .gameplay-text {
+      font-size: 2.5rem; 
+      text-align: center;
+    }
+
+      .one li {
+        list-style-type: none;
+        position: relative;
+        line-height: 1;
+        margin-bottom: 20px;
+        font-size: px;
+      }
+      .one li:before {
+        content: ".";
+        position: relative;
+        left: -1rem;
+        bottom: 0;
+        font-size: 220%;
+      }
+  }
+    
+  @media only screen and (max-width: 820px) {
+    .one li {
+      list-style-type: none;
+      position: relative;
+      line-height: 1;
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+    .one li:before {
+      content: ".";
+      position: relative;
+      left: -1rem;
+      bottom: 0;
+      font-size: 270%;
+    }
+    
+    .gameplay-text {
+      font-size: 2.6rem; 
+      text-align: center;
+    }
+  }
+
+  .about-text{
+    font-size: 2.2rem;
+    text-align: center; }
