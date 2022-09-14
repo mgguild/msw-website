@@ -6164,13 +6164,14 @@ h3 {
 /*Footer Body*/
 .footer {
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0rem;
   background-color: #0f0015;
   color: #fff; 
   bottom: 0;
   width: 100%;
   text-align: center;
   padding-right: 0px;
+  margin-bottom: -20px;
 }
 
 @media only screen and (max-width: 480px) {
@@ -6887,12 +6888,8 @@ h3 {
   
   }}
   
-  @font-face {
-    font-family: 'MagicMedieval';
-    font-style: normal;
-    font-weight: 400;
-    src: local('MagicMedieval'), url('https://fonts.cdnfonts.com/s/25407/Magim___.woff') format('woff');
-}
+
+  @import url('http://fonts.cdnfonts.com/css/magicmedieval');
 
   .char{
     font-size: 135%; 
