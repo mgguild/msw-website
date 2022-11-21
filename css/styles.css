@@ -8296,7 +8296,7 @@ form label .asterisk {
     font-size: 2.2rem;
     text-align: center; }
 
-    @media only screen and (max-device-width: 420px) {
+  @media only screen and (max-device-width: 320px) {
       
   .about-text{
       font-size: 1.2rem;
