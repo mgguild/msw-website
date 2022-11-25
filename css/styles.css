@@ -8310,7 +8310,7 @@ form label .asterisk {
   
   @media only screen and (max-device-width: 420px) {
       
-  .about-text{
+  .minting-text{  
       font-size: 1.2rem;
       text-align: center; }
     }
