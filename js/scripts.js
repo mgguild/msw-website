@@ -55,7 +55,7 @@
   // // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
      target: '#mainNav',
-     offset: 90
+     offset: 80
    });
 
    $('[data-spy="scroll"]').each(function () {
@@ -77,7 +77,7 @@
    $(window).scroll(navbarCollapse);
  
   
-  
+   //carousel
     function moveToSelected(element) {
 
       if (element == "next") {
