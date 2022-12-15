@@ -1,18 +1,15 @@
 (function($) {
   "use strict"; // Start of use strict
 
-  // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: (target.offset().top - 71)
-        }, 1000, "easeInOutExpo");
-        return false;
-      }
-    }
+  //Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
   });
 
 
@@ -52,6 +49,7 @@
     $('.navbar-collapse').collapse('hide');
   });
 
+  
   // // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
      target: '#mainNav',
@@ -77,36 +75,6 @@
    $(window).scroll(navbarCollapse);
  
   
-   //carousel
-    function moveToSelected(element) {
-
-      if (element == "next") {
-        var selected = $(".selected").next();
-      } else if (element == "prev") {
-        var selected = $(".selected").prev();
-      } else {
-        var selected = element;
-      }
-    
-      var next = $(selected).next();
-      var prev = $(selected).prev();
-      var prevSecond = $(prev).prev();
-      var nextSecond = $(next).next();
-    
-      $(selected).removeClass().addClass("selected");
-    
-      $(prev).removeClass().addClass("prev");
-      $(next).removeClass().addClass("next");
-    
-      $(nextSecond).removeClass().addClass("nextRightSecond");
-      $(prevSecond).removeClass().addClass("prevLeftSecond");
-    
-      $(nextSecond).nextAll().removeClass().addClass('hideRight');
-      $(prevSecond).prevAll().removeClass().addClass('hideLeft');
-    
-    }
-    
-
     $(document).keydown(function(e) {
         switch(e.which) {
             case 37: // left
