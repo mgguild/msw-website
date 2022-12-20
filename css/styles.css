@@ -533,12 +533,27 @@ pre {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1140px; } }
 
+.gameplay-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1.5rem;
+    margin-left: 1.5rem;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -1.5rem;
-  margin-left: -1.5rem; 
-  justify-content: center;}
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1.5rem;
+    margin-left: -1.5rem;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
 
 .no-gutters {
   margin-right: 0;
@@ -903,7 +918,7 @@ pre {
 
   .col-md-6 {
     flex: 0 0 50%;
-    max-width: 50%; }
+    max-width: 40%; }
 
   @media only screen and (max-width: 720px) {
     .col-md-6 {
@@ -1207,7 +1222,8 @@ pre {
     max-width: 41.6666666667%; }
   .col-xl-6 {
     flex: 0 0 50%;
-    max-width: 50%; }
+    max-width: 45%; } 
+    /* move for gameplay section */
   .col-xl-7 {
     flex: 0 0 58.3333333333%;
     max-width: 58.3333333333%; }
@@ -3408,44 +3424,6 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
   }
   
 
-@keyframes spinner-border {
-  to {
-    transform: rotate(360deg); } }
-
-.spinner-border {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-bottom;
-  border: 0.25em solid currentColor;
-  border-right-color: transparent;
-  border-radius: 50%;
-  animation: spinner-border .75s linear infinite; }
-
-.spinner-border-sm {
-  width: 1rem;
-  height: 1rem;
-  border-width: 0.2em; }
-
-@keyframes spinner-grow {
-  0% {
-    transform: scale(0); }
-  50% {
-    opacity: 1; } }
-
-.spinner-grow {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-bottom;
-  background-color: currentColor;
-  border-radius: 50%;
-  opacity: 0;
-  animation: spinner-grow .75s linear infinite; }
-
-.spinner-grow-sm {
-  width: 1rem;
-  height: 1rem; }
 
 .align-baseline {
   vertical-align: baseline !important; }
@@ -8295,7 +8273,7 @@ form label .asterisk {
         position: relative;
         line-height: 1;
         margin-bottom: 20px;
-        font-size: px;
+        font-size: 21px;
       }
       .one li:before {
         content: ".";
@@ -8319,10 +8297,11 @@ form label .asterisk {
       position: relative;
       left: -1rem;
       bottom: 0;
-      font-size: 270%;
+      font-size: 30px;
     }
     
     .gameplay-text {
+      padding-top: 10%;
       font-size: 2.6rem; 
       text-align: center;
     }
