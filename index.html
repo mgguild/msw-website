@@ -12,8 +12,8 @@
       <!-- Font Awesome icons (free version)-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
       <!-- Core theme CSS (includes Bootstrap)-->
-      <link href="css/styles.css" type="text/css" rel="stylesheet">
       <link href="css/carousel.css" type="text/css" rel="stylesheet">
+      <link href="css/styles.css" type="text/css" rel="stylesheet">
       <link href="css/scroll.css" type="text/css" rel="stylesheet">
       <!-- Fonts CSS-->
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,99 +185,97 @@
          $$ |  $$ |$$ |  $$ |$$ |\$  /$$ |$$ |      $$ |      $$ |      $$ |  $$ |   $$ |    
          \$$$$$$  |$$ |  $$ |$$ | \_/ $$ |$$$$$$$$\ $$ |      $$$$$$$$\ $$ |  $$ |   $$ |    
          \______/ \__|  \__|\__|     \__|\________|\__|      \________|\__|  \__|   \__|  -->
-      <div class="page-section brown-bg text-white mb-0 align-items-center " id="gameplay">
+      <div class="page-section brown-bg text-white mb-0 " id="gameplay">
+            
             <div class="container-xl">
                <!-- Gameplay Section Heading-->
                <div class="text-center mt-4 py-xl-4 ">
                   <div class="card">
                      <h1 class="head-titles">GAMEPLAY</h1>
-                     <img src="assets/img/tiles.png" class="w-25 px-sm-0" alt="...">
+                     <img src="assets/img/tiles.png" class="w-25 " alt="...">
                   </div>
                </div>
             </div>
-            <div class="row">
-               <div class="col-lg-10 col-md-8 col-sm-12 mx-auto my-5">
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                     </ol>
-                     <!--Gameplay Carousel-->
-                     <div class="carousel-inner">
-                        <!--Dungeon Crawling-->
-                        <div class="carousel-item active">
-                           <div class="row cont">
-                              <div class="col-md-3 col-md-6">
-                                 <div class="content mx-auto">
-                                    <img src="assets/img/Dungeon_Crawling.png" class="how-img filter-shadow" alt="...">
-                                 </div>
-                              </div>
-                              <div class="col-xl-4 ">
-                                 <div class="gameplay-text">Dungeon Crawling</div>
-                                 <br>
-                                 <ul class="one">
-                                  <li class="">Gather your own team and explore challenging dungeons!</li>
-                                  <li class="">Find various loot to upgrade your arsenal!</li>
-                                  <li class="">Get a chance to earn your own NFTs!</li>
-                                 </ul>
-                                 <br>
-                              </div>
-                           </div>
-                        </div>
-                        <!--End Dungeon Crawling-->
-                        <!--Boss Raid-->
-                        <div class="carousel-item">
-                           <div class="row cont">
-                              <div class="col-md-3 col-md-6">
-                                 <div class="content mx-auto">
-                                    <img src="assets/img/Boss_Raid.png" class="how-img filter-shadow" alt="...">
-                                 </div>
-                              </div>
-                              <div class="col-xl-4 ">
-                                <div class="gameplay-text">Boss Raids</div>
-                                 <br>
-                                 <ul class="one">
-                                  <li class="">Fight against epic bosses!</li>
-                                  <li class="">Obtain unique and powerful items!</li>
-                                  <li class="">Higher NFTs drop rates upon defeating the boss!</li>
-                                 </ul>
-                                 <br>
-                              </div>
-                           </div>
-                        </div>
-                        <!--End Boss Raid-->
-                        <!--PVP Battle-->
-                        <div class="carousel-item">
-                           <div class="row cont">
-                              <div class="col-md-3 col-md-6">
-                                 <div class="content mx-auto">
-                                    <img src="assets/img/PVP_Battle.png" class="how-img filter-shadow" alt="...">
-                                 </div>
-                              </div>
-                              <div class="col-xl-4">
-                                <div class="gameplay-text">PvP Battles</div>
-                                 <br>
-                                 <ul class="one">
-                                  <li class="">Test out your skills and battle against other players!</li>
-                                  <li class="">Prove yourself as the best and climb at the top of the leadboards!</li>  
-                                  <li class="">Earn NFTs and tokens by reaching the top lead boards!</li>
-                                 </ul>
-                                 <br>
-                              </div>
-                           </div>
-                           <!--End PVP Battle-->
-                        </div>
-                     </div>
-                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                     <span class="sr-only">Previous</span>
-                     </a>
-                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                     <span class="sr-only">Next</span>
-                     </a>
+          
+            <div class="container-xl">
+               <div class="slider-inner">
+                  <input class="slider-open" type="radio" id="slider-1" name="slider" aria-hidden="true" hidden="" checked="checked">
+                    <div class="slider-item">
+                       <div class="gameplay-row">
+                          <div class="col-md-6">
+                                <img src="assets/img/Dungeon_Crawling.png" class="how-img filter-shadow" alt="...">
+                          </div>
+                          <div class="col-xl-6">
+                             <div class="gameplay-text">Dungeon Crawling</div>
+                             <br>
+                             <ul class="one">
+                             <li class="">Gather your own team and explore challenging dungeons!</li>
+                             <li class="">Find various loot to upgrade your arsenal!</li>
+                             <li class="">Get a chance to earn your own NFTs!</li>
+                             </ul>
+                             <br>
+                          </div>
+                       </div>
+                    </div>
+                  <input class="slider-open" type="radio" id="slider-2" name="slider" aria-hidden="true" hidden="">
+                    <div class="slider-item">
+                       <div class="gameplay-row">
+                          <div class="col-md-6">
+                                <img src="assets/img/Boss_Raid.png" class="filter-shadow" alt="...">
+                          </div>
+                          <div class="col-xl-6 ">
+                            <div class="gameplay-text">Boss Raids</div>
+                             <br>
+                             <ul class="one">
+                              <li class="">Fight against epic bosses!</li>
+                              <li class="">Obtain unique and powerful items!</li>
+                              <li class="">Higher NFTs drop rates upon defeating the boss!</li>
+                              <br>
+                             </ul>
+                             <br>
+                          </div>
+                       </div>
+                    </div>
+           
+             
+                  <input class="slider-open" type="radio" id="slider-3" name="slider" aria-hidden="true" hidden="">
+                  <div class="slider-item">
+                    <div class="gameplay-row">
+                       <div class="col-md-6">
+                             <img src="assets/img/PVP_Battle.png" class="how-img filter-shadow" alt="...">
+                       </div>
+                       <div class="col-xl-6">
+                         <div class="gameplay-text">PvP Battles</div>
+                          <br>
+                          <ul class="one">
+                           <li class="">Test out your skills and battle against other players!</li>
+                           <li class="">Prove yourself as the best and climb at the top of the leadboards!</li>  
+                           <li class="">Earn NFTs and tokens by reaching the top lead boards!</li>
+                          </ul>
+                          <br>
+                       </div>
+                    </div>
                   </div>
+           
+                  <label for="slider-3" class="slider-control next control-2">›</label>
+                  <label for="slider-2" class="slider-control next control-1">›</label>
+                  <label for="slider-1" class="slider-control prev control-2">‹</label>
+                  <label for="slider-3" class="slider-control prev control-1">‹</label>
+                  <label for="slider-2" class="slider-control prev control-3">‹</label>
+                  <label for="slider-1" class="slider-control next control-3">›</label>
+           
+                  <ol class="slider-indicators">
+                     <li>
+                        <label for="slider-1" class="slider-bullet">•</label>
+                     </li>
+                     <li>
+                        <label for="slider-2" class="slider-bullet">•</label>
+                     </li>
+                     <li>
+                        <label for="slider-3" class="slider-bullet">•</label>
+                     </li>
+                  </ol>
+            
                </div>
             </div>
       </div>

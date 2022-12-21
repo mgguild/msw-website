@@ -74,34 +74,8 @@
    // Collapse the navbar when page is scrolled
    $(window).scroll(navbarCollapse);
  
-  
-    $(document).keydown(function(e) {
-        switch(e.which) {
-            case 37: // left
-            moveToSelected('prev');
-            break;
     
-            case 39: // right
-            moveToSelected('next');
-            break;
-    
-            default: return;
-        }
-        e.preventDefault();
-    });
-    
-    $('#carousel div').click(function() {
-      moveToSelected($(this));
-    });
-    
-    $('#prev').click(function() {
-      moveToSelected('prev');
-    });
-    
-    $('#next').click(function() {
-      moveToSelected('next');
-    });
-    
+    // FOR YT BUTTON
     $(document).ready(function() {
       // get video source from data-src button
       var $videoSrc;  
@@ -121,10 +95,12 @@
       }) 
       });
 
+      //for NFT cards
       document.querySelector(".card-flip").classList.toggle("flip");
 
       document.querySelector(".mobile-card-flip").classList.toggle("mobile-flip");
 
+      //for FAQs
       $(".open").click( function () {
         var container = $(this).parents(".topic");
         var answer = container.find(".answer");
@@ -146,6 +122,7 @@
           container.addClass("expanded");
         }
       });
+      
 
   })(jQuery); // End of use strict
   
