@@ -169,6 +169,7 @@
 
 /* End Lore */
  
+/* for 1 of 1's  */
 .nft-row{
     display: flex;
     flex-wrap: nowrap;
@@ -193,13 +194,16 @@
     font-size: 100%; 
   }
 }
+/* End 1 of 1's */
+
 
 /* WEB Nft Carousel*/
-
 .carl{
   position: relative;
   margin-top: 30px;
   cursor: -webkit-grabbing;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }
 
