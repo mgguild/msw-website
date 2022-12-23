@@ -3,6 +3,8 @@
 .slider {
   position: relative;
   margin-top: 26px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
 }
 
 .slider-inner {
@@ -19,8 +21,8 @@
 .slider-item {
   position: absolute;
   opacity: 0;
-  -webkit-transition: opacity 0.6s ease-out;
-  transition: opacity 0.6s ease-out;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 
 .slider-item img {

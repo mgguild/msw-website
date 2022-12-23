@@ -282,10 +282,6 @@ progress {
 [type="number"]::-webkit-outer-spin-button {
   height: auto; }
 
-[type="search"] {
-  outline-offset: -2px;
-  -webkit-appearance: none; }
-
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
