@@ -1,4 +1,6 @@
-  .bg-scroll {
+  /* Lore Carousel*/
+ 
+ .bg-scroll {
     background-image: url('../assets/img/164171560-e3148c85-daac-4a29-8e5d-87dac243c411.png');
     background-repeat: no-repeat;
     background-size: 100%;
@@ -165,14 +167,44 @@
 
 }
 
+/* End Lore */
+ 
+/* for 1 of 1's  */
+.nft-row{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: -1.5rem;
+    margin-left: -1.5rem; 
+    justify-content: center;
+}
+
+.mobile-nft-center {
+  margin: 15px auto;
+  width: 85%;
+}
+
+.nft-char{
+  font-size: 135%; 
+  font-family: 'MagicMedieval', sans-serif;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 820px) {
+  .nft-char{
+    font-size: 100%; 
+  }
+}
+/* End 1 of 1's */
 
 
-
-/* Nft Carousel*/
-
+/* WEB Nft Carousel*/
 .carl{
   position: relative;
   margin-top: 30px;
+  cursor: -webkit-grabbing;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 
 .carl-inner {
@@ -440,7 +472,9 @@
   text-align: center; }
   }
 
+  /* End Nft Carousel*/
 
+  /* Head TILES */
   .head-titles {
     top: 28%;
     bottom: auto;
