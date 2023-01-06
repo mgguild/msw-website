@@ -8039,6 +8039,8 @@ form{
     width: 75%;
     margin: 15px;
     border-radius: 8px;
+    padding: 6px;
+    font-size: 11px;
   }
   #mce-EMAIL{
     width: 100%;
@@ -8052,6 +8054,26 @@ form{
   }
 }
 
+@media screen and (max-width: 280px) {
+  #mc-embedded-subscribe {
+    width: 100%;
+    margin: 0px;
+    border-radius: 9px;
+    padding: 6px;
+    font-size: 11px;
+  }
+  #mce-EMAIL{
+    width: 106%;
+    margin: 20px;
+    text-align: center;
+    font-size: 9px;
+    padding: 8px 18px 8px 0px;
+  }
+  #subscribebox{
+    width: 100%;
+  }
+  
+}
 
 .topic{
   padding:20px;
