@@ -8347,19 +8347,29 @@ form label .asterisk {
   }
   
   @media only screen and (max-device-width: 420px) {
-      
-  .minting-text{  
+  .minting-text
+      {
       font-size: 1.2rem;
       text-align: center; }
-    }
+  }
   
     @media only screen and (min-width: 320px) {
     .btn-social {
       display: inline-flex;
-      width: 2.25rem;
+      width: 2rem;
       height: 3.25rem;
-      font-size: 1.75rem;
+      font-size: 1.3rem;
       justify-content: center;
       align-items: center; }
-    
     }
+
+    @media only screen and (min-width: 280px) {
+      .btn-social {
+        display: inline-flex;
+        width: 1.3rem;
+        height: 3.25rem;
+        font-size: 1.2rem;
+        justify-content: center;
+        align-items: center;
+      }
+      }

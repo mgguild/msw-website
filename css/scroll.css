@@ -198,14 +198,25 @@
 
 @media only screen and (min-width: 340px) {
   .nft-char{
-    font-size: 87%; 
+    font-size: 78%; 
   }
+
+  .mobile-nft-center {
+    margin: 15px auto;
+    width: 90%;
+    margin-left: 28px;
+}
 }
 
 @media only screen and (max-width: 280px) {
   .nft-char{
-    font-size: 60%; 
+    font-size: 56%; 
   }
+  .mobile-nft-center {
+    margin: 15px auto;
+    width: 90%;
+    margin-left: 11px;
+}
 }
 /* End 1 of 1's */
 
