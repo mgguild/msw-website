@@ -3448,7 +3448,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
   background-color: #2b164f !important; }
 
 .brown-bg{
-    background: url('../assets/img/brown-bg.png') no-repeat center center fixed !important; 
+    background: url('../assets/img/brown-bg.jpg') no-repeat center center fixed !important; 
     -webkit-background-size: cover !important;
     -moz-background-size: cover !important;
     -o-background-size: cover !important;
