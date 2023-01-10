@@ -6880,11 +6880,10 @@ h3 {
   }}
   
 
-  @import url('http://fonts.cdnfonts.com/css/magicmedieval');
 
   .char{
-    font-size: 135%; 
-    font-family: 'MagicMedieval', sans-serif;
+    font-size: 110%; 
+    font-family: 'Sans-serif', sans-serif;
     font-weight: 700;
   }
   
