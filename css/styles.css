@@ -1800,7 +1800,7 @@ textarea.form-control {
   background-color: transparent;
   border: 0.125rem solid transparent;
   padding: 0.01rem 0.01rem;
-  font-size: 2.0rem;
+  font-size: 1.6rem;
   line-height: 1.5;
   border-radius: 0.5rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
@@ -6297,7 +6297,7 @@ h3 {
   max-width: 15.5rem; }
 
 .btn-social {
-  margin-bottom: 0.2rem; }
+  margin-bottom: 0.1rem; }
 
 .how-img {
     text-align: center;
@@ -7579,7 +7579,7 @@ h3 {
     max-width: 15.5rem; }
   
   .btn-social {
-    margin-bottom: 0.2rem; }
+    margin-bottom: 0.1rem; }
   
   .how-img {
       text-align: center;
@@ -8353,17 +8353,17 @@ form label .asterisk {
       text-align: center; }
   }
   
-    @media only screen and (min-width: 320px) {
+    @media only screen and (max-width: 320px) {
     .btn-social {
       display: inline-flex;
-      width: 2rem;
+      width: 1.3rem;
       height: 3.25rem;
       font-size: 1.3rem;
       justify-content: center;
       align-items: center; }
     }
 
-    @media only screen and (min-width: 280px) {
+    @media only screen and (max-width: 280px) {
       .btn-social {
         display: inline-flex;
         width: 1.3rem;
