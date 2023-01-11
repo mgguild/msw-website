@@ -1800,7 +1800,7 @@ textarea.form-control {
   background-color: transparent;
   border: 0.125rem solid transparent;
   padding: 0.01rem 0.01rem;
-  font-size: 2.0rem;
+  font-size: 1.6rem;
   line-height: 1.5;
   border-radius: 0.5rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
@@ -3448,7 +3448,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
   background-color: #2b164f !important; }
 
 .brown-bg{
-    background: url('../assets/img/brown-bg.png') no-repeat center center fixed !important; 
+    background: url('../assets/img/brown-bg.jpg') no-repeat center center fixed !important; 
     -webkit-background-size: cover !important;
     -moz-background-size: cover !important;
     -o-background-size: cover !important;
@@ -6297,7 +6297,7 @@ h3 {
   max-width: 15.5rem; }
 
 .btn-social {
-  margin-bottom: 0.2rem; }
+  margin-bottom: 0.1rem; }
 
 .how-img {
     text-align: center;
@@ -6880,11 +6880,10 @@ h3 {
   }}
   
 
-  @import url('http://fonts.cdnfonts.com/css/magicmedieval');
 
   .char{
-    font-size: 135%; 
-    font-family: 'MagicMedieval', sans-serif;
+    font-size: 110%; 
+    font-family: 'Sans-serif', sans-serif;
     font-weight: 700;
   }
   
@@ -7579,7 +7578,7 @@ h3 {
     max-width: 15.5rem; }
   
   .btn-social {
-    margin-bottom: 0.2rem; }
+    margin-bottom: 0.1rem; }
   
   .how-img {
       text-align: center;
@@ -8353,17 +8352,17 @@ form label .asterisk {
       text-align: center; }
   }
   
-    @media only screen and (min-width: 320px) {
+    @media only screen and (max-width: 320px) {
     .btn-social {
       display: inline-flex;
-      width: 2rem;
+      width: 1.3rem;
       height: 3.25rem;
       font-size: 1.3rem;
       justify-content: center;
       align-items: center; }
     }
 
-    @media only screen and (min-width: 280px) {
+    @media only screen and (max-width: 280px) {
       .btn-social {
         display: inline-flex;
         width: 1.3rem;
