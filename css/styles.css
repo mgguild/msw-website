@@ -3079,7 +3079,7 @@ input[type="button"].btn-block {
   .navbar-brand {
       position: relative;
       width: 170px;
-      left: 80px;
+      left: 100px;
       background-size: contain;
   }
 
@@ -8374,3 +8374,11 @@ form label .asterisk {
         align-items: center;
       }
       }
+
+        
+    .gitbook {
+      font-size: 25px;
+      font-family: 'Passion One', cursive;;
+      position: relative;
+    }
+    
