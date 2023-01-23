@@ -837,3 +837,181 @@
       overflow-x: hidden;
     }
   }
+
+  /* gameplay screenshot section */
+  
+  .gameplay-ss {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    padding-right: 4%;
+    padding-left: 10%;
+    padding-bottom: 9%;
+    max-width: 100%;
+    height: auto;
+    align-items: center;
+  }
+
+  
+
+.gameplayslider {
+  position: relative;
+  margin-top: 26px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.gameplayslider-inner {
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+}
+
+.gameplayslider-open:checked + .gameplayslider-item {
+  position: static;
+  opacity: 100;
+}
+
+.gameplayslider-item {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+
+.gameplayslider-item img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.gameplayslider-control {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 40px;
+  height: 40px;
+  line-height: 35px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  cursor: pointer;
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  text-align: center;
+  width: 40px;
+  z-index: 10;
+}
+
+.gameplayslider-control.prev {
+  left: 5%;
+}
+
+.gameplayslider-control.next {
+  right: 0%;
+}
+
+.gameplayslider-control:hover {
+  background: rgba(0, 0, 0, 0);
+  color: #aaaaaa;
+}
+
+#gameplayslider-1:checked ~ .control-1,
+#gameplayslider-2:checked ~ .control-2,
+#gameplayslider-3:checked ~ .control-3,
+#gameplayslider-4:checked ~ .control-4,
+#gameplayslider-5:checked ~ .control-5,
+#gameplayslider-6:checked ~ .control-6,
+#gameplayslider-7:checked ~ .control-7,
+#gameplayslider-8:checked ~ .control-8,
+#gameplayslider-9:checked ~ .control-9{
+  display: block;
+}
+
+.gameplayslider-indicators {
+  list-style: none;
+  margin: -38;
+  padding: -1;
+  position: absolute;
+  bottom: -6.2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+.gameplayslider-indicators li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.gameplayslider-bullet {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 35px;
+}
+
+.gameplayslider-bullet:hover {
+  color: #aaaaaa;
+}
+
+#gameplayslider-1:checked ~ .control-1 ~ .gameplayslider-indicators li:nth-child(1) .gameplayslider-bullet,
+#gameplayslider-2:checked ~ .control-2 ~ .gameplayslider-indicators li:nth-child(2) .gameplayslider-bullet,
+#gameplayslider-3:checked ~ .control-3 ~ .gameplayslider-indicators li:nth-child(3) .gameplayslider-bullet,
+#gameplayslider-4:checked ~ .control-4 ~ .gameplayslider-indicators li:nth-child(4) .gameplayslider-bullet,
+#gameplayslider-5:checked ~ .control-5 ~ .gameplayslider-indicators li:nth-child(5) .gameplayslider-bullet,
+#gameplayslider-6:checked ~ .control-6 ~ .gameplayslider-indicators li:nth-child(6) .gameplayslider-bullet,
+#gameplayslider-7:checked ~ .control-7 ~ .gameplayslider-indicators li:nth-child(7) .gameplayslider-bullet,
+#gameplayslider-8:checked ~ .control-8 ~ .gameplayslider-indicators li:nth-child(8) .gameplayslider-bullet,
+#gameplayslider-9:checked ~ .control-9 ~ .gameplayslider-indicators li:nth-child(9) .gameplayslider-bullet{
+  color: #428bca;
+}
+
+@media only screen and (max-width: 460px){
+  .gameplayslider-item img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }   
+  .gameplayslider-indicators {
+    list-style: none;
+    margin: -38;
+    padding: -1;
+    position: absolute;
+    bottom: -5%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+  }
+  .gameplayslider-control.prev {
+    left: 5%;
+  }
+  
+  .gameplayslider-control.next {
+    right: -5%;
+  }
+
+  .gameplayslider-control {
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-size: 40px;
+    line-height: 35px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 10;
+  }
+}
+  
+  /* gameplay screenshot section */
