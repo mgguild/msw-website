@@ -532,14 +532,14 @@ pre {
     max-width: 1140px; } }
 
 .gameplay-row{
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -1.5rem;
-    margin-left: 1.5rem;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0.5rem;
+  margin-left: 2.5rem;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center
 }
 
 .row {
