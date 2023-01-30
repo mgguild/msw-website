@@ -844,14 +844,46 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-    padding-right: 30%;
+    width: 149%;
+    padding-right: 29%;
     padding-left: 0%;
     padding-bottom: 6%;
     padding-top: 15%;
     max-width: 200%;
     height: auto;
     align-items: center;
+  }
+
+  @media only screen and (max-width: 880px){
+    .gameplay-ss {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 109%;
+      padding-right: 29%;
+      padding-left: 0%;
+      padding-bottom: 6%;
+      padding-top: 6%;
+      max-width: 200%;
+      height: auto;
+      align-items: center;;
+    }
+    }
+
+  @media only screen and (max-width: 480px){
+  .gameplay-ss {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 109%;
+    padding-right: 25%;
+    padding-left: 3%;
+    padding-bottom: 0%;
+    padding-top: 6%;
+    max-width: 200%;
+    height: auto;
+    align-items: center;;
+  }
   }
 
   .carousel-row{
