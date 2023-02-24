@@ -603,4 +603,13 @@
     .carousel-control-next{
       right: 90px;
     }
-  }
+    }
+    
+    @media only screen and (max-width: 420px) {
+      .carousel-control-prev{
+        left: 20px;
+      }
+      .carousel-control-next{
+        right: 20px;
+      }
+    }
