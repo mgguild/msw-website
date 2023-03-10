@@ -3092,7 +3092,7 @@ input[type="button"].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem; }
+  padding: 0.3rem 1rem; }
   .navbar .container,
 .navbar .container-fluid,
 .navbar .container-sm,
@@ -6143,7 +6143,9 @@ h3 {
   padding-top: 1.0rem;
   padding-bottom: 1.0rem;
   font-family: 'Passion One', cursive;
-  font-weight: 400; }
+  font-weight: 400;
+ }
+  
   #mainNav .navbar-brand {
     color: #fff; }
   #mainNav .navbar-nav {
@@ -8711,3 +8713,41 @@ form label .asterisk {
 
     /* End of Comics Section */
 
+              
+ 
+    .dropbtn {
+      background-color: #0f0015;
+      color: white;
+      padding: 16px;
+      font-size: 20px;
+      border: white;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #0f0015;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: whitesmoke;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      border: white;
+      align-items: center;
+    }
+    
+    .dropdown-content a:hover {background-color: var(--info) ;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+   
