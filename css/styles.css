@@ -8860,3 +8860,7 @@ img.circle-img.circle-img--small {
   font-size: 90%;
   color: #000;
 }
+
+.btn-disabled{
+  color: #A9A9A9;
+}

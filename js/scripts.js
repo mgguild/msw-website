@@ -1,4 +1,4 @@
-(function($) {
+(async function($) {
   "use strict"; // Start of use strict
 
   //Smooth scrolling
@@ -271,8 +271,13 @@ $(document).ready(function () {
   }
 });
 
-    
-    
-      
+     fetch('LEADERBOARD_API_KEY')
+    .then(res => {
+      return res.json();
+    })
+      .then(data =>{
+        console.log(data);
+      })
+      .catch(error => console.log(error));
   })(jQuery); // End of use strict
   
