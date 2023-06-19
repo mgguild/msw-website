@@ -139,18 +139,39 @@
     });
 
 
-     fetch('LEADERBOARD_API_KEY')
-    .then(res => {
-      return res.json();
-    })
-      .then(data =>{
-        console.log(data);
-      })
-      .catch(error => console.log(error));
+    //  fetch('LEADERBOARD_API_KEY')
+    // .then(res => {
+    //   return res.json();
+    // })
+    //   .then(data =>{
+    //     console.log(data);
+    //   })
+    //   .catch(error => console.log(error));
 
-      function showText() {
-        document.getElementById("hiddenText").style.display = "block";
-      }
+    //   function showText() {
+    //     document.getElementById("hiddenText").style.display = "block";
+    //   }
 
-  })(jQuery); // End of use strict
+      var PlayFab = require("PlayFabSdk");
+
+      PlayFab.settings.titleId = "leaderboard";
+      PlayFab.settings.developerSecretKey = "681TJSRQRR6ZNA5QRD5XK6G71MBJXKM6QXPEY1EZHCWO7Y5MP8";
+
+      var loginRequest = {
+        TitleId: PlayFab.settings.titleId,
+        CustomId: "CUSTOM_ID",
+        CreateAccount: true
+    };
+    
+      PlayFabClientSDK.LoginWithCustomID(loginRequest, function(result, error) {
+          if (error) {
+              console.error("Error logging in:", error);
+          } else {
+              console.log("Logged in successfully:", result);
+          }
+      });
+
+   
+
+})(jQuery); // End of use strict
   

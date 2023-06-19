@@ -6511,34 +6511,6 @@ h3 {
   }
 }
 
-.hero{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 100px;
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
-}
-
-.video-bg{
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  background-position-x: center;
-  
-}
-
 
 .team-img{
   display: block;
@@ -7097,22 +7069,20 @@ h3 {
           width: 20rem; }
       }
       
-      
-      
-      
+  
       .hero{
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        margin-top: 75px;
+        margin-top: 88px;
         position: relative;
         overflow: hidden;
-        min-height: 100vh;
+        min-height: 90vh;
         background: rgba(0, 0, 0, 0.75);
         color: #f1f1f1;
         width: 100%;
-        padding: 50px;
+        padding: 0px;
       }
       
       .video-bg{
@@ -8865,3 +8835,90 @@ img.circle-img.circle-img--small {
   color: #A9A9A9;
 }
 
+
+.image-bg{
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  bottom: 20%;
+  transform: translate(-50%, -50%);
+  min-width: 450px;
+  min-height: 100%;
+  object-fit: cover;
+  background-position-x: center;
+  background-size: 100% 100%;
+}
+
+@media only screen and (max-width: 420px){
+.image-bg{
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  bottom: 20%;
+  transform: translate(-50%, -50%);
+  min-width: 450px;
+  min-height: 100%;
+  object-fit: cover;
+  background-position-x: center;
+  background-size: 100% 100%;
+}
+}
+
+
+ 
+#sliderprod{
+  width: 100%;
+}
+#sliderprod .carousel-inner {
+  overflow: visible;
+}
+
+
+#sliderprod .carousel-item{
+  transition: 0.4s;
+}
+
+
+#sliderprod a.carousel-control-prev, #sliderprod a.carousel-control-next {
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
+  opacity: 1;
+  top: 50%;
+  transform: translate(-50%,-60%);
+}
+
+
+#sliderprod ol.carousel-indicators {
+  display: none;
+}
+
+.carousel-control-prev{
+  top: 40%;
+}
+.carousel-control-next{
+  top: 40%;
+}
+
+@media only screen and (max-width: 820px) {
+.carousel-control-prev{
+  left: 90px;
+}
+.carousel-control-next{
+  right: 90px;
+}
+}
+
+@media only screen and (max-width: 420px) {
+  .carousel-control-prev{
+    left: 20px;
+  }
+  .carousel-control-next{
+    right: 20px;
+  }
+}
