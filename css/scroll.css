@@ -568,7 +568,7 @@
     
   
     #sliderproduct .carousel-item{
-      transition: 0.4s;
+      transition: 0.5s;
     }
     
   
@@ -613,3 +613,6 @@
         right: 20px;
       }
     }
+
+
+    

@@ -6511,34 +6511,6 @@ h3 {
   }
 }
 
-.hero{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 100px;
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
-}
-
-.video-bg{
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  background-position-x: center;
-  
-}
-
 
 .team-img{
   display: block;
@@ -7097,22 +7069,20 @@ h3 {
           width: 20rem; }
       }
       
-      
-      
-      
+  
       .hero{
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        margin-top: 75px;
+        margin-top: 88px;
         position: relative;
         overflow: hidden;
-        min-height: 100vh;
+        min-height: 90vh;
         background: rgba(0, 0, 0, 0.75);
         color: #f1f1f1;
-        width: 100%;
-        padding: 50px;
+        width: 101%;
+        padding: 0px;
       }
       
       .video-bg{
@@ -8864,4 +8834,42 @@ img.circle-img.circle-img--small {
 .btn-disabled{
   color: #A9A9A9;
 }
+
+
+.image-bg{
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  bottom: 20%;
+  transform: translate(-50%, -50%);
+  min-width: 450px;
+  min-height: 100%;
+  object-fit: cover;
+  background-position-x: center;
+  background-size: 100% 100%;
+}
+
+@media only screen and (max-width: 420px){
+.image-bg{
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  bottom: 20%;
+  transform: translate(-50%, -50%);
+  min-width: 450px;
+  min-height: 100%;
+  object-fit: cover;
+  background-position-x: center;
+  background-size: 100% 100%;
+}
+}
+
+
+
+#sliderprod .carousel-item{
+  transition: 0.4s;
+}
+
 

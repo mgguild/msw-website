@@ -139,18 +139,20 @@
     });
 
 
-     fetch('LEADERBOARD_API_KEY')
-    .then(res => {
-      return res.json();
-    })
-      .then(data =>{
-        console.log(data);
-      })
-      .catch(error => console.log(error));
+    //  fetch('LEADERBOARD_API_KEY')
+    // .then(res => {
+    //   return res.json();
+    // })
+    //   .then(data =>{
+    //     console.log(data);
+    //   })
+    //   .catch(error => console.log(error));
 
-      function showText() {
-        document.getElementById("hiddenText").style.display = "block";
-      }
+    //   function showText() {
+    //     document.getElementById("hiddenText").style.display = "block";
+    //   }
+   
+    
 
-  })(jQuery); // End of use strict
+})(jQuery); // End of use strict
   
