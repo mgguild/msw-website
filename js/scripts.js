@@ -151,27 +151,8 @@
     //   function showText() {
     //     document.getElementById("hiddenText").style.display = "block";
     //   }
-
-      var PlayFab = require("PlayFabSdk");
-
-      PlayFab.settings.titleId = "leaderboard";
-      PlayFab.settings.developerSecretKey = "681TJSRQRR6ZNA5QRD5XK6G71MBJXKM6QXPEY1EZHCWO7Y5MP8";
-
-      var loginRequest = {
-        TitleId: PlayFab.settings.titleId,
-        CustomId: "CUSTOM_ID",
-        CreateAccount: true
-    };
-    
-      PlayFabClientSDK.LoginWithCustomID(loginRequest, function(result, error) {
-          if (error) {
-              console.error("Error logging in:", error);
-          } else {
-              console.log("Logged in successfully:", result);
-          }
-      });
-
    
+    
 
 })(jQuery); // End of use strict
   
