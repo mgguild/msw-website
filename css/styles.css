@@ -8867,9 +8867,21 @@ img.circle-img.circle-img--small {
 }
 
 
-
 #sliderprod .carousel-item{
   transition: 0.4s;
 }
 
+.threads {
+  opacity: 1;    
+  display: inline-flex;
+  width: 35.3px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s; /* Adding a transition for smooth effect */
+}
 
+.threads:hover {
+  opacity: 0.15; /* Change the opacity value to your desired effect */
+  cursor: pointer; /* Optional: Change the cursor style on hover */
+}
