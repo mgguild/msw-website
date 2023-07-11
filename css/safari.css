@@ -1,0 +1,70 @@
+/* Safari-specific media query using feature queries */
+
+/* Safari 3.1 to 6.0 */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    /* CSS rules specific to Safari 3.1 to 6.0 */
+    .image-bg{
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        bottom: 20%;
+        transform: translate(-50%, -50%);
+        min-width: 450px;
+        min-height: 100%;
+        object-fit: cover;
+        background-position-x: center;
+        background-size: 100% 100%;
+      }
+      
+    #sliderprod .carousel-item{
+        transition: 0.4s;
+  }
+}
+  
+  /* Safari 6.1 to 9.0 */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 120dpi) {
+    /* CSS rules specific to Safari 6.1 to 9.0 */
+    .image-bg{
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        bottom: 20%;
+        transform: translate(-50%, -50%);
+        min-width: 450px;
+        min-height: 100%;
+        object-fit: cover;
+        background-position-x: center;
+        background-size: 100% 100%;
+      }
+      
+
+    #sliderprod .carousel-item{
+        transition: 0.4s;
+  }
+  }
+  
+  /* Safari 9.1 and above */
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      /* CSS rules specific to Safari 9.1 and above */
+      .image-bg{
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        bottom: 20%;
+        transform: translate(-50%, -50%);
+        min-width: 450px;
+        min-height: 100%;
+        object-fit: cover;
+        background-position-x: center;
+        background-size: 100% 100%;
+      }
+      
+    #sliderprod .carousel-item{
+        transition: 0.4s;
+    }
+    }
+  }
