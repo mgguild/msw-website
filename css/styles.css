@@ -6143,10 +6143,10 @@ h3 {
     line-height: 3.1rem; }
 
 #mainNav {
-  padding-top: 1.0rem;
-  padding-bottom: 1.0rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
   font-family: 'Passion One', cursive;
-  font-weight: 400;
+  font-weight: 100;
  }
   
   #mainNav .navbar-brand {
@@ -6162,7 +6162,7 @@ h3 {
       #mainNav .navbar-nav li.nav-item a.nav-link.active {
         color: #5bc0de; }
   #mainNav .navbar-toggler {
-    font-size: 95%;
+    font-size: 90%;
     padding: 0.5rem; }
 
 
@@ -6333,7 +6333,7 @@ h3 {
     }  
 
 .navbar-brand img {
-  max-width: 15.5rem; }
+  max-width: 3.5rem; }
 
 .btn-social {
   margin-bottom: 0.1rem; }
@@ -7560,7 +7560,7 @@ h3 {
 
         
   .navbar-brand img {
-    max-width: 15.5rem; }
+    max-width: 3.5rem; }
   
   .btn-social {
     margin-bottom: 0.1rem; }
