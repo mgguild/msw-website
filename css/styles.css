@@ -3500,7 +3500,9 @@ button.bg-primary:focus {
 .bg-secondary {
   background-color: #0f0015 !important; }
 
-
+.bg-gameplay {
+    background-color: #17022B !important; }
+  
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
