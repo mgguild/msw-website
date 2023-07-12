@@ -6143,8 +6143,8 @@ h3 {
     line-height: 3.1rem; }
 
 #mainNav {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
+  padding-top: 0.02rem;
+  padding-bottom: 0.02rem;
   font-family: 'Passion One', cursive;
   font-weight: 100;
  }
@@ -6710,11 +6710,7 @@ h3 {
         background: #5bc0de; 
         
       }
-  #mainNav.navbar-shrink {
-    padding-top: 0.02rem;
-    padding-bottom: 0.02rem; }
-    #mainNav.navbar-shrink .navbar-brand {
-      font-size: 1.5em; } }
+ }
 
       
   @media (max-width: 390px) {
@@ -7075,7 +7071,7 @@ h3 {
         justify-content: center;
         align-items: center;
         text-align: center;
-        margin-top: 88px;
+        margin-top: 40px;
         position: relative;
         overflow: hidden;
         min-height: 90vh;
