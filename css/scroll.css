@@ -316,42 +316,44 @@
 
 .carl-indicators {
     position: absolute;
-    bottom: -205px; /* Adjust the distance from the bottom as needed */
-    left: -142px;
-    right: -142px;
+    bottom: -270px; /* Adjust the distance from the bottom as needed */
+    left: -160px;
+    right: -140px;
     text-align: center;
     display: inline-block;
     margin: 0 70px; /* Adjust the spacing between indicators as needed */
 }
 
 .carl-indicators img {
-  width: 150px; /* Adjust the size of the indicator images as needed */
-  height: 140px;
+  width: 111px; /* Adjust the size of the indicator images as needed */
+  height: 111px;
   cursor: pointer; /* Add a cursor pointer for interactivity */
-  margin-top: 24px; 
-  margin-bottom: -52px;
+  margin-top: 20px; 
+  margin-bottom: 0px;
+  z-index: 111;
 }
 
 .carl-indicators li {
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 10px;
 
 }
 
 .carl-indicators li {
   /* Add your styles for the list items here */
   /* For example, you can set the border and dimensions */
-  border: 2px solid #ccc;
+  border: 3px solid #ccc;
+  background-color: #FFD524;
   border-radius: 5px;
-  width: 170px;
-  height: 120px;
+  width: 160px;
+  height: 133px;
 }
 
 .carl-indicators li.active {
-    border: 7px solid #89c1d7;
+    border: 9px solid #89c1d7;
     border-radius: 5px;
-    width: 170px;
-    height: 127px;
+    width: 160px;
+    height: 150px;
     z-index: 1; /* Increase the z-index to bring it to the front */
       position: relative; /* Add position relative to allow z-index to work */
 }

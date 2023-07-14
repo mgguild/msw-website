@@ -8058,11 +8058,12 @@ form{
   
 }
 
+/*FAQs*/
 .topic{
   padding:20px;
   padding-top:0px;
   padding-bottom:0px;
-  background-color: rgba(15, 0, 21, 0.60);
+  background-color: rgba(85, 24, 93);
   border-bottom:solid 1px #ebebeb;
   border-radius: 10px 10px 10px 10px;
 }
@@ -9050,7 +9051,8 @@ img {
   /* NFT CHARACTER NEW VERSION*/
 
   .nft_bottom{
-    width: 100%;
+    width: 150px;
+    height: fit-content;
     overflow: hidden;
   }
 
@@ -9111,6 +9113,50 @@ img {
   }
   }
   /*New NFT Mobile Version*/
+
+    /*New NFT Tablet Version*/
+    @media only screen and (max-width: 420px){
+      .row_char{
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+        justify-content: space-evenly;
+      }
+      .row_char_img{
+        display: flex;
+        flex-wrap: nowrap;
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+        justify-content: space-evenly;
+      }
+      .row_char_txt{
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+        justify-content: space-evenly;
+      }
+    
+      .carl-indicators {
+        position: absolute;
+          bottom: -115px; /* Adjust the distance from the bottom as needed */
+          left: -142px;
+          right: -112px;
+          text-align: center;
+          display: inline-block;
+          margin: 0 70px; /* Adjust the spacing between indicators as needed */
+      }
+      
+      .carl-indicators img {
+        width: 100px; /* Adjust the size of the indicator images as needed */
+        height: 140px;
+        cursor: pointer; /* Add a cursor pointer for interactivity */
+        margin-top: 24px; 
+        margin-bottom: -56px;
+      }
+      }
+
 
 
   .animate__animated {
