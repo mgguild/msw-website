@@ -247,6 +247,7 @@
   opacity: 0;
   -webkit-transition: opacity 0.s ease-out;
   transition: opacity 0.s ease-out;
+  
 }
 
 .carl-item img {
@@ -300,26 +301,59 @@
 
 #carl-1:checked ~ .control-1,
 #carl-2:checked ~ .control-2,
-#carl-3:checked ~ .control-3, 
-#carl-4:checked ~ .control-4 {
+#carl-3:checked ~ .control-3,
+#carl-4:checked ~ .control-4, 
+#carl-5:checked ~ .control-5,
+#carl-6:checked ~ .control-6,
+#carl-7:checked ~ .control-7,
+#carl-8:checked ~ .control-8,
+#carl-9:checked ~ .control-9,
+#carl-10:checked ~ .control-10,
+#carl-11:checked ~ .control-11,
+#carl-12:checked ~ .control-12 {
   display: block;
 }
 
 .carl-indicators {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  bottom: 0%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 10;
+    position: absolute;
+    bottom: -205px; /* Adjust the distance from the bottom as needed */
+    left: -142px;
+    right: -142px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 70px; /* Adjust the spacing between indicators as needed */
+}
+
+.carl-indicators img {
+  width: 150px; /* Adjust the size of the indicator images as needed */
+  height: 140px;
+  cursor: pointer; /* Add a cursor pointer for interactivity */
+  margin-top: 24px; 
+  margin-bottom: -52px;
 }
 
 .carl-indicators li {
   display: inline-block;
   margin: 0 5px;
+
+}
+
+.carl-indicators li {
+  /* Add your styles for the list items here */
+  /* For example, you can set the border and dimensions */
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 170px;
+  height: 120px;
+}
+
+.carl-indicators li.active {
+    border: 7px solid #89c1d7;
+    border-radius: 5px;
+    width: 170px;
+    height: 127px;
+    z-index: 1; /* Increase the z-index to bring it to the front */
+      position: relative; /* Add position relative to allow z-index to work */
 }
 
 .carl-bullet {
@@ -336,7 +370,15 @@
 #carl-1:checked ~ .control-1 ~ .carl-indicators li:nth-child(1) .carl-bullet,
 #carl-2:checked ~ .control-2 ~ .carl-indicators li:nth-child(2) .carl-bullet,
 #carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet,
-#carl-4:checked ~ .control-4 ~ .carl-indicators li:nth-child(4) .carl-bullet {
+#carl-4:checked ~ .control-4 ~ .carl-indicators li:nth-child(4) .carl-bullet,
+#carl-5:checked ~ .control-5 ~ .carl-indicators li:nth-child(5) .carl-bullet,
+#carl-6:checked ~ .control-6 ~ .carl-indicators li:nth-child(6) .carl-bullet,
+#carl-7:checked ~ .control-7 ~ .carl-indicators li:nth-child(7) .carl-bullet,
+#carl-8:checked ~ .control-8 ~ .carl-indicators li:nth-child(8) .carl-bullet,
+#carl-9:checked ~ .control-9 ~ .carl-indicators li:nth-child(9) .carl-bullet,
+#carl-10:checked ~ .control-10 ~ .carl-indicators li:nth-child(10) .carl-bullet,
+#carl-11:checked ~ .control-11 ~ .carl-indicators li:nth-child(11) .carl-bullet,
+#carl-12:checked ~ .control-12 ~ .carl-indicators li:nth-child(12) .carl-bullet {
   color: #428bca;
 }
 
