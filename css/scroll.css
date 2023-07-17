@@ -343,7 +343,7 @@
   /* Add your styles for the list items here */
   /* For example, you can set the border and dimensions */
   border: 3px solid #ccc;
-  background-color: #FFD524;
+  background-color: #ECB602;
   border-radius: 5px;
   width: 160px;
   height: 133px;
@@ -397,22 +397,31 @@
     bottom: auto;
     color: rgb(0, 0, 0);
   }
+
+  .carl-indicators {
+    position: absolute;
+      bottom: -360px; /* Adjust the distance from the bottom as needed */
+      left: -142px;
+      right: -112px;
+      text-align: center;
+      display: inline-block;
+      margin: 0 70px; /* Adjust the spacing between indicators as needed */
+  }
+  
+  .carl-indicators img {
+    width: 100px; /* Adjust the size of the indicator images as needed */
+    height: 140px;
+    cursor: pointer; /* Add a cursor pointer for interactivity */
+    margin-top: 24px; 
+    margin-bottom: -56px;
+  }
+
 }
 
-.carl-caption {
-  position: absolute;
-  right: 15%;
-  bottom: 20px;
-  left: 15%;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: rgb(0, 0, 0);
-  text-align: center; }
-
-
-@media only screen and (max-width: 420px){
-        
+  .center-text {
+    text-align: center;
+  }
+  
 .carl{
   position: relative;
   margin-top: 30px;
@@ -420,6 +429,41 @@
   top: 20%;
   transform: translateY(-50%);
   overflow: hidden; 
+}
+
+.carl-indicators li.active {
+  border: 9px solid #89c1d7;
+  border-radius: 5px;
+  width: 160px;
+  height: 150px;
+  z-index: 1; /* Increase the z-index to bring it to the front */
+    position: relative; /* Add position relative to allow z-index to work */
+}
+
+
+
+@media only screen and (max-width: 420px){
+       
+  .center-text {
+    text-align: center;
+  }
+  
+.carl{
+  position: relative;
+  margin-top: 30px;
+  height: 400px;
+  top: 20%;
+  transform: translateY(-50%);
+  overflow: hidden; 
+}
+
+.carl-indicators li.active {
+  border: 9px solid #89c1d7;
+  border-radius: 5px;
+  width: 140px;
+  height: 150px;
+  z-index: 1; /* Increase the z-index to bring it to the front */
+    position: relative; /* Add position relative to allow z-index to work */
 }
 
 .carl-inner {
@@ -482,7 +526,15 @@
 #carl-1:checked ~ .control-1,
 #carl-2:checked ~ .control-2,
 #carl-3:checked ~ .control-3,
-#carl-4:checked ~ .control-4 {
+#carl-4:checked ~ .control-4, 
+#carl-5:checked ~ .control-5,
+#carl-6:checked ~ .control-6,
+#carl-7:checked ~ .control-7,
+#carl-8:checked ~ .control-8,
+#carl-9:checked ~ .control-9,
+#carl-10:checked ~ .control-10,
+#carl-11:checked ~ .control-11,
+#carl-12:checked ~ .control-12 {
   display: block;
 }
 
@@ -490,15 +542,17 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  position: absolute;
+  position: relative;
   bottom: 2%;
   left: 0;
   right: 0;
   text-align: center;
   z-index: 10;
+  flex-wrap: wrap;
 }
 
 .carl-indicators li {
+  width: 44.33%;
   display: inline-block;
   margin: 0 5px;
 }

@@ -9080,6 +9080,16 @@ img {
     justify-content: space-evenly;
   }
 
+  .row_char_img{
+    display: flex;
+    position: relative;
+    flex-wrap: nowrap;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
+  }
+  
+
   .checked {
     color: orange;
   }
@@ -9094,23 +9104,24 @@ img {
     justify-content: space-evenly;
   }
 
-  .carl-indicators {
+  .row_char_img{
+    display: flex;
     position: absolute;
-      bottom: -115px; /* Adjust the distance from the bottom as needed */
-      left: -142px;
-      right: -112px;
-      text-align: center;
-      display: inline-block;
-      margin: 0 70px; /* Adjust the spacing between indicators as needed */
+    flex-wrap: nowrap;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
   }
-  
-  .carl-indicators img {
-    width: 100px; /* Adjust the size of the indicator images as needed */
-    height: 140px;
-    cursor: pointer; /* Add a cursor pointer for interactivity */
-    margin-top: 24px; 
-    margin-bottom: -56px;
+
+  .row_char_txt{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
   }
+
+ 
   }
   /*New NFT Mobile Version*/
 
@@ -9118,6 +9129,7 @@ img {
     @media only screen and (max-width: 420px){
       .row_char{
         display: flex;
+        position: relative;
         flex-wrap: wrap;
         margin-right: 1.5rem;
         margin-left: 1.5rem;
@@ -9128,6 +9140,7 @@ img {
         flex-wrap: nowrap;
         margin-right: 1.5rem;
         margin-left: 1.5rem;
+        position: relative;
         justify-content: space-evenly;
       }
       .row_char_txt{
@@ -9154,6 +9167,12 @@ img {
         cursor: pointer; /* Add a cursor pointer for interactivity */
         margin-top: 24px; 
         margin-bottom: -56px;
+      }
+
+      .nft_bottom{
+        width: 111px;
+        height: fit-content;
+        overflow: hidden;
       }
       }
 
@@ -9221,3 +9240,4 @@ img {
       transform: translate(0, 0);
     }
   }
+
