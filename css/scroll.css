@@ -169,59 +169,8 @@
 
 /* End Lore */
  
-/* for 1 of 1's  */
-.nft-row{
-    display: flex;
-    flex-wrap: nowrap;
-    margin-right: -1.5rem;
-    margin-left: -1.5rem; 
-    justify-content: center;
-}
 
-.mobile-nft-center {
-  margin: 15px auto;
-  width: 85%;
-}
-
-.nft-char{
-  justify-content: center;
-  font-size: 135%; 
-  font-family: 'Sans-serif', sans-serif;
-  font-weight: 700;
-}
-
-@media only screen and (max-width: 820px) {
-  .nft-char{
-    font-size: 100%; 
-  }
-}
-
-@media only screen and (min-width: 340px) {
-  .nft-char{
-    font-size: 78%; 
-  }
-
-  .mobile-nft-center {
-    margin: 15px auto;
-    width: 90%;
-    margin-left: 28px;
-}
-}
-
-@media only screen and (max-width: 280px) {
-  .nft-char{
-    font-size: 56%; 
-  }
-  .mobile-nft-center {
-    margin: 15px auto;
-    width: 90%;
-    margin-left: 11px;
-}
-}
-/* End 1 of 1's */
-
-
-/* WEB Nft Carousel*/
+/* WEB New Nft Carousel*/
 .carl{
   position: relative;
   margin-top: 30px;
@@ -284,15 +233,6 @@
   right: 0%;
 }
 
-@media only screen and (max-width: 820px){
-.carl-control.prev {
-  left: 0%;
-}
-
-.carl-control.next {
-  right: 0%;
-}
-}
 
 .carl-control:hover {
   background: rgba(0, 0, 0, 0.8);
@@ -391,36 +331,7 @@
   color: rgb(0, 0, 0);
 }
 
-@media only screen and (max-width: 820px) {
-  .carl-caption {
-    top: 60%;
-    bottom: auto;
-    color: rgb(0, 0, 0);
-  }
-
-  .carl-indicators {
-    position: absolute;
-      bottom: -360px; /* Adjust the distance from the bottom as needed */
-      left: -142px;
-      right: -112px;
-      text-align: center;
-      display: inline-block;
-      margin: 0 70px; /* Adjust the spacing between indicators as needed */
-  }
-  
-  .carl-indicators img {
-    width: 100px; /* Adjust the size of the indicator images as needed */
-    height: 140px;
-    cursor: pointer; /* Add a cursor pointer for interactivity */
-    margin-top: 24px; 
-    margin-bottom: -56px;
-  }
-
-}
-
-  .center-text {
-    text-align: center;
-  }
+ 
   
 .carl{
   position: relative;
@@ -464,6 +375,16 @@
   height: 150px;
   z-index: 1; /* Increase the z-index to bring it to the front */
     position: relative; /* Add position relative to allow z-index to work */
+}
+
+.carl-indicators li {
+  /* Add your styles for the list items here */
+  /* For example, you can set the border and dimensions */
+  border: 3px solid #ccc;
+  background-color: #ECB602;
+  border-radius: 5px;
+  width: 160px;
+  height: 133px;
 }
 
 .carl-inner {
@@ -540,15 +461,31 @@
 
 .carl-indicators {
   list-style: none;
-  margin: 0;
+  margin: 0 0px; 
   padding: 0;
   position: relative;
-  bottom: 2%;
   left: 0;
   right: 0;
   text-align: center;
   z-index: 10;
   flex-wrap: wrap;
+  display: inline-block;
+}
+
+.carl-indicators {
+  position: relative;
+  bottom: 0px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 0px; /* Adjust the spacing between indicators as needed */
+}
+
+.carl-indicators img {
+  width: 111px;
+  height: 110px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
 .carl-indicators li {
@@ -570,8 +507,16 @@
 
 #carl-1:checked ~ .control-1 ~ .carl-indicators li:nth-child(1) .carl-bullet,
 #carl-2:checked ~ .control-2 ~ .carl-indicators li:nth-child(2) .carl-bullet,
-#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet, 
-#carl-4:checked ~ .control-4 ~ .carl-indicators li:nth-child(4) .carl-bullet {
+#carl-3:checked ~ .control-3 ~ .carl-indicators li:nth-child(3) .carl-bullet,
+#carl-4:checked ~ .control-4 ~ .carl-indicators li:nth-child(4) .carl-bullet,
+#carl-5:checked ~ .control-5 ~ .carl-indicators li:nth-child(5) .carl-bullet,
+#carl-6:checked ~ .control-6 ~ .carl-indicators li:nth-child(6) .carl-bullet,
+#carl-7:checked ~ .control-7 ~ .carl-indicators li:nth-child(7) .carl-bullet,
+#carl-8:checked ~ .control-8 ~ .carl-indicators li:nth-child(8) .carl-bullet,
+#carl-9:checked ~ .control-9 ~ .carl-indicators li:nth-child(9) .carl-bullet,
+#carl-10:checked ~ .control-10 ~ .carl-indicators li:nth-child(10) .carl-bullet,
+#carl-11:checked ~ .control-11 ~ .carl-indicators li:nth-child(11) .carl-bullet,
+#carl-12:checked ~ .control-12 ~ .carl-indicators li:nth-child(12) .carl-bullet {
   color: #428bca;
 }
 
@@ -592,7 +537,38 @@
   padding-bottom: 20px;
   color: rgb(0, 0, 0);
   text-align: center; }
+
+  .row_char{
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
   }
+  .row_char_img{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
+  }
+  .row_char_txt{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
+  }
+
+  .nft_bottom{
+    width: 111px;
+    height: fit-content;
+    overflow: hidden;
+  }
+
+  
+}
 
   /* End Nft Carousel*/
 
@@ -701,8 +677,15 @@
     .carousel-control-next{
       right: 90px;
     }
+    .carl-caption {
+      top: 60%;
+      bottom: auto;
+      color: rgb(0, 0, 0);
+    }
+   
     }
     
+
     @media only screen and (max-width: 420px) {
       .carousel-control-prev{
         left: 20px;
@@ -712,5 +695,12 @@
       }
     }
 
-
-    
+    @media only screen and (max-width: 820px){
+      .carl-control.prev {
+        left: 0%;
+      }
+      
+      .carl-control.next {
+        right: 0%;
+      }
+      }
