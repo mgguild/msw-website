@@ -1264,3 +1264,47 @@
           }
     
         }
+
+
+        
+       /*New NFT Tablet Version*/
+  @media only screen and (max-width: 820px){
+    .row_char{
+      display: flex;
+      flex-wrap: nowrap;
+      margin-right: 1.5rem;
+      margin-left: 1.5rem;
+      justify-content: space-evenly;
+    }
+  
+    .row_char_img{
+      display: flex;
+      justify-content: space-evenly;
+    }
+  
+    .row_char_txt{
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: 1.5rem;
+      margin-left: 1.5rem;
+      justify-content: space-evenly;
+    }
+  
+    .carl-indicators {
+      position: absolute;
+        bottom: -115px; /* Adjust the distance from the bottom as needed */
+        left: -142px;
+        right: -112px;
+        text-align: center;
+        display: inline-block;
+        margin: 0 70px; /* Adjust the spacing between indicators as needed */
+    }
+    
+    .carl-indicators img {
+      width: 100px; /* Adjust the size of the indicator images as needed */
+      height: 140px;
+      cursor: pointer; /* Add a cursor pointer for interactivity */
+      margin-top: 24px; 
+      margin-bottom: -56px;
+    }
+    }

@@ -196,7 +196,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: 0.5rem; }
+  margin-bottom: -0.5rem; }
 
 button {
   border-radius: 0; }
@@ -7078,6 +7078,7 @@ h3 {
         overflow: hidden;
         min-height: 90vh;
         background: url(../assets/img/252882728-65be9865-bb92-4679-88e5-5101f0b8d65f.png) ;
+        background-position: center;
         width: 100%;
         padding: 0px;
       }
@@ -7567,7 +7568,7 @@ h3 {
       text-align: center;
       margin-top: 2%;
       padding: 0%;
-      width: 220px;
+      width: 188px;
   }
   .how-img img{
       width: 110%;
@@ -8057,11 +8058,12 @@ form{
   
 }
 
+/*FAQs*/
 .topic{
   padding:20px;
   padding-top:0px;
   padding-bottom:0px;
-  background-color: rgba(15, 0, 21, 0.60);
+  background-color: rgba(85, 24, 93);
   border-bottom:solid 1px #ebebeb;
   border-radius: 10px 10px 10px 10px;
 }
@@ -9045,3 +9047,116 @@ img {
   transform: scale(1.2);
   transition: 1s ease;
   }
+
+  /* NFT CHARACTER NEW VERSION*/
+
+  .nft_bottom{
+    width: 150px;
+    height: fit-content;
+    overflow: hidden;
+  }
+
+
+  .nft__icon{
+    color: #fff;
+    cursor: pointer;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .row_char{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: -1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
+  }
+
+  .row__char{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: -1.5rem;
+    margin-left: -1.5rem;
+    justify-content: space-evenly;
+  }
+
+  .row_char_img{
+    display: flex;
+    position: relative;
+    flex-wrap: nowrap;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    justify-content: space-evenly;
+  }
+  
+
+  .checked {
+    color: orange;
+  }
+
+ 
+
+
+  .animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: forwards; /* Add this line */
+  }
+  
+  .animate__fadeInDown {
+    animation-name: fadeInDown;
+  }
+  
+  .animate__fadeInUp {
+    animation-name: fadeInUp;
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -50%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 50%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .slide-from-top-left {
+    animation: slideFromTopLeft 1s ease forwards;
+  }
+
+  .slide-from-bottom-right {
+    animation: slideFromBottomRight 1s ease forwards;
+  }
+
+  @keyframes slideFromTopLeft {
+    from {
+      transform: translate(-50%, -50%);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes slideFromBottomRight {
+    from {
+      transform: translate(50%, 50%);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+
