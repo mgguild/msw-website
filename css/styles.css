@@ -3485,6 +3485,26 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
     background-size: cover !important;
    
   }
+
+  .about-bg{
+        background: url('../assets/img/about_bg.png'); 
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        padding: 0px;
+        background-position: center;
+        width: 100%;
+        
+  }
+ 
+
  
   @media only screen and (min-width: 480px) {
   .brown-bg{
@@ -8324,7 +8344,7 @@ form label .asterisk {
   }
 
   .about-text{
-    font-size: 2.2rem;
+    font-size: 1.3rem;
     text-align: center; }
 
   @media only screen and (max-device-width: 420px) {
@@ -9159,4 +9179,92 @@ img {
       transform: translate(0, 0);
     }
   }
+
+
+
+
+.col-text {
+  height:16em;
+}
+.grid-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  flex-direction: row; 
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+}
+.col {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.col-left {
+  -webkit-box-ordinal-group:-1;
+  -webkit-order: -1;
+  -ms-flex-order: -1;
+  order: -1;
+}
+
+@media (max-width: 480px) {
+  .about-bg {
+    background-image: url('../assets/img/mobile_bg.png');
+  }
+}
+
+
+.col-text{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Aligner-item {
+  width: 95%;
+}
+.col-image {
+  background-size: cover;
+  background-position:center center;
+}
+
+@media (max-width: 640px) {
+  .grid-flex {
+    height: 40em;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    flex-direction: column; 
+   }
+  .col {
+    order:vertical;
+  }
+  .col-left {
+    -webkit-box-ordinal-group:0;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+  }
+  .col-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .col-text div p {
+    padding: 1em;
+  }
+  .Aligner-item {
+    width: 90%;
+  }
+
+  .col-text {
+    height:32em;
+  }
+}
+
 
