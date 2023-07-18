@@ -3486,7 +3486,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
    
   }
 
-  .about-bg{
+.about-bg{
         background: url('../assets/img/about_bg.png'); 
         -webkit-background-size: cover !important;
         -moz-background-size: cover !important;
@@ -3499,10 +3499,29 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
         position: relative;
         overflow: hidden;
         padding: 0px;
+        bottom: 1px;
         background-position: center;
         width: 100%;
         
   }
+
+  
+@media (max-width: 480px) {
+  .about-bg {
+    background-image: url('../assets/img/mobile_bg.png');
+    background-size: cover !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        padding: 0px;
+        bottom: 1px;
+        background-position: center;
+        width: 100%;
+  }
+}
  
 
  
@@ -8350,9 +8369,10 @@ form label .asterisk {
   @media only screen and (max-device-width: 420px) {
       
   .about-text{
-      font-size: 1.3rem;
-      text-align: center; }
+    font-size: 1.17rem;
+    text-align: center; 
     }
+  }
 
   .minting-text{
     font-size: 1.5rem;
@@ -9184,7 +9204,7 @@ img {
 
 
 .col-text {
-  height:16em;
+  height:17em;
 }
 .grid-flex {
   display: -webkit-box;
@@ -9213,11 +9233,6 @@ img {
   order: -1;
 }
 
-@media (max-width: 480px) {
-  .about-bg {
-    background-image: url('../assets/img/mobile_bg.png');
-  }
-}
 
 
 .col-text{
@@ -9231,6 +9246,44 @@ img {
 .col-image {
   background-size: cover;
   background-position:center center;
+}
+
+@media (max-width: 820px) {
+  .grid-flex {
+    height: 40em;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    flex-direction: column; 
+   }
+  .col {
+    order:vertical;
+  }
+  .col-left {
+    -webkit-box-ordinal-group:0;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+  }
+  .col-text {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start
+  }
+
+  .col-text div p {
+    padding: 1em;
+  }
+  .Aligner-item {
+    width: 90%;
+  }
+
+  .col-text {
+    height:32em;
+  }
+}
+
+.hidden{
+  display: none;
 }
 
 @media (max-width: 640px) {
@@ -9251,8 +9304,8 @@ img {
   }
   .col-text {
     display: flex;
-    align-items: center;
     justify-content: space-around;
+    align-items: flex-start
   }
 
   .col-text div p {
