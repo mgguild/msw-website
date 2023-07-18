@@ -95,10 +95,7 @@
       }) 
       });
 
-      //for NFT cards
-      document.querySelector(".card-flip").classList.toggle("flip");
 
-      document.querySelector(".mobile-card-flip").classList.toggle("mobile-flip");
 
       //for FAQs
       $(".open").click( function () {
