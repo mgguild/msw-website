@@ -9486,6 +9486,7 @@ div.desc {
   }
   .col-align-item {
     width: 90%;
+    text-align: center;
   }
 
   .col-flex-text {
