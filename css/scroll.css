@@ -265,8 +265,8 @@
 }
 
 .carl-indicators img {
-  width: 111px; /* Adjust the size of the indicator images as needed */
-  height: 111px;
+  width: 100px; /* Adjust the size of the indicator images as needed */
+  height: 100px;
   cursor: pointer; /* Add a cursor pointer for interactivity */
   margin-top: 20px; 
   margin-bottom: 0px;
@@ -280,19 +280,17 @@
 }
 
 .carl-indicators li {
-  /* Add your styles for the list items here */
-  /* For example, you can set the border and dimensions */
-  border: 3px solid #ccc;
-  background-color: #ECB602;
-  border-radius: 5px;
+  border: 4px solid #4acae8;
+  background-color: #232959;
+  border-radius: 10px;
   width: 160px;
   height: 133px;
 }
 
 .carl-indicators li.active {
-    border: 9px solid #89c1d7;
-    border-radius: 5px;
-    width: 160px;
+    border: 9px solid #abdcf0;
+    border-radius: 10px;
+    width: 165px;
     height: 150px;
     z-index: 1; /* Increase the z-index to bring it to the front */
       position: relative; /* Add position relative to allow z-index to work */
@@ -342,14 +340,6 @@
   overflow: hidden; 
 }
 
-.carl-indicators li.active {
-  border: 9px solid #89c1d7;
-  border-radius: 5px;
-  width: 160px;
-  height: 150px;
-  z-index: 1; /* Increase the z-index to bring it to the front */
-    position: relative; /* Add position relative to allow z-index to work */
-}
 
 
 
@@ -369,20 +359,18 @@
 }
 
 .carl-indicators li.active {
-  border: 9px solid #89c1d7;
-  border-radius: 5px;
-  width: 140px;
-  height: 150px;
+  border: 7px solid #89c1d7;
+  border-radius: 10px;
+  width: 125px;
+  height: 135px;
   z-index: 1; /* Increase the z-index to bring it to the front */
-    position: relative; /* Add position relative to allow z-index to work */
+  position: relative; 
 }
 
 .carl-indicators li {
-  /* Add your styles for the list items here */
-  /* For example, you can set the border and dimensions */
-  border: 3px solid #ccc;
-  background-color: #ECB602;
-  border-radius: 5px;
+  border: 3px solid #4acae8;
+  background-color: #232959;
+  border-radius: 10px;
   width: 160px;
   height: 133px;
 }
@@ -481,8 +469,8 @@
 }
 
 .carl-indicators img {
-  width: 111px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 0px;
@@ -704,3 +692,118 @@
         right: 0%;
       }
       }
+
+      .wizard-bg{
+        background: url('../assets/img/wizard.png'); 
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        padding: 0px;
+        bottom: 1px;
+        background-position: center;
+        width: 100%;
+        
+  }
+
+  .musketeer-bg{
+    background: url('../assets/img/musketeer.png'); 
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0px;
+    bottom: 1px;
+    background-position: center;
+    width: 100%;
+    
+}
+
+.about-bg{
+  background: url('../assets/img/about_bg.png'); 
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0px;
+  bottom: 1px;
+  background-position: center;
+  width: 100%;
+  
+}
+
+.about-bg{
+  background: url('../assets/img/about_bg.png'); 
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0px;
+  bottom: 1px;
+  background-position: center;
+  width: 100%;
+  
+}
+
+.about-bg{
+  background: url('../assets/img/about_bg.png'); 
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0px;
+  bottom: 1px;
+  background-position: center;
+  width: 100%;
+  
+}
+.about-bg{
+  background: url('../assets/img/about_bg.png'); 
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0px;
+  bottom: 1px;
+  background-position: center;
+  width: 100%;
+  
+}
+
+
