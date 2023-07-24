@@ -3520,6 +3520,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
         bottom: 1px;
         background-position: center;
         width: 100%;
+        top: 50px;
   }
 }
  
