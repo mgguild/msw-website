@@ -41,7 +41,7 @@
 
 html {
   width: 100%;
-  font-family: sans-serif;
+  font-family: 'Alphakind ', sans-serif;
   line-height: 1.15;
   height: 100%;
   padding: 0;
@@ -61,10 +61,10 @@ body {
   min-height: 100%;
   width: 100%;
   max-width: 100%;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.1;
+  font-family: 'Alphakind', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
   color: #212529;
   text-align: left;
   /* background-color: rgb(155,108,85); */
@@ -84,9 +84,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.0rem; }
 
 p {
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Mustica Pro', sans-serif;
   margin-top: 0;
-  margin-bottom: 1rem; }
+  margin-bottom: 0.7rem; }
 
 abbr[title],
 abbr[data-original-title] {
@@ -307,8 +307,8 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: 'Passion One', cursive;
-  font-weight: 500;
+  font-family: 'Alphakind', cursive;
+  font-weight: 50;
   line-height: 1.5; }
 
 h1, .h1 {
@@ -366,7 +366,7 @@ small,
 .small {
   font-size: 90%;
   font-weight: 350; 
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Mustica Pro', sans-serif;
 }
 
 mark,
@@ -2217,7 +2217,7 @@ fieldset:disabled a.btn {
 
 .btn-sm, .btn-group-sm > .btn {
     padding: 0.4rem 0.6rem;
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     line-height: 1.8;
     border-radius: 2.26rem; }
 
@@ -3106,8 +3106,8 @@ input[type="button"].btn-block {
 
   .navbar-brand {
       position: relative;
-      width: 170px;
-      left: 100px;
+      width: 80px;
+      left: 20px;
       background-size: contain;
   }
 
@@ -3520,7 +3520,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
         bottom: 1px;
         background-position: center;
         width: 100%;
-        top: 50px;
+        top: 70px;
   }
 }
  
@@ -6185,9 +6185,9 @@ h3 {
     line-height: 3.1rem; }
 
 #mainNav {
-  padding-top: 0.02rem;
+  padding-top: 0.6rem;
   padding-bottom: 0.02rem;
-  font-family: 'Passion One', cursive;
+  font-family: 'Alphakind', cursive;
   font-weight: 100;
  }
   
@@ -6735,7 +6735,7 @@ h3 {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 0.5rem;
+    padding-top: 0.7rem;
     padding-bottom: 0.5rem;
     transition: padding-top 0.3s, padding-bottom 0.3s; }
     #mainNav .navbar-brand {
@@ -6932,7 +6932,7 @@ h3 {
 
   .char{
     font-size: 110%; 
-    font-family: 'Sans-serif', sans-serif;
+    font-family: 'Mustica Pro', sans-serif;
     font-weight: 700;
   }
   
@@ -6965,7 +6965,7 @@ h3 {
     color: rgb(255, 255, 255);
     font-size: 1.93rem;
     margin-bottom: 0.5rem;
-    font-family: 'Passion One', cursive;
+    font-family: 'Mustica Pro', cursive;
     font-weight: 500;
     line-height: 1.5;
   }
@@ -6983,7 +6983,7 @@ h3 {
   
   
     .team-text{
-      font-family: 'Fira Sans Condensed', sans-serif;
+      font-family: 'Mustica Pro', sans-serif;
       margin-top: 0;
       margin-bottom: 2rem;
       font-size: 85%;
@@ -8410,7 +8410,7 @@ form label .asterisk {
         
     .gitbook {
       font-size: 25px;
-      font-family: 'Passion One', cursive;;
+      font-family: 'Alphakind', cursive;;
       position: relative;
     }
     
@@ -8849,14 +8849,14 @@ img.circle-img.circle-img--small {
 
 
 .lb-text{
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Mustica Pro  ', sans-serif;
   margin-top: 0.1rem;
   margin-bottom: 1rem;
   font-size: 85%;
   color: #000;
 }
 .lb-rank-top{
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Mustica Pro', sans-serif;
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 100%;
@@ -8864,7 +8864,7 @@ img.circle-img.circle-img--small {
 }
 
 .lb-rank{
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Mustica Pro', sans-serif;
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: 90%;
@@ -9456,6 +9456,7 @@ div.desc {
 
   .gallery-text{
     text-align: center;
+    font-size: 55px;
   }
 
   .gallery-flex {
@@ -9486,7 +9487,7 @@ div.desc {
     padding: 1em;
   }
   .col-align-item {
-    width: 90%;
+    width: 100%;
     text-align: center;
   }
 
@@ -9497,4 +9498,19 @@ div.desc {
 
 /*end of Gallery*/
 
+
+@font-face {
+  font-family: 'Mustica Pro'; 
+  src: url('../assets/mustica_pro/MusticaPro-SemiBold.otf') format('opentype'); 
+}
+
+@font-face {
+  font-family: 'One Slice'; 
+  src: url('../assets/one_slice/One\ Slice.otf') format('opentype'); 
+}
+
+@font-face {
+  font-family: 'Alphakind'; 
+  src: url('../assets/Alphakind/Alphakind.otf') format('opentype'); 
+}
 
