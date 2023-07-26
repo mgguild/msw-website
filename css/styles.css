@@ -9624,14 +9624,14 @@ div.desc {
   .wizard-bg {
     width: 150px; 
     height: 120px; 
-    margin-left: -12px;
+    margin-left: -8px;
     background-image: url('../assets/img/wizard_blur.png');
     background-size: cover;
     background-position: center;
   }
   
   .musketeer-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/musketeer_blur.png');
     background-size: cover;
@@ -9640,7 +9640,7 @@ div.desc {
   }
   
   .knight-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/knight_blur.png');
     background-size: cover;
@@ -9649,7 +9649,7 @@ div.desc {
   }
   
   .archer-bg {
-    width: 140px; 
+    width: 137px; 
     height: 120px; 
     background-image: url('../assets/img/archer_blur.png');
     background-size: cover;
@@ -9657,15 +9657,15 @@ div.desc {
     margin-left: -7px;
   }
   .plaguedoctor-bg {
-    width: 139px; 
-    height: 120px; 
+    width: 130px; 
+    height: 125px; 
     background-image: url('../assets/img/plaguedoctor_blur.png');
     background-size: cover;
     background-position: center;
     margin-left: -7px;
   }
   .berserker-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/berserker_blur.png');
     background-size: cover;
@@ -9673,7 +9673,7 @@ div.desc {
     margin-left: -7px;
   }
   .engineer-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/engineer_blur.png');
     background-size: cover;
@@ -9681,7 +9681,7 @@ div.desc {
     margin-left: -7px;
   }
   .vicar-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/vicar_blur.png');
     background-size: cover;
@@ -9689,7 +9689,7 @@ div.desc {
     margin-left: -7px;
   }
   .artillery-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/artillery_blur.png');
     background-size: cover;
@@ -9697,7 +9697,7 @@ div.desc {
     margin-left: -7px;
   }
   .elemental-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/elemental_blur.png');
     background-size: cover;
@@ -9705,7 +9705,7 @@ div.desc {
     margin-left: -7px;
   }
   .magitek-bg {
-    width: 150px; 
+    width: 149px; 
     height: 120px; 
     background-image: url('../assets/img/magitek_blur.png');
     background-size: cover;

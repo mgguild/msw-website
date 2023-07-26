@@ -468,15 +468,15 @@
 }
 
 .carl-indicators img {
-  width: 100px;
-  height: 108px;
+  width: 96px;
+  height: 96px;
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 0px;
 }
 
 .carl-indicators li {
-  width: 44.33%;
+  width: 43.33%;
   display: inline-block;
   margin: 0 5px;
 }
