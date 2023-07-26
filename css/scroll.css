@@ -369,7 +369,6 @@
 
 .carl-indicators li {
   border: 5px solid #4acae8;
-  background-image: url(../assets/img/wizard_blur.png);
   border-radius: 10px;
   width: 160px;
   height: 133px;
@@ -549,11 +548,6 @@
     justify-content: space-evenly;
   }
 
-  .nft_bottom{
-    width: 111px;
-    height: fit-content;
-    overflow: hidden;
-  }
 
   
 }
