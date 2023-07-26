@@ -361,7 +361,7 @@
 .carl-indicators li.active {
   border: 5px solid #FFD524;
   border-radius: 10px;
-  width: 125px;
+  width: 135px;
   height: 135px;
   z-index: 1; /* Increase the z-index to bring it to the front */
   position: relative; 
@@ -369,7 +369,6 @@
 
 .carl-indicators li {
   border: 5px solid #4acae8;
-  background-image: url(../assets/img/wizard_blur.png);
   border-radius: 10px;
   width: 160px;
   height: 133px;
@@ -469,15 +468,15 @@
 }
 
 .carl-indicators img {
-  width: 100px;
-  height: 108px;
+  width: 96px;
+  height: 96px;
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 0px;
 }
 
 .carl-indicators li {
-  width: 44.33%;
+  width: 43.33%;
   display: inline-block;
   margin: 0 5px;
 }
@@ -548,14 +547,18 @@
     margin-left: 1.5rem;
     justify-content: space-evenly;
   }
-
-  .nft_bottom{
-    width: 111px;
-    height: fit-content;
-    overflow: hidden;
-  }
-
   
+}
+
+@media (max-width: 375px) {
+.carl-indicators li.active {
+  border: 5px solid #FFD524;
+  border-radius: 10px;
+  width: 125px;
+  height: 135px;
+  z-index: 1; /* Increase the z-index to bring it to the front */
+  position: relative; 
+}
 }
 
   /* End Nft Carousel*/
@@ -638,13 +641,14 @@
       }
     }
 
-      @media only screen and (max-width: 375px){
+      @media (max-width: 390px){
       .head-titles-nft {
           padding-top: 0px;
           font-size: 34px;
       }
       }
- 
+
+   
     #sliderproduct{
       width: 100%;
     }
