@@ -632,13 +632,14 @@
       }
     }
 
-      @media only screen and (max-width: 375px){
+      @media (max-width: 390px){
       .head-titles-nft {
           padding-top: 0px;
           font-size: 34px;
       }
       }
- 
+
+   
     #sliderproduct{
       width: 100%;
     }
