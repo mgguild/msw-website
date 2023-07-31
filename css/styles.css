@@ -508,12 +508,21 @@ pre {
     max-width: 1140px; } }
 */
 
-.container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
+.container-xl, .container-lg, .container-md, .container-sm {
   width: 100%;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
   margin-right: auto;
   margin-left: auto; }
+
+  .container-fluid{
+    width: 100%;
+    padding-right: 0rem;
+    padding-left: 0rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
 
 @media (min-width: 576px) {
   .container-sm, .container {
@@ -3452,6 +3461,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
     top: 15%;
     bottom: auto;
     color: #000;
+
   }
   
 
@@ -3483,8 +3493,16 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
     -moz-background-size: cover !important;
     -o-background-size: cover !important;
     background-size: cover !important;
-   
   }
+
+.lore-bg{
+    background: url('../assets/img/lore.jpg'); 
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+  }
+
 
 .about-bg{
         background: url('../assets/img/about_bg.png'); 
@@ -6943,9 +6961,96 @@ h3 {
   }
    
   .scroll-text {
-    font-size: 2.05rem; }  
+    font-size: 1.9rem;
+    float: left;
+    position: absolute;
+    left: -15%;
+    padding: 50px;
+    top: 390px;
+    width: 801px;
+    transform: translateY(-50%);
+}
   
+  
+  .scroll-text-page2 {
+   font-size: 1.95rem;
+    float: left;
+    position: relative;
+    left: -20%;
+    padding-left: 80px;
+    top: 0px;
+    width: 800px;
+  }  
+  
+
+  .lore-text {
+    color: #ECB602;
+    font-size: 77px;
+    float: left;
+    line-height: 0.9;
+}
     
+@media (max-width: 475px) {
+ 
+.lore-text {
+  color: #ECB602;
+  font-size: 43px;
+  float: left;
+  line-height: 0.9;
+} 
+
+.scroll-text {
+  font-size: 1.2rem;
+  float: left;
+  position: relative;
+  left: 0%;
+  padding: 0px;
+  top: 14rem;
+  width: 300px;
+}
+
+.scroll-text-page2 {
+  font-size: 1.1rem;
+  float: left;
+  position: relative;
+  left: -29%;
+  padding-left: -32px;
+  top: 35px;
+  width: 356px;
+}
+
+@media (max-width: 395px) {
+ 
+  .lore-text {
+    color: #ECB602;
+    font-size: 40px;
+    float: left;
+    line-height: 0.9;
+  } 
+
+  .scroll-text {
+    font-size: 1.2rem;
+    float: left;
+    position: relative;
+    left: 0%;
+    padding: 0px;
+    top: 16rem;
+    width: 260px;
+  }
+  
+  .scroll-text-page2 {
+    font-size: 1.1rem;
+    float: left;
+    position: relative;
+    left: -33%;
+    padding-left: -32px;
+    top: 35px;
+    width: 360px;
+  }
+}
+
+}
+
     .privacy_policy {
       font-size: small;
       right: 65px;

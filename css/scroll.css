@@ -79,9 +79,9 @@
 }
 
 .car-control {
-    background: rgba(0, 0, 0, 0.28);
-    border-radius: 50%;
-    color: #fff;
+  background: rgb(23 2 43);
+  border-radius: 50%;
+  color: #ecb602;
     cursor: pointer;
     display: none;
     font-size: 40px;
@@ -605,7 +605,7 @@
 
     }
 
-    @media only screen and (max-width: 420px){
+    @media (max-width: 420px){
       .head-titles {
         top: 30%;
         bottom: auto;
@@ -624,8 +624,8 @@
         text-align: center; }
 
         .head-titles-nft {
-          padding-top: 25px;
-          font-size: 34px;
+          padding-top: 0px;
+          font-size: 35px;
         }
 
         h5, .h5 {
@@ -639,6 +639,12 @@
           margin-bottom: 2rem;
           font-size:70%;
       }
+
+      .carousel-caption {
+        top: 23%;
+        bottom: auto;
+        color: #000;
+    }
     }
 
       @media (max-width: 390px){
@@ -647,6 +653,24 @@
           font-size: 34px;
       }
       }
+
+      
+      @media only screen and (max-width: 393px){
+        .head-titles-nft {
+            padding-top: 0px;
+            font-size: 37px;
+        }
+        }
+
+        .car-caption{
+        position: absolute;
+        top: 50%; /* Position the container at the vertical center of the screen */
+        left: 20px; /* Position the container at the left side of the screen with a 20px gap */
+        transform: translateY(-50%); /* Adjust to center the container properly */
+        width: 800px; /* Set a fixed width for the container */
+        padding: 20px; /* Add some padding for better appearance */
+       
+        }
 
    
     #sliderproduct{
