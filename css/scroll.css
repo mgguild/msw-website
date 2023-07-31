@@ -79,9 +79,9 @@
 }
 
 .car-control {
-    background: rgba(0, 0, 0, 0.28);
-    border-radius: 50%;
-    color: #fff;
+  background: rgb(23 2 43);
+  border-radius: 50%;
+  color: #ecb602;
     cursor: pointer;
     display: none;
     font-size: 40px;
