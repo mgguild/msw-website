@@ -3461,6 +3461,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
     top: 15%;
     bottom: auto;
     color: #000;
+
   }
   
 
@@ -6962,19 +6963,23 @@ h3 {
   .scroll-text {
     font-size: 1.9rem;
     float: left;
-    position: relative;
-    left: -30%;
-    padding: 225px;
-    top: -160px;
-  }  
+    position: absolute;
+    left: -15%;
+    padding: 50px;
+    top: 390px;
+    width: 801px;
+    transform: translateY(-50%);
+}
+  
   
   .scroll-text-page2 {
-    font-size: 1.9rem;
+   font-size: 1.95rem;
     float: left;
     position: relative;
-    left: -50%;
-    padding-left: 360px;
+    left: -20%;
+    padding-left: 80px;
     top: 0px;
+    width: 800px;
   }  
   
 
@@ -6989,7 +6994,7 @@ h3 {
  
 .lore-text {
   color: #ECB602;
-  font-size: 38px;
+  font-size: 43px;
   float: left;
   line-height: 0.9;
 } 
@@ -7000,16 +7005,48 @@ h3 {
   position: relative;
   left: 0%;
   padding: 0px;
-  top: 41px;
+  top: 14rem;
+  width: 300px;
 }
 
 .scroll-text-page2 {
   font-size: 1.1rem;
   float: left;
   position: relative;
-  left: 0%;
-  padding-left: 0px;
-  top: 95px;
+  left: -29%;
+  padding-left: -32px;
+  top: 35px;
+  width: 356px;
+}
+
+@media (max-width: 395px) {
+ 
+  .lore-text {
+    color: #ECB602;
+    font-size: 40px;
+    float: left;
+    line-height: 0.9;
+  } 
+
+  .scroll-text {
+    font-size: 1.2rem;
+    float: left;
+    position: relative;
+    left: 0%;
+    padding: 0px;
+    top: 16rem;
+    width: 260px;
+  }
+  
+  .scroll-text-page2 {
+    font-size: 1.1rem;
+    float: left;
+    position: relative;
+    left: -33%;
+    padding-left: -32px;
+    top: 35px;
+    width: 360px;
+  }
 }
 
 }
