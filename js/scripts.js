@@ -96,7 +96,6 @@
       });
 
 
-
       //for FAQs
       $(".open").click( function () {
         var container = $(this).parents(".topic");
@@ -148,8 +147,57 @@
     //   function showText() {
     //     document.getElementById("hiddenText").style.display = "block";
     //   }
-   
     
+ // JavaScript to handle the carousel functionality
+ const triggerImages = document.querySelectorAll(".trigger-image");
+ const carousels = document.querySelectorAll(".carousel");
+
+ triggerImages.forEach(image => {
+   image.addEventListener("click", () => {
+     const targetCarousel = document.getElementById(image.parentElement.getAttribute("data-carousel"));
+     targetCarousel.style.display = "flex";
+   });
+ });
+
+ carousels.forEach(carousel => {
+   const images = Array.from(carousel.querySelectorAll(".carousel-image"));
+   let currentImageIndex = 0;
+
+   const prevButton = carousel.querySelector(".prev-button");
+   const nextButton = carousel.querySelector(".next-button");
+   const closeButton = carousel.querySelector(".close-button"); // Get close button
+
+   function showImage(index) {
+     images.forEach((image, idx) => {
+       image.style.display = idx === index ? "block" : "none";
+     });
+   }
+
+   prevButton.addEventListener("click", () => {
+     currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+     showImage(currentImageIndex);
+   });
+
+   nextButton.addEventListener("click", () => {
+     currentImageIndex = (currentImageIndex + 1) % images.length;
+     showImage(currentImageIndex);
+   });
+
+   closeButton.addEventListener("click", () => {
+     carousel.style.display = "none"; // Close the carousel
+   });
+
+   // Handle closing the carousel when clicking outside of images
+   carousel.addEventListener("click", (event) => {
+     if (event.target === carousel) {
+       carousel.style.display = "none";
+     }
+   });
+
+   // Show the first image initially
+   showImage(currentImageIndex);
+ });
+
 
 })(jQuery); // End of use strict
   
