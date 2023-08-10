@@ -149,54 +149,69 @@
     //   }
     
  // JavaScript to handle the carousel functionality
- const triggerImages = document.querySelectorAll(".trigger-image");
- const carousels = document.querySelectorAll(".carousel");
+const triggerImages = document.querySelectorAll(".trigger-image");
+const carousels = document.querySelectorAll(".carousel");
 
- triggerImages.forEach(image => {
-   image.addEventListener("click", () => {
-     const targetCarousel = document.getElementById(image.parentElement.getAttribute("data-carousel"));
-     targetCarousel.style.display = "flex";
-   });
- });
+triggerImages.forEach(image => {
+  image.addEventListener("click", () => {
+    const targetCarousel = document.getElementById(image.parentElement.getAttribute("data-carousel"));
+    targetCarousel.style.display = "flex";
+  });
+});
 
- carousels.forEach(carousel => {
-   const images = Array.from(carousel.querySelectorAll(".carousel-image"));
-   let currentImageIndex = 0;
+carousels.forEach(carousel => {
+  const images = Array.from(carousel.querySelectorAll(".carousel-image"));
+  let currentImageIndex = 0;
 
-   const prevButton = carousel.querySelector(".prev-button");
-   const nextButton = carousel.querySelector(".next-button");
-   const closeButton = carousel.querySelector(".close-button"); // Get close button
+  const prevButton = carousel.querySelector(".prev-button");
+  const nextButton = carousel.querySelector(".next-button");
+  const closeButton = carousel.querySelector(".close-button"); // Get close button
 
-   function showImage(index) {
-     images.forEach((image, idx) => {
-       image.style.display = idx === index ? "block" : "none";
-     });
-   }
+  function showImage(index) {
+    images.forEach((image, idx) => {
+      image.style.display = idx === index ? "block" : "none";
+    });
 
-   prevButton.addEventListener("click", () => {
-     currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-     showImage(currentImageIndex);
-   });
+    // Highlight the active mini image
+    const miniImages = carousel.querySelectorAll(".mini-image");
+    miniImages.forEach((miniImage, idx) => {
+      miniImage.classList.toggle("active-mini", idx === index);
+    });
+  }
 
-   nextButton.addEventListener("click", () => {
-     currentImageIndex = (currentImageIndex + 1) % images.length;
-     showImage(currentImageIndex);
-   });
+  // Function to change image when clicking on mini image
+  const miniImages = carousel.querySelectorAll(".mini-image");
+  miniImages.forEach((miniImage, index) => {
+    miniImage.addEventListener("click", () => {
+      showImage(index);
+    });
+  });
 
-   closeButton.addEventListener("click", () => {
-     carousel.style.display = "none"; // Close the carousel
-   });
+  prevButton.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showImage(currentImageIndex);
+  });
 
-   // Handle closing the carousel when clicking outside of images
-   carousel.addEventListener("click", (event) => {
-     if (event.target === carousel) {
-       carousel.style.display = "none";
-     }
-   });
+  nextButton.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+  });
 
-   // Show the first image initially
-   showImage(currentImageIndex);
- });
+  closeButton.addEventListener("click", () => {
+    carousel.style.display = "none"; // Close the carousel
+  });
+
+  // Handle closing the carousel when clicking outside of images
+  carousel.addEventListener("click", (event) => {
+    if (event.target === carousel) {
+      carousel.style.display = "none";
+    }
+  });
+
+  // Show the first image initially
+  showImage(currentImageIndex);
+});
+
 
 
 })(jQuery); // End of use strict
