@@ -9836,7 +9836,6 @@ div.desc {
 
 }
 
- /* Add your CSS styling here */
  .carousel {
   display: none;
   position: fixed;
@@ -9849,16 +9848,20 @@ div.desc {
 }
 
 .carousel-inner {
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 85%;
+  top: 110px;
 }
 
 .carousel-image {
-  max-width: 40%;
-  max-height: 80%;
+  max-width: 30%;
+  max-height: 90%;
+  border-radius: 1px;
 }
+
 
 .carousel-nav {
   position: absolute;
@@ -9894,18 +9897,20 @@ div.desc {
 
 .trigger-image{
   width: 100px;
+  border-radius: 7px; /* Rounded corners */
 }
 
 .close-button {
   position: absolute;
-  top: -260px;
-  right: 415px;
+  top: 0px;
+  right: 500px;
   background-color: transparent;
   border: none;
   font-size: 70px;
   color: white;
   cursor: pointer;
 }
+
 
 
 
@@ -9921,7 +9926,7 @@ div.desc {
   
   .close-button {
     position: absolute;
-    top: -240px;
+    top: 0px;
     right: 15px;
     background-color: transparent;
     color: white;
@@ -9930,15 +9935,17 @@ div.desc {
 
 .prev-button {
   margin-left: 0px;
+  margin-bottom: 175px;
 }
 
 .next-button {
   margin-right: 0px;
+  margin-bottom: 175px;
 }
 
   .carousel-image {
     max-width: 90%;
-    max-height: 50%;
+    max-height: 70%;
 }
 }
 
@@ -9953,7 +9960,7 @@ div.desc {
 
   .close-button {
     position: absolute;
-    top: -410px;
+    top: 0px;
     right: 7px;
     background-color: transparent;
     color: white;
@@ -9966,14 +9973,6 @@ div.desc {
   
 }
 
-
-.carousel-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-}
 
 /* ... (previous CSS code) ... */
 
@@ -10000,4 +9999,60 @@ div.desc {
 
 .mini-image.active-mini {
   opacity: 1;
+}
+
+/* Overlay CSS */
+
+/* The label's container is visible by default. */
+.middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease;
+  opacity: 1; /* Set opacity to 1 by default */
+  text-align: center;
+  width: 100%; /* Adjust width */
+}
+
+/* Make the label's container visible on hover (removed the hover selector) */
+#hover .middle {
+  opacity: 1;
+}
+
+/* Define the style for the label (mobile-first) */
+.overlay-label {
+  display: grid;
+  place-items: center;
+  background-color: #000000b3;
+  color: white;
+  padding: 1px; /* Added padding for better styling */
+  width: 100%;
+  z-index: 100; /* Put caption on top of image. */
+  white-space: normal; /* Allow text to wrap */
+  overflow: hidden; /* Hide overflowing text */
+  max-height: 2.5em; /* Set a maximum height for two lines */
+  line-height: 1.25em; /* Line height for two lines */
+}
+
+/* Responsive label */
+@media (min-width: 320px) {
+  .middle {
+    width: 100%; /* Full width for mobile devices */
+  }
+  .overlay-label {
+    white-space: normal; /* Allow text to wrap */
+    max-height: 2.5em; /* Set a maximum height for two lines */
+    line-height: 1.25em; /* Line height for two lines */
+    margin-top: -80px; /* Adjust margin as needed */
+  }
+}
+@media (min-width: 768px) {
+  .middle {
+    width: 100%;
+  }
+  .overlay-label {
+    /* font-size: 1.25rem; */
+    padding: 1px; /* Added padding for better styling */
+    margin-top: -100px; /* Pull caption up into image. */
+  }
 }

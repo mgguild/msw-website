@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
       <title>MetaSaga Warriors</title>
       <!--MSW Icon-->
@@ -1304,22 +1305,33 @@
         <div class="row">
          <div class="responsive">
             <div class="gallery">
-            <div class="carousel-trigger" data-carousel="carousel1">
+            <div class="carousel-trigger" data-carousel="carousel1" id="hover">
                <img src="assets/img/TechInvestment_1.jpg" alt="Image 1" class="trigger-image" style="cursor: pointer;">
+               <div class="middle">
+                  <div class="overlay-label">Tech Investment Show 2023 Bangkok, Thailang</div>
+               </div>
             </div>
             </div>
            </div>
+
+
            <div class="responsive">
             <div class="gallery">
-            <div class="carousel-trigger" data-carousel="carousel2">
+            <div class="carousel-trigger" data-carousel="carousel2" id="hover">
                <img src="assets/img/anigaiden_2.jpg" alt="Image 2" class="trigger-image" style="cursor: pointer;">
+               <div class="middle">
+                  <div class="overlay-label">AniGaiden</div>
+               </div>
             </div>
            </div>
            </div>
            <div class="responsive">
             <div class="gallery">
-            <div class="carousel-trigger" data-carousel="carousel3">
+            <div class="carousel-trigger" data-carousel="carousel3" id="hover">
                <img src="assets/img/conquest_1.jpg" alt="Image 3" class="trigger-image" style="cursor: pointer;">
+               <div class="middle">
+                  <div class="overlay-label">ConQuest2023</div>
+               </div>
             </div>
            </div>
            </div>
@@ -1328,22 +1340,31 @@
          <div class="row">
             <div class="responsive">
                <div class="gallery">
-               <div class="carousel-trigger" data-carousel="carousel4">
+               <div class="carousel-trigger" data-carousel="carousel4" id="hover">
                   <img src="assets/img/sltcfi_1.jpg" alt="Image 4" class="trigger-image" style="cursor: pointer;">
+                  <div class="middle">
+                     <div class="overlay-label">SLTCFI IT Week </div>
+                  </div>
                </div>
                </div>
             </div>
             <div class="responsive">
                <div class="gallery">
-               <div class="carousel-trigger" data-carousel="carousel5">
+               <div class="carousel-trigger" data-carousel="carousel5" id="hover">
                   <img src="assets/img/legazpi_1.jpg" alt="Image 5" class="trigger-image" style="cursor: pointer;">
+                  <div class="middle">
+                     <div class="overlay-label">Legazpi Startup Showcase 2023</div>
+                  </div>
                </div>
             </div>
             </div>
             <div class="responsive">
                <div class="gallery">
-               <div class="carousel-trigger" data-carousel="carousel6">
+               <div class="carousel-trigger" data-carousel="carousel6" id="hover">
                   <img src="assets/img/DICT_1.jpg" alt="Image 6" class="trigger-image" style="cursor: pointer;">
+                  <div class="middle">
+                     <div class="overlay-label">DICT National ICT Month 2023</div>
+                  </div>
                </div>
             </div>
             </div>
@@ -1351,13 +1372,15 @@
         
          <!-- Carousel Sections -->
          <div class="carousel" id="carousel1">
-         <div class="carousel-inner">
-            <img src="assets/img/TechInvestment_1.jpg" alt="Image 1" class="carousel-image">
-            <img src="assets/img/TechInvestment_2.jpg" alt="Image 1" class="carousel-image">
-            <img src="assets/img/TechInvestment_3.jpg" alt="Image 1" class="carousel-image">
-            <img src="assets/img/TechInvestment_4.jpg" alt="Image 1" class="carousel-image">
-            <img src="assets/img/TechInvestment_5.jpg" alt="Image 1" class="carousel-image">
-            <img src="assets/img/TechInvestment_6.jpg" alt="Image 1" class="carousel-image">
+         <div class="carousel-inner ">
+            <img src="assets/img/TechInvestment_1.jpg" alt="Image 1" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/TechInvestment_2.jpg" alt="Image 1" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/TechInvestment_3.jpg" alt="Image 1" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/TechInvestment_4.jpg" alt="Image 1" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/TechInvestment_5.jpg" alt="Image 1" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/TechInvestment_6.jpg" alt="Image 1" class="carousel-image w3-animate-opacity">
+               <!-- Close button -->
+               <button class="carousel-button close-button">×</button>
 
             <div class="mini-nav">
                <div class="mini-image" onclick="changeImage(0, this)"><img src="assets/img/TechInvestment_1.jpg" alt="Mini Image 1"></div>
@@ -1370,21 +1393,23 @@
 
             <div class="carousel-nav">
                <button class="carousel-button prev-button">‹</button>
-                <!-- Close button -->
-               <button class="carousel-button close-button">×</button>
+                
                <button class="carousel-button next-button">›</button>
             </div>
            
          </div>
          </div>
+         
 
          <div class="carousel" id="carousel2">
          <div class="carousel-inner">
-            <img src="assets/img/anigaiden_2.jpg" alt="Image 2" class="carousel-image">
-            <img src="assets/img/anigaiden_1.jpg" alt="Image 2" class="carousel-image">
-            <img src="assets/img/anigaiden_3.jpg" alt="Image 2" class="carousel-image">
-            <img src="assets/img/anigaiden_4.jpg" alt="Image 2" class="carousel-image">
-            <img src="assets/img/anigaiden_5.jpg" alt="Image 2" class="carousel-image">
+            <img src="assets/img/anigaiden_2.jpg" alt="Image 2" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/anigaiden_1.jpg" alt="Image 2" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/anigaiden_3.jpg" alt="Image 2" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/anigaiden_4.jpg" alt="Image 2" class="carousel-image w3-animate-opacity">
+            <img src="assets/img/anigaiden_5.jpg" alt="Image 2" class="carousel-image w3-animate-opacity">
+             <!-- Close button -->
+             <button class="carousel-button close-button">×</button>
 
             <div class="mini-nav">
                <div class="mini-image" onclick="changeImage(0, this)"><img src="assets/img/anigaiden_2.jpg" alt="Mini Image 1"></div>
@@ -1396,8 +1421,6 @@
 
             <div class="carousel-nav">
                <button class="carousel-button prev-button">‹</button>
-                <!-- Close button -->
-               <button class="carousel-button close-button">×</button>
                <button class="carousel-button next-button">›</button>
             </div>
          </div>
@@ -1405,12 +1428,13 @@
 
          <div class="carousel" id="carousel3">
             <div class="carousel-inner">
-               <img src="assets/img/conquest_1.jpg" alt="Image 3" class="carousel-image">
-               <img src="assets/img/conquest_2.jpg" alt="Image 3" class="carousel-image">
-               <img src="assets/img/conquest_3.jpg" alt="Image 3" class="carousel-image">
-               <img src="assets/img/conquest_4.jpg" alt="Image 3" class="carousel-image">
-               <img src="assets/img/conquest_5.jpg" alt="Image 3" class="carousel-image">
-
+               <img src="assets/img/conquest_1.jpg" alt="Image 3" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/conquest_2.jpg" alt="Image 3" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/conquest_3.jpg" alt="Image 3" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/conquest_4.jpg" alt="Image 3" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/conquest_5.jpg" alt="Image 3" class="carousel-image w3-animate-opacity">
+               <!-- Close button -->
+               <button class="carousel-button close-button">×</button>
                
                <div class="mini-nav">
                   <div class="mini-image" onclick="changeImage(0, this)"><img src="assets/img/conquest_1.jpg" alt="Mini Image 1"></div>
@@ -1422,8 +1446,7 @@
 
                <div class="carousel-nav">
                   <button class="carousel-button prev-button">‹</button>
-                  <!-- Close button -->
-                  <button class="carousel-button close-button">×</button>
+                  
                   <button class="carousel-button next-button">›</button>
                </div>
             </div>
@@ -1432,9 +1455,11 @@
          
             <div class="carousel" id="carousel4">
                <div class="carousel-inner">
-                  <img src="assets/img/sltcfi_1.jpg" alt="Image 4" class="carousel-image">
-                  <img src="assets/img/sltcfi_2.jpg" alt="Image 4" class="carousel-image">
-                  
+                  <img src="assets/img/sltcfi_1.jpg" alt="Image 4" class="carousel-image w3-animate-opacity">
+                  <img src="assets/img/sltcfi_2.jpg" alt="Image 4" class="carousel-image w3-animate-opacity">
+                  <!-- Close button -->
+                  <button class="carousel-button close-button">×</button>
+
                   <div class="mini-nav">
                      <div class="mini-image" onclick="changeImage(0, this)"><img src="assets/img/sltcfi_1.jpg" alt="Mini Image 1"></div>
                      <div class="mini-image" onclick="changeImage(1, this)"><img src="assets/img/sltcfi_2.jpg" alt="Mini Image 2"></div>
@@ -1442,8 +1467,6 @@
 
                   <div class="carousel-nav">
                      <button class="carousel-button prev-button">‹</button>
-                     <!-- Close button -->
-                     <button class="carousel-button close-button">×</button>
                      <button class="carousel-button next-button">›</button>
                   </div>
                </div>
@@ -1452,14 +1475,15 @@
             
          <div class="carousel" id="carousel5">
             <div class="carousel-inner">
-               <img src="assets/img/legazpi_1.jpg" alt="Image 5" class="carousel-image">
-               <img src="assets/img/legazpi_2.jpg" alt="Image 5" class="carousel-image">
-               <img src="assets/img/legazpi_3.jpg" alt="Image 5" class="carousel-image">
-               <img src="assets/img/legazpi_4.jpg" alt="Image 5" class="carousel-image">
-               <img src="assets/img/legazpi_5.jpg" alt="Image 5" class="carousel-image">
-               <img src="assets/img/legazpi_6.jpg" alt="Image 5" class="carousel-image">
-
-   
+               <img src="assets/img/legazpi_1.jpg" alt="Image 5" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/legazpi_2.jpg" alt="Image 5" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/legazpi_3.jpg" alt="Image 5" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/legazpi_4.jpg" alt="Image 5" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/legazpi_5.jpg" alt="Image 5" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/legazpi_6.jpg" alt="Image 5" class="carousel-image w3-animate-opacity">
+                  <!-- Close button -->
+                  <button class="carousel-button close-button">×</button>
+                     
                <div class="mini-nav">
                   <div class="mini-image" onclick="changeImage(0, this)"><img src="assets/img/legazpi_1.jpg" alt="Mini Image 1"></div>
                   <div class="mini-image" onclick="changeImage(1, this)"><img src="assets/img/legazpi_2.jpg" alt="Mini Image 2"></div>
@@ -1471,8 +1495,6 @@
 
                <div class="carousel-nav">
                   <button class="carousel-button prev-button">‹</button>
-                  <!-- Close button -->
-                  <button class="carousel-button close-button">×</button>
                   <button class="carousel-button next-button">›</button>
                </div>
             </div>
@@ -1481,10 +1503,11 @@
             
          <div class="carousel" id="carousel6">
             <div class="carousel-inner">
-               <img src="assets/img/DICT_1.jpg" alt="Image 6" class="carousel-image">
-               <img src="assets/img/DICT_2.jpg" alt="Image 6" class="carousel-image">
-               <img src="assets/img/DICT_3.jpg" alt="Image 6" class="carousel-image">
-
+               <img src="assets/img/DICT_1.jpg" alt="Image 6" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/DICT_2.jpg" alt="Image 6" class="carousel-image w3-animate-opacity">
+               <img src="assets/img/DICT_3.jpg" alt="Image 6" class="carousel-image w3-animate-opacity">
+               <!-- Close button -->
+               <button class="carousel-button close-button">×</button>
                
                <div class="mini-nav">
                   <div class="mini-image" onclick="changeImage(0, this)"><img src="assets/img/DICT_1.jpg" alt="Mini Image 1"></div>
@@ -1494,8 +1517,6 @@
 
                <div class="carousel-nav">
                   <button class="carousel-button prev-button">‹</button>
-                  <!-- Close button -->
-                  <button class="carousel-button close-button">×</button>
                   <button class="carousel-button next-button">›</button>
                </div>
             </div>
