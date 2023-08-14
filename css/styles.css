@@ -9911,7 +9911,21 @@ div.desc {
   cursor: pointer;
   
 }
-
+@media (max-width: 390px) {
+  .close-button {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    width: 45px;
+    height: 42px;
+    background-color: transparent;
+    font-size: 46px;
+    color: white;
+    cursor: pointer;
+    background: rgb(0 0 0 / 45%);
+    border-radius: 50%;
+  }
+}
 
 /*Responsive styles for mobile devices */
 @media (max-width: 767px) {
@@ -9927,8 +9941,8 @@ div.desc {
     position: absolute;
     top: 0px;
     right: 15px;
-    width: 45px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
     background-color: transparent;
     font-size: 46px;
     color: white;
@@ -9963,10 +9977,10 @@ div.desc {
   }
 
   .close-button {
-    position: absolute;
-    top: 0px;
-    right: 7px;
-      width: 70px; /* Adjust the width to your desired size */
+  position: absolute;
+  top: 0px;
+  right: 7px;
+  width: 70px; /* Adjust the width to your desired size */
   height: 70px; /* Should match the width for a perfect circle */
   background-color: transparent;
   font-size: 40px; /* Adjust font size as needed */
@@ -10051,6 +10065,7 @@ div.desc {
     width: 100%; /* Full width for mobile devices */
   }
   .overlay-label {
+    font-size: 0.98rem; 
     white-space: normal; /* Allow text to wrap */
     max-height: 2.5em; /* Set a maximum height for two lines */
     line-height: 1.25em; /* Line height for two lines */
@@ -10062,7 +10077,7 @@ div.desc {
     width: 100%;
   }
   .overlay-label {
-    /* font-size: 1.25rem; */
+    font-size: 0.98rem; 
     padding: 1px; /* Added padding for better styling */
     margin-top: -100px; /* Pull caption up into image. */
   }
