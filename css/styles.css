@@ -9193,6 +9193,7 @@ img {
   transition: 1s ease;
   }
 
+  
   /* NFT CHARACTER NEW VERSION*/
 
   .nft_bottom{
@@ -9900,19 +9901,32 @@ div.desc {
   border-radius: 7px; /* Rounded corners */
 }
 
+
 .close-button {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 500px;
   background-color: transparent;
-  border: none;
-  font-size: 70px;
   color: white;
   cursor: pointer;
+  font-size: 50px;
 }
 
-
-
+@media (max-width: 390px) {
+  .close-button {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    width: 45px;
+    height: 42px;
+    background-color: transparent;
+    font-size: 46px;
+    color: white;
+    cursor: pointer;
+    background: rgb(0 0 0 / 45%);
+    border-radius: 50%;
+  }
+}
 
 /*Responsive styles for mobile devices */
 @media (max-width: 767px) {
@@ -9924,13 +9938,18 @@ div.desc {
     font-size: 30px; 
   }
   
-  .close-button {
-    position: absolute;
-    top: 0px;
-    right: 15px;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
+.close-button {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  width: 50px;
+  height: 53px;
+  background-color: transparent;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  background: rgb(0 0 0 / 45%);
+  border-radius: 50%;
 }
 
 .prev-button {
@@ -9959,18 +9978,25 @@ div.desc {
   }
 
   .close-button {
-    position: absolute;
-    top: 0px;
-    right: 7px;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 7px;
+  width: 70px; /* Adjust the width to your desired size */
+  height: 70px; /* Should match the width for a perfect circle */
+  background-color: transparent;
+  font-size: 40px; /* Adjust font size as needed */
+  color: white;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 50%;
 }
 .carousel-image {
   max-width: 90%;
   max-height: 90%;
 }
-  
+.next-button {
+  margin-right: 18px;
+}
 }
 
 
@@ -10040,6 +10066,7 @@ div.desc {
     width: 100%; /* Full width for mobile devices */
   }
   .overlay-label {
+    font-size: 0.98rem; 
     white-space: normal; /* Allow text to wrap */
     max-height: 2.5em; /* Set a maximum height for two lines */
     line-height: 1.25em; /* Line height for two lines */
@@ -10051,8 +10078,19 @@ div.desc {
     width: 100%;
   }
   .overlay-label {
-    /* font-size: 1.25rem; */
+    font-size: 0.98rem; 
     padding: 1px; /* Added padding for better styling */
     margin-top: -100px; /* Pull caption up into image. */
   }
 }
+
+.zoom_in img{
+  transition: 1s ease;
+  }
+  
+  .zoom_in img:hover{
+  -webkit-transform: scale(1.025);
+  -ms-transform: scale(1.025);
+  transform: scale(1.025);
+  transition: 1s ease;
+  }
