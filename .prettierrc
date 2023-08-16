@@ -1,0 +1,18 @@
+{
+  "printWidth": 90,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": "*.tsx",
+      "options": {
+        "printWidth": 90,
+        "tabWidth": 4
+      }
+    }
+  ]
+}
