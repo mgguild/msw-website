@@ -10027,6 +10027,25 @@ div.desc {
   opacity: 1;
 }
 
+.mini-nav-container {
+  display: flex;
+  /* Other styling properties */
+}
+
+/* Apply styles for mobile view */
+
+@media screen and (max-width: 768px) {
+  .mini-nav-container {
+      display: block;
+      /* Adjust other styling properties for mobile view */
+  }
+
+  .mini-image {
+      width: 100%; /* Make images occupy full width */
+      /* Other styling properties for mobile view */
+  }
+}
+
 /* Overlay CSS */
 
 /* The label's container is visible by default. */
