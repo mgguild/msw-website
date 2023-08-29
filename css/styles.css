@@ -6207,6 +6207,7 @@ h3 {
   padding-bottom: 0.02rem;
   font-family: 'Alphakind', cursive;
   font-weight: 100;
+  font-size: 1rem;
  }
   
   #mainNav .navbar-brand {
@@ -6222,7 +6223,7 @@ h3 {
       #mainNav .navbar-nav li.nav-item a.nav-link.active {
         color: #5bc0de; }
   #mainNav .navbar-toggler {
-    font-size: 90%;
+    font-size: 80%;
     padding: 0.5rem; }
 
 
@@ -10135,3 +10136,10 @@ div.desc {
   transform: scale(1.025);
   transition: 1s ease;
   }
+
+  .partners-img{
+    width: 155px;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+  
