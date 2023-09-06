@@ -7116,6 +7116,16 @@ h3 {
       margin-bottom: 2rem;
       font-size: 85%;
     }
+
+    @media (max-width: 768px) {
+      .privacy-terms-text{
+        margin-top: 1rem;
+      }
+
+      .privacy-text{
+        margin-top: 0.5rem;
+      }
+    }
   
   
   
@@ -10143,3 +10153,10 @@ div.desc {
     padding-bottom: 30px;
   }
   
+
+  /* Hide the carousel on non-mobile devices */
+  @media (min-width: 768px) {
+    .mobile-carousel {
+        display: none;
+    }
+}
