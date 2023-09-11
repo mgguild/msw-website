@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { PlayFab, PlayFabClient } from 'playfab-sdk';
+import { PlayFab, PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
 import { ConnectKitButton } from 'connectkit';
+import { useAccount, useSignMessage } from 'wagmi';
+import { Triangle } from 'react-loader-spinner';
+import { marginTop } from 'styled-system';
+import { recoverMessageAddress } from 'viem';
 
 const style = {
     position: 'relative',
@@ -71,10 +75,6 @@ const Col = styled.div`
     border-radius: 0 0 10px 10px;
     justify-content: start;
     text-align: start;
-
-    div:last-of-type {
-        margin-top: auto;
-    }
 `;
 
 const Button = styled.button<{ padding?: any; borderRadius?: any }>`
@@ -103,12 +103,87 @@ const Field = styled.div`
 
 export default function LoginRegister() {
     const user = usePlayfab((state: any) => state.user);
+    const userTags = usePlayfab((state: any) => state.userTags);
+    const userData = usePlayfab((state: any) => state.userData);
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
+
     const [open, setOpen] = useState(false);
+    const [binding, setBinding] = useState(false);
+    const [_userData, setUserData] = useState<null | any>(null);
+    const [_userTags, setUserTags] = useState<string[]>([]);
+    const { address, isConnecting, isDisconnected, isConnected } = useAccount();
+    const [recoveredAddress, setRecoveredAddress] = useState<string>();
+    const {
+        data: signMessageData,
+        error,
+        isLoading,
+        signMessage,
+        variables,
+    } = useSignMessage();
 
     const handleLogout = () => {
         setUserInfo(null);
         setOpen(false);
+    };
+
+    useEffect(() => {
+        setUserTags(userTags);
+        setUserData(userData);
+
+        console.log(`userTags: ${_userTags}`);
+        console.log(`userData: ${userData}`);
+    }, [userTags, userData]);
+
+    useEffect(() => {
+        (async () => {
+            if (variables?.message && signMessageData) {
+                const recoveredAddress = await recoverMessageAddress({
+                    message: variables?.message,
+                    signature: signMessageData,
+                });
+                setRecoveredAddress(recoveredAddress);
+                setBinding(true);
+                RunBindingWallet();
+            }
+        })();
+    }, [signMessageData, variables?.message]);
+
+    const handleBindWallet = () => {
+        signMessage({
+            message: 'Binding your wallet address to MSW',
+        });
+    };
+
+    const RunBindingWallet = () => {
+        PlayFabCloudScript.ExecuteFunction(
+            {
+                FunctionName: 'CheckWalletAddress',
+                FunctionParameter: {
+                    wallet: address,
+                    playFabID: user.PlayFabId,
+                },
+            },
+            (error, result) => {
+                setBinding(false);
+
+                if (error) {
+                    toast(error.errorMessage, { type: 'error' });
+                    return;
+                }
+
+                if (result.data.FunctionResult) {
+                    toast('Wallet binding success!', { type: 'success' });
+                    _userTags.push('title.D4F8F.BoundWallet');
+
+                    var obj: any = {};
+                    obj['WalletAddress'] = {};
+                    obj['WalletAddress'].Value = address;
+                    setUserData(obj);
+                } else {
+                    toast('Error: Wallet address already in use!', { type: 'error' });
+                }
+            },
+        );
     };
 
     return (
@@ -132,6 +207,78 @@ export default function LoginRegister() {
                                     <span>Email:</span>
                                     <Field>{user.PrivateInfo.Email}</Field>
                                 </Row>
+
+                                {_userTags.includes('title.D4F8F.BoundWallet') ? (
+                                    <Row>
+                                        <span>Bound Wallet Address</span>
+                                        <Field>
+                                            {_userData
+                                                ? _userData['WalletAddress'].Value
+                                                : ''}
+                                        </Field>
+                                    </Row>
+                                ) : (
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            flexFlow: 'column',
+                                            alignItems: 'center',
+                                            gap: '1rem',
+                                        }}
+                                    >
+                                        <div>
+                                            <ConnectKitButton />
+                                        </div>
+
+                                        {isConnected ? (
+                                            <div
+                                                style={{
+                                                    margin: '2rem 0',
+                                                    display: 'flex',
+                                                    flexFlow: 'column',
+                                                    alignItems: 'center',
+                                                    gap: '1rem',
+                                                }}
+                                            >
+                                                {binding ? (
+                                                    <>
+                                                        <Triangle
+                                                            height="80"
+                                                            width="80"
+                                                            color="#4fa94d"
+                                                            ariaLabel="triangle-loading"
+                                                            wrapperStyle={{}}
+                                                            visible={true}
+                                                        />
+                                                        <span
+                                                            style={{ fontSize: '1rem' }}
+                                                        >
+                                                            Binding your wallet...
+                                                        </span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <Button
+                                                            onClick={() =>
+                                                                handleBindWallet()
+                                                            }
+                                                        >
+                                                            Bind wallet
+                                                        </Button>
+                                                        <span
+                                                            style={{ fontSize: '1rem' }}
+                                                        >
+                                                            Bind your wallet to your
+                                                            account to play with your NFTs
+                                                        </span>
+                                                    </>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </div>
+                                )}
                                 <div
                                     style={{ display: 'flex', justifyContent: 'center' }}
                                 >
@@ -154,7 +301,7 @@ export default function LoginRegister() {
                     setOpen(true);
                 }}
             >
-                {user.Username}
+                {user.TitleInfo.DisplayName ?? user.Username}
             </Button>
         </>
     );

@@ -6,6 +6,7 @@ import { PlayFab, PlayFabClient } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
+import { flare } from 'wagmi/dist/chains';
 
 const style = {
     position: 'relative',
@@ -96,6 +97,8 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
 
 export default function LoginRegister() {
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
+    const setUserTags = usePlayfab((state: any) => state.setUserTags);
+    const setUserData = usePlayfab((state: any) => state.setUserData);
     const user = usePlayfab((state: any) => state.user);
 
     const [open, setOpen] = useState(false);
@@ -104,6 +107,8 @@ export default function LoginRegister() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
+
+    const [carouselItem, setCarouselItem] = useState(0);
 
     const [login, setLogin] = useState('');
     const [loginPass, setLoginPass] = useState('');
@@ -134,12 +139,50 @@ export default function LoginRegister() {
                     }
 
                     toast('Register successful!', { type: 'success' });
+                    setCarouselItem(0);
                     handleClose();
                 },
             );
         } else {
             toast('Passwords do not match!', { type: 'warning' });
         }
+    };
+
+    const FetchTags = (playfabId: string) => {
+        PlayFabClient.GetPlayerTags(
+            {
+                PlayFabId: playfabId,
+            },
+            (error, result) => {
+                console.log('BRRRRRUH');
+
+                if (error) {
+                    toast(error.errorMessage, { type: 'error' });
+                    return;
+                }
+
+                console.log(result);
+                setUserTags(result.data.Tags);
+
+                if (result.data.Tags.includes('title.D4F8F.BoundWallet')) {
+                    PlayFabClient.GetUserData(
+                        {
+                            PlayFabId: playfabId,
+                            Keys: ['WalletAddress'],
+                        },
+                        (error, result) => {
+                            if (error) {
+                                toast(error.errorMessage, { type: 'error' });
+                                return;
+                            }
+
+                            console.log(result);
+                            setUserData(result.data.Data);
+                        },
+                    );
+                }
+            },
+        );
     };
 
     const handleLoginSubmit = (e: any) => {
@@ -176,7 +219,10 @@ export default function LoginRegister() {
 
                     setTimeout(() => {
                         console.log(user);
-                    }, 200);
+                        FetchTags(
+                            result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
+                        );
+                    }, 100);
                 },
             );
         } else {
@@ -208,7 +254,10 @@ export default function LoginRegister() {
 
                     setTimeout(() => {
                         console.log(user);
-                    }, 200);
+                        FetchTags(
+                            result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
+                        );
+                    }, 100);
                 },
             );
         }
@@ -224,7 +273,13 @@ export default function LoginRegister() {
                 <Box sx={style}>
                     <CenterFrame>
                         <Container>
-                            <Carousel showThumbs={false}>
+                            <Carousel
+                                showThumbs={false}
+                                selectedItem={carouselItem}
+                                showArrows={false}
+                                showIndicators={false}
+                                showStatus={false}
+                            >
                                 <CarouselItem>
                                     <h4>LOGIN ACCOUNT</h4>
                                     <Col onSubmit={e => handleLoginSubmit(e)}>
@@ -250,7 +305,13 @@ export default function LoginRegister() {
                                                 required
                                             />
                                         </Row>
-                                        <div style={{ display: 'flex', gap: '2rem' }}>
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                gap: '2rem',
+                                                marginTop: '1rem',
+                                            }}
+                                        >
                                             <Button
                                                 borderRadius="8px"
                                                 padding="0.8rem 1rem"
@@ -265,6 +326,36 @@ export default function LoginRegister() {
                                                 onClick={e => handleClose()}
                                             >
                                                 Cancel
+                                            </Button>
+                                        </div>
+                                        <div>
+                                            <a
+                                                style={{
+                                                    cursor: 'pointer',
+                                                    fontSize: '1rem',
+                                                }}
+                                            >
+                                                Forgot Password?
+                                            </a>
+                                        </div>
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                flexFlow: 'column',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                            }}
+                                        >
+                                            <span style={{ fontSize: '1rem' }}>
+                                                Not yet registered?
+                                            </span>
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="button"
+                                                onClick={e => setCarouselItem(1)}
+                                            >
+                                                Register
                                             </Button>
                                         </div>
                                     </Col>
@@ -333,6 +424,26 @@ export default function LoginRegister() {
                                                 onClick={e => handleClose()}
                                             >
                                                 Cancel
+                                            </Button>
+                                        </div>
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                flexFlow: 'column',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                            }}
+                                        >
+                                            <span style={{ fontSize: '1rem' }}>
+                                                Already registered?
+                                            </span>
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="button"
+                                                onClick={e => setCarouselItem(0)}
+                                            >
+                                                Login
                                             </Button>
                                         </div>
                                     </Col>

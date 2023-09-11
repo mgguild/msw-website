@@ -17,7 +17,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { WagmiConfig, createConfig } from 'wagmi';
+import { WagmiConfig, createConfig, configureChains } from 'wagmi';
+import { polygon } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+import { InjectedConnector } from 'wagmi/connectors/injected';
 import { ConnectKitProvider, getDefaultConfig } from 'connectkit';
 import { ToastContainer, toast } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
@@ -68,20 +72,32 @@ const MobileHeader = styled.div`
     }
 `;
 
-const config = createConfig(
-    getDefaultConfig({
-        // TODO - TRANSFER TO .ENV FILE
-        // Required API Keys
-        alchemyId: process.env.REACT_APP_ALCHEMY_ID, // or infuraId
-        walletConnectProjectId: process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '',
-
-        // Required
-        appName: 'MetaSaga Warriors',
-
-        // Optional
-        appDescription: 'Your App Description',
-    }),
+const { chains, publicClient } = configureChains(
+    [polygon],
+    [
+        alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_ID ?? '' }),
+        publicProvider(),
+    ],
 );
+
+// const config = createConfig(
+//     getDefaultConfig({
+//         // Required API Keys
+//         alchemyId: process.env.REACT_APP_ALCHEMY_ID, // or infuraId
+//         walletConnectProjectId: process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '',
+
+//         // Required
+//         appName: 'MetaSaga Warriors',
+
+//         // Optional
+//         appDescription: 'Your App Description',
+//     }),
+// );
+
+const config = createConfig({
+    connectors: [new InjectedConnector({ chains })],
+    publicClient,
+});
 
 function App() {
     const [tab, setTab] = useState(0);

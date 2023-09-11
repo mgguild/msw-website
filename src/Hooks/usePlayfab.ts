@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 const usePlayfab = create(set => ({
   initialized: false,
   user: null,
+  userTags: [],
+  userData: null,
   start: async () => {
     PlayFab.settings.titleId = process.env.REACT_APP_PLAYFAB_TITLE_ID ?? '';
     PlayFab.settings.developerSecretKey = process.env.REACT_APP_PLAYFAB_DEV_KEY ?? '';
@@ -45,6 +47,14 @@ const usePlayfab = create(set => ({
   setUserInfo: (userInfo: any) => {
     console.log(userInfo);
     set({ user: userInfo });
+  },
+  setUserTags: (tags: string[]) => {
+    console.log(tags);
+    set({ userTags: tags });
+  },
+  setUserData: (data: any) => {
+    console.log(data);
+    set({ userData: data });
   },
 }));
 

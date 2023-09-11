@@ -36,6 +36,7 @@
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-loader-spinner": "^5.4.5",
     "react-responsive-carousel": "^3.2.23",
     "react-scripts": "5.0.1",
     "react-scroll-trigger": "^0.6.14",
