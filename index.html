@@ -108,24 +108,41 @@
          -->
 
          
-      <div class="hero" id="home">
+      <div class="hero bg-homepage" id="home">
          
-         <video class="video-bg" autoplay muted loop playsinline controls="true" disablePictureInPicture="true">
+         <!-- <video class="video-bg" autoplay muted loop playsinline controls="true" disablePictureInPicture="true">
             <source src="vid/Animated_MSW_Lobby.webm" type="video/webm">
             <source src="vid/Animated_MSW_Lobby.mp4" type="video/mp4">
-         </video>
+         </video> -->
           
          <div class="container d-flex align-items-center flex-column">
             <!--MSW Home Logo-->
             <img class="home-avatar" src="assets/img/MSW_Logo2.png" alt="msw_logo"> 
-
+            <br><br>
+            <div class="container">
+               <div class="countdown-text gradient-text">Countdown to Official Launch!</div>
+               <br><br>
+                 <div id="countdown">
+                   <ul>
+                     <li><span class="days"></span>Days</li>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;
+                     <li><span class="hours"></span>Hours</li>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;
+                     <li><span class="minutes"></span>Minutes</li>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;
+                     <li><span class="seconds"></span>Seconds</li>
+                   </ul>
+                 </div>
+             </div>
+             <br>
             <!-- Youtube Button trigger modal -->
-            <div class="yt-trailer">
+            <!-- <div class="yt-trailer">
                <button name="play-btn" alt="..." type="button" aria-label="youtube-trailer" style="padding:0px; margin-bottom:0px;line-height:0px;border:0px!important;background-color:transparent!important;" 
                   class="btn btn-primary video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/ghc75mbiip4" data-target="#myModal">
                <a class="play-btn" href="#"></a>
                </button>
-            </div>
+               <div class="yt-text">Watch Trailer</div>
+            </div> -->
             <!-- Youtube Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog" role="document">
@@ -170,6 +187,8 @@
                <div class="col-lg-2">
                   <img class="btn-appstore" src="assets/img/coming-soon-png_47446.png"> 
                </div>
+
+            
             </div>
 
             <div class="d-none d-xl-block ">
@@ -185,8 +204,10 @@
                <br><br><br>
             </div>
            
+           
 
          </div>
+         
          
       </div>
 
@@ -362,11 +383,6 @@
                   </div>
                </div>
 
-             
-
-
-
-           
          
       </div><!--End of Lore-->
 
@@ -406,12 +422,12 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3">
                                  <div class="row_char_img">
-                                 <img src="assets/img/wizardcard1.png" class="filter-shadow  " alt="...">
-                                 <img src="assets/img/legendary_wizard.png" class="filter-shadow " alt="...">
+                                 <img src="assets/img/wizardcard1.png" class="filter-shadow image-entrance " alt="...">
+                                 <img src="assets/img/legendary_wizard.png" class="filter-shadow diagonal-animation" alt="...">
+                                 </div>
                               </div>
-                              </div>
-                              <div class="col-lg-4 center-text">
-                                 <H1 class="animate__animated animate__fadeInDown">Wizard</H1>
+                              <div class="col-lg-4 center-text ">
+                                 <H1 class="animate__animated animate__fadeInDown ">Wizard</H1>
                                  <p class="animate__animated animate__fadeInUp">The Wizard focuses on the mystical arcane, years of studies grant its spell more firepower. Having a wizard in your party will give you non-stop blabber of the arcane and also more damage to your spells.
                                  </p>
                               </div>
@@ -463,8 +479,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/musketeercard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/Legendary_Musketeer.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/musketeercard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/Legendary_Musketeer.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Musketeer</H1>
@@ -518,8 +534,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/knightcard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_knight.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/knightcard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_knight.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Knight</H1>
@@ -573,8 +589,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/archercard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_archer.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/archercard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_archer.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Archer</H1>
@@ -628,8 +644,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/plaguedoctorcard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_plaguedoctor.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/plaguedoctorcard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_plaguedoctor.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Plague Doctor</H1>
@@ -683,8 +699,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/berserkercard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_Berserker.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/berserkercard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_Berserker.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Berserker</H1>
@@ -739,8 +755,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/engineercard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_Engineer.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/engineercard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_Engineer.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Engineer</H1>
@@ -795,8 +811,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/vicarcard1.png" class=" filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_Vicar.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/vicarcard1.png" class=" filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_Vicar.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Vicar</H1>
@@ -851,8 +867,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/artillerycard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_Artillery.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/artillerycard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_Artillery.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Artillery</H1>
@@ -907,8 +923,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/elementalcard1.png" class=" filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_Elemental.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/elementalcard1.png" class=" filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_Elemental.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Elemental</H1>
@@ -963,8 +979,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/magitekcard1.png" class="filter-shadow" alt="...">
-                                 <img src="assets/img/legendary_Magitek.png" class=" filter-shadow" alt="...">
+                                 <img src="assets/img/magitekcard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_Magitek.png" class=" filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Magitek</H1>
@@ -1020,8 +1036,8 @@
                            <div class="row_char">
                               <div class="col-lg-3 col-lg-3 ">
                                  <div class="row_char_img">
-                                 <img src="assets/img/darkknightcard1.png" class="filter-shadow " alt="...">
-                                 <img src="assets/img/legendary_Darkknight.png" class="filter-shadow" alt="...">
+                                 <img src="assets/img/darkknightcard1.png" class="filter-shadow image-entrance" alt="...">
+                                 <img src="assets/img/legendary_Darkknight.png" class="filter-shadow diagonal-animation" alt="...">
                               </div>
                               </div>
                               <div class="col-lg-4 center-text"><H1 class="animate__animated animate__fadeInDown">Dark Knight</H1>
@@ -2570,29 +2586,35 @@
       <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
       <script src="js/slider.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
       <script>
          // Wait for the DOM to be ready
             document.addEventListener("DOMContentLoaded", function() {
             // Get all carousel item IDs
             var carouselItemIds = ['carl-1', 'carl-2', 'carl-3', 'carl-4', 'carl-5', 'carl-6', 'carl-7', 'carl-8', 'carl-9', 'carl-10', 'carl-11', 'carl-12'];
 
-            // Loop through each carousel item ID
-            carouselItemIds.forEach(function(item) {
-               // Select the heading and paragraph elements within each carousel item
-               var h1Element = document.querySelector("#" + item + " + .carl-item h1");
-               var pElement = document.querySelector("#" + item + " + .carl-item p");
-
-               // Add animation classes when the carousel slide is activated
-               document.addEventListener("click", function(event) {
-                  if (event.target.id === item) {
+            carouselItemIds.forEach(function (item) {
+            // Select the heading and paragraph elements within each carousel item
+            var h1Element = document.querySelector("#" + item + " + .carl-item h1");
+            var pElement = document.querySelector("#" + item + " + .carl-item p");
+            var imgElement = document.querySelector("#" + item + " + .carl-item img");
+            
+            // Add animation classes when the carousel slide is activated
+            document.addEventListener("click", function (event) {
+               if (event.target.id === item) {
+                  console.log("Clicked on item: " + item);
                   h1Element.classList.add("animate__fadeInDown");
                   pElement.classList.add("animate__fadeInUp");
-                  } else {
+                  // imgElement.classList.add("image-entrance");
+               } else {
                   h1Element.classList.remove("animate__fadeInDown");
                   pElement.classList.remove("animate__fadeInUp");
-                  }
-               });
+                  // imgElement.classList.remove( "image-entrance", "diagonal-animation");
+               }
             });
+            });
+
             });
        </script>
    </body>
