@@ -3449,7 +3449,7 @@ background: radial-gradient(circle, rgba(76,165,179,1) 4%, rgba(43,22,79,1) 40%)
     background-image: radial-gradient(circle, #2b164f, #0f0015, #2b164f );
   }  
 .bg-homepage {
-   background-image: url('../assets/img/sample_blur.png');
+   background-image: url('../assets/img/voidlobbyscreenfinal1.png');
    background-size: cover;
    background-repeat: no-repeat;
    background-position-x: center;
@@ -6207,7 +6207,7 @@ h3 {
   padding-bottom: 0.02rem;
   font-family: 'Alphakind', cursive;
   font-weight: 100;
-  font-size: 1rem;
+  font-size: 0.9rem;
  }
   
   #mainNav .navbar-brand {
@@ -7116,6 +7116,16 @@ h3 {
       margin-bottom: 2rem;
       font-size: 85%;
     }
+
+    @media (max-width: 768px) {
+      .privacy-terms-text{
+        margin-top: 1rem;
+      }
+
+      .privacy-text{
+        margin-top: 0.5rem;
+      }
+    }
   
   
   
@@ -7216,7 +7226,7 @@ h3 {
       width: 30rem; }
   
   .hero .home-avatar {
-      width: 30rem; }
+      width: 20rem; }
   
   @media (min-width: 200px) {
     .home {
@@ -9176,7 +9186,8 @@ img {
     position: relative;
     overflow: hidden;
     min-height: 90vh;
-    background: url(../assets/img/252882728-65be9865-bb92-4679-88e5-5101f0b8d65f.png) ;
+    /* background: url(../assets/img/252882728-65be9865-bb92-4679-88e5-5101f0b8d65f.png) ; */
+    background: url(../assets/img/voidlobbyscreenfinal1.png);
     background-position: center;
     width: 100%;
     padding: 0px;
@@ -9303,33 +9314,6 @@ img {
       transform: none;
     }
   }
-
-  .slide-from-top-left {
-    animation: slideFromTopLeft 1s ease forwards;
-  }
-
-  .slide-from-bottom-right {
-    animation: slideFromBottomRight 1s ease forwards;
-  }
-
-  @keyframes slideFromTopLeft {
-    from {
-      transform: translate(-50%, -50%);
-    }
-    to {
-      transform: translate(0, 0);
-    }
-  }
-
-  @keyframes slideFromBottomRight {
-    from {
-      transform: translate(50%, 50%);
-    }
-    to {
-      transform: translate(0, 0);
-    }
-  }
-
 
 
 
@@ -10143,3 +10127,136 @@ div.desc {
     padding-bottom: 30px;
   }
   
+
+  /* Hide the carousel on non-mobile devices */
+  @media (min-width: 768px) {
+    .mobile-carousel {
+        display: none;
+    }
+}
+
+.diagonal-animation {
+  animation-name: diagonal;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes diagonal {
+  from {
+    opacity: 0;
+    transform: translateY(-20%) translateX(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Define the animation keyframes for entrance */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-5px); /* Adjust the initial position */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0); /* Adjust the final position */
+  }
+}
+
+/* Apply the entrance animation to the images */
+.image-entrance {
+  opacity: 0; /* Start with a transparent image */
+  animation: fadeIn 0.4s ease forwards; /* Adjust the duration and easing as needed */
+  animation-delay: 0.1s; /* Delay the animation if desired */
+}
+
+      /* Add custom CSS styles here */
+      .timer-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .timer {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+
+  
+    
+    .countdown-text{
+      color: #FFD524;
+      font-size: 50px;
+      text-shadow: 3px 3px #55185D;
+     }
+
+    
+    #countdown ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    #countdown ul li {
+      display: inline-block; /* Display horizontally */
+      margin-right: 20px; /* Adjust spacing between elements */
+      font-size: 24px; /* Customize font size */
+      color: #FFD524;
+      text-shadow: 2px 2px #55185D;
+    }
+    
+    #countdown ul li:last-child {
+      margin-right: 0; /* Remove margin from the last item */
+    }
+    
+    .days, .hours, .minutes,
+    .seconds{
+      color: #FFFFFF;
+      font-size: 120px;
+      text-shadow: 3px 3px #55185D;
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+   
+    .yt-text{
+      font-size: 25px;
+      color: #FFD524;
+      text-shadow: 3px 3px #55185D;
+    }
+
+    @media (max-width: 768px) {
+      .countdown {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .countdown li {
+        margin: 0px 0; /* Adjust the spacing for mobile view */
+      }
+
+      
+      #countdown ul {
+      list-style: none;
+      margin-left: -60px;
+      margin-right: -50px;
+      }
+
+      .days, .hours, .minutes,
+      .seconds{ 
+        color: #FFFFFF;
+        font-size: 40px;
+        text-shadow: 3px 3px #55185D;
+      }
+      .countdown-text{
+        color: #FFD524;
+        font-size: 38px;
+        text-shadow: 3px 3px #55185D;
+       }
+     
+       #countdown ul li {
+        margin-right: 0px; /* Adjust spacing between elements */
+        font-size: 20px; /* Customize font size */
+     
+      }
+      
+    }
