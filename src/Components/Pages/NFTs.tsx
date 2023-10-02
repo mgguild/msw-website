@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { SectHdr, TitleCard, SectCont } from '../Styled';
 import classes from '../Data/Classes';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 
 const Content = styled.div`
     display: flex;
@@ -27,11 +27,35 @@ const RowChar = styled.div`
     }
 `;
 
-const NFTClasses = styled.div`
-    margin: 3rem 20rem;
+const ColumnChar = styled.div`
+    display: flex;
+    position: relative;
+    flex-flow: column nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    gap: 1rem;
+    justify-content: center;
+`;
+
+const NFTClasses = styled.div<{ isScreen575?: boolean }>`
+    margin-top: 3rem;
+    max-width: 65rem;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-flow: row wrap;
     gap: 1rem;
+
+    @media (max-width: 575px) {
+        max-height: 10rem;
+        flex-flow: row wrap;
+        overflow: scroll;
+        max-width: 100%;
+    }
 `;
 
 const NFTClass = styled.div<{ img: string }>`
@@ -89,8 +113,20 @@ const StatRate: React.FC<{ count: number }> = ({ count }) => {
     );
 };
 
-export default function App() {
+const App: React.FC<{ isScreen800: boolean, isScreen550: boolean }> = ({
+    isScreen800,
+    isScreen550,
+}) => {
     const [selectedClass, setSelectedClass] = useState(0);
+    const [isScreen575, setIsScreen575] = useState(false);
+
+    const handleResize = () => {
+        setIsScreen575(window.innerWidth < 650);
+    };
+
+    useMemo(() => {
+        handleResize();
+    }, []);
 
     return (
         <>
@@ -103,72 +139,148 @@ export default function App() {
                 </SectHdr>
                 <SectCont margin="auto">
                     <Content>
-                        <RowChar>
-                            <div
-                                style={{
-                                    display: 'grid',
-                                    gridTemplateColumns: '1fr 1fr',
-                                    flex: '0 0 25%',
-                                    maxWidth: '25%',
-                                }}
-                            >
-                                <img
-                                    src={require(`../../Assets/img/cards/${classes[selectedClass].images.stock}`)}
-                                    className="filter-shadow  "
-                                    alt="..."
-                                />
-                                <img
-                                    src={require(`../../Assets/img/cards/${classes[selectedClass].images.legendary}`)}
-                                    className="filter-shadow "
-                                    alt="..."
-                                />
-                            </div>
-                            <div
-                                style={{
-                                    flex: '0 0 33.3333333333%',
-                                    maxWidth: '33.3333333333%',
-                                }}
-                            >
-                                {
-                                    <div key={selectedClass}>
-                                        <h1 className="animate__animated animate__fadeInDown">
-                                            {classes[selectedClass].name}
-                                        </h1>
-                                        <br />
-                                        <p
-                                            className="animate__animated animate__fadeInUp"
-                                            style={{ textAlign: 'justify' }}
-                                        >
-                                            {classes[selectedClass].description}
-                                        </p>
+                        { isScreen800 ?
+
+                            <ColumnChar>
+                                <div>
+                                    {
+                                        <div key={selectedClass}>
+                                            <h1 className="animate__animated animate__fadeInDown">
+                                                {classes[selectedClass].name}
+                                            </h1>
+                                            <br />
+                                            <p
+                                                className="animate__animated animate__fadeInUp"
+                                                style={{ textAlign: 'justify' }}
+                                            >
+                                                {classes[selectedClass].description}
+                                            </p>
+                                        </div>
+                                    }
+                                </div>
+                                <div
+                                    style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: '1fr 1fr',
+                                    }}
+                                >
+                                    <img
+                                        src={require(`../../Assets/img/cards/${classes[selectedClass].images.stock}`)}
+                                        className="filter-shadow  "
+                                        alt="..."
+                                    />
+                                    <img
+                                        src={require(`../../Assets/img/cards/${classes[selectedClass].images.legendary}`)}
+                                        className="filter-shadow "
+                                        alt="..."
+                                    />
+                                </div>
+                                <div
+                                    key={selectedClass}
+                                    style={{
+                                        display: 'flex',
+                                        flexFlow: 'row wrap',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        gap: '2rem'
+                                    }}
+                                >
+                                    <div>
+                                        <p style={{ margin: '0 0 0.5rem 0' }}>Physical Damage</p>
+                                        <StatRate count={classes[selectedClass].stat.dmg} />
                                     </div>
-                                }
-                            </div>
-                            <div
-                                key={selectedClass}
-                                style={{
-                                    flex: '0 0 16.6666666667%',
-                                    maxWidth: '17.6666666667%',
-                                    padding: '0%',
-                                }}
-                            >
-                                <p style={{ margin: '0 0 0.5rem 0' }}>Physical Damage</p>
-                                <StatRate count={classes[selectedClass].stat.dmg} />
-                                <br /> <br />
-                                <p style={{ margin: '0 0 0.5rem 0' }}>Attack Speed</p>
-                                <StatRate count={classes[selectedClass].stat.atkspd} />
-                                <br /> <br />
-                                <p style={{ margin: '0 0 0.5rem 0' }}>Skill Damage</p>
-                                <StatRate count={classes[selectedClass].stat.dmgSk} />
-                                <br /> <br />
-                                <p style={{ margin: '0 0 0.5rem 0' }}>Health</p>
-                                <StatRate count={classes[selectedClass].stat.hp} />
-                                <br /> <br />
-                                <p style={{ margin: '0 0 0.5rem 0' }}>Utility</p>
-                                <StatRate count={classes[selectedClass].stat.util} />
-                            </div>
-                        </RowChar>
-                        <NFTClasses className="classes">
+
+                                    <div>
+                                        <p style={{ margin: '0 0 0.5rem 0' }}>Attack Speed</p>
+                                        <StatRate count={classes[selectedClass].stat.atkspd} />
+                                    </div>
+
+                                    <div>
+                                        <p style={{ margin: '0 0 0.5rem 0' }}>Skill Damage</p>
+                                        <StatRate count={classes[selectedClass].stat.dmgSk} />
+                                    </div>
+
+                                    <div>
+                                        <p style={{ margin: '0 0 0.5rem 0' }}>Health</p>
+                                        <StatRate count={classes[selectedClass].stat.hp} />
+                                    </div>
+
+                                    <div>
+                                        <p style={{ margin: '0 0 0.5rem 0' }}>Utility</p>
+                                        <StatRate count={classes[selectedClass].stat.util} />
+                                    </div>
+                                </div>
+                            </ColumnChar>
+                            :
+                            <RowChar>
+                                <div
+                                    style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: '1fr 1fr',
+                                        flex: '0 0 25%',
+                                        maxWidth: '25%',
+                                    }}
+                                >
+                                    <img
+                                        src={require(`../../Assets/img/cards/${classes[selectedClass].images.stock}`)}
+                                        className="filter-shadow  "
+                                        alt="..."
+                                    />
+                                    <img
+                                        src={require(`../../Assets/img/cards/${classes[selectedClass].images.legendary}`)}
+                                        className="filter-shadow "
+                                        alt="..."
+                                    />
+                                </div>
+                                <div
+                                    style={{
+                                        flex: '0 0 33.3333333333%',
+                                        maxWidth: '33.3333333333%',
+                                    }}
+                                >
+                                    {
+                                        <div key={selectedClass}>
+                                            <h1 className="animate__animated animate__fadeInDown">
+                                                {classes[selectedClass].name}
+                                            </h1>
+                                            <br />
+                                            <p
+                                                className="animate__animated animate__fadeInUp"
+                                                style={{ textAlign: 'justify' }}
+                                            >
+                                                {classes[selectedClass].description}
+                                            </p>
+                                        </div>
+                                    }
+                                </div>
+                                <div
+                                    key={selectedClass}
+                                    style={{
+                                        flex: '0 0 16.6666666667%',
+                                        maxWidth: '17.6666666667%',
+                                        padding: '0%',
+                                    }}
+                                >
+                                    <p style={{ margin: '0 0 0.5rem 0' }}>Physical Damage</p>
+                                    <StatRate count={classes[selectedClass].stat.dmg} />
+                                    <br /> <br />
+                                    <p style={{ margin: '0 0 0.5rem 0' }}>Attack Speed</p>
+                                    <StatRate count={classes[selectedClass].stat.atkspd} />
+                                    <br /> <br />
+                                    <p style={{ margin: '0 0 0.5rem 0' }}>Skill Damage</p>
+                                    <StatRate count={classes[selectedClass].stat.dmgSk} />
+                                    <br /> <br />
+                                    <p style={{ margin: '0 0 0.5rem 0' }}>Health</p>
+                                    <StatRate count={classes[selectedClass].stat.hp} />
+                                    <br /> <br />
+                                    <p style={{ margin: '0 0 0.5rem 0' }}>Utility</p>
+                                    <StatRate count={classes[selectedClass].stat.util} />
+                                </div>
+                            </RowChar>
+
+                        }
+
+                        <NFTClasses className="classes" isScreen575={isScreen575} >
                             {classes.map((nft, index) => {
                                 return (
                                     <>
@@ -183,6 +295,9 @@ export default function App() {
                                             }`}
                                             img={nft.images.icon}
                                             key={index}
+                                            style={{
+                                                flexShrink: isScreen575 ? 0 : 1
+                                            }}
                                         >
                                             <img
                                                 src={require(`../../Assets/img/diggers/${nft.images.icon}`)}
@@ -198,3 +313,5 @@ export default function App() {
         </>
     );
 }
+
+export default App;

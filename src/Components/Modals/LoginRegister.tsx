@@ -280,7 +280,7 @@ export default function LoginRegister() {
                                 showIndicators={false}
                                 showStatus={false}
                             >
-                                <CarouselItem>
+                                <CarouselItem style={{width: '100%'}}>
                                     <h4>LOGIN ACCOUNT</h4>
                                     <Col onSubmit={e => handleLoginSubmit(e)}>
                                         <Row>

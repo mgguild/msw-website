@@ -2235,11 +2235,15 @@ form input {
   width: 100%;
   border-radius: 12px;
   border: none;
-  height: 68px;
   padding: 15px;
   background: #242d3b;
   color: #fff;
   transition: 0.5s;
+}
+
+.carousel-root{
+  position: relative;
+  width: 100%;
 }
 
 #mce-EMAIL {

@@ -32,7 +32,7 @@ const PlayBtn = styled.a`
     border-radius: 50%;
     position: relative;
     display: block;
-    margin: 40px 0px;
+    margin: 1.2rem 0;
     box-shadow: 0px 0px 20px 3px #fff;
     user-select: none;
     -webkit-user-drag: none;
@@ -89,14 +89,15 @@ const YtBtn = styled.button`
 
 const PlayBtns = styled.div`
     display: flex;
-    flex-wrap: nowrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
+    gap: 0rem 4rem;
 `;
 
-const GrowBtn = styled.div`
-    width: 130%;
+const GrowBtn = styled.div<{ isSmallScreen?: boolean }>`
+    max-width: 17rem;
+    width: ${({ isSmallScreen }) => (isSmallScreen ? '11rem' : '17rem')};
     height: 100%;
     margin-left: -7px;
     margin-top: 18px;
@@ -111,17 +112,6 @@ const GrowBtn = styled.div`
             transition: 1s ease;
         }
     }
-`;
-
-const Col = styled.div`
-    position: relative;
-    width: 100%;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-    flex: 0 0 16.6666666667%;
-    max-width: 17.6666666667%;
-    padding: 0%;
-    display: flex;
 `;
 
 const style = {
@@ -155,7 +145,9 @@ const FramContainer = styled.div`
     }
 `;
 
-export default function App() {
+const App: React.FC<{ isScreen550: boolean }> = ({
+    isScreen550,
+}) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -225,22 +217,19 @@ export default function App() {
                         </YtBtn>
                     </div>
                     <PlayBtns>
-                        <Col>
-                            <GrowBtn>
-                                <a
-                                    className="btn-googleplay hover-shadow"
-                                    target="_blank"
-                                    href="https://www.metagg.com/msw-webgl-build/"
-                                >
-                                    <img
-                                        className="btn-googleplay"
-                                        src={require('../../Assets/img/7a3njak3278u099fg.png')}
-                                    />
-                                </a>
-                            </GrowBtn>
-                        </Col>
-                        <Col>
-                            <GrowBtn>
+                        <GrowBtn isSmallScreen={isScreen550}>
+                            <a
+                                className="btn-googleplay hover-shadow"
+                                target="_blank"
+                                href="https://www.metagg.com/msw-webgl-build/"
+                            >
+                                <img
+                                    className="btn-googleplay"
+                                    src={require('../../Assets/img/7a3njak3278u099fg.png')}
+                                />
+                            </a>
+                        </GrowBtn>
+                        <GrowBtn isSmallScreen={isScreen550}>
                                 <a
                                     className="btn-googleplay hover-shadow"
                                     target="_blank"
@@ -251,19 +240,18 @@ export default function App() {
                                         src={require('../../Assets/img/5a902dbf7f96951c82922875.png')}
                                     />
                                 </a>
-                            </GrowBtn>
-                        </Col>
-                        <Col>
-                            <GrowBtn>
-                                <img
-                                    className="btn-googleplay"
-                                    src={require('../../Assets/img/coming-soon-png_47446.png')}
-                                />
-                            </GrowBtn>
-                        </Col>
+                        </GrowBtn>
+                        <GrowBtn isSmallScreen={isScreen550}>
+                            <img
+                                className="btn-googleplay"
+                                src={require('../../Assets/img/coming-soon-png_47446.png')}
+                            />
+                        </GrowBtn>
                     </PlayBtns>
                 </HomeCont>
             </div>
         </>
     );
 }
+
+export default App;
