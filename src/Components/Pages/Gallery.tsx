@@ -6,15 +6,45 @@ const Header = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     width: 100%;
+
+    @media (max-width: 720px) {
+        display: flex;
+        flex-flow: column wrap;
+    }
+
+    h1 {
+        font-size: '64px';
+
+        @media (max-width: 520px) {
+            font-size: 2.5rem;
+        }
+    }
 `;
 
 const Gallery = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1rem;
+
+    @media (max-width: 520px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+    }
+
+    img {
+        @media (max-width: 520px) {
+            width: 180px;
+            height: 240px;
+        }
+    }
 `;
 
-export default function App() {
+
+const App: React.FC<{ isScreen550: boolean }> = ({
+    isScreen550,
+}) => {
     return (
         <>
             <div className="page-section" id="gallery">
@@ -33,7 +63,6 @@ export default function App() {
                         <h1
                             style={{
                                 color: '#ECB602',
-                                fontSize: '64px',
                                 lineHeight: '0.9',
                             }}
                         >
@@ -78,3 +107,5 @@ export default function App() {
         </>
     );
 }
+
+export default App;

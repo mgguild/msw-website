@@ -1,5 +1,6 @@
 import './App.css';
 import { useMemo, useState, useRef, useEffect } from 'react';
+import { useSpring, animated, useSpringRef } from '@react-spring/web'
 import {
     Home,
     About,
@@ -45,31 +46,70 @@ const LogoContainer = styled.div`
     }
 `;
 
-const AppNav = styled.div`
+const LogoContainerC = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1rem;
+
+    img {
+        max-width: 5rem;
+    }
+`;
+
+const AppNav = styled.div<{ isHorz?: boolean }>`
     font-family: 'Alphakind', cursive;
     display: flex;
     text-align: center;
-    align-items: center;
+    align-items: ${({ isHorz }) => (isHorz ? 'end' : 'center')};
     justify-content: center;
     font-size: 1.2rem;
     z-index: 10;
-    flex-flow: row nowrap;
+    flex-flow: ${({ isHorz }) => (isHorz ? 'column wrap' : 'row nowrap')};
+    gap: 0.8rem;
+`;
+
+
+const AppNavHorz = styled.div`
+    font-family: 'Alphakind', cursive;
+    display: flex;
+    text-align: center;
+    align-items: end;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10;
+    flex-flow: column wrap;
     gap: 0.8rem;
 `;
 
 const MobileHeader = styled.div`
     width: 100%;
     display: flex;
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
-    align-items: center;
-    background-color: #2d3e4c;
-    font-family: VT323, monospace;
+    position: relative;
+`;
 
-    @media (max-width: 764px) and (min-width: 600px) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-    }
+const BurgerBtnC = styled.div`
+    position: absolute;
+    right: -1px;
+    padding: 0rem 1rem    ;
+`;
+
+const BurgerBtn = styled.button`
+    padding: 1rem;
+    background: #17a2b8;
+    border-radius: 10px;
+`;
+
+
+const HorzNav = styled(animated.div)`
+    position: absolute;
+    background-color: #0f0015;
+    color: white;
+    top: 6.4rem;
+    right: 0;
+    padding: 1rem 3rem 1rem 5rem;
+    height: 100vh;
 `;
 
 const { chains, publicClient } = configureChains(
@@ -80,20 +120,6 @@ const { chains, publicClient } = configureChains(
     ],
 );
 
-// const config = createConfig(
-//     getDefaultConfig({
-//         // Required API Keys
-//         alchemyId: process.env.REACT_APP_ALCHEMY_ID, // or infuraId
-//         walletConnectProjectId: process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '',
-
-//         // Required
-//         appName: 'MetaSaga Warriors',
-
-//         // Optional
-//         appDescription: 'Your App Description',
-//     }),
-// );
-
 const config = createConfig({
     connectors: [new InjectedConnector({ chains })],
     publicClient,
@@ -101,9 +127,10 @@ const config = createConfig({
 
 function App() {
     const [tab, setTab] = useState(0);
-    const [isScreen1045, setIsScreen1045] = useState(false);
-    const [isScreen764, setIsScreen764] = useState(false);
-    const [isScreen600, setIsScreen600] = useState(false);
+    const [isScreen1080, setIsScreen1080] = useState(false);
+    const [isScreen800, setIsScreen800] = useState(false);
+    const [isScreen550, setIsScreen600] = useState(false);
+    const [open, setOpen] = useState(false)
 
     const connect = usePlayfab((state: any) => state.start);
     const user = usePlayfab((state: any) => state.user);
@@ -111,21 +138,21 @@ function App() {
     const navBtns = useRef<any | HTMLElement[]>([]);
 
     const sections = [
-        <Home />,
-        <About />,
-        <Gameplay />,
-        <Lore />,
-        <NFTs />,
-        <Gallery />,
+        <Home isScreen550={isScreen550} />,
+        <About isScreen800={isScreen800} />,
+        <Gameplay isScreen550={isScreen550} />,
+        <Lore isScreen800={isScreen800} />,
+        <NFTs isScreen800={isScreen800} isScreen550={isScreen550} />,
+        <Gallery isScreen550={isScreen550} />,
         <FAQ />,
         <Team />,
         <Footer />,
     ];
 
     const handleResize = () => {
-        setIsScreen1045(window.innerWidth < 1045);
-        setIsScreen764(window.innerWidth < 764);
-        setIsScreen600(window.innerWidth < 600);
+        setIsScreen1080(window.innerWidth < 1045);
+        setIsScreen800(window.innerWidth < 800);
+        setIsScreen600(window.innerWidth < 550);
     };
 
     useMemo(() => {
@@ -157,6 +184,8 @@ function App() {
         });
     }, []);
 
+    const props = useSpring({ transform: open ? 'translate(0%, 0)' : 'translate(100%, 0)'});
+
     const ScrollToSection = (e: any, index: any) => {
         e.preventDefault();
         navBtns.current[index]?.scrollIntoView({ block: 'end', behavior: 'smooth' });
@@ -164,9 +193,9 @@ function App() {
 
     const Navigation = () => {
         return (
-            <AppNav className="NavBtns">
+            <AppNav className="NavBtns" isHorz={isScreen1080}>
                 {navItems.map((item, i) => (
-                    <a className="NavButton" onClick={e => ScrollToSection(e, i)}>
+                    <a className="NavButton" key={i} onClick={e => ScrollToSection(e, i)}>
                         {item}
                     </a>
                 ))}
@@ -181,16 +210,41 @@ function App() {
                 <WagmiConfig config={config}>
                     <ConnectKitProvider theme="auto">
                         <div className="Header-bar fixed-top">
-                            <div className="Header-content">
-                                <LogoContainer>
-                                    <img
-                                        src={require('./Assets/img/MSW_Logo_header2.png')}
-                                        alt=""
-                                    />
-                                </LogoContainer>
-                                {Navigation()}
-                                <div>{user ? <UserDashboard /> : <LoginRegister />}</div>
-                            </div>
+                            { !isScreen1080 ?
+                                <>
+                                    <div className="Header-content">
+                                        <LogoContainer>
+                                            <img
+                                                src={require('./Assets/img/MSW_Logo_header2.png')}
+                                                alt=""
+                                            />
+                                        </LogoContainer>
+                                        {Navigation()}
+                                        <div style={{padding: '0 1rem'}}>{user ? <UserDashboard /> : <LoginRegister />}</div>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                <MobileHeader>
+                                    <LogoContainerC>
+                                        <img
+                                            src={require('./Assets/img/MSW_Logo_header2.png')}
+                                            alt=""
+                                        />
+                                    </LogoContainerC>
+                                    <BurgerBtnC>
+                                        <BurgerBtn onClick={() => { setOpen(!open) }}>
+                                            <i className="fab fa fa-bars"></i>
+                                        </BurgerBtn>
+                                    </BurgerBtnC>
+                                </MobileHeader>
+                                <HorzNav style={props}>
+                                    <div style={{paddingBottom: '2rem'}}>{user ? <UserDashboard /> : <LoginRegister />}</div>
+                                    {Navigation()}
+                                </HorzNav>
+                                </>
+
+                            }
                         </div>
 
                         <Container>
@@ -199,7 +253,7 @@ function App() {
                                 style={{ width: '100%', margin: '6rem 0 0 0' }}
                             >
                                 {sections.map((section, i) => (
-                                    <div ref={el => navBtns.current.push(el)}>
+                                    <div key={i} ref={el => navBtns.current.push(el)}>
                                         {section}
                                     </div>
                                 ))}

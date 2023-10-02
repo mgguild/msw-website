@@ -136,7 +136,7 @@ export default function App() {
                         <FooterRow>
                             <LeftContainer>
                                 <ImgContainer>
-                                    <a className="footer-img" href="index.html">
+                                    <a className="footer-img" style={{display: 'flex', justifyContent: 'center'}} href="index.html">
                                         <img
                                             style={{ width: '8rem' }}
                                             src={require('../../Assets/img/MSW_Logo_header.png')}
