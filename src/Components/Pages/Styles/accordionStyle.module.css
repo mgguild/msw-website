@@ -1,0 +1,60 @@
+body {
+  font-family: sans-serif;
+}
+
+.accordion {
+  border-top: 1px solid #ccc;
+  margin-top: 1rem;
+}
+
+.item {
+  background-color: rgba(85, 24, 93);
+  border-bottom: solid 1px #ebebeb;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.itemBtn {
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 2rem 1rem;
+  font-size: 1rem;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+}
+.itemBtn h2 {
+  font-size: 25px;
+  font-weight: 500;
+}
+.itemBtn:hover {
+  background-color: #11011b;
+}
+
+.itemBtnExpanded {
+  border-radius: 10px 10px 0 0;
+  background-color: #11011b;
+}
+
+.itemContent {
+  transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.itemPanel {
+  padding: 0 1.5rem;
+  line-height: 30px;
+  text-align: justify;
+}
+
+.chevron {
+  filter: invert(100%);
+  margin-left: auto;
+  transition: transform 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.itemBtnExpanded .chevron {
+  transform: rotate(180deg);
+}

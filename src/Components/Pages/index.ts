@@ -1,0 +1,9 @@
+export { default as Home } from './Home';
+export { default as About } from './About';
+export { default as Gameplay } from './Gameplay';
+export { default as Lore } from './Lore';
+export { default as NFTs } from './NFTs';
+export { default as Gallery } from './Gallery';
+export { default as FAQ } from './FAQ';
+export { default as Team } from './Team';
+export { default as Footer } from './Footer';
