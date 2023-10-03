@@ -1,1 +1,0 @@
-# WhoIsWho Frontend
