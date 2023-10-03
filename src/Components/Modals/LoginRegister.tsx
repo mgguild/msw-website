@@ -154,14 +154,12 @@ export default function LoginRegister() {
                 PlayFabId: playfabId,
             },
             (error, result) => {
-                console.log('BRRRRRUH');
 
                 if (error) {
                     toast(error.errorMessage, { type: 'error' });
                     return;
                 }
 
-                console.log(result);
                 setUserTags(result.data.Tags);
 
                 if (result.data.Tags.includes('title.D4F8F.BoundWallet')) {
@@ -176,7 +174,6 @@ export default function LoginRegister() {
                                 return;
                             }
 
-                            console.log(result);
                             setUserData(result.data.Data);
                         },
                     );
@@ -218,7 +215,6 @@ export default function LoginRegister() {
                     setUserInfo(result.data.InfoResultPayload?.AccountInfo);
 
                     setTimeout(() => {
-                        console.log(user);
                         FetchTags(
                             result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
                         );
@@ -253,7 +249,6 @@ export default function LoginRegister() {
                     setUserInfo(result.data.InfoResultPayload?.AccountInfo);
 
                     setTimeout(() => {
-                        console.log(user);
                         FetchTags(
                             result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
                         );

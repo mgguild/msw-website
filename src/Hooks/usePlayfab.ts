@@ -37,23 +37,16 @@ const usePlayfab = create(set => ({
           set({ request: 0 });
           return;
         }
-
-        console.log(result);
       },
     );
-
-    console.log(test);
   },
   setUserInfo: (userInfo: any) => {
-    console.log(userInfo);
     set({ user: userInfo });
   },
   setUserTags: (tags: string[]) => {
-    console.log(tags);
     set({ userTags: tags });
   },
   setUserData: (data: any) => {
-    console.log(data);
     set({ userData: data });
   },
 }));
