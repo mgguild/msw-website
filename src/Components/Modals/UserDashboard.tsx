@@ -129,9 +129,6 @@ export default function LoginRegister() {
     useEffect(() => {
         setUserTags(userTags);
         setUserData(userData);
-
-        console.log(`userTags: ${_userTags}`);
-        console.log(`userData: ${userData}`);
     }, [userTags, userData]);
 
     useEffect(() => {
