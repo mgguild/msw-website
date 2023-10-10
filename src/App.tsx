@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { WagmiConfig, createConfig, configureChains } from 'wagmi';
 import { polygon } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -27,7 +28,7 @@ import { ConnectKitProvider, getDefaultConfig } from 'connectkit';
 import { ToastContainer, toast } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Container = styled.div`
     position: relative;
@@ -169,6 +170,7 @@ function App() {
         const NavButtons: any[] = gsap.utils.toArray('.NavButton');
 
         sections.forEach((section, i) => {
+            console.log(section);
             ScrollTrigger.create({
                 trigger: section,
                 start: 'top center',
@@ -186,17 +188,17 @@ function App() {
         transform: open ? 'translate(0%, 0)' : 'translate(100%, 0)',
     });
 
-    const ScrollToSection = (e: any, index: any) => {
+    const ScrollToSection = (e: any, id: string, index: any) => {
         e.preventDefault();
-        navBtns.current[index]?.scrollIntoView({ block: 'end', behavior: 'smooth' });
+        gsap.to(window, {duration: 0.5, scrollTo: {y: `#${id}`, offsetY:70}})
     };
 
     const Navigation = () => {
         return (
             <AppNav className="NavBtns" isHorz={isScreen1080}>
                 {navItems.map((item, i) => (
-                    <a className="NavButton" key={i} onClick={e => ScrollToSection(e, i)}>
-                        {item}
+                    <a className="NavButton" key={i} onClick={e => ScrollToSection(e, item.id, i)}>
+                        {item.name}
                     </a>
                 ))}
                 <a>View Collection</a>

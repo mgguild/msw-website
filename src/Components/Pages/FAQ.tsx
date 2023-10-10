@@ -7,10 +7,10 @@ import chevronDown from '../../chevron-down.svg';
 export default function App() {
     return (
         <>
-            <div className="page-section" id="FAQs">
+            <div className="page-section" id="faqs">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard padding="2rem 6.5rem">
+                    <TitleCard className='titleCard' padding="2rem 6.5rem">
                         <h1>FAQs</h1>
                     </TitleCard>
                 </SectHdr>

@@ -1,11 +1,35 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default [
-  'Home',
-  'About',
-  'Gameplay',
-  'Lore',
-  'NFT Classes',
-  'Gallery',
-  'FAQs',
-  'Team',
+  {
+    name:'Home',
+    id: 'home'
+  },
+  {
+    name:'About',
+    id: 'about'
+  },
+  {
+    name:'Gameplay',
+    id: 'gameplay'
+  },
+  {
+    name:'Lore',
+    id: 'lore'
+  },
+  {
+    name:'NFT Classes',
+    id: 'nftClasses'
+  },
+  {
+    name:'Gallery',
+    id: 'gallery'
+  },
+  {
+    name:'FAQs',
+    id: 'faqs'
+  },
+  {
+    name:'Team',
+    id: 'team'
+  }
 ];

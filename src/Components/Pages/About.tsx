@@ -43,7 +43,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
             <div className="page-section" id="about">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard>
+                    <TitleCard className='titleCard'>
                         <h1>ABOUT</h1>
                     </TitleCard>
                 </SectHdr>
