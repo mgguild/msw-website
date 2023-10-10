@@ -47,7 +47,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
             <div className="page-section" id="gallery">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard>
+                    <TitleCard className='titleCard'>
                         <h1>Gallery</h1>
                     </TitleCard>
                 </SectHdr>

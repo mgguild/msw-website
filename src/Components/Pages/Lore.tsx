@@ -116,7 +116,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
             <div className="page-section" id="lore" style={{ padding: '0' }}>
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard padding="3rem 6.5rem">
+                    <TitleCard className='titleCard' padding="3rem 6.5rem">
                         <h1>Lore</h1>
                     </TitleCard>
                 </SectHdr>

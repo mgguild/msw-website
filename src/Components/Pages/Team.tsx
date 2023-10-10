@@ -94,7 +94,7 @@ export default function App() {
             <BG className="page-section" id="team">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard padding="2rem 6.5rem">
+                    <TitleCard className='titleCard' padding="2rem 6.5rem">
                         <h1>Team</h1>
                     </TitleCard>
                 </SectHdr>

@@ -18,7 +18,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
             <div className="page-section" id="gameplay">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard padding="2rem 4rem">
+                    <TitleCard className='titleCard' padding="2rem 4rem">
                         <h1>GAMEPLAY</h1>
                     </TitleCard>
                 </SectHdr>
