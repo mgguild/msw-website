@@ -170,7 +170,6 @@ function App() {
         const NavButtons: any[] = gsap.utils.toArray('.NavButton');
 
         sections.forEach((section, i) => {
-            console.log(section);
             ScrollTrigger.create({
                 trigger: section,
                 start: 'top center',
