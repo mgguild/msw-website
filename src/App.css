@@ -2486,3 +2486,19 @@ form input {
     box-shadow: none;
   }
 }
+
+.ViewCollectionButton {
+  background-color: #2b164f; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border-radius: 2.26rem;
+  border-color: #7e6aa1;
+  text-decoration: none; 
+  cursor: pointer; 
+}
+
+.ViewCollectionButton:hover {
+  background-color: #5bc0de; 
+  color: #fff;
+}
+

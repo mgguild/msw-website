@@ -202,7 +202,11 @@ function App() {
                         {item.name}
                     </a>
                 ))}
-                <a>View Collection</a>
+                <a 
+                    target="_blank"
+                    href="https://opensea.io/collection/metasagawarriors"
+                    className="ViewCollectionButton">
+                    View Collection</a>
             </AppNav>
         );
     };
