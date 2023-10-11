@@ -29,6 +29,10 @@ export default [
     id: 'faqs'
   },
   {
+    name:'Partners',
+    id: 'partners'
+  },
+  {
     name:'Team',
     id: 'team'
   }
