@@ -4,6 +4,16 @@ import { SectHdr, TitleCard, SectCont } from '../Styled';
 
 const Card = styled.div`
     max-width: 14.5rem;
+  
+    @media (max-width: 800px) {
+        max-width: 9rem;
+        padding: 1rem;
+    }
+
+    @media (max-width: 500px) {
+        max-width: 8rem;
+        padding: 1rem;
+    }
 `;
 
 const Content = styled.div<{ isMedScreen?: boolean }>`
