@@ -2319,10 +2319,10 @@ form input {
 
 @media screen and (max-width: 480px) {
   #mc-embedded-subscribe {
-    width: 75%;
-    margin: 15px;
-    border-radius: 8px;
-    padding: 6px;
+    width: 108%;
+    margin: 2px;
+    border-radius: 12px;
+    padding: 9px;
     font-size: 11px;
   }
   #mce-EMAIL {

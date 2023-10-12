@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { SectHdr, TitleCard, SectCont } from '../Styled';
 
+
 const Card = styled.div`
-    max-width: 20rem;
+    max-width: 14.5rem;
 `;
 
 const Content = styled.div<{ isMedScreen?: boolean }>`
@@ -11,6 +12,7 @@ const Content = styled.div<{ isMedScreen?: boolean }>`
     align-items: center;
     flex-flow: row wrap;
 `;
+
 
 const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
     return (
@@ -23,7 +25,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                     </TitleCard>
                 </SectHdr>
                 <SectCont
-                    margin="5rem"
+                    margin="2rem"
                     style={{ alignItems: 'center', justifyContent: 'center' }}
                 >
                       <Content>
