@@ -130,11 +130,11 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
 
     return (
         <>
-            <div className="page-section" id="nftClasses">
+            <div className="page-section" id="nftCharacters">
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className='titleCard' padding="3rem">
-                        <h1>NFT Classes</h1>
+                        <h1>NFT Characters</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont margin="auto">

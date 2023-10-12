@@ -29,21 +29,21 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                     <Content>
                         <Card className="grow">
                             <img
-                                src={require('../../Assets/img/Bossraid_new.png')}
+                                src={require('../../Assets/img/Bossraid_new_new.png')}
                                 className=""
                                 alt=""
                             />
                         </Card>
                         <Card className="grow">
                             <img
-                                src={require('../../Assets/img/Dungeon_new.png')}
+                                src={require('../../Assets/img/Dungeon_newnew.png')}
                                 className=""
                                 alt=""
                             />
                         </Card>
                         <Card className="grow">
                             <img
-                                src={require('../../Assets/img/pvp.png')}
+                                src={require('../../Assets/img/Pvp_new_new.png')}
                                 className=""
                                 alt=""
                             />

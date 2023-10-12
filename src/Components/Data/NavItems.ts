@@ -17,8 +17,8 @@ export default [
     id: 'lore'
   },
   {
-    name:'NFT Classes',
-    id: 'nftClasses'
+    name:'NFT Characters',
+    id: 'nftCharacters'
   },
   {
     name:'Gallery',
@@ -27,6 +27,10 @@ export default [
   {
     name:'FAQs',
     id: 'faqs'
+  },
+  {
+    name:'Partners',
+    id: 'partners'
   },
   {
     name:'Team',

@@ -9,6 +9,7 @@ import {
     NFTs,
     Gallery,
     FAQ,
+    Partners,
     Team,
     Footer,
 } from './Components/Pages';
@@ -144,6 +145,7 @@ function App() {
         <NFTs isScreen800={isScreen800} isScreen550={isScreen550} />,
         <Gallery isScreen550={isScreen550} />,
         <FAQ />,
+        <Partners isScreen550={isScreen550} />,
         <Team />,
         <Footer />,
     ];
@@ -200,7 +202,11 @@ function App() {
                         {item.name}
                     </a>
                 ))}
-                <a>View Collection</a>
+                <a 
+                    target="_blank"
+                    href="https://opensea.io/collection/metasagawarriors"
+                    className="ViewCollectionButton">
+                    View Collection</a>
             </AppNav>
         );
     };
