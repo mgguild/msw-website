@@ -72,6 +72,7 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
         flex-flow: row wrap;
         overflow: scroll;
         max-width: 100%;
+        gap: 0.37rem
     }
 `;
 
