@@ -21,7 +21,7 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
         color: #ecb602;
 
         @media (max-width: 1025px) {
-            font-size: 80px;
+            font-size: 39px;
         }
 
         @media (max-width: 800px) {
@@ -40,7 +40,7 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
         text-align: center;
 
         @media (max-width: 1025px) {
-            font-size: 1.75rem;
+            font-size: 0.93rem;
         }
 
         @media (max-width: 800px) {
