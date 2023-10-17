@@ -12,13 +12,12 @@ const Content = styled.div`
     }
 `;
 
-
 const RowChar = styled.div`
     display: flex;
     position: relative;
     flex-wrap: nowrap;
     margin-right: 4.5rem;
-    margin-left: 4.5rem;
+    margin-left: 6.5rem;
     gap: 2rem;
     justify-content: center;
 
@@ -154,8 +153,8 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
             <div className="page-section" id="nftCharacters">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="2.5rem 2rem">
-                        <h1>NFT Characters</h1>
+                    <TitleCard className='titleCard' padding="3rem 2rem">
+                        <h1 style={{ fontSize: "2.1rem" }} >NFT Characters</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont margin="auto">
