@@ -20,6 +20,10 @@ const CustomCarousel = styled(Carousel)`
     @media (max-width: 575px) {
         font-size: 20px;
     }
+
+    @media (max-width: 375px) {
+        font-size: 20px;
+    }
   }
 
   .control-prev.control-arrow:before {
@@ -97,7 +101,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore_sm.png'
-                                : 'mobile_lore.png'
+                                : 'mobile_lore_sm.png'
                             : 'lore.jpg'
                     }`)}
                 />
@@ -123,7 +127,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore2_sm.png'
-                                : 'mobile_lore2.png'
+                                : 'mobile_lore2_sm.png'
                             : 'lore_2.png'
                     }`)}
                 />

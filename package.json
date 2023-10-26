@@ -28,6 +28,7 @@
     "https-browserify": "^1.0.0",
     "keccak256": "^1.0.6",
     "merkletreejs": "^0.3.9",
+    "perfect-scrollbar": "^1.5.5",
     "playfab-sdk": "^2.133.230804",
     "playfab-web-sdk": "^1.151.230804",
     "polyfill": "^0.1.0",
