@@ -35,7 +35,6 @@ const CustomCarousel = styled(Carousel)`
   }
 `;
 
-
 const CarouselCont = styled.div`
     display: table-cell;
     width: 100%;
@@ -53,7 +52,7 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
         color: #ecb602;
 
         @media (max-width: 1025px) {
-            font-size: 39px;
+            font-size: 80px;
         }
 
         @media (max-width: 800px) {
@@ -72,7 +71,7 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
         text-align: center;
 
         @media (max-width: 1025px) {
-            font-size: 0.93rem;
+            font-size: 1.75rem;
         }
 
         @media (max-width: 800px) {
@@ -87,14 +86,12 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
     }
 `;
 
-
 const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = ({
     isScreen800,
     isScreen650,
 }) => {
     return (
-        <CustomCarousel showThumbs={false}
-        >
+        <Carousel showThumbs={false}>
             <div style={{ position: 'relative' }}>
                 <img
                     src={require(`../../Assets/img/${
@@ -148,7 +145,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
                     </p>
                 </Scroll>
             </div>
-        </CustomCarousel>
+        </Carousel>
     );
 };
 

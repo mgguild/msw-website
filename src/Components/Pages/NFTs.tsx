@@ -7,25 +7,16 @@ const Content = styled.div`
     display: flex;
     flex-flow: column nowrap;
     width: 100%;
-    @media (max-width: 820px) { 
-        flex: 7 0 25%;
-    }
 `;
 
 const RowChar = styled.div`
     display: flex;
     position: relative;
     flex-wrap: nowrap;
-    margin-right: 4.5rem;
-    margin-left: 6.5rem;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
     gap: 2rem;
     justify-content: center;
-
-    @media (max-width: 820px) { 
-        margin-right: 2rem;
-        margin-left: 8rem;
-        gap: 3rem;
-    }
 
     img {
         display: block;
@@ -33,14 +24,7 @@ const RowChar = styled.div`
         max-width: 100%;
         width: 100%;
         object-fit: cover;
-
-        @media (max-width: 820px) { 
-            margin-right: 14rem;
-            margin-left: -6rem;
-        }
     }
-    
-   
 `;
 
 const ColumnChar = styled.div`
@@ -72,6 +56,7 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
         overflow: scroll;
         max-width: 100%;
         gap: 0.39rem
+
     }
     /* Adjust the scrollbar width and style */
     &::-webkit-scrollbar {
@@ -88,8 +73,6 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
     }
 
 `;
-
-
 
 const NFTClass = styled.div<{ img: string }>`
     position: relative;
@@ -147,9 +130,8 @@ const StatRate: React.FC<{ count: number }> = ({ count }) => {
     }
 
     return (
-        <div style={{ display: 'flex', width: '100%', gap: '0.5rem' }} className="statRateContainer" >{statRate}</div>
+        <div style={{ display: 'flex', width: '100%', gap: '0.5rem' }}>{statRate}</div>
     );
-    
 };
 
 const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
@@ -172,8 +154,8 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
             <div className="page-section" id="nftCharacters">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="3rem 2rem">
-                        <h1 style={{ fontSize: "2.1rem" }} >NFT Characters</h1>
+                    <TitleCard className='titleCard' padding="3rem">
+                        <h1>NFT Characters</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont margin="auto">
@@ -311,9 +293,9 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
                                     key={selectedClass}
                                     style={{
                                         flex: '0 0 16.6666666667%',
+                                        maxWidth: '17.6666666667%',
                                         padding: '0%',
                                     }}
-                                    className='stats'
                                 >
                                     <p style={{ margin: '0 0 0.5rem 0' }}>
                                         Physical Damage
