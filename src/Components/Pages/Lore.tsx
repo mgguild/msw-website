@@ -3,6 +3,37 @@ import { SectHdr, TitleCard, SectCont } from '../Styled';
 import { useState, useMemo } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
+import React from 'react';
+
+const CustomCarousel = styled(Carousel)`
+  .control-arrow {
+    background-color: transparent; 
+  }
+
+  .control-arrow:before {
+    color: #FFFFFF; 
+    font-size: 50px; 
+    
+    @media (max-width: 820px){
+        font-size: 32px;
+    } 
+    @media (max-width: 575px) {
+        font-size: 20px;
+    }
+
+    @media (max-width: 375px) {
+        font-size: 20px;
+    }
+  }
+
+  .control-prev.control-arrow:before {
+    content: '🞀'; 
+  }
+
+  .control-next.control-arrow:before {
+    content: '🞂';
+  }
+`;
 
 const CarouselCont = styled.div`
     display: table-cell;
@@ -67,7 +98,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore_sm.png'
-                                : 'mobile_lore.png'
+                                : 'mobile_lore_sm.png'
                             : 'lore.jpg'
                     }`)}
                 />
@@ -93,7 +124,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore2_sm.png'
-                                : 'mobile_lore2.png'
+                                : 'mobile_lore2_sm.png'
                             : 'lore_2.png'
                     }`)}
                 />

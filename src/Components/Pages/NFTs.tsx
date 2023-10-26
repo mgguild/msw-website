@@ -51,11 +51,27 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
     gap: 1rem;
 
     @media (max-width: 575px) {
-        max-height: 10rem;
+        max-height: 7.1rem;
         flex-flow: row wrap;
         overflow: scroll;
         max-width: 100%;
+        gap: 0.39rem
+
     }
+    /* Adjust the scrollbar width and style */
+    &::-webkit-scrollbar {
+     height: 0px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888; /* Color of the scrollbar thumb */
+        border-radius: 5px; /* Round the scrollbar thumb */
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color of the scrollbar thumb on hover */
+    }
+
 `;
 
 const NFTClass = styled.div<{ img: string }>`
@@ -69,6 +85,11 @@ const NFTClass = styled.div<{ img: string }>`
     width: 160px;
     height: 133px;
     cursor: pointer;
+
+    @media (max-width: 575px) {
+    width: 140px;
+    height: 113px;  
+    }
 
     ${({ img }) =>
         img
