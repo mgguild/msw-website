@@ -67,11 +67,11 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
     gap: 1rem;
 
     @media (max-width: 575px) {
-        max-height: 10rem;
+        max-height: 7.1rem;
         flex-flow: row wrap;
         overflow: scroll;
         max-width: 100%;
-        gap: 0.37rem
+        gap: 0.39rem
     }
     /* Adjust the scrollbar width and style */
     &::-webkit-scrollbar {
