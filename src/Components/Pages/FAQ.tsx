@@ -52,7 +52,8 @@ export default function App() {
                                     }}
                                 >
                                     {i === 3 ? (
-                                        <a
+                                        <a  
+                                            style={{ textDecoration: 'none' }}
                                             href="https://opensea.io/collection/metasagawarriors"
                                             target="_blank"
                                         >

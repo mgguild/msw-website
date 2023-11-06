@@ -15,7 +15,7 @@ export default [
   {
     question:
       'What is the official collection links for MetaSaga Warriors Genesis Collection?',
-    answer: 'https://opensea.io/collection/metasagawarriors',
+    answer: 'Visit our collections Here!',
   },
   {
     question: 'How do I store and manage my MetaSaga Warriors?',
