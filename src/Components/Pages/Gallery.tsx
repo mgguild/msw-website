@@ -23,9 +23,9 @@ const Header = styled.div`
 
 const Gallery = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
     gap: 1rem;
-
+ 
     @media (max-width: 520px) {
         display: flex;
         justify-content: center;
@@ -37,6 +37,7 @@ const Gallery = styled.div`
         @media (max-width: 520px) {
             width: 180px;
             height: 240px;
+            
         }
     }
 `;
@@ -79,6 +80,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             alt="..."
                             width="600"
                             height="400"
+                            
                         />
                         <img
                             src={require('../../Assets/img/IMG_6448.jpg')}
@@ -97,6 +99,18 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             alt="..."
                             width="600"
                             height="400"
+                        />
+                        <img
+                            src={require('../../Assets/img/DevCon20232.jpg')}
+                            alt="..."
+                            width="600"
+                            height="400" 
+                        />
+                         <img
+                            src={require('../../Assets/img/ESGS2023.jpg')}
+                            alt="..."
+                            width="600"
+                            height="400" 
                         />
                     </Gallery>
                 </SectCont>
