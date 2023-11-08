@@ -1,3 +1,4 @@
+import { useState, useMemo, useEffect } from 'react';
 import { SectHdr, TitleCard, SectCont } from '../Styled';
 import styled from 'styled-components';
 import team from '../Data/team';
@@ -10,6 +11,13 @@ const BG = styled.div`
     background-repeat: no-repeat;
     background-size: 20%, 20%, 30%, 30%;
     background-position: bottom left, bottom right, bottom right, bottom left;
+
+    padding: 2rem;
+    font-family: 'Alphakind', cursive;
+
+    @media (max-width: 406px) {
+        padding: 0.5rem;
+    }
 `;
 
 const ProfileImg = styled.div<{ bgImg: string }>`
@@ -45,6 +53,10 @@ const Img = styled.img`
     @media (max-width: 900px) {
         max-width: 8rem;
     }
+
+    @media (max-width: 500px) {
+        max-width: 6rem;
+    }
 `;
 
 const Desc = styled.div`
@@ -56,6 +68,25 @@ const Desc = styled.div`
     }
 `;
 
+const TeamProfile = styled.div`
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    text-align: center;
+    line-height: 1.8rem;
+    min-width: 10rem;
+    max-width: 10rem;
+
+    @media (max-width: 413px) {
+        min-width: 8rem;
+        max-width: 8rem;
+    }
+
+    @media (max-width: 741px) {
+        line-height: 1.3rem;
+    }
+`
+
 const Profile: React.FC<{ bgImg: string; img: string; name: string; role: string }> = ({
     bgImg,
     img,
@@ -64,15 +95,7 @@ const Profile: React.FC<{ bgImg: string; img: string; name: string; role: string
 }) => {
     return (
         <>
-            <div
-                style={{
-                    display: 'flex',
-                    flexFlow: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    lineHeight: '1.8rem',
-                }}
-            >
+            <TeamProfile>
                 <ProfileImg bgImg={bgImg}>
                     <Img src={require(`../../Assets/img/teams/${img}`)} />
                 </ProfileImg>
@@ -80,18 +103,31 @@ const Profile: React.FC<{ bgImg: string; img: string; name: string; role: string
                     <div>{name}</div>
                     <div style={{ fontFamily: "'Mustica Pro', sans-serif" }}>{role}</div>
                 </Desc>
-            </div>
+            </TeamProfile>
         </>
     );
 };
 
 export default function App() {
-    const sequence = [3, 7, 10];
     var count = 0;
+    const [isScreen800, setIsScreen800] = useState(false);
+    const [sequence, setSequence] = useState([3, 7, 10]);
+
+    const handleResize = () => {
+        if(window.innerWidth < 800){
+            setSequence([10]);
+        }else{
+            setSequence([3, 7, 10]);
+        }
+    };
+
+    useMemo(() => {
+        handleResize();
+    }, []);
 
     return (
         <>
-            <BG className="page-section" id="team">
+            <BG id="team">
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className='titleCard' padding="2rem 6.5rem">
@@ -99,35 +135,36 @@ export default function App() {
                     </TitleCard>
                 </SectHdr>
                 <SectCont margin="auto" display="block">
-                    {sequence.map((num, i) => {
-                        const row: any = [];
-                        for (let j = count; j < num; j++) {
-                            row.push(
-                                <Profile
-                                    bgImg={team[j].bgImg}
-                                    img={team[j].img}
-                                    name={team[j].name}
-                                    role={team[j].role}
-                                    key={count}
-                                />,
+                    { sequence.map((num, i) => {
+                            const row: any = [];
+                            for (let j = count; j < num; j++) {
+                                row.push(
+                                    <Profile
+                                        bgImg={team[j].bgImg}
+                                        img={team[j].img}
+                                        name={team[j].name}
+                                        role={team[j].role}
+                                        key={count}
+                                    />,
+                                );
+                                count++;
+                            }
+                            return (
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '2rem',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        margin: '0 0 2rem 0    ',
+                                    }}
+                                >
+                                    {row}
+                                </div>
                             );
-                            count++;
-                        }
-                        return (
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexWrap: 'wrap',
-                                    gap: '2rem',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 0 2rem 0    ',
-                                }}
-                            >
-                                {row}
-                            </div>
-                        );
-                    })}
+                        })
+                    }
                 </SectCont>
             </BG>
         </>
