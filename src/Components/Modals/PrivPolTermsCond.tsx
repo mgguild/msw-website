@@ -23,6 +23,7 @@ const CenterFrame = styled.div`
 `;
 
 const Container = styled.div`
+    position: relative;
     background-color: #4f19a7;
     display: flex;
     flex-flow: column nowrap;
@@ -79,6 +80,11 @@ export default function LoginRegister() {
                 <Box sx={style}>
                     <CenterFrame>
                         <Container>
+                            <div style={{position: 'absolute', top: '1rem', right: '1rem'}}>
+                                <button style={{fontSize: '2rem'}} onClick={() => setOpenPP(false)}>
+                                    🗙
+                                </button>
+                            </div>
                             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
                                 <h1><u>PRIVACY POLICY</u></h1>
                             </div>
@@ -226,6 +232,11 @@ export default function LoginRegister() {
                 <Box sx={style}>
                     <CenterFrame>
                         <Container>
+                            <div style={{position: 'absolute', top: '1rem', right: '1rem'}}>
+                                <button style={{fontSize: '2rem'}} onClick={() => setOpenTC(false)}>
+                                    🗙
+                                </button>
+                            </div>
                             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
                                 <h1><u>TERMS AND CONDITIONS</u></h1>
                             </div>
