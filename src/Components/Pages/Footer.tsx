@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { SectHdr, TitleCard, SectCont } from '../Styled';
-import classes from '../Data/Classes';
+import { PrivPolTermsCond } from '../Modals';
 import React, { useState, useEffect } from 'react';
 
 const Content = styled.div`
@@ -157,19 +157,7 @@ export default function App() {
                                         Copyright &copy; 2022 MetaGaming Guild. All Rights
                                         Reserved
                                     </div>
-                                    <a
-                                        className="privacy_policy"
-                                        href="privacy_policy.html"
-                                    >
-                                        Privacy Policy
-                                    </a>
-                                    <a className="...">&nbsp;&nbsp;&nbsp;</a>
-                                    <a
-                                        className="terms_and_condition"
-                                        href="terms_and_condition.html"
-                                    >
-                                        Terms and Condition
-                                    </a>
+                                    <PrivPolTermsCond />
                                 </div>
                             </LeftContainer>
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
