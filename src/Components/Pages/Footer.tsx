@@ -154,7 +154,7 @@ export default function App() {
                                 </ImgContainer>
                                 <div style={{ lineHeight: '2rem', textAlign: 'center' }}>
                                     <div className="copyright">
-                                        Copyright &copy; 2022 MetaGaming Guild. All Rights
+                                        Copyright &copy; 2024 MetaGaming Guild. All Rights
                                         Reserved
                                     </div>
                                     <PrivPolTermsCond />
