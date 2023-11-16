@@ -49,7 +49,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className='titleCard'>
-                        <h1>Gallery</h1>
+                        <h1 style={{ fontSize: '2.2rem' }}>Gallery</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont

@@ -1,7 +1,48 @@
 import styled from 'styled-components';
-import { SectHdr, TitleCard, SectCont } from '../Styled';
+import { SectHdr, SectCont } from '../Styled';
 import classes from '../Data/Classes';
 import React, { useState, useMemo } from 'react';
+
+const TitleCard = styled.div<{ padding?: string }>`
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgba(255, 255, 255, 0);
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    padding: ${({ padding }) => padding ?? `2rem 4rem`};
+    border: 0rem solid rgba(0, 0, 0, 0.125);
+    border-radius: 0rem;
+    background-image: url(${require('../../Assets/img/tiles.png')});
+    background-size: cover;
+    background-position: center;
+
+    @media (max-width: 721px) {
+        padding: 2rem 3rem !important;
+
+        h1 {
+            font-size: 1.8rem !important;
+        }
+    }
+
+    @media (max-width: 721px) {
+        padding: 2rem 5rem !important;
+
+        h1 {
+            font-size: 1.8rem !important;
+        }
+    }
+
+    @media (max-width: 440px) {
+        padding: 2rem 2rem !important;
+        h1 {
+            font-size: 1.8rem !important;
+        }
+    }
+`;
 
 const Content = styled.div`
     display: flex;
@@ -154,8 +195,8 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
             <div className="page-section" id="nftCharacters">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="3rem">
-                        <h1>NFT Characters</h1>
+                    <TitleCard className='titleCard' padding="2rem">
+                        <h1 style={{ fontSize: '2rem' }}>NFT Characters</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont margin="auto">

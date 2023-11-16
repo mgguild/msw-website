@@ -44,7 +44,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className='titleCard'>
-                        <h1>ABOUT</h1>
+                        <h1 style={{ fontSize: '2.5rem' }}>ABOUT</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont display="flex" margin="0" style={{ flexFlow: 'column nowrap' }}>
