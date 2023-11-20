@@ -164,7 +164,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                                 width="100%"
                                 height="100%"
                                 className="responsive-iframe"
-                                src="https://www.youtube.com/embed/ghc75mbiip4"
+                                src="https://www.youtube.com/embed/tpR_GkFUrkY?si=nWWBZ678w3Wc-a-_"
                                 title="YouTube video player"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen

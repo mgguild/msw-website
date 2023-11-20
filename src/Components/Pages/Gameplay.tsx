@@ -19,7 +19,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className='titleCard' padding="2rem 4rem">
-                        <h1>GAMEPLAY</h1>
+                        <h1 style={{ fontSize: '2rem' }}>GAMEPLAY</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont

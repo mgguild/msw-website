@@ -22,7 +22,7 @@ export const ButtonGlitch = styled.button<{ signed?: any }>`
 export const SectHdr = styled.div`
     display: flex;
     justify-content: center;
-    margin: 2rem;
+    margin: 1.5rem;
 `;
 
 export const TitleCard = styled.div<{ padding?: string }>`
@@ -35,7 +35,7 @@ export const TitleCard = styled.div<{ padding?: string }>`
     background-color: rgba(255, 255, 255, 0);
     -webkit-background-clip: border-box;
     background-clip: border-box;
-    padding: ${({ padding }) => padding ?? `2rem 5rem`};
+    padding: ${({ padding }) => padding ?? `2rem 4rem`};
     border: 0rem solid rgba(0, 0, 0, 0.125);
     border-radius: 0rem;
     background-image: url(${require('../../Assets/img/tiles.png')});
@@ -43,7 +43,7 @@ export const TitleCard = styled.div<{ padding?: string }>`
     background-position: center;
 
     @media (max-width: 721px) {
-        padding: 2rem 5rem !important;
+        padding: 2rem 3rem !important;
 
         h1 {
             font-size: 1.8rem !important;
@@ -59,9 +59,9 @@ export const TitleCard = styled.div<{ padding?: string }>`
     }
 
     @media (max-width: 440px) {
-        padding: 2rem 3rem !important;
+        padding: 3rem 5rem !important;
         h1 {
-            font-size: 1.3rem !important;
+            font-size: 2.4rem !important;
         }
     }
 `;
