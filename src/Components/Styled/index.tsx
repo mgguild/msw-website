@@ -43,20 +43,13 @@ export const TitleCard = styled.div<{ padding?: string }>`
     background-position: center;
 
     @media (max-width: 721px) {
-        padding: 2rem 3rem !important;
+        padding: 3rem 5rem !important;
 
         h1 {
-            font-size: 1.8rem !important;
+            font-size: 2.4rem !important;
         }
     }
 
-    @media (max-width: 721px) {
-        padding: 2rem 5rem !important;
-
-        h1 {
-            font-size: 1.8rem !important;
-        }
-    }
 
     @media (max-width: 440px) {
         padding: 3rem 5rem !important;

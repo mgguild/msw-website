@@ -29,6 +29,11 @@ body {
 .itemBtn h2 {
   font-size: 25px;
   font-weight: 500;
+
+  @media (max-width: 720px){
+    font-size: 22px;
+  }
+
 }
 .itemBtn:hover {
   background-color: #11011b;
@@ -47,6 +52,14 @@ body {
   padding: 0 1.5rem;
   line-height: 30px;
   text-align: justify;
+  
+  @media (max-width: 720px){
+    font-size: 19px;
+    padding: 0 1.2rem;
+    line-height: 25px;
+    text-align: left;
+  }
+
 }
 
 .chevron {
@@ -58,3 +71,4 @@ body {
 .itemBtnExpanded .chevron {
   transform: rotate(180deg);
 }
+

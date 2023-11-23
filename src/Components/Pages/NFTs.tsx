@@ -20,16 +20,9 @@ const TitleCard = styled.div<{ padding?: string }>`
     background-size: cover;
     background-position: center;
 
+  
     @media (max-width: 721px) {
-        padding: 2rem 3rem !important;
-
-        h1 {
-            font-size: 1.8rem !important;
-        }
-    }
-
-    @media (max-width: 721px) {
-        padding: 2rem 5rem !important;
+        padding: 2rem 2rem !important;
 
         h1 {
             font-size: 1.8rem !important;
@@ -92,7 +85,7 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
     gap: 1rem;
 
     @media (max-width: 575px) {
-        max-height: 7.1rem;
+        max-height: 10.1rem;
         flex-flow: row wrap;
         overflow: scroll;
         max-width: 100%;
