@@ -50,7 +50,6 @@ export const TitleCard = styled.div<{ padding?: string }>`
         }
     }
 
-
     @media (max-width: 440px) {
         padding: 3rem 5rem !important;
         h1 {
