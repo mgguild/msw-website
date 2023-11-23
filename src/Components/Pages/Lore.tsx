@@ -125,7 +125,9 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
     isScreen650,
 }) => {
     return (
-        <Carousel showThumbs={false}>
+        <Carousel showThumbs={false}
+        preventMovementUntilSwipeScrollTolerance={true}
+        swipeScrollTolerance={50}>
             <div style={{ position: 'relative' }}>
                 <img
                     src={require(`../../Assets/img/${
