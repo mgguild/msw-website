@@ -16,7 +16,7 @@ const Content = styled.div`
         text-align: center;
 
         @media (max-width: 720px){
-            font-size: 0.7rem;
+            font-size: small;
         }
     }
 `;
