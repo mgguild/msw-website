@@ -240,10 +240,16 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             </a>
                         </GrowBtn>
                         <GrowBtn isSmallScreen={isScreen550}>
+                            <a
+                                className="btn-googleplay hover-shadow"
+                                target="_blank"
+                                href=" https://apps.apple.com/ph/app/metasaga-warriors/id6469090246"
+                            >
                             <img
                                 className="btn-googleplay"
                                 src={require('../../Assets/img/coming-soon-png_47446.png')}
                             />
+                             </a>
                         </GrowBtn>
                     </PlayBtns>
                 </HomeCont>
