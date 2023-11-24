@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.eb2deb25.css",
-    "main.js": "/static/js/main.dc96cd7e.js",
+    "main.css": "/static/css/main.ab383b6a.css",
+    "main.js": "/static/js/main.52038e6e.js",
     "static/js/477.6ddf461a.chunk.js": "/static/js/477.6ddf461a.chunk.js",
     "static/js/141.617122bc.chunk.js": "/static/js/141.617122bc.chunk.js",
     "static/js/754.9f41aec4.chunk.js": "/static/js/754.9f41aec4.chunk.js",
@@ -182,6 +182,7 @@
     "static/media/engineercard.png": "/static/media/engineercard.b4e6441adc1d01c5e5a3.png",
     "static/media/elementalcard1.png": "/static/media/elementalcard1.cbd4489e0ae7819de2d2.png",
     "static/media/simplio_green_1024.png": "/static/media/simplio_green_1024.e490c03126684650ac52.png",
+    "static/media/coming-soon-png_47446.png": "/static/media/coming-soon-png_47446.f36b4b29cbc246a93d45.png",
     "static/media/knightcard1.png": "/static/media/knightcard1.34e3930f9241c972738c.png",
     "static/media/legendary_plaguedoctor.png": "/static/media/legendary_plaguedoctor.9ee9bd838903130255d3.png",
     "static/media/engineercard1.png": "/static/media/engineercard1.6a10ea286d5e2b351bb0.png",
@@ -193,7 +194,6 @@
     "static/media/legendarycard2_magitek.png": "/static/media/legendarycard2_magitek.4eefe7a841c6f84d5afe.png",
     "static/media/legendarycard2_dark_knight.png": "/static/media/legendarycard2_dark_knight.656396d434a1d26d8840.png",
     "static/media/legendary_archer.png": "/static/media/legendary_archer.8db01aabc7af0c9c2190.png",
-    "static/media/coming-soon-png_47446.png": "/static/media/coming-soon-png_47446.ea955d124e0582f41540.png",
     "static/media/brown-bg.jpg": "/static/media/brown-bg.b9c5ca05b1b2f19e289b.jpg",
     "static/media/legendarycard2.png": "/static/media/legendarycard2.05d658f5568659504856.png",
     "static/media/One Slice.otf": "/static/media/One Slice.454ddb3a3aca66a0b208.otf",
@@ -204,8 +204,8 @@
     "static/media/mobile bg.png": "/static/media/mobile bg.047a8f62fd83de078824.png",
     "index.html": "/index.html",
     "static/media/chevron-down.svg": "/static/media/chevron-down.932a047472c3455cd9a4d68b8b2179e8.svg",
-    "main.eb2deb25.css.map": "/static/css/main.eb2deb25.css.map",
-    "main.dc96cd7e.js.map": "/static/js/main.dc96cd7e.js.map",
+    "main.ab383b6a.css.map": "/static/css/main.ab383b6a.css.map",
+    "main.52038e6e.js.map": "/static/js/main.52038e6e.js.map",
     "477.6ddf461a.chunk.js.map": "/static/js/477.6ddf461a.chunk.js.map",
     "141.617122bc.chunk.js.map": "/static/js/141.617122bc.chunk.js.map",
     "754.9f41aec4.chunk.js.map": "/static/js/754.9f41aec4.chunk.js.map",
@@ -216,7 +216,7 @@
     "511.efa3257c.chunk.js.map": "/static/js/511.efa3257c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb2deb25.css",
-    "static/js/main.dc96cd7e.js"
+    "static/css/main.ab383b6a.css",
+    "static/js/main.52038e6e.js"
   ]
 }
