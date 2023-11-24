@@ -14,6 +14,10 @@ const Content = styled.div`
     h4 {
         font-size: 1.5rem;
         text-align: center;
+
+        @media (max-width: 720px){
+            font-size: small;
+        }
     }
 `;
 
@@ -60,9 +64,8 @@ export default function App() {
             >
                 <SectCont margin="none" minHeight="none">
                     <Content>
-                        <h4>Want to be updated for the latest updates?</h4>
-                        <h4>Register your email below and click the Notify Me button.</h4>
-
+                        <h4>Want to be updated for the latest updates? Register your email below and click the Notify Me button.</h4>
+                       
                         <div style={{ margin: '1rem auto' }}>
                             <form
                                 action="https://metasagawarriors.us10.list-manage.com/subscribe/post?u=29581b54e89450fc09142e23d&amp;id=baac775905&amp;f_id=00d636e2f0"

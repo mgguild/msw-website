@@ -127,7 +127,7 @@ export default function App() {
 
     return (
         <>
-            <BG id="team">
+            <BG className="page-section" id="team">
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className='titleCard' padding="2rem 6.5rem">

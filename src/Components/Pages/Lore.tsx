@@ -23,18 +23,10 @@ const TitleCard = styled.div<{ padding?: string }>`
     background-position: center;
 
     @media (max-width: 721px) {
-        padding: 2rem 3rem !important;
-
-        h1 {
-            font-size: 1.8rem !important;
-        }
-    }
-
-    @media (max-width: 721px) {
         padding: 2rem 5rem !important;
 
         h1 {
-            font-size: 1.8rem !important;
+            font-size: 2.5rem !important;
         }
     }
 
@@ -133,7 +125,9 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
     isScreen650,
 }) => {
     return (
-        <Carousel showThumbs={false}>
+        <Carousel showThumbs={false}
+        preventMovementUntilSwipeScrollTolerance={true}
+        swipeScrollTolerance={50}>
             <div style={{ position: 'relative' }}>
                 <img
                     src={require(`../../Assets/img/${
