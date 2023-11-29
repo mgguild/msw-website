@@ -42,6 +42,11 @@ const Gallery = styled.div`
             height: 210px;
             
         }
+        @media (min-width: 320px) {
+            width: 146px;
+            height: 203px;
+            
+        }
     }
 `;
 
