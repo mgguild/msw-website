@@ -2202,6 +2202,10 @@ h6 {
 .NavButton {
   padding: 1rem 0.5rem;
   border-radius: 5px;
+  @media (max-width: 420px) {
+    padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  }
 }
 
 .NavButton:hover {
