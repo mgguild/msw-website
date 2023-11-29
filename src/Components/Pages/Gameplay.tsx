@@ -10,7 +10,7 @@ const Content = styled.div<{ isMedScreen?: boolean }>`
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
-    gap: -0.5rem;
+    gap: 0rem;
 
     @media (max-width: 575px) {
         gap: 3rem;    
