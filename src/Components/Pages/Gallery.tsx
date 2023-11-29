@@ -28,15 +28,18 @@ const Gallery = styled.div`
  
     @media (max-width: 520px) {
         display: flex;
+        flexWrap: 'wrap',
+        gap: '2rem',
         justify-content: center;
         align-items: center;
         flex-flow: row wrap;
+        margin: '0 0 2rem 0    ',
     }
-
+    
     img {
         @media (max-width: 520px) {
-            width: 180px;
-            height: 240px;
+            width: 154px;
+            height: 210px;
             
         }
     }
@@ -74,7 +77,8 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             thrilling prizes!
                         </p>
                     </Header>
-                    <Gallery>
+                    <Gallery
+                    >
                         <img
                             src={require('../../Assets/img/IMG_6291.jpg')}
                             alt="..."
