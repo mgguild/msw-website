@@ -25,27 +25,27 @@ const Gallery = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
     gap: 1rem;
- 
+    justify-content: center;
+    
     @media (max-width: 520px) {
         display: flex;
-        flexWrap: 'wrap',
+        flexWrap:'wrap',
         gap: '2rem',
         justify-content: center;
         align-items: center;
         flex-flow: row wrap;
-        margin: '0 0 2rem 0    ',
+        margin : '0 0 2rem 0',
     }
-    
+
     img {
         @media (max-width: 520px) {
-            width: 154px;
-            height: 210px;
-            
-        }
-        @media (min-width: 320px) {
             width: 146px;
-            height: 203px;
-            
+            height: 200px; 
+            justify-content: center; 
+        }
+        @media (max-width: 320px){
+            width: 146px;
+            height: 203px;  
         }
     }
 `;
@@ -82,8 +82,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             thrilling prizes!
                         </p>
                     </Header>
-                    <Gallery
-                    >
+                    <Gallery>
                         <img
                             src={require('../../Assets/img/IMG_6291.jpg')}
                             alt="..."
