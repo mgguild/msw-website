@@ -2507,3 +2507,17 @@ form input {
   color: #fff;
 }
 
+@media only screen and (max-width: 820px) {
+.carousel .control-prev.control-arrow:before {
+  border-right: 29px solid #fff;
+}
+
+.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
+  margin: 0 7px;
+  display: inline-block;
+  border-top: 33px solid transparent;
+  border-bottom: 33px solid transparent;
+  content: '';
+
+}
+}
