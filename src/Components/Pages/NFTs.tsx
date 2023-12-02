@@ -75,43 +75,39 @@ const ColumnChar = styled.div`
 `;
 
 const NFTClasses = styled.div<{ isScreen575?: boolean }>`
-  margin-top: 3rem;
-  max-width: 80%;
-  align-self: center;
-  justify-content: flex-start;
-  align-items: center;
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 1.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
+    margin-top: 3rem;
+    max-width: 65rem;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
 
-  @media (max-width: 575px) {
-    max-height: 10.1rem;
-    max-width: 100%;
-    flex-flow: row nowrap;
-    overflow: auto;
-    gap: 0.39rem;
-    padding-bottom: 5px;
-  }
+    @media (max-width: 575px) {
+        max-height: 10.1rem;
+        flex-flow: column wrap;
+        overflow: auto;
+        max-width: 100%;
+        gap: 0.39rem;
+        overflow-y: hidden; /* Hide vertical scrollbar */
+        padding-bottom: 5px;
+    }
+    
+    /* Adjust the scrollbar width and style */
+    &::-webkit-scrollbar {
+    width: 4px;
+    }
 
-  @media (min-width: 576px) {
-    flex-flow: row wrap; /* Change to wrap to allow multiple rows on desktop */
-  }
+    &::-webkit-scrollbar-thumb {
+        background: #888; /* Color of the scrollbar thumb */
+        border-radius: 5px; /* Round the scrollbar thumb */
+    }
 
-  /* Adjust the scrollbar width and style */
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color of the scrollbar thumb on hover */
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `;
 
 
