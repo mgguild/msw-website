@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ab383b6a.css",
-    "main.js": "/static/js/main.52038e6e.js",
+    "main.css": "/static/css/main.0670c1b5.css",
+    "main.js": "/static/js/main.af6e0afb.js",
     "static/js/477.6ddf461a.chunk.js": "/static/js/477.6ddf461a.chunk.js",
     "static/js/141.617122bc.chunk.js": "/static/js/141.617122bc.chunk.js",
     "static/js/754.9f41aec4.chunk.js": "/static/js/754.9f41aec4.chunk.js",
@@ -107,11 +107,11 @@
     "static/media/MSW_Logo_footer.png": "/static/media/MSW_Logo_footer.5b50a4f25997c7c19972.png",
     "static/media/MSW_Logo_header.png": "/static/media/MSW_Logo_header.5b50a4f25997c7c19972.png",
     "static/media/MSW_Logo2.png": "/static/media/MSW_Logo2.89794f323afb993c6198.png",
-    "static/media/Bossraid_new_new.png": "/static/media/Bossraid_new_new.6db0f5a8696d0995bf25.png",
-    "static/media/Pvp_new_new.png": "/static/media/Pvp_new_new.49980ece88df86eb896f.png",
-    "static/media/Dungeon_newnew.png": "/static/media/Dungeon_newnew.747c1537288297ab5de6.png",
+    "static/media/Bossraid_new_new.png": "/static/media/Bossraid_new_new.b53663f4ca682181ca82.png",
     "static/media/Salvador_Jr._Amba.png": "/static/media/Salvador_Jr._Amba.e2192c733f5ee4c094e4.png",
     "static/media/brown-bg.png": "/static/media/brown-bg.0e1e1a6cfcee217f6f86.png",
+    "static/media/Pvp_new_new.png": "/static/media/Pvp_new_new.c618c7419d11bc31dbd3.png",
+    "static/media/Dungeon_newnew.png": "/static/media/Dungeon_newnew.028cd839580f8c9a5926.png",
     "static/media/darkknight_blur.png": "/static/media/darkknight_blur.a88dd4adf03c672136b3.png",
     "static/media/Dark_Knight.png": "/static/media/Dark_Knight.8901ca8337b1363f628d.png",
     "static/media/artillery_blur.png": "/static/media/artillery_blur.5d21e35693bdc80c863c.png",
@@ -204,8 +204,8 @@
     "static/media/mobile bg.png": "/static/media/mobile bg.047a8f62fd83de078824.png",
     "index.html": "/index.html",
     "static/media/chevron-down.svg": "/static/media/chevron-down.932a047472c3455cd9a4d68b8b2179e8.svg",
-    "main.ab383b6a.css.map": "/static/css/main.ab383b6a.css.map",
-    "main.52038e6e.js.map": "/static/js/main.52038e6e.js.map",
+    "main.0670c1b5.css.map": "/static/css/main.0670c1b5.css.map",
+    "main.af6e0afb.js.map": "/static/js/main.af6e0afb.js.map",
     "477.6ddf461a.chunk.js.map": "/static/js/477.6ddf461a.chunk.js.map",
     "141.617122bc.chunk.js.map": "/static/js/141.617122bc.chunk.js.map",
     "754.9f41aec4.chunk.js.map": "/static/js/754.9f41aec4.chunk.js.map",
@@ -216,7 +216,7 @@
     "511.efa3257c.chunk.js.map": "/static/js/511.efa3257c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab383b6a.css",
-    "static/js/main.52038e6e.js"
+    "static/css/main.0670c1b5.css",
+    "static/js/main.af6e0afb.js"
   ]
 }
