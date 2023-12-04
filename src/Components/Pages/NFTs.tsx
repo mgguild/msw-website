@@ -32,7 +32,7 @@ const TitleCard = styled.div<{ padding?: string }>`
     @media (max-width: 440px) {
         padding: 2rem 2rem !important;
         h1 {
-            font-size: 1.8rem !important;
+            font-size: 1.7rem !important;
         }
     }
 `;
@@ -86,15 +86,17 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
 
     @media (max-width: 575px) {
         max-height: 10.1rem;
-        flex-flow: row wrap;
-        overflow: scroll;
+        flex-flow: column wrap;
+        overflow: auto;
         max-width: 100%;
-        gap: 0.39rem
-
+        gap: 0.39rem;
+        overflow-y: hidden; /* Hide vertical scrollbar */
+        padding-bottom: 5px;
     }
+    
     /* Adjust the scrollbar width and style */
     &::-webkit-scrollbar {
-     height: 0px;
+    width: 4px;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -107,6 +109,9 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
     }
 
 `;
+
+
+
 
 const NFTClass = styled.div<{ img: string }>`
     position: relative;

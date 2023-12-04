@@ -48,15 +48,15 @@ const CustomCarousel = styled(Carousel)`
     color: #FFFFFF; 
     font-size: 50px; 
     
-    @media (max-width: 820px){
-        font-size: 32px;
+    @media (max-width: 800px){
+        font-size: 40px;
     } 
     @media (max-width: 575px) {
-        font-size: 20px;
+        font-size: 50px;
     }
 
     @media (max-width: 375px) {
-        font-size: 20px;
+        font-size: 50px;
     }
   }
 
@@ -89,9 +89,14 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
             font-size: 80px;
         }
 
+        @media (max-width: 820px) {
+            font-size: 38px;
+            width: 28rem;
+        }
+
         @media (max-width: 800px) {
-            font-size: 50px;
-            width: 20.3rem;
+            font-size: 80px;
+            width: 45.3rem;
         }
 
         @media (max-width: 500px) {
@@ -108,14 +113,22 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
             font-size: 1.75rem;
         }
 
+        @media (max-width: 820px) {
+            font-size: 1.2rem;
+            width: 27rem;
+            padding-top: 0px;
+        }
+
         @media (max-width: 800px) {
-            font-size: 1.5rem;
-            width: 20rem;
+            font-size: 2.5rem;
+            width: 44rem;
+            padding-top: 55px;
         }
 
         @media (max-width: 500px) {
             font-size: 1.2rem;
             width: 20rem;
+            padding-top: 0px;
         }
     }
 `;

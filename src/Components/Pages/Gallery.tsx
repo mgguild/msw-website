@@ -25,19 +25,27 @@ const Gallery = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
     gap: 1rem;
- 
+    justify-content: center;
+    
     @media (max-width: 520px) {
         display: flex;
+        flexWrap:'wrap',
+        gap: '2rem',
         justify-content: center;
         align-items: center;
         flex-flow: row wrap;
+        margin : '0 0 2rem 0',
     }
 
     img {
         @media (max-width: 520px) {
-            width: 180px;
-            height: 240px;
-            
+            width: 146px;
+            height: 200px; 
+            justify-content: center; 
+        }
+        @media (max-width: 320px){
+            width: 146px;
+            height: 203px;  
         }
     }
 `;

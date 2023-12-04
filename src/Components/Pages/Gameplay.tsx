@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { SectHdr, TitleCard, SectCont } from '../Styled';
 
 const Card = styled.div`
-    max-width: 20rem;
+    max-width: 25rem;
 `;
 
 const Content = styled.div<{ isMedScreen?: boolean }>`
@@ -10,6 +10,11 @@ const Content = styled.div<{ isMedScreen?: boolean }>`
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
+    gap: 0rem;
+
+    @media (max-width: 575px) {
+        gap: 3rem;    
+    }
 `;
 
 const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {

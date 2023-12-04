@@ -74,8 +74,8 @@ const TeamProfile = styled.div`
     align-items: center;
     text-align: center;
     line-height: 1.8rem;
-    min-width: 10rem;
-    max-width: 10rem;
+    min-width: 11rem;
+    max-width: 12rem;
 
     @media (max-width: 413px) {
         min-width: 8rem;
