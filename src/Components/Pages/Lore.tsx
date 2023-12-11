@@ -76,7 +76,7 @@ const CarouselCont = styled.div`
 
 const Scroll = styled.div<{ isScreen800?: boolean }>`
     position: absolute;
-    top: 50px;
+    top: 40px;
     padding: ${({ isScreen800 }) => (isScreen800 ? '48% 2rem 2em 2rem' : '4%')};
     color: white;
     width: 45%;
