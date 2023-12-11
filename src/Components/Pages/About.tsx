@@ -13,6 +13,9 @@ const About = styled.div`
     h1 {
         text-align: center;
     }
+    about-text{
+        font-family: 'Mustica Pro';
+    }
 `;
 
 const AboutImg = styled.div<{ isMedScreen?: boolean }>`
@@ -35,6 +38,7 @@ const Content = styled.div<{ isMedScreen?: boolean }>`
     gap: 1rem;
     max-width: 53rem;
     align-self: center;
+    font-family: 'Mustica Pro';
 `;
 
 const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
@@ -54,7 +58,8 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
                             <>
                                 <AboutImg isMedScreen={isScreen800}>&nbsp;</AboutImg>
                                 <About>
-                                    <div className="about-text">
+                                    <div className="about-text"
+                                    >
                                         MetaSaga Warriors is a roguelike dungeon crawler
                                         FREE-TO-OWN NFT game where you command a party of
                                         warriors (known as Diggers) on a mission to stop

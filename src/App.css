@@ -49,6 +49,12 @@
 }
 
 @font-face {
+  font-family: 'Passion One';
+  src: url('../src/Assets/Fonts/PassionOne/PassionOne-Black.ttf') format('opentype');
+}
+
+
+@font-face {
   font-family: 'Mustica Pro';
   src: url('../src/Assets/Fonts/mustica_pro/MusticaPro-SemiBold.otf') format('opentype');
 }
@@ -73,7 +79,7 @@ html {
   /* 3 */
   font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Fira Sans Condensed', sans-serif;
   /* 4 */
   -webkit-font-feature-settings: normal;
   font-feature-settings: normal;
@@ -1953,6 +1959,11 @@ pre {
   padding: 2rem;
   font-family: 'Alphakind', cursive;
 }
+
+.page-section .p {
+  font-family: 'Mustica Pro';
+}
+
 
 .head-titles {
   position: absolute;
