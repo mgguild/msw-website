@@ -16,7 +16,7 @@ export default function App() {
                 </SectHdr>
                 <SectCont
                     className="accordion"
-                    style={{ flexFlow: 'column wrap', gap: '1em' }}
+                    style={{ flexFlow: 'column wrap', gap: '1em'}}
                     margin="auto"
                     maxWidth="1140px"
                 >
@@ -49,6 +49,7 @@ export default function App() {
                                     style={{
                                         borderLeft: 'solid white',
                                         padding: '2rem 0 2rem 1rem',
+                                        fontFamily: 'Mustica Pro',
                                     }}
                                 >
                                     {i === 3 ? (

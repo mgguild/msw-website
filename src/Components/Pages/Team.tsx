@@ -15,6 +15,10 @@ const BG = styled.div`
     padding: 2rem;
     font-family: 'Alphakind', cursive;
 
+    @media (max-width: 520px) {
+        padding: 0.5rem;
+    }
+
     @media (max-width: 406px) {
         padding: 0.5rem;
     }

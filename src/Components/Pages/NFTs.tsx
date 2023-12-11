@@ -41,6 +41,9 @@ const Content = styled.div`
     display: flex;
     flex-flow: column nowrap;
     width: 100%;
+    p {
+        font-family: 'Mustica Pro';
+    }
 `;
 
 const RowChar = styled.div`

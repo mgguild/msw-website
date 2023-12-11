@@ -75,8 +75,8 @@ const CarouselCont = styled.div`
 `;
 
 const Scroll = styled.div<{ isScreen800?: boolean }>`
-   position: absolute;
-    top: 60px;
+    position: absolute;
+    top: 40px;
     padding: ${({ isScreen800 }) => (isScreen800 ? '48% 2rem 2em 2rem' : '4%')};
     color: white;
     width: 45%;
@@ -101,13 +101,19 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
 
         @media (max-width: 500px) {
             font-size: 45px;
-            width: 20rem;
+            width: 23rem;
+        }
+
+        @media (max-width: 390px) {
+            font-size: 45px;
+            width: 21rem;
         }
     }
 
     p {
-        font-size: 1.8rem;
+        font-size: 1.89rem;
         text-align: center;
+        font-family: 'Mustica Pro';
 
         @media (max-width: 1025px) {
             font-size: 1.75rem;
@@ -126,9 +132,14 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
         }
 
         @media (max-width: 500px) {
-            font-size: 1.2rem;
-            width: 20rem;
+            font-size: 1.4rem;
+            width: 22rem;
             padding-top: 0px;
+        }
+
+        @media (max-width: 390px) {
+            font-size: 21px;
+            width: 21rem;
         }
     }
 `;
