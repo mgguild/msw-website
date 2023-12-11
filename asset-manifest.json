@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0670c1b5.css",
-    "main.js": "/static/js/main.af6e0afb.js",
+    "main.css": "/static/css/main.31dccc8f.css",
+    "main.js": "/static/js/main.5d702efc.js",
     "static/js/477.6ddf461a.chunk.js": "/static/js/477.6ddf461a.chunk.js",
     "static/js/141.617122bc.chunk.js": "/static/js/141.617122bc.chunk.js",
     "static/js/754.9f41aec4.chunk.js": "/static/js/754.9f41aec4.chunk.js",
@@ -191,12 +191,14 @@
     "static/media/archercard1.png": "/static/media/archercard1.e9b7044bc529e331cd18.png",
     "static/media/musketeercard1.png": "/static/media/musketeercard1.cdd9d1dfb0f888163966.png",
     "static/media/wizardcard1.png": "/static/media/wizardcard1.47f93c00fe966f7b57ed.png",
+    "static/media/7a3njak3278u099fg.png": "/static/media/7a3njak3278u099fg.e8d321385003d4e01ce1.png",
     "static/media/legendarycard2_magitek.png": "/static/media/legendarycard2_magitek.4eefe7a841c6f84d5afe.png",
     "static/media/legendarycard2_dark_knight.png": "/static/media/legendarycard2_dark_knight.656396d434a1d26d8840.png",
     "static/media/legendary_archer.png": "/static/media/legendary_archer.8db01aabc7af0c9c2190.png",
     "static/media/brown-bg.jpg": "/static/media/brown-bg.b9c5ca05b1b2f19e289b.jpg",
     "static/media/legendarycard2.png": "/static/media/legendarycard2.05d658f5568659504856.png",
     "static/media/One Slice.otf": "/static/media/One Slice.454ddb3a3aca66a0b208.otf",
+    "static/media/PassionOne-Black.ttf": "/static/media/PassionOne-Black.5f79899dac2d04fae688.ttf",
     "static/media/threads.png": "/static/media/threads.ea7fc593de313dda4cc4.png",
     "static/media/mobile_bg.png": "/static/media/mobile_bg.8d187bea88eed3b3facb.png",
     "static/media/Alphakind.otf": "/static/media/Alphakind.80dd257bb267c92016c7.otf",
@@ -204,8 +206,8 @@
     "static/media/mobile bg.png": "/static/media/mobile bg.047a8f62fd83de078824.png",
     "index.html": "/index.html",
     "static/media/chevron-down.svg": "/static/media/chevron-down.932a047472c3455cd9a4d68b8b2179e8.svg",
-    "main.0670c1b5.css.map": "/static/css/main.0670c1b5.css.map",
-    "main.af6e0afb.js.map": "/static/js/main.af6e0afb.js.map",
+    "main.31dccc8f.css.map": "/static/css/main.31dccc8f.css.map",
+    "main.5d702efc.js.map": "/static/js/main.5d702efc.js.map",
     "477.6ddf461a.chunk.js.map": "/static/js/477.6ddf461a.chunk.js.map",
     "141.617122bc.chunk.js.map": "/static/js/141.617122bc.chunk.js.map",
     "754.9f41aec4.chunk.js.map": "/static/js/754.9f41aec4.chunk.js.map",
@@ -216,7 +218,7 @@
     "511.efa3257c.chunk.js.map": "/static/js/511.efa3257c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0670c1b5.css",
-    "static/js/main.af6e0afb.js"
+    "static/css/main.31dccc8f.css",
+    "static/js/main.5d702efc.js"
   ]
 }
