@@ -1,5 +1,6 @@
+import { Routes, Route } from 'react-router-dom'
 import './App.css';
-import { useMemo, useState, useRef, useEffect } from 'react';
+import { useMemo, useState, useRef, useEffect, FC } from 'react';
 import { useSpring, animated, useSpringRef } from '@react-spring/web';
 import {
     Home,
@@ -28,6 +29,8 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { ConnectKitProvider, getDefaultConfig } from 'connectkit';
 import { ToastContainer, toast } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
+import { DashboardHome, DashboardRewards } from './routes';
+import {Navigation} from './Components/Dashboard';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -125,7 +128,7 @@ const config = createConfig({
     publicClient,
 });
 
-function App() {
+function MainApp() {
     const [tab, setTab] = useState(0);
     const [isScreen1080, setIsScreen1080] = useState(false);
     const [isScreen800, setIsScreen800] = useState(false);
@@ -280,5 +283,24 @@ function App() {
         </>
     );
 }
+
+const Dashboard: FC = () => (
+  <div className='flex flex-col w-full'>
+    <Navigation />
+    <div className='mx-[5em] my-[5em]'>
+      <Routes>
+        <Route path="/" element={<DashboardHome />} />
+        <Route path="/rewards" element={<DashboardRewards />} />
+      </Routes>
+    </div>
+  </div>
+)
+
+const App = () => (
+  <Routes>
+    <Route path='/' element={<MainApp />} />
+    <Route path='/dashboard/*' element={<Dashboard />} />
+  </Routes>
+)
 
 export default App;
