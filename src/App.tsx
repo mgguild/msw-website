@@ -29,7 +29,7 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { ConnectKitProvider, getDefaultConfig } from 'connectkit';
 import { ToastContainer, toast } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
-import { DashboardHome, DashboardRewards, DashboardWallet } from './routes';
+import { DashboardExchange, DashboardGuilds, DashboardHome, DashboardMembership, DashboardRewards, DashboardSocial, DashboardWallet } from './routes';
 import {Navigation} from './Components/Dashboard';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -292,6 +292,10 @@ const Dashboard: FC = () => (
         <Route path="/" element={<DashboardHome />} />
         <Route path="/rewards" element={<DashboardRewards />} />
         <Route path="/wallet" element={<DashboardWallet />} />
+        <Route path="/exchange" element={<DashboardExchange />} />
+        <Route path="/membership" element={<DashboardMembership />} />
+        <Route path="/social" element={<DashboardSocial />} />
+        <Route path="/guilds" element={<DashboardGuilds />} />
       </Routes>
     </div>
   </div>
