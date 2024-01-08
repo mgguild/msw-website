@@ -280,8 +280,8 @@ const App: React.FC = () => {
                 <CenterFrame>
                     <ModalContainer>
                         <Row style={{ padding: '1rem 2rem' }}>
-                            <h4>
-                                User Not found! Please return to{' '}
+                            <h4 style={{textAlign: 'center'}}>
+                                User Not found! Please return to {' '}
                                 <Link to={'/'}>homepage</Link> to login
                             </h4>
                         </Row>
@@ -297,8 +297,8 @@ const App: React.FC = () => {
                 <CenterFrame>
                     <ModalContainer>
                         <Row style={{ padding: '1rem 2rem' }}>
-                            <h4>
-                                User account deleted go back to{' '}
+                            <h4 style={{textAlign: 'center'}}>
+                                User account deleted go back to {' '}
                                 <Link to={'/'}>homepage</Link>
                             </h4>
                         </Row>
