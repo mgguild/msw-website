@@ -29,7 +29,7 @@ export default [
   {
     question: 'How can I play the game?',
     answer:
-      'You can play the game on desktop or mobile devices by visiting this link: http://msw.gg',
+      'You can play the game on desktop or mobile devices by visiting this link: https://msw.gg/',
   },
   {
     question: 'How do I stay updated and safe?',
