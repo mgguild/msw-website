@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { SectHdr, TitleCard, SectCont } from '../Styled';
-import classes from '../Data/Classes';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
+import classes from '../../../Data/Classes';
 import React, { useState, useEffect } from 'react';
 
 const Content = styled.div`
@@ -146,7 +146,7 @@ export default function App() {
                                     >
                                         <img
                                             style={{ width: '8rem' }}
-                                            src={require('../../Assets/img/MSW_Logo_header.png')}
+                                            src={require('../../../../Assets/img/MSW_Logo_header.png')}
                                             alt=""
                                             className="w-5 px-xl-0"
                                         />
@@ -236,7 +236,7 @@ export default function App() {
                                 >
                                     {' '}
                                     <img
-                                        src={require('../../Assets/img/threads.png')}
+                                        src={require('../../../../Assets/img/threads.png')}
                                         className="threads"
                                     />
                                 </a>

@@ -1,12 +1,12 @@
-import { SectHdr, TitleCard, SectCont } from '../Styled';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 import styled from 'styled-components';
-import team from '../Data/team';
+import team from '../../../Data/team';
 
 const BG = styled.div`
-    background-image: url(${require('../../Assets/img/stalactite1.png')}),
-        url(${require('../../Assets/img/stalactite2.png')}),
-        url(${require('../../Assets/img/crystal1.png')}),
-        url(${require('../../Assets/img/crystal2.png')});
+    background-image: url(${require('../../../../Assets/img/stalactite1.png')}),
+        url(${require('../../../../Assets/img/stalactite2.png')}),
+        url(${require('../../../../Assets/img/crystal1.png')}),
+        url(${require('../../../../Assets/img/crystal2.png')});
     background-repeat: no-repeat;
     background-size: 20%, 20%, 30%, 30%;
     background-position: bottom left, bottom right, bottom right, bottom left;
@@ -17,7 +17,7 @@ const ProfileImg = styled.div<{ bgImg: string }>`
     ${({ bgImg }) =>
         bgImg
             ? `
-         background-image: url(${require('../../Assets/img/teams/' + bgImg)});
+         background-image: url(${require('../../../../Assets/img/teams/' + bgImg)});
     `
             : ''}
 
@@ -74,7 +74,7 @@ const Profile: React.FC<{ bgImg: string; img: string; name: string; role: string
                 }}
             >
                 <ProfileImg bgImg={bgImg}>
-                    <Img src={require(`../../Assets/img/teams/${img}`)} />
+                    <Img src={require(`../../../../Assets/img/teams/${img}`)} />
                 </ProfileImg>
                 <Desc>
                     <div>{name}</div>
@@ -94,7 +94,7 @@ export default function App() {
             <BG className="page-section" id="team">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="2rem 6.5rem">
+                    <TitleCard className="titleCard" padding="2rem 6.5rem">
                         <h1>Team</h1>
                     </TitleCard>
                 </SectHdr>

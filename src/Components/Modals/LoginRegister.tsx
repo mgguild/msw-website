@@ -2,11 +2,10 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { PlayFab, PlayFabClient } from 'playfab-sdk';
+import { PlayFabClient } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
-import { flare } from 'wagmi/dist/chains';
 
 const style = {
     position: 'relative',
@@ -154,7 +153,6 @@ export default function LoginRegister() {
                 PlayFabId: playfabId,
             },
             (error, result) => {
-
                 if (error) {
                     toast(error.errorMessage, { type: 'error' });
                     return;

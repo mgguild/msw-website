@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { SectHdr, TitleCard, SectCont } from '../Styled';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 
 const About = styled.div`
-    background-image: url(${require('../../Assets/img/about_bg.png')});
+    background-image: url(${require('../../../../Assets/img/about_bg.png')});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -16,7 +16,7 @@ const About = styled.div`
 `;
 
 const AboutImg = styled.div<{ isMedScreen?: boolean }>`
-    background-image: url(${require('../../Assets/img/about_img.png')});
+    background-image: url(${require('../../../../Assets/img/about_img.png')});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -43,7 +43,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
             <div className="page-section" id="about">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard'>
+                    <TitleCard className="titleCard">
                         <h1>ABOUT</h1>
                     </TitleCard>
                 </SectHdr>

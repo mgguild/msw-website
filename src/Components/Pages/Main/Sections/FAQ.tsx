@@ -1,8 +1,8 @@
-import { SectHdr, TitleCard, SectCont } from '../Styled';
-import FAQs from '../Data/FAQs';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
+import FAQs from '../../../Data/FAQs';
 import { Accordion, AccordionItem as Item } from '@szhsin/react-accordion';
-import styles from './Styles/accordionStyle.module.css';
-import chevronDown from '../../chevron-down.svg';
+import styles from '../../Styles/accordionStyle.module.css';
+import chevronDown from '../../../../chevron-down.svg';
 
 export default function App() {
     return (
@@ -10,7 +10,7 @@ export default function App() {
             <div className="page-section" id="faqs">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="2rem 6.5rem">
+                    <TitleCard className="titleCard" padding="2rem 6.5rem">
                         <h1>FAQs</h1>
                     </TitleCard>
                 </SectHdr>
@@ -52,7 +52,7 @@ export default function App() {
                                     }}
                                 >
                                     {i === 3 ? (
-                                        <a  
+                                        <a
                                             style={{ textDecoration: 'none' }}
                                             href="https://opensea.io/collection/metasagawarriors"
                                             target="_blank"

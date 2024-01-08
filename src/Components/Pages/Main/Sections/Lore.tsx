@@ -1,38 +1,38 @@
 import styled from 'styled-components';
-import { SectHdr, TitleCard, SectCont } from '../Styled';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 import { useState, useMemo } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import React from 'react';
 
 const CustomCarousel = styled(Carousel)`
-  .control-arrow {
-    background-color: transparent; 
-  }
-
-  .control-arrow:before {
-    color: #FFFFFF; 
-    font-size: 50px; 
-    
-    @media (max-width: 820px){
-        font-size: 32px;
-    } 
-    @media (max-width: 575px) {
-        font-size: 20px;
+    .control-arrow {
+        background-color: transparent;
     }
 
-    @media (max-width: 375px) {
-        font-size: 20px;
+    .control-arrow:before {
+        color: #ffffff;
+        font-size: 50px;
+
+        @media (max-width: 820px) {
+            font-size: 32px;
+        }
+        @media (max-width: 575px) {
+            font-size: 20px;
+        }
+
+        @media (max-width: 375px) {
+            font-size: 20px;
+        }
     }
-  }
 
-  .control-prev.control-arrow:before {
-    content: '🞀'; 
-  }
+    .control-prev.control-arrow:before {
+        content: '🞀';
+    }
 
-  .control-next.control-arrow:before {
-    content: '🞂';
-  }
+    .control-next.control-arrow:before {
+        content: '🞂';
+    }
 `;
 
 const CarouselCont = styled.div`
@@ -41,12 +41,12 @@ const CarouselCont = styled.div`
 `;
 
 const Scroll = styled.div<{ isScreen800?: boolean }>`
-   position: absolute;
+    position: absolute;
     top: 60px;
     padding: ${({ isScreen800 }) => (isScreen800 ? '48% 2rem 2em 2rem' : '4%')};
     color: white;
     width: 45%;
-    
+
     h1 {
         font-size: 80px;
         color: #ecb602;
@@ -94,7 +94,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
         <Carousel showThumbs={false}>
             <div style={{ position: 'relative' }}>
                 <img
-                    src={require(`../../Assets/img/${
+                    src={require(`../../../../Assets/img/${
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore_sm.png'
@@ -120,7 +120,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
             </div>
             <div>
                 <img
-                    src={require(`../../Assets/img/${
+                    src={require(`../../../../Assets/img/${
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore2_sm.png'
@@ -165,7 +165,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
             <div className="page-section" id="lore" style={{ padding: '0' }}>
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="3rem 6.5rem">
+                    <TitleCard className="titleCard" padding="3rem 6.5rem">
                         <h1>Lore</h1>
                     </TitleCard>
                 </SectHdr>
