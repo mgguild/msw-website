@@ -1,8 +1,8 @@
-import { SectHdr, TitleCard, SectCont } from '../Styled';
-import FAQs from '../Data/FAQs';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
+import FAQs from '../../../Data/FAQs';
 import { Accordion, AccordionItem as Item } from '@szhsin/react-accordion';
-import styles from './Styles/accordionStyle.module.css';
-import chevronDown from '../../chevron-down.svg';
+import styles from '../../Styles/accordionStyle.module.css';
+import chevronDown from '../../../../chevron-down.svg';
 
 export default function App() {
     return (
@@ -10,13 +10,13 @@ export default function App() {
             <div className="page-section" id="faqs">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="2rem 6.5rem">
-                        <h1 style={{ fontSize: '2.2rem' }}>FAQs</h1>
+                    <TitleCard className="titleCard" padding="2rem 6.5rem">
+                        <h1>FAQs</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont
                     className="accordion"
-                    style={{ flexFlow: 'column wrap', gap: '1em'}}
+                    style={{ flexFlow: 'column wrap', gap: '1em' }}
                     margin="auto"
                     maxWidth="1140px"
                 >
@@ -49,11 +49,10 @@ export default function App() {
                                     style={{
                                         borderLeft: 'solid white',
                                         padding: '2rem 0 2rem 1rem',
-                                        fontFamily: 'Mustica Pro',
                                     }}
                                 >
                                     {i === 3 ? (
-                                        <a  
+                                        <a
                                             style={{ textDecoration: 'none' }}
                                             href="https://opensea.io/collection/metasagawarriors"
                                             target="_blank"

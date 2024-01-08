@@ -186,18 +186,18 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                     disablePictureInPicture={true}
                 >
                     <source
-                        src={require('../../Assets/vid/Animated_MSW_Lobby.webm')}
+                        src={require('../../../../Assets/vid/Animated_MSW_Lobby.webm')}
                         type="video/webm"
                     />
                     <source
-                        src={require('../../Assets/vid/Animated_MSW_Lobby.mp4')}
+                        src={require('../../../../Assets/vid/Animated_MSW_Lobby.mp4')}
                         type="video/mp4"
                     />
                 </VidCont>
                 <HomeCont>
                     <img
                         style={{ width: '30rem' }}
-                        src={require('../../Assets/img/MSW_Logo2.png')}
+                        src={require('../../../../Assets/img/MSW_Logo2.png')}
                         alt="msw_logo"
                     />
 
@@ -223,7 +223,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             >
                                 <img
                                     className="btn-googleplay"
-                                    src={require('../../Assets/img/7a3njak3278u099fg.png')}
+                                    src={require('../../../../Assets/img/7a3njak3278u099fg.png')}
                                 />
                             </a>
                         </GrowBtn>
@@ -235,7 +235,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             >
                                 <img
                                     className="btn-googleplay"
-                                    src={require('../../Assets/img/5a902dbf7f96951c82922875.png')}
+                                    src={require('../../../../Assets/img/5a902dbf7f96951c82922875.png')}
                                 />
                             </a>
                         </GrowBtn>
@@ -247,7 +247,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             >
                             <img
                                 className="btn-googleplay"
-                                src={require('../../Assets/img/coming-soon-png_47446.png')}
+                                src={require('../../../../Assets/img/coming-soon-png_47446.png')}
                             />
                              </a>
                         </GrowBtn>

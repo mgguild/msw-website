@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { PlayFab, PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
+import { PlayFabCloudScript } from 'playfab-sdk';
 import { toast } from 'react-toastify';
-import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
 import { ConnectKitButton } from 'connectkit';
 import { useAccount, useSignMessage } from 'wagmi';
 import { Triangle } from 'react-loader-spinner';
-import { marginTop } from 'styled-system';
 import { recoverMessageAddress } from 'viem';
+import { Link } from 'react-router-dom';
+import { backgroundColor } from 'styled-system';
 
 const style = {
     position: 'relative',
@@ -86,6 +86,18 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
     align-items: center;
     justify-content: center;
     text-align: center;
+`;
+
+const Buttons = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+    justify-content: center;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
 `;
 
 const Field = styled.div`
@@ -276,9 +288,20 @@ export default function LoginRegister() {
                                         )}
                                     </div>
                                 )}
-                                <div
-                                    style={{ display: 'flex', justifyContent: 'center' }}
-                                >
+                                <Buttons>
+                                    <Link
+                                        to="account/delete"
+                                        style={{
+                                            width: '100%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <Button style={{ backgroundColor: 'red' }}>
+                                            Delete Account
+                                        </Button>
+                                    </Link>
                                     <Button
                                         onClick={() => handleLogout()}
                                         borderRadius="8px"
@@ -287,7 +310,7 @@ export default function LoginRegister() {
                                     >
                                         Logout
                                     </Button>
-                                </div>
+                                </Buttons>
                             </Col>
                         </Container>
                     </CenterFrame>

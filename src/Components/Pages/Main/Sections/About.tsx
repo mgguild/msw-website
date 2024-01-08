@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { SectHdr, TitleCard, SectCont } from '../Styled';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 
 const About = styled.div`
-    background-image: url(${require('../../Assets/img/about_bg.png')});
+    background-image: url(${require('../../../../Assets/img/about_bg.png')});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -13,13 +13,10 @@ const About = styled.div`
     h1 {
         text-align: center;
     }
-    about-text{
-        font-family: 'Mustica Pro';
-    }
 `;
 
 const AboutImg = styled.div<{ isMedScreen?: boolean }>`
-    background-image: url(${require('../../Assets/img/about_img.png')});
+    background-image: url(${require('../../../../Assets/img/about_img.png')});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -38,7 +35,6 @@ const Content = styled.div<{ isMedScreen?: boolean }>`
     gap: 1rem;
     max-width: 53rem;
     align-self: center;
-    font-family: 'Mustica Pro';
 `;
 
 const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
@@ -47,8 +43,8 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
             <div className="page-section" id="about">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard'>
-                        <h1 style={{ fontSize: '2.5rem' }}>ABOUT</h1>
+                    <TitleCard className="titleCard">
+                        <h1>ABOUT</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont display="flex" margin="0" style={{ flexFlow: 'column nowrap' }}>
@@ -58,8 +54,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
                             <>
                                 <AboutImg isMedScreen={isScreen800}>&nbsp;</AboutImg>
                                 <About>
-                                    <div className="about-text"
-                                    >
+                                    <div className="about-text">
                                         MetaSaga Warriors is a roguelike dungeon crawler
                                         FREE-TO-OWN NFT game where you command a party of
                                         warriors (known as Diggers) on a mission to stop

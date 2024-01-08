@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SectHdr, TitleCard, SectCont } from '../Styled';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 
 const Header = styled.div`
     display: grid;
@@ -23,29 +23,20 @@ const Header = styled.div`
 
 const Gallery = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
-    justify-content: center;
-    
+
     @media (max-width: 520px) {
         display: flex;
-        flexWrap:'wrap',
-        gap: '2rem',
         justify-content: center;
         align-items: center;
         flex-flow: row wrap;
-        margin : '0 0 2rem 0',
     }
 
     img {
         @media (max-width: 520px) {
-            width: 146px;
-            height: 200px; 
-            justify-content: center; 
-        }
-        @media (max-width: 320px){
-            width: 146px;
-            height: 203px;  
+            width: 180px;
+            height: 240px;
         }
     }
 `;
@@ -56,8 +47,8 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
             <div className="page-section" id="gallery">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard'>
-                        <h1 style={{ fontSize: '2.2rem' }}>Gallery</h1>
+                    <TitleCard className="titleCard">
+                        <h1>Gallery</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont
@@ -84,41 +75,40 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                     </Header>
                     <Gallery>
                         <img
-                            src={require('../../Assets/img/IMG_6291.jpg')}
-                            alt="..."
-                            width="600"
-                            height="400"
-                            
-                        />
-                        <img
-                            src={require('../../Assets/img/IMG_6448.jpg')}
+                            src={require('../../../../Assets/img/IMG_6291.jpg')}
                             alt="..."
                             width="600"
                             height="400"
                         />
                         <img
-                            src={require('../../Assets/img/IMG_6893.jpg')}
+                            src={require('../../../../Assets/img/IMG_6448.jpg')}
                             alt="..."
                             width="600"
                             height="400"
                         />
                         <img
-                            src={require('../../Assets/img/IMG_9827.jpg')}
+                            src={require('../../../../Assets/img/IMG_6893.jpg')}
                             alt="..."
                             width="600"
                             height="400"
                         />
                         <img
-                            src={require('../../Assets/img/DevCon20232.jpg')}
+                            src={require('../../../../Assets/img/IMG_9827.jpg')}
                             alt="..."
                             width="600"
-                            height="400" 
+                            height="400"
                         />
-                         <img
-                            src={require('../../Assets/img/ESGS2023.jpg')}
+                        <img
+                            src={require('../../../../Assets/img/DevCon20232.jpg')}
                             alt="..."
                             width="600"
-                            height="400" 
+                            height="400"
+                        />
+                        <img
+                            src={require('../../../../Assets/img/ESGS2023.jpg')}
+                            alt="..."
+                            width="600"
+                            height="400"
                         />
                     </Gallery>
                 </SectCont>

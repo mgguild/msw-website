@@ -117,7 +117,7 @@ body {
   min-height: 100vh;
   display: flex;
   font-size: calc(10px + 1vmin);
-  color: white;
+  color: white !important;
 
   margin: 0;
   padding: 0;
@@ -709,7 +709,6 @@ button {
 .Header-content {
   width: 100%;
   align-items: start;
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
@@ -2504,17 +2503,17 @@ form input {
 }
 
 .ViewCollectionButton {
-  background-color: #2b164f; 
-  color: #fff; 
-  padding: 10px 20px; 
+  background-color: #2b164f;
+  color: #fff;
+  padding: 10px 20px;
   border-radius: 2.26rem;
   border-color: #7e6aa1;
-  text-decoration: none; 
-  cursor: pointer; 
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .ViewCollectionButton:hover {
-  background-color: #5bc0de; 
+  background-color: #5bc0de;
   color: #fff;
 }
 

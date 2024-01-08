@@ -4,9 +4,9 @@ import { toast } from 'react-toastify';
 
 const usePlayfab = create(set => ({
   initialized: false,
-  user: null,
+  user: '',
   userTags: [],
-  userData: null,
+  userData: '',
   start: async () => {
     PlayFab.settings.titleId = process.env.REACT_APP_PLAYFAB_TITLE_ID ?? '';
     PlayFab.settings.developerSecretKey = process.env.REACT_APP_PLAYFAB_DEV_KEY ?? '';

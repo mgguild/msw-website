@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { SectHdr, TitleCard, SectCont } from '../Styled';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 
 const Card = styled.div`
-    max-width: 25rem;
+    max-width: 20rem;
 `;
 
 const Content = styled.div<{ isMedScreen?: boolean }>`
@@ -10,11 +10,6 @@ const Content = styled.div<{ isMedScreen?: boolean }>`
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
-    gap: 0rem;
-
-    @media (max-width: 575px) {
-        gap: 3rem;    
-    }
 `;
 
 const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
@@ -23,8 +18,8 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
             <div className="page-section" id="gameplay">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="2rem 4rem">
-                        <h1 style={{ fontSize: '2rem' }}>GAMEPLAY</h1>
+                    <TitleCard className="titleCard" padding="2rem 4rem">
+                        <h1>GAMEPLAY</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont
@@ -34,21 +29,21 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                     <Content>
                         <Card className="grow">
                             <img
-                                src={require('../../Assets/img/Bossraid_new_new.png')}
+                                src={require('../../../../Assets/img/Bossraid_new_new.png')}
                                 className=""
                                 alt=""
                             />
                         </Card>
                         <Card className="grow">
                             <img
-                                src={require('../../Assets/img/Dungeon_newnew.png')}
+                                src={require('../../../../Assets/img/Dungeon_newnew.png')}
                                 className=""
                                 alt=""
                             />
                         </Card>
                         <Card className="grow">
                             <img
-                                src={require('../../Assets/img/Pvp_new_new.png')}
+                                src={require('../../../../Assets/img/Pvp_new_new.png')}
                                 className=""
                                 alt=""
                             />

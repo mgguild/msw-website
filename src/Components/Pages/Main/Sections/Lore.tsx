@@ -1,72 +1,38 @@
 import styled from 'styled-components';
-import { SectHdr, SectCont } from '../Styled';
+import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 import { useState, useMemo } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import React from 'react';
 
-const TitleCard = styled.div<{ padding?: string }>`
-    position: relative;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgba(255, 255, 255, 0);
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
-    padding: ${({ padding }) => padding ?? `2rem 4rem`};
-    border: 0rem solid rgba(0, 0, 0, 0.125);
-    border-radius: 0rem;
-    background-image: url(${require('../../Assets/img/tiles.png')});
-    background-size: cover;
-    background-position: center;
-
-    @media (max-width: 721px) {
-        padding: 2rem 5rem !important;
-
-        h1 {
-            font-size: 2.5rem !important;
-        }
-    }
-
-    @media (max-width: 440px) {
-        padding: 2rem 5rem !important;
-        h1 {
-            font-size: 2.5rem !important;
-        }
-    }
-`;
-
-
 const CustomCarousel = styled(Carousel)`
-  .control-arrow {
-    background-color: transparent; 
-  }
-
-  .control-arrow:before {
-    color: #FFFFFF; 
-    font-size: 50px; 
-    
-    @media (max-width: 800px){
-        font-size: 40px;
-    } 
-    @media (max-width: 575px) {
-        font-size: 50px;
+    .control-arrow {
+        background-color: transparent;
     }
 
-    @media (max-width: 375px) {
+    .control-arrow:before {
+        color: #ffffff;
         font-size: 50px;
+
+        @media (max-width: 820px) {
+            font-size: 32px;
+        }
+        @media (max-width: 575px) {
+            font-size: 20px;
+        }
+
+        @media (max-width: 375px) {
+            font-size: 20px;
+        }
     }
-  }
 
-  .control-prev.control-arrow:before {
-    content: '🞀'; 
-  }
+    .control-prev.control-arrow:before {
+        content: '🞀';
+    }
 
-  .control-next.control-arrow:before {
-    content: '🞂';
-  }
+    .control-next.control-arrow:before {
+        content: '🞂';
+    }
 `;
 
 const CarouselCont = styled.div`
@@ -76,11 +42,11 @@ const CarouselCont = styled.div`
 
 const Scroll = styled.div<{ isScreen800?: boolean }>`
     position: absolute;
-    top: 40px;
+    top: 60px;
     padding: ${({ isScreen800 }) => (isScreen800 ? '48% 2rem 2em 2rem' : '4%')};
     color: white;
     width: 45%;
-    
+
     h1 {
         font-size: 80px;
         color: #ecb602;
@@ -89,57 +55,33 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
             font-size: 80px;
         }
 
-        @media (max-width: 820px) {
-            font-size: 38px;
-            width: 28rem;
-        }
-
         @media (max-width: 800px) {
-            font-size: 80px;
-            width: 45.3rem;
+            font-size: 50px;
+            width: 20.3rem;
         }
 
         @media (max-width: 500px) {
             font-size: 45px;
-            width: 23rem;
-        }
-
-        @media (max-width: 390px) {
-            font-size: 45px;
-            width: 21rem;
+            width: 20rem;
         }
     }
 
     p {
-        font-size: 1.89rem;
+        font-size: 1.8rem;
         text-align: center;
-        font-family: 'Mustica Pro';
 
         @media (max-width: 1025px) {
             font-size: 1.75rem;
         }
 
-        @media (max-width: 820px) {
-            font-size: 1.2rem;
-            width: 27rem;
-            padding-top: 0px;
-        }
-
         @media (max-width: 800px) {
-            font-size: 2.5rem;
-            width: 44rem;
-            padding-top: 55px;
+            font-size: 1.5rem;
+            width: 20rem;
         }
 
         @media (max-width: 500px) {
-            font-size: 1.4rem;
-            width: 22rem;
-            padding-top: 0px;
-        }
-
-        @media (max-width: 390px) {
-            font-size: 21px;
-            width: 21rem;
+            font-size: 1.2rem;
+            width: 20rem;
         }
     }
 `;
@@ -149,12 +91,10 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
     isScreen650,
 }) => {
     return (
-        <Carousel showThumbs={false}
-        preventMovementUntilSwipeScrollTolerance={true}
-        swipeScrollTolerance={50}>
+        <Carousel showThumbs={false}>
             <div style={{ position: 'relative' }}>
                 <img
-                    src={require(`../../Assets/img/${
+                    src={require(`../../../../Assets/img/${
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore_sm.png'
@@ -180,7 +120,7 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
             </div>
             <div>
                 <img
-                    src={require(`../../Assets/img/${
+                    src={require(`../../../../Assets/img/${
                         isScreen800
                             ? isScreen650
                                 ? 'mobile_lore2_sm.png'
@@ -225,8 +165,8 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
             <div className="page-section" id="lore" style={{ padding: '0' }}>
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="3rem 6.5rem">
-                        <h1 style={{ fontSize: '2.2rem' }}>Lore</h1>
+                    <TitleCard className="titleCard" padding="3rem 6.5rem">
+                        <h1>Lore</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont margin="0">
