@@ -120,7 +120,7 @@ export default function App() {
         if(window.innerWidth < 800){
             setSequence([10]);
         }else{
-            setSequence([3, 7, 10]);
+            setSequence([2, 7, 10]);
         }
     };
 
