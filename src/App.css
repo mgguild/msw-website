@@ -2393,7 +2393,7 @@ form input {
   cursor: pointer; /* Optional: Change the cursor style on hover */
 }
 
-.btn {
+.btn-footer {
   display: inline-block;
   right: 120px;
   color: #ffffff;

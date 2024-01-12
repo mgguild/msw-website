@@ -49,6 +49,7 @@ export default function App() {
                                     style={{
                                         borderLeft: 'solid white',
                                         padding: '2rem 0 2rem 1rem',
+                                        fontFamily: 'Mustica Pro',
                                     }}
                                 >
                                     {i === 3 ? (

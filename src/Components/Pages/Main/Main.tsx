@@ -213,7 +213,7 @@ function App() {
                     href="https://opensea.io/collection/metasagawarriors"
                     className="ViewCollectionButton"
                 >
-                    View Collection
+                    Play Now!
                 </a>
             </AppNav>
         );

@@ -28,15 +28,31 @@ const Gallery = styled.div`
 
     @media (max-width: 520px) {
         display: flex;
+        flexWrap:'wrap',
+        gap: '2rem',
         justify-content: center;
         align-items: center;
         flex-flow: row wrap;
+        margin : '0 0 2rem 0',
     }
 
     img {
-        @media (max-width: 520px) {
-            width: 180px;
-            height: 240px;
+        @media (max-width: 500px) {
+            width: 154px;
+            height: 215px;
+            justify-content: center; 
+        }
+        @media (max-width: 430px) {
+            width: 174px;
+            height: 215px;
+        }
+        @media (max-width: 414px) {
+            width: 166px;
+            height: 220px;
+        }
+        @media (max-width: 390px){
+            width: 146px;
+            height: 203px;  
         }
     }
 `;
@@ -48,7 +64,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className="titleCard">
-                        <h1>Gallery</h1>
+                        <h1 style={{ fontSize: '2.2rem' }}>Gallery</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont
