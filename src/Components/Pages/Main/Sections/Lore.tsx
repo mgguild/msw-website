@@ -79,7 +79,7 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
     top: 40px;
     padding: ${({ isScreen800 }) => (isScreen800 ? '48% 2rem 2em 2rem' : '4%')};
     color: white;
-    width: 45%;
+    width: 60%;
     
     h1 {
         font-size: 80px;
