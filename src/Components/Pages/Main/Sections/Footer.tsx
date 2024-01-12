@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { SectHdr, TitleCard, SectCont } from '../../../Styled';
-import classes from '../../../Data/Classes';
+import { PrivPolTermsCond } from '../../../Modals';
 import React, { useState, useEffect } from 'react';
 
 const Content = styled.div`
@@ -14,6 +14,10 @@ const Content = styled.div`
     h4 {
         font-size: 1.5rem;
         text-align: center;
+
+        @media (max-width: 720px){
+            font-size: small;
+        }
     }
 `;
 
@@ -60,9 +64,8 @@ export default function App() {
             >
                 <SectCont margin="none" minHeight="none">
                     <Content>
-                        <h4>Want to be updated for the latest updates?</h4>
-                        <h4>Register your email below and click the Notify Me button.</h4>
-
+                        <h4>Want to be updated for the latest updates? Register your email below and click the Notify Me button.</h4>
+                       
                         <div style={{ margin: '1rem auto' }}>
                             <form
                                 action="https://metasagawarriors.us10.list-manage.com/subscribe/post?u=29581b54e89450fc09142e23d&amp;id=baac775905&amp;f_id=00d636e2f0"
@@ -154,83 +157,71 @@ export default function App() {
                                 </ImgContainer>
                                 <div style={{ lineHeight: '2rem', textAlign: 'center' }}>
                                     <div className="copyright">
-                                        Copyright &copy; 2022 MetaGaming Guild. All Rights
+                                        Copyright &copy; 2024 MetaGaming Guild. All Rights
                                         Reserved
                                     </div>
-                                    <a
-                                        className="privacy_policy"
-                                        href="privacy_policy.html"
-                                    >
-                                        Privacy Policy
-                                    </a>
-                                    <a className="...">&nbsp;&nbsp;&nbsp;</a>
-                                    <a
-                                        className="terms_and_condition"
-                                        href="terms_and_condition.html"
-                                    >
-                                        Terms and Condition
-                                    </a>
+                                    <PrivPolTermsCond />
                                 </div>
                             </LeftContainer>
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://t.me/MetaSagaWarriors"
                                     target="_blank"
                                 >
                                     <i className="fab fa-fw fa-telegram"></i>{' '}
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://twitter.com/metasagawarrior"
                                     target="_blank"
                                 >
                                     <i className="fab fa-fw fa-twitter"></i>
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://www.facebook.com/MetaSagaWarriorsOfficial/"
                                     target="_blank"
                                 >
                                     <i className="fab fa-fw fa-facebook"></i>
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="mailto:support@metasagawarriors.com"
                                     target="_blank"
                                 >
                                     <i className="fab fa fa-envelope"></i>
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://www.instagram.com/metasagawarriors"
                                     target="_blank"
                                 >
                                     <i className="fab fa-fw fa-instagram"></i>
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://www.linkedin.com/company/metasaga-warriors"
                                     target="_blank"
                                 >
                                     <i className="fab fa-fw fa-linkedin"></i>
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://medium.com/@metasagawarriors"
                                     target="_blank"
                                 >
                                     <i className="fab fa-fw fa-medium"></i>
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://www.youtube.com/@metasagawarriors"
                                     target="_blank"
                                 >
                                     <i className="fab fa-fw fa-youtube"></i>
                                 </a>
                                 <a
-                                    className="btn btn-social "
+                                    className="btn-footer btn-social "
                                     href="https://www.threads.net/@metasagawarriors"
                                     target="_blank"
                                 >

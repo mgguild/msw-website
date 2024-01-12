@@ -13,6 +13,9 @@ const About = styled.div`
     h1 {
         text-align: center;
     }
+    about-text{
+        font-family: 'Mustica Pro';
+    }
 `;
 
 const AboutImg = styled.div<{ isMedScreen?: boolean }>`
@@ -35,6 +38,7 @@ const Content = styled.div<{ isMedScreen?: boolean }>`
     gap: 1rem;
     max-width: 53rem;
     align-self: center;
+    font-family: 'Mustica Pro';
 `;
 
 const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
@@ -44,7 +48,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
                 {/* About Heading */}
                 <SectHdr>
                     <TitleCard className="titleCard">
-                        <h1>ABOUT</h1>
+                        <h1 style={{ fontSize: '2.5rem' }}>ABOUT</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont display="flex" margin="0" style={{ flexFlow: 'column nowrap' }}>
