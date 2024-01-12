@@ -89,9 +89,10 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
             font-size: 45px;
         }
 
+        //ipad Air
         @media (max-width: 820px) {
             font-size: 38px;
-            width: 28rem;
+            width: 22rem;
         }
 
         @media (max-width: 800px) {
@@ -113,11 +114,18 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
     p {
         font-size: 1.89rem;
         text-align: center;
+
+        @media (max-width: 1440px) {
+        font-size: 1.82rem;
+        text-align: center;
         font-family: 'Mustica Pro';
+        }
 
         // ipad pro
-        @media (max-width: 1025px) {
-            font-size: 1.06rem;
+        @media (max-width: 1024px) {
+            font-size: 1.25rem;
+            text-align: center;
+
         }
 
         // ipad air
