@@ -16,10 +16,10 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - name: Setup node v16
+      - name: Setup node v18
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: v18.16.1
       - name: Install and Build 🔧
         run: |
           yarn install
