@@ -119,10 +119,12 @@ export default function App() {
                                     <div className="clear foot">
                                         <input
                                             type="submit"
+                                            placeholder='Notify Me'
                                             defaultValue={'Notify Me'}
                                             name="subscribe"
                                             id="mc-embedded-subscribe"
                                             className="button"
+                                            value="Notify Me" 
                                         />
                                     </div>
                                 </div>
