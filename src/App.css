@@ -2366,15 +2366,15 @@ input {
 
 @media screen and (max-width: 480px) {
   #mc-embedded-subscribe {
-    width: 108%;
-    margin: 2px;
-    border-radius: 12px;
-    padding: 9px;
+    width: 100%;
+    margin: 0.2px;
+    border-radius: 10px;
+    padding: 7.6px;
     font-size: 11px;
   }
   #mce-EMAIL {
     width: 100%;
-    margin: 16px;
+    margin: 11px;
     text-align: center;
     font-size: 10px;
     padding: 8px 18px 8px 8px;

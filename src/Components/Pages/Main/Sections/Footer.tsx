@@ -19,6 +19,15 @@ const Content = styled.div`
             font-size: small;
         }
     }
+    text{
+        font-size: 1rem;
+        text-align: center;
+
+        @media (max-width: 720px){
+            font-size: small;
+        }
+    }
+
 `;
 
 const FooterRow = styled.div`
@@ -64,6 +73,16 @@ export default function App() {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
 
+    const handleNotifyMeClick = () => {
+        if (termsChecked && isEmailValid(email)) {
+            // Your logic for handling the form submission goes here
+            // For now, just show an alert as an example
+            window.alert('You have agreed to Terms and Privacy. Form can be submitted.');
+        } else {
+            window.alert('Please enter a valid email and agree to Terms and Privacy.');
+        }
+    };
+    
     return (
         <>
             <div
@@ -149,7 +168,7 @@ export default function App() {
                                             onChange={handleCheckboxChange}
                                             required
                                         />
-                                        <text style={{ margin: 5 }}>
+                                        <text style={{ margin: 5}}>
                                             I have read and agree to the Terms and Privacy Policy
                                         </text>
                                     </label>
