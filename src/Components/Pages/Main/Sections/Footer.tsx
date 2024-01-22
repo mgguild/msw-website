@@ -54,6 +54,15 @@ const ImgContainer = styled.div`
 
 export default function App() {
     const [email, setEmail] = useState('');
+    const [termsChecked, setTermsChecked] = useState(false);
+    const handleCheckboxChange = () => {
+        setTermsChecked(!termsChecked);
+    };
+
+    const isEmailValid = (email: string) => {
+        // You can implement a more sophisticated email validation if needed
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
 
     return (
         <>
@@ -124,11 +133,27 @@ export default function App() {
                                             name="subscribe"
                                             id="mc-embedded-subscribe"
                                             className="button"
-                                            value="Notify Me" 
+                                            value="Notify Me"
+                                            disabled={!termsChecked || !isEmailValid(email)}
                                         />
                                     </div>
                                 </div>
+                              
                             </form>
+                            <div>
+                                    <label htmlFor="termsCheckbox">
+                                        <input
+                                            type="checkbox"
+                                            id="termsCheckbox"
+                                            checked={termsChecked}
+                                            onChange={handleCheckboxChange}
+                                            required
+                                        />
+                                        <text style={{ margin: 5 }}>
+                                            I have read and agree to the Terms and Privacy Policy
+                                        </text>
+                                    </label>
+                                </div>
                         </div>
                         <a
                             href="https://metagg.gitbook.io/metasaga-warriors/"

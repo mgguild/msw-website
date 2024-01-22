@@ -2284,7 +2284,7 @@ form input {
   width: 100px;
   max-width: 100%;
   font-size: 700;
-  padding: 16px;
+  padding: 15px;
   font-size: 14px;
   color: #f0f4ef;
   font-family: inherit;
@@ -2293,6 +2293,38 @@ form input {
   border-radius: 0px 10px 10px 0px;
   outline: 0;
   transition: all 0.2s;
+  &:disabled {
+    /* Styles for the disabled state */
+    background-color: #808080;
+    cursor: not-allowed;
+    /* Add any other styles for the disabled state */
+    }
+
+    &:hover:disabled {
+        /* Styles for the disabled state on hover */
+        background-color: #808080;
+        /* Add any other styles for the disabled state on hover */
+    }
+
+    &:hover {
+        /* Styles for the hover state */
+        background-color: #007bff;
+        /* Add any other styles for the hover state */
+    }
+
+    input[type="checkbox"] {
+        margin-left: 10px; /* Add space between the button and the checkbox */
+    }
+}
+
+   /* Add some margin to the right of the checkbox */
+   label {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    margin-right: 10px; /* Adjust the value as needed */
 }
 
 #mc-embedded-subscribe:hover {
