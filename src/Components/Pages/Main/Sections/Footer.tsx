@@ -24,7 +24,11 @@ const Content = styled.div`
         text-align: center;
 
         @media (max-width: 720px){
-            font-size: small;
+            font-size: 12px;
+        }
+
+        @media (max-width: 320px){
+            font-size: 9px;
         }
     }
 
@@ -82,7 +86,7 @@ export default function App() {
             window.alert('Please enter a valid email and agree to Terms and Privacy.');
         }
     };
-    
+
     return (
         <>
             <div
@@ -160,7 +164,12 @@ export default function App() {
                               
                             </form>
                             <div>
-                                    <label htmlFor="termsCheckbox">
+                                    <label htmlFor="termsCheckbox"  style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                flexDirection: 'row',
+                                alignItems: 'center', 
+                            }}>
                                         <input
                                             type="checkbox"
                                             id="termsCheckbox"
@@ -168,7 +177,7 @@ export default function App() {
                                             onChange={handleCheckboxChange}
                                             required
                                         />
-                                        <text style={{ margin: 5}}>
+                                        <text style={{ margin: '5px 5px'}}>
                                             I have read and agree to the Terms and Privacy Policy
                                         </text>
                                     </label>
