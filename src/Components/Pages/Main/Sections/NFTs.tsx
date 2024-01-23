@@ -35,6 +35,13 @@ const TitleCard = styled.div<{ padding?: string }>`
             font-size: 1.7rem !important;
         }
     }
+
+    @media (max-width: 320px) {
+        padding: 2rem 2rem !important;
+        h1 {
+            font-size: 1.2rem !important;
+        }
+    }
 `;
 
 const Content = styled.div`
