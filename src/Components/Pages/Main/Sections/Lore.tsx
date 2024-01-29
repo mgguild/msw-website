@@ -109,6 +109,10 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
             font-size: 45px;
             width: 21rem;
         }
+        @media (max-width: 320px) {
+            font-size: 35px;
+            width: 16rem;
+        }
     }
 
     p {
@@ -151,6 +155,11 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
         @media (max-width: 390px) {
             font-size: 16.6px;
             width: 20rem;
+        }
+
+        @media (max-width: 320px) {
+            font-size: 12.6px;
+            width: 16rem;
         }
     }
 `;

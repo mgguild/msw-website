@@ -19,6 +19,19 @@ const Content = styled.div`
             font-size: small;
         }
     }
+    text{
+        font-size: 1rem;
+        text-align: center;
+
+        @media (max-width: 720px){
+            font-size: 12px;
+        }
+
+        @media (max-width: 320px){
+            font-size: 9px;
+        }
+    }
+
 `;
 
 const FooterRow = styled.div`
@@ -54,6 +67,25 @@ const ImgContainer = styled.div`
 
 export default function App() {
     const [email, setEmail] = useState('');
+    const [termsChecked, setTermsChecked] = useState(false);
+    const handleCheckboxChange = () => {
+        setTermsChecked(!termsChecked);
+    };
+
+    const isEmailValid = (email: string) => {
+        // You can implement a more sophisticated email validation if needed
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const handleNotifyMeClick = () => {
+        if (termsChecked && isEmailValid(email)) {
+            // Your logic for handling the form submission goes here
+            // For now, just show an alert as an example
+            window.alert('You have agreed to Terms and Privacy. Form can be submitted.');
+        } else {
+            window.alert('Please enter a valid email and agree to Terms and Privacy.');
+        }
+    };
 
     return (
         <>
@@ -119,14 +151,37 @@ export default function App() {
                                     <div className="clear foot">
                                         <input
                                             type="submit"
+                                            placeholder='Notify Me'
                                             defaultValue={'Notify Me'}
                                             name="subscribe"
                                             id="mc-embedded-subscribe"
                                             className="button"
+                                            value="Notify Me"
+                                            disabled={!termsChecked || !isEmailValid(email)}
                                         />
                                     </div>
                                 </div>
+                              
                             </form>
+                            <div>
+                                    <label htmlFor="termsCheckbox"  style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                flexDirection: 'row',
+                                alignItems: 'center', 
+                            }}>
+                                        <input
+                                            type="checkbox"
+                                            id="termsCheckbox"
+                                            checked={termsChecked}
+                                            onChange={handleCheckboxChange}
+                                            required
+                                        />
+                                        <text style={{ margin: '5px 5px'}}>
+                                            I have read and agree to the Terms and Privacy Policy
+                                        </text>
+                                    </label>
+                                </div>
                         </div>
                         <a
                             href="https://metagg.gitbook.io/metasaga-warriors/"
