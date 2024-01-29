@@ -26,6 +26,12 @@ jobs:
           GENERATE_SOURCEMAP=false
           CI=false
           yarn build
+        env:
+          REACT_APP_WALLETCONNECT_PROJECT_ID: ${{ secrets.REACT_APP_WALLETCONNECT_PROJECT_ID }}
+          REACT_APP_ALCHEMY_ID: ${{ secrets.REACT_APP_ALCHEMY_ID }}
+          REACT_APP_PLAYFAB_TITLE_ID: ${{ secrets.REACT_APP_PLAYFAB_TITLE_ID }}
+          REACT_APP_PLAYFAB_DEV_KEY: ${{ secrets.REACT_APP_PLAYFAB_DEV_KEY }}
+          NODE_PATH: ${{ secrets.NODE_PATH }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
