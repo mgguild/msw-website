@@ -20,7 +20,6 @@ const TitleCard = styled.div<{ padding?: string }>`
     background-size: cover;
     background-position: center;
 
-  
     @media (max-width: 721px) {
         padding: 2rem 2rem !important;
 
@@ -103,10 +102,10 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
         overflow-y: hidden; /* Hide vertical scrollbar */
         padding-bottom: 5px;
     }
-    
+
     /* Adjust the scrollbar width and style */
     &::-webkit-scrollbar {
-    width: 4px;
+        width: 4px;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -117,11 +116,7 @@ const NFTClasses = styled.div<{ isScreen575?: boolean }>`
     &::-webkit-scrollbar-thumb:hover {
         background: #555; /* Color of the scrollbar thumb on hover */
     }
-
 `;
-
-
-
 
 const NFTClass = styled.div<{ img: string }>`
     position: relative;
@@ -136,8 +131,8 @@ const NFTClass = styled.div<{ img: string }>`
     cursor: pointer;
 
     @media (max-width: 575px) {
-    width: 140px;
-    height: 113px;  
+        width: 140px;
+        height: 113px;
     }
 
     ${({ img }) =>
@@ -203,7 +198,7 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
             <div className="page-section" id="nftCharacters">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="2rem">
+                    <TitleCard className="titleCard" padding="2rem">
                         <h1 style={{ fontSize: '2rem' }}>NFT Characters</h1>
                     </TitleCard>
                 </SectHdr>

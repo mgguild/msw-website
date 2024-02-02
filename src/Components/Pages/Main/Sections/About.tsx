@@ -13,7 +13,7 @@ const About = styled.div`
     h1 {
         text-align: center;
     }
-    about-text{
+    about-text {
         font-family: 'Mustica Pro';
     }
 `;

@@ -88,7 +88,7 @@ const TeamProfile = styled.div`
     @media (max-width: 741px) {
         line-height: 1.3rem;
     }
-`
+`;
 
 const Profile: React.FC<{ bgImg: string; img: string; name: string; role: string }> = ({
     bgImg,
@@ -117,9 +117,9 @@ export default function App() {
     const [sequence, setSequence] = useState([3, 7, 10]);
 
     const handleResize = () => {
-        if(window.innerWidth < 800){
+        if (window.innerWidth < 800) {
             setSequence([10]);
-        }else{
+        } else {
             setSequence([2, 6, 10]);
         }
     };
@@ -133,41 +133,40 @@ export default function App() {
             <BG className="page-section" id="team">
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="2rem 6.5rem">
+                    <TitleCard className="titleCard" padding="2rem 6.5rem">
                         <h1 style={{ fontSize: '2.2rem' }}>Team</h1>
                     </TitleCard>
                 </SectHdr>
                 <SectCont margin="auto" display="block">
-                    { sequence.map((num, i) => {
-                            const row: any = [];
-                            for (let j = count; j < num; j++) {
-                                row.push(
-                                    <Profile
-                                        bgImg={team[j].bgImg}
-                                        img={team[j].img}
-                                        name={team[j].name}
-                                        role={team[j].role}
-                                        key={count}
-                                    />,
-                                );
-                                count++;
-                            }
-                            return (
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        gap: '2rem',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        margin: '0 0 2rem 0    ',
-                                    }}
-                                >
-                                    {row}
-                                </div>
+                    {sequence.map((num, i) => {
+                        const row: any = [];
+                        for (let j = count; j < num; j++) {
+                            row.push(
+                                <Profile
+                                    bgImg={team[j].bgImg}
+                                    img={team[j].img}
+                                    name={team[j].name}
+                                    role={team[j].role}
+                                    key={count}
+                                />,
                             );
-                        })
-                    }
+                            count++;
+                        }
+                        return (
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    gap: '2rem',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    margin: '0 0 2rem 0    ',
+                                }}
+                            >
+                                {row}
+                            </div>
+                        );
+                    })}
                 </SectCont>
             </BG>
         </>

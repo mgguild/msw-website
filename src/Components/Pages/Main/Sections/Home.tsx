@@ -245,11 +245,11 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                                 target="_blank"
                                 href=" https://apps.apple.com/ph/app/metasaga-warriors/id6469090246"
                             >
-                            <img
-                                className="btn-googleplay"
-                                src={require('../../../../Assets/img/coming-soon-png_47446.png')}
-                            />
-                             </a>
+                                <img
+                                    className="btn-googleplay"
+                                    src={require('../../../../Assets/img/coming-soon-png_47446.png')}
+                                />
+                            </a>
                         </GrowBtn>
                     </PlayBtns>
                 </HomeCont>

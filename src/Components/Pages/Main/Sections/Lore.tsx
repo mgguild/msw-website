@@ -38,35 +38,34 @@ const TitleCard = styled.div<{ padding?: string }>`
     }
 `;
 
-
 const CustomCarousel = styled(Carousel)`
-  .control-arrow {
-    background-color: transparent; 
-  }
-
-  .control-arrow:before {
-    color: #FFFFFF; 
-    font-size: 50px; 
-    
-    @media (max-width: 800px){
-        font-size: 40px;
-    } 
-    @media (max-width: 575px) {
-        font-size: 50px;
+    .control-arrow {
+        background-color: transparent;
     }
 
-    @media (max-width: 375px) {
+    .control-arrow:before {
+        color: #ffffff;
         font-size: 50px;
+
+        @media (max-width: 800px) {
+            font-size: 40px;
+        }
+        @media (max-width: 575px) {
+            font-size: 50px;
+        }
+
+        @media (max-width: 375px) {
+            font-size: 50px;
+        }
     }
-  }
 
-  .control-prev.control-arrow:before {
-    content: '🞀'; 
-  }
+    .control-prev.control-arrow:before {
+        content: '🞀';
+    }
 
-  .control-next.control-arrow:before {
-    content: '🞂';
-  }
+    .control-next.control-arrow:before {
+        content: '🞂';
+    }
 `;
 
 const CarouselCont = styled.div`
@@ -80,7 +79,7 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
     padding: ${({ isScreen800 }) => (isScreen800 ? '48% 2rem 2em 2rem' : '4%')};
     color: white;
     width: 60%;
-    
+
     h1 {
         font-size: 80px;
         color: #ecb602;
@@ -120,16 +119,15 @@ const Scroll = styled.div<{ isScreen800?: boolean }>`
         text-align: center;
 
         @media (max-width: 1440px) {
-        font-size: 1.82rem;
-        text-align: center;
-        font-family: 'Mustica Pro';
+            font-size: 1.82rem;
+            text-align: center;
+            font-family: 'Mustica Pro';
         }
 
         // ipad pro
         @media (max-width: 1024px) {
             font-size: 1.25rem;
             text-align: center;
-
         }
 
         // ipad air
@@ -169,9 +167,11 @@ const DemoCarousel: React.FC<{ isScreen800: boolean; isScreen650: boolean }> = (
     isScreen650,
 }) => {
     return (
-        <Carousel showThumbs={false}
-        preventMovementUntilSwipeScrollTolerance={true}
-        swipeScrollTolerance={50}>
+        <Carousel
+            showThumbs={false}
+            preventMovementUntilSwipeScrollTolerance={true}
+            swipeScrollTolerance={50}
+        >
             <div style={{ position: 'relative' }}>
                 <img
                     src={require(`../../../../Assets/img/${
@@ -245,7 +245,7 @@ const App: React.FC<{ isScreen800: boolean }> = ({ isScreen800 }) => {
             <div className="page-section" id="lore" style={{ padding: '0' }}>
                 {/* About Heading */}
                 <SectHdr>
-                    <TitleCard className='titleCard' padding="3rem 6.5rem">
+                    <TitleCard className="titleCard" padding="3rem 6.5rem">
                         <h1 style={{ fontSize: '2.2rem' }}>Lore</h1>
                     </TitleCard>
                 </SectHdr>

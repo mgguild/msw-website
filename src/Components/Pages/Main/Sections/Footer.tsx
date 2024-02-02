@@ -15,23 +15,22 @@ const Content = styled.div`
         font-size: 1.5rem;
         text-align: center;
 
-        @media (max-width: 720px){
+        @media (max-width: 720px) {
             font-size: small;
         }
     }
-    text{
+    text {
         font-size: 1rem;
         text-align: center;
 
-        @media (max-width: 720px){
+        @media (max-width: 720px) {
             font-size: 12px;
         }
 
-        @media (max-width: 320px){
+        @media (max-width: 320px) {
             font-size: 9px;
         }
     }
-
 `;
 
 const FooterRow = styled.div`
@@ -96,8 +95,11 @@ export default function App() {
             >
                 <SectCont margin="none" minHeight="none">
                     <Content>
-                        <h4>Want to be updated for the latest updates? Register your email below and click the Notify Me button.</h4>
-                       
+                        <h4>
+                            Want to be updated for the latest updates? Register your email
+                            below and click the Notify Me button.
+                        </h4>
+
                         <div style={{ margin: '1rem auto' }}>
                             <form
                                 action="https://metasagawarriors.us10.list-manage.com/subscribe/post?u=29581b54e89450fc09142e23d&amp;id=baac775905&amp;f_id=00d636e2f0"
@@ -151,37 +153,42 @@ export default function App() {
                                     <div className="clear foot">
                                         <input
                                             type="submit"
-                                            placeholder='Notify Me'
+                                            placeholder="Notify Me"
                                             defaultValue={'Notify Me'}
                                             name="subscribe"
                                             id="mc-embedded-subscribe"
                                             className="button"
                                             value="Notify Me"
-                                            disabled={!termsChecked || !isEmailValid(email)}
+                                            disabled={
+                                                !termsChecked || !isEmailValid(email)
+                                            }
                                         />
                                     </div>
                                 </div>
-                              
                             </form>
                             <div>
-                                    <label htmlFor="termsCheckbox"  style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                flexDirection: 'row',
-                                alignItems: 'center', 
-                            }}>
-                                        <input
-                                            type="checkbox"
-                                            id="termsCheckbox"
-                                            checked={termsChecked}
-                                            onChange={handleCheckboxChange}
-                                            required
-                                        />
-                                        <text style={{ margin: '5px 5px'}}>
-                                            I have read and agree to the Terms and Privacy Policy
-                                        </text>
-                                    </label>
-                                </div>
+                                <label
+                                    htmlFor="termsCheckbox"
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <input
+                                        type="checkbox"
+                                        id="termsCheckbox"
+                                        checked={termsChecked}
+                                        onChange={handleCheckboxChange}
+                                        required
+                                    />
+                                    <text style={{ margin: '5px 5px' }}>
+                                        I have read and agree to the Terms and Privacy
+                                        Policy
+                                    </text>
+                                </label>
+                            </div>
                         </div>
                         <a
                             href="https://metagg.gitbook.io/metasaga-warriors/"
