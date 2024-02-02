@@ -164,7 +164,7 @@ export default function LoginRegister() {
                 }
             })
             .catch((err: any) => {
-                toast(err.toString(), { type: 'error' });
+                toast('Bind wallet confirmation rejected!', { type: 'warning' });
                 console.log(err);
             });
     };
