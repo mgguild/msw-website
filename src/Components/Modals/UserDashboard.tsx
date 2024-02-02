@@ -5,12 +5,16 @@ import Box from '@mui/material/Box';
 import { PlayFabCloudScript } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import usePlayfab from '../../Hooks/usePlayfab';
-import { ConnectKitButton } from 'connectkit';
-import { useAccount, useSignMessage } from 'wagmi';
+import {
+    ConnectWallet,
+    useChain,
+    useConnectionStatus,
+    useDisconnect,
+    useSigner,
+    useAddress,
+} from '@thirdweb-dev/react';
 import { Triangle } from 'react-loader-spinner';
-import { recoverMessageAddress } from 'viem';
 import { Link } from 'react-router-dom';
-import { backgroundColor } from 'styled-system';
 
 const style = {
     position: 'relative',
@@ -123,44 +127,46 @@ export default function LoginRegister() {
     const [binding, setBinding] = useState(false);
     const [_userData, setUserData] = useState<null | any>(null);
     const [_userTags, setUserTags] = useState<string[]>([]);
-    const { address, isConnecting, isDisconnected, isConnected } = useAccount();
-    const [recoveredAddress, setRecoveredAddress] = useState<string>();
-    const {
-        data: signMessageData,
-        error,
-        isLoading,
-        signMessage,
-        variables,
-    } = useSignMessage();
+
+    const _chain = useChain();
+    const _status = useConnectionStatus();
+    const _address = useAddress();
+    const _disoconnect = useDisconnect();
+    const _signer = useSigner();
 
     const handleLogout = () => {
         setUserInfo(null);
         setOpen(false);
+        _disoconnect();
     };
 
     useEffect(() => {
         setUserTags(userTags);
         setUserData(userData);
-    }, [userTags, userData]);
+
+        console.log(`_chain: ${_chain?.name}`);
+        console.log(`_status: ${_status}`);
+    }, [userTags, userData, useChain(), useConnectionStatus()]);
 
     useEffect(() => {
         (async () => {
-            if (variables?.message && signMessageData) {
-                const recoveredAddress = await recoverMessageAddress({
-                    message: variables?.message,
-                    signature: signMessageData,
-                });
-                setRecoveredAddress(recoveredAddress);
-                setBinding(true);
-                RunBindingWallet();
-            }
+            console.log('BRUH');
         })();
-    }, [signMessageData, variables?.message]);
+    }, []);
 
     const handleBindWallet = () => {
-        signMessage({
-            message: 'Binding your wallet address to MSW',
-        });
+        _signer
+            ?.signMessage('Binding your wallet address to MSW')
+            .then(e => {
+                if (_address) {
+                    setBinding(true);
+                    RunBindingWallet();
+                }
+            })
+            .catch((err: any) => {
+                toast('Bind wallet confirmation rejected!', { type: 'warning' });
+                console.log(err);
+            });
     };
 
     const RunBindingWallet = () => {
@@ -168,7 +174,7 @@ export default function LoginRegister() {
             {
                 FunctionName: 'CheckWalletAddress',
                 FunctionParameter: {
-                    wallet: address,
+                    wallet: _address,
                     playFabID: user.PlayFabId,
                 },
             },
@@ -186,7 +192,7 @@ export default function LoginRegister() {
 
                     var obj: any = {};
                     obj['WalletAddress'] = {};
-                    obj['WalletAddress'].Value = address;
+                    obj['WalletAddress'].Value = _address;
                     setUserData(obj);
                 } else {
                     toast('Error: Wallet address already in use!', { type: 'error' });
@@ -236,10 +242,16 @@ export default function LoginRegister() {
                                         }}
                                     >
                                         <div>
-                                            <ConnectKitButton />
+                                            <ConnectWallet
+                                                theme="dark"
+                                                switchToActiveChain={true}
+                                                auth={{
+                                                    loginOptional: false,
+                                                }}
+                                            />
                                         </div>
 
-                                        {isConnected ? (
+                                        {_status === 'connected' ? (
                                             <div
                                                 style={{
                                                     margin: '2rem 0',
