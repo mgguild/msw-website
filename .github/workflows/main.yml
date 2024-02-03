@@ -31,6 +31,7 @@ jobs:
           REACT_APP_ALCHEMY_ID: ${{ secrets.REACT_APP_ALCHEMY_ID }}
           REACT_APP_PLAYFAB_TITLE_ID: ${{ secrets.REACT_APP_PLAYFAB_TITLE_ID }}
           REACT_APP_PLAYFAB_DEV_KEY: ${{ secrets.REACT_APP_PLAYFAB_DEV_KEY }}
+          REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
           NODE_PATH: ${{ secrets.NODE_PATH }}
 
       - name: Deploy 🚀
