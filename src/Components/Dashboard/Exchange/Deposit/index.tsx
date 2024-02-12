@@ -10,6 +10,7 @@ const Deposit: FC = () => {
           <p>Lorem ipsum dolor sit amet</p>
           <div className="bg-[#19297F] rounded-[5px] p-5 my-[2em]">
             <p className="mb-[1em]">Missing transaction? Input transaction hash here to try verifying again:</p>
+            <div className="line-white justify-center my-4"></div>
             <Button value="verify" />
           </div>
         </div>

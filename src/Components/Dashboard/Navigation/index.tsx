@@ -10,7 +10,7 @@ const Navigation: FC = () => {
           <img src={Logo} width={122} alt="MetaSaga Warriors logo" />
         </div>
         <div className="flex flex-wrap justify-center items-center gap-[50px] text-[18px] text-[#999999]">
-          <Link to="/dashboard" className="hover:text-white">Home</Link>
+          {/* <Link to="/dashboard" className="hover:text-white">Home</Link> */}
           <Link to="/dashboard/rewards" className="hover:text-white">Rewards</Link>
           <Link to="/dashboard/wallet" className="hover:text-white">Wallet</Link>
           <Link to="/dashboard/exchange" className="hover:text-white">Exchange</Link>

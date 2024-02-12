@@ -26,6 +26,7 @@ const Exchange: FC = () => {
             <div onClick={() => setActiveSection(1)}>Withdraws</div>
             <div onClick={() => setActiveSection(2)}>Completed</div>
           </div>
+          <div className="line justify-center my-4"></div>
           <div className="flex flex-col justify-center items-center text-center">
             {activeSection === 0 && <ExchangeDeposit />}
             {activeSection === 1 && <ExchangeWithdraw />}
