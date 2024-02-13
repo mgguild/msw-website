@@ -8,6 +8,10 @@ import { ToastContainer } from 'react-toastify';
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
+// const MarketPlace = lazy(() => import('@mgguild/marketplace-v2').then(module => {
+//     return {default: module.Marketplace}
+// }))
+
 
 function App() {
     return (
@@ -31,6 +35,14 @@ function App() {
                         </Suspense>
                     }
                 />
+                {/* <Route
+                    path="/marketplace"
+                    element={
+                        <Suspense fallback={<>...</>}>
+                           <MarketPlace />
+                        </Suspense>
+                    }
+                /> */}
             </Routes>
         </>
     );
