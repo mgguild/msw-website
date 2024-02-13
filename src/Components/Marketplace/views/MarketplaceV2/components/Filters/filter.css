@@ -1,0 +1,9 @@
+button.filter-btn {
+  padding: 0;
+  cursor: pointer;
+  border: none;
+}
+
+button.selected {
+  border: 1px solid #e8c800;
+}
