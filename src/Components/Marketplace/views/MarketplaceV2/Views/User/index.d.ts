@@ -1,4 +1,4 @@
-import { CardType } from 'contexts/index.d'
+import { CardType } from "contexts/index.d";
 
 export enum FIELD_INFO {
   email = 'EMAIL ADDRESS',
@@ -8,15 +8,16 @@ export enum FIELD_INFO {
 
 export enum STATUS {
   success = '#4cae43',
-  fail = '#b93a45',
+  fail = '#b93a45'
 }
 
+
 export type TableProps = {
-  date: string
-  status: string
-  tx: string
-  amount: string
-  type: string
+    date: string;
+    status: string;
+    tx: string;
+    amount: string;
+    type: string
 }
 
 export type NftProps = CardType

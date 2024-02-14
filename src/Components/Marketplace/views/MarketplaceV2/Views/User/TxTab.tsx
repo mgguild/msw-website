@@ -13,7 +13,7 @@ const TxTab = ({
     tabController.setActive(newValue)
   }
   return (
-    <div style={{ marginTop: '0.5em' }}>
+    <div style={{marginTop: '0.5em'}}>
       <Tabbutton activeIndex={tabController.active === 0} onClick={() => handleChange(0)} variant="text">
         COIN
       </Tabbutton>
@@ -33,9 +33,9 @@ const Tabbutton = styled(Button)<{ activeIndex?: boolean }>`
   height: 25px;
   font-size: 0.8em;
 
-  ${({ theme }) => `
+  ${({theme}) => `
     ${theme.mediaQueries.sm} {
       height: 50px;
     }
   `}
-`
+  `

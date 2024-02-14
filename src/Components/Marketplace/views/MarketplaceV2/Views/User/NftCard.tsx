@@ -6,6 +6,8 @@ import SpriteDisplay from 'views/MarketplaceV2/components/Card/Display'
 import Header from 'views/MarketplaceV2/components/Card/Header'
 import { NftProps } from './index.d'
 
+
+
 const NftCard = (props: NftProps) => {
   const { name, spriteName, rarity, price, badge } = props
   const history = useHistory()

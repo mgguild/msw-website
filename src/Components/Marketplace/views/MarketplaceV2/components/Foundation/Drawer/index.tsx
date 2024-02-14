@@ -6,7 +6,7 @@ import { COLORS, DEFAULT_BORDERS } from '../../../../../views/MarketplaceV2/styl
 import { Props } from './index.d'
 import Iconloader from '../Iconloader'
 
-const Drawer: React.FC<Props> = ({ children, ...props }) => {
+const Drawer: React.FC<Props> = ({children, ...props}) => {
   const { anchor, openState, handleClose, handleOpen } = props
   return (
     <SwipeableDrawer anchor={anchor} open={openState} onClose={handleClose} onOpen={handleOpen}>

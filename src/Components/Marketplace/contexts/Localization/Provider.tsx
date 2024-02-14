@@ -14,9 +14,9 @@ const initialState: ProviderState = {
 export const languageMap = new Map<Language['locale'], Record<string, string>>()
 languageMap.set(EN.locale, translations)
 
-export const LanguageContext = createContext<ContextApi | any>(undefined)
+export const LanguageContext = createContext<ContextApi| any>(undefined)
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
   const [state, setState] = useState<ProviderState>(() => {
     const codeFromStorage = getLanguageCodeFromLS()
 

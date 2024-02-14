@@ -4,22 +4,14 @@ import { Props } from './index.d'
 export const links: Props = [
   {
     name: 'Home',
-    href: `${marketplaceURL}/nft`,
+    href: `${marketplaceURL}/`,
   },
   {
     name: 'User',
-    href: `${marketplaceURL}/my-page`,
+    href: `${marketplaceURL}/profile`,
   },
   {
     name: 'ShoppingBasket',
-    href: `${marketplaceURL}/market`,
-  },
-  {
-    name: 'Globe',
-    href: `${marketplaceURL}/web`,
-  },
-  {
-    name: 'Users',
-    href: `${marketplaceURL}/groups`,
+    href: `${marketplaceURL}/marketplace`,
   },
 ]

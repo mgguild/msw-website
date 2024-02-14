@@ -31,26 +31,27 @@ const NftMain = (props: any) => {
   }
 
   return (
-    <ContentWrapper>
-      <Flex justifyContent="center">
-        <H3 fsize="1.5em">{item.name}</H3>
-      </Flex>
-      <div style={{ width: '70%' }}>
-        <SpriteDisplay {...{ spriteName: item.spriteName, width: 150, height: 150, style }} />
-      </div>
-      <Box className="secondary-drop-shadow">
-        <TextWrapper align="center">
-          <H4 fsize="1.5em">MGG 100.00</H4>
-          <P fsize="0.7em" mt="1em">
-            This Latest data is being acquired. It will be available for purchase as soon as the latest data is updated.
-          </P>
-        </TextWrapper>
-      </Box>
-      <Button onClick={handleBuy} className="with-animation-tilt-n-move-shaking">
-        BUY
-      </Button>
-      {modal.openModal[`buy-${item.name}`] && <PurchaseNFT {...{ ...item }} />}
-    </ContentWrapper>
+      <ContentWrapper>
+        <Flex justifyContent="center">
+          <H3 fsize="1.5em">{item.name}</H3>
+        </Flex>
+        <div style={{ width: '70%' }}>
+          <SpriteDisplay {...{ spriteName: item.spriteName, width: 150, height: 150, style }} />
+        </div>
+        <Box className="secondary-drop-shadow">
+          <TextWrapper align="center">
+            <H4 fsize="1.5em">MGG 100.00</H4>
+            <P fsize="0.7em" mt="1em">
+              This Latest data is being acquired. It will be available for purchase as soon as the latest data is
+              updated.
+            </P>
+          </TextWrapper>
+        </Box>
+        <Button onClick={handleBuy} className="with-animation-tilt-n-move-shaking">
+          BUY
+        </Button>
+        {modal.openModal[`buy-${item.name}`] && <PurchaseNFT {...{...item}} />}
+      </ContentWrapper>
   )
 }
 

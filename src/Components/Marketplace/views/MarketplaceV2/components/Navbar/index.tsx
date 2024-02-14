@@ -11,6 +11,7 @@ import { usePlayfabUser } from '../../../../state/hooks'
 import { fetchPlayfabUser, registerUser } from '../../../../state/playfab'
 import { PlayfabState, PlayfabLoginResult } from '../../../../state/types'
 
+
 const Navbar = () => {
   const { controllers } = useMarketplaceV2()
   const { theme } = useTheme()

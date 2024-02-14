@@ -70,7 +70,7 @@ const User = () => {
   const [active, setActive] = useState(0)
   // TODO: Replace with actual data
   const [userInfo, setUserInfo] = useState(tempUserInfo)
-  const handleUserInfo = (payload: { field: string; value: string }) => {
+  const handleUserInfo = (payload: { field: string, value: string }) => {
     setUserInfo({ ...userInfo, [`${payload.field}`]: payload.value })
     console.log(userInfo)
   }

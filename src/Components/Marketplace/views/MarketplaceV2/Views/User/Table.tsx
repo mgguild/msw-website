@@ -11,7 +11,7 @@ const Table = ({ data }: { data: TableProps[] }) => {
           return (
             <tr>
               {Object.values(d).map((i) => (
-                <td style={{ color: STATUS[i.toLowerCase()] }}>{i}</td>
+                <td style={{color: STATUS[i.toLowerCase()]}}>{i}</td>
               ))}
             </tr>
           )

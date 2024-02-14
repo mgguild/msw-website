@@ -5,7 +5,7 @@ import { ToastContextApi } from './types'
 
 export const ToastsContext = createContext<ToastContextApi | any>(undefined)
 
-export const ToastsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ToastsProvider: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
   const [toasts, setToasts] = useState<ToastContextApi['toasts']>([])
 
   const toast = useCallback(
@@ -49,7 +49,7 @@ export const ToastsProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   return (
     <ToastsContext.Provider value={{ toasts, clear, remove, toastError, toastInfo, toastSuccess, toastWarning }}>
-      {children}
+      { children }
     </ToastsContext.Provider>
   )
 }

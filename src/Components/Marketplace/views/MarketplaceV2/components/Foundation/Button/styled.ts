@@ -11,15 +11,13 @@ export const DefaultButton = styled(Button)<Margins & Paddings>`
   ${({ m, mt, mb, ml, mr }) => customSpacingProps({ m, mt, mb, ml, mr })}
 `
 
-export const StyledButton = styled(DefaultButton)<{ height?: string }>`
+export const StyledButton = styled(DefaultButton)<{height?: string}>`
   color: ${({ theme }) => theme.colors.text};
   // font-size: 1em;
   margin: 0 5px;
   padding: 0;
   border-radius: 5px;
-  ${({ height }) =>
-    height &&
-    `
+  ${({height}) => height && `
     height: ${height};
   `}
 `

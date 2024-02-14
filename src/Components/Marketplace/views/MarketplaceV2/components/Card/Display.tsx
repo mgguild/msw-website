@@ -5,6 +5,7 @@ import { QueryType, useQueryAsset } from '../../../../hooks/useMarketplaceV2'
 import { Display } from './styled'
 import SvgIcon from '../Foundation/SvgIcon'
 
+
 type Props = {
   spriteName: string
   width?: number
@@ -27,7 +28,7 @@ const SpriteDisplay = ({ spriteName, width, height, style, hideBg }: Props) => {
       <SvgIcon Img={Img} width={w} height={h} />
     </Display>
   ) : (
-    <Flex alignItems="center" justifyContent="center" style={style}>
+    <Flex alignItems='center' justifyContent='center' style={style}>
       <SvgIcon Img={Img} width={w} height={h} />
     </Flex>
   )

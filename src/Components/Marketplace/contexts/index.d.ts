@@ -16,11 +16,14 @@ export enum CLASSES {
 }
 
 export type Price = {
+  raw: string
   token: string
   fiat: string
 }
 
 export type CardType = {
+  id: string
+  listingId?: string
   name: string
   spriteName: string
   rarity: string

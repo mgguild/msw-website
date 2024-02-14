@@ -21,14 +21,7 @@ const Filters = () => {
     <Container>
       <TextWrapper className="filter-actions">
         <Dropdown filters={filters} />
-        <Button
-          m="0"
-          onClick={toggleDrawer('right', true)}
-          variant="text"
-          iconType="fa"
-          icon="Filter"
-          title="Filters"
-        />
+        <Button m='0' onClick={toggleDrawer('right', true)} variant="text" iconType="fa" icon="Filter" title="Filters" />
       </TextWrapper>
       <Filter />
     </Container>

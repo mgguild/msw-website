@@ -4,7 +4,7 @@ import Panel from './Panel'
 import { Wrapper, BodyWrapper, Inner } from './styled'
 import { links } from './config'
 
-const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Sidebar: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
   // const isWide = useMedia({ minWidth: 1000 })
 
   return (

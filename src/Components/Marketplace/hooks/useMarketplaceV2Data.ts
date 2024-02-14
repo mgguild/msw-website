@@ -24,7 +24,7 @@ export const useMarketplaceV2FetchItem = (q: any) => {
 
   useEffect(() => {
     const handleFetchItem = (query: any) => {
-      return data.find((d: any) => d.name === query)
+      return data.find((d:any) => d.name === query)
     }
     const res = handleFetchItem(q)
     setSelected(res)

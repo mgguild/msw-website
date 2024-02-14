@@ -38,5 +38,5 @@ export default function Logo({ size, url }: { size?: number; url?: string }) {
 
 Logo.defaultProps = {
   size: null,
-  url: '',
+  url: ''
 }

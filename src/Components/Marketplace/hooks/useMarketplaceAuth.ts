@@ -46,5 +46,5 @@ export const otpChecker = (code: any) => {
 export const sendEmail = async (payload: any) => {
   // development - not recommended for production
 
-  return 'success'
+ return 'success'
 }

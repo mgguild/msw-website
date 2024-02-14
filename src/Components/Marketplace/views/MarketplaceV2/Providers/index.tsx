@@ -4,7 +4,7 @@ import { MarketplaceV2Provider } from '../../../contexts/MarketplaceContext'
 import { MarketplaceV2DataProvider } from '../../../contexts/MarketplaceDataContext'
 import ModalProvider from './ModalProvider'
 
-const MarketplaceProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const MarketplaceProviders: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
   return (
     <AuthContextProvider>
       <MarketplaceV2Provider>

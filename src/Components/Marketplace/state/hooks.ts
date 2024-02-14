@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { useSelector } from 'react-redux'
-import { ThunkDispatch } from '@reduxjs/toolkit'
+import {ThunkDispatch} from "@reduxjs/toolkit";
 import { useAppDispatch } from 'state'
 import { orderBy } from 'lodash'
 import {
@@ -20,7 +20,9 @@ import {
 } from './types'
 import { MAINNET_CHAIN_ID } from '../config'
 import { initializePlayfabAsync } from './playfab'
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+
+
 
 /**
  * Fetches the "core" farm data used globally
@@ -45,13 +47,17 @@ export const useFarmFromLpSymbol = (lpSymbol: string): Farm => {
   return farm
 }
 
+
+
 // Return the base token price for a farm, from a given pid
 export const useBusdPriceFromPid = (pid: number): BigNumber => {
   const farm = useFarmFromPid(pid)
   return farm && new BigNumber(farm.token.busdPrice)
 }
 
+
 // Pools
+
 
 export const useCakeVault = () => {
   const {
@@ -122,10 +128,13 @@ export const useCakeVault = () => {
 
 // Profile
 
+
 export const useProfile = () => {
   const { isInitialized, isLoading, data, hasRegistered }: ProfileState = useSelector((state: State) => state.profile)
   return { profile: data, hasProfile: isInitialized && hasRegistered, isInitialized, isLoading }
 }
+
+
 
 export const useAchievements = () => {
   const achievements: AchievementState['data'] = useSelector((state: State) => state.achievements.data)
@@ -242,10 +251,13 @@ export const useGetBetByRoundId = (account: string, roundId: string) => {
   return bets[account][roundId]
 }
 
+
 export const useGetLastOraclePrice = (): BigNumber => {
   const lastOraclePrice = useSelector((state: State) => state.predictions.lastOraclePrice)
   return new BigNumber(lastOraclePrice)
 }
+
+
 
 // Launchpad or Guildpad
 
@@ -258,6 +270,8 @@ export const useGuildpad = () => {
   const guildpad = useSelector((state: State) => state.guildpads.selected)
   return guildpad
 }
+
+
 
 // PlayFab
 export const useInitializePlayfab = () => {

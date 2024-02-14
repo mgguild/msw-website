@@ -19,7 +19,7 @@ const UserHighlight = () => {
   const { pathname } = useLocation()
   const pageMap = pathname
     .split('/')
-    .map((item) => (item === 'marketplace' ? 'home' : item))
+    .map((item) => (item === '' ? 'home' : item))
     .reduce((accumulator: string[], currentValue) => {
       if (currentValue !== '') {
         accumulator.push(currentValue.toUpperCase())
@@ -29,7 +29,7 @@ const UserHighlight = () => {
 
   const renderPageMap = () => (
     <P style={{ cursor: 'default' }}>
-      <Anchor href="/marketplace/nft" style={{ color: theme!.colors.textSubtle }}>
+      <Anchor href="/marketplace" style={{ color: theme!.colors.textSubtle }}>
         {pageMap[0]} &gt;{' '}
       </Anchor>{' '}
       <span>{pageMap[1].replace(/[^a-zA-Z ]/g, ' ')}</span>

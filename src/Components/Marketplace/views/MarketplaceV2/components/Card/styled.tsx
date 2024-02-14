@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS, DEFAULT_BORDERS } from '../../../../views/MarketplaceV2/styles/constants'
+import { COLORS, DEFAULT_BORDERS } from 'views/MarketplaceV2/styles/constants'
 import { TextWrapper } from '../Foundation/Text'
 import { backgroundProp } from '../Foundation/layout'
 import { DefaultButton } from '../Foundation/Button/styled'
@@ -26,16 +26,17 @@ export const CardContainer = styled.div`
   &:hover {
     outline-width: 5px;
   }
+
 `
 const commonSectionStyle = (props?: { justify?: string; align?: string; padding?: string }) => {
   return `
   display: flex;
-  align-items: ${props?.align};
-  justify-content: ${props?.justify};
+  align-items: ${props.align};
+  justify-content: ${props.justify};
   ${
-    props?.padding &&
+    props.padding &&
     `
-    padding: ${props?.padding};
+    padding: ${props.padding};
   `
   }
 

@@ -1,6 +1,6 @@
 import { SocialProp, Links } from './config.d'
 
-export const marketplaceURL = '/marketplace'
+export const marketplaceURL = ''
 export const mswURL = 'https://metasagawarriors.com/'
 export const socials: SocialProp[] = [
   {

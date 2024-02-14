@@ -18,6 +18,7 @@ const Nftlist = () => {
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
       <Grid container spacing={{ xs: 2, sm: 4 }} {...settings} pt={5}>
+        {console.log("asdsada", data)}
         {data.slice(0, toDisplay).map((d) => (
           <Grid key={d.name} item xs={12} sm={4} md={3} lg={3} xl={3} justifyContent="center">
             <StyledFlex>

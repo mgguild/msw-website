@@ -67,7 +67,7 @@ const UserMain = (props) => {
                     <Grid item xs={7} sm={7}>
                       {enableEdit ? (
                         <input
-                          className="user-input"
+                          className='user-input'
                           value={val}
                           onChange={(e) => handleUserInfo({ field: info[0], value: e.target.value })}
                         />

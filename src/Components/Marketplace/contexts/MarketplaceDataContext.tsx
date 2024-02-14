@@ -1,13 +1,110 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 import { CardType, CLASSES } from './index.d'
+import useSubgraphQuery from 'hooks/useSubgraph'
+import { getBalanceAmount } from 'utils/formatBalance'
+
+const getRarity = (attributes: any[]) => {
+  if (attributes.find((attr) => attr.trait_type === "1/1")) {
+    return 'Legendary';
+  }
+
+  switch (attributes.find((attr) => attr.trait_type === "Class").value) {
+    case 'Archer':
+      return 'Common'
+    case 'Artillery':
+      return 'Rare'
+    case 'Berserker':
+      return 'Uncommon'
+    case 'Dark Knight':
+      return 'Epic'
+    case 'Elemental':
+      return 'Rare'
+    case 'Engineer':
+      return 'Uncommon'
+    case 'Knight':
+      return 'Common'
+    case 'Magitek':
+      return 'Epic'
+    case 'Musketeer':
+      return 'Common'
+    case 'Plague Doctor':
+      return 'Uncommon'
+    case 'Vicar':
+      return 'Uncommon'
+    case 'Wizard':
+      return 'Common'
+    default:
+      return 'Unknown'
+  }
+}
+
+const getHashId = (str: string): string => {
+  const parts = str.split('#');
+  return parts.length > 1 ? parts[1] : '';
+}
+
+const getName = (data) => {
+  if (data.attributes.find((attr) => attr.trait_type === "1/1")) {
+    return data.attributes.find((attr) => attr.trait_type === "1/1").value
+  }
+
+  return data.name
+}
+
+const getSpriteName = (data) => {
+  if (data.attributes.find((attr) => attr.trait_type === "1/1")) {
+    return data.attributes.find((attr) => attr.trait_type === "1/1").value
+  }
+
+  return getHashId(data.name)
+}
+
+const getClassName = (data) => {
+  return data.attributes.find((attr) => attr.trait_type === "Class").value
+}
 
 export const MarketplaceV2DataContext = createContext<any>(null)
 export const MarketplaceV2DataProvider = ({ children }) => {
   const [nftsState, setNftsState] = React.useState<CardType[] | []>([])
   const [classesState, setClassesState] = React.useState<any[]>([])
 
-  React.useEffect(() => {
-    setNftsState(placeholder)
+  const { data, loading, error } = useSubgraphQuery(`
+    query {
+      listings(first: 10, orderBy: id, orderDirection: desc) {
+        id
+        seller
+        tokenId
+        price
+        blockTimestamp
+      }
+    }
+  `)
+
+  useEffect(() => {
+    if (!loading && !error) {
+      const nfts = []
+      const listings = data.data.listings
+      for (let i = 0; i < listings.length; i++) {
+        nfts.push({
+          id: getHashId(listings[i].name),
+          listingId: listings[i].id,
+          name: getName(listings[i]),
+          spriteName: listings[i].image,
+          rarity: getRarity(listings[i].attributes),
+          badge: getClassName(listings[i]),
+          price: {
+            raw: listings[i].price,
+            token: `${getBalanceAmount(listings[i].price)} MATIC`,
+            fiat: 'Not Available',
+          }
+        })
+      }
+
+      setNftsState(nfts)
+    }
+  }, [data, loading, error])
+
+  useEffect(() => {
     setClassesState(classes)
   }, [])
 
@@ -38,57 +135,4 @@ const classes = [
   'Plague Doctor',
   'Vicar',
   'Wizard',
-]
-
-const placeholder: CardType[] = [
-  {
-    name: 'Voidmancer',
-    spriteName: 'Voidmancer- Wizard',
-    rarity: 'Rare',
-    badge: CLASSES.wizard,
-    price: {
-      token: '100 MGG',
-      fiat: '1000',
-    },
-  },
-  {
-    name: 'Voidmancer2',
-    spriteName: 'Voidmancer- Wizard',
-    rarity: 'Rare',
-    badge: CLASSES.wizard,
-    price: {
-      token: '100 MGG',
-      fiat: '1000',
-    },
-  },
-  {
-    name: 'Voidmancer3',
-    spriteName: 'Voidmancer- Wizard',
-    rarity: 'Rare',
-    badge: CLASSES.wizard,
-    price: {
-      token: '100 MGG',
-      fiat: '1000',
-    },
-  },
-  {
-    name: 'Voidmancer4',
-    spriteName: 'Voidmancer- Wizard',
-    rarity: 'Rare',
-    badge: CLASSES.wizard,
-    price: {
-      token: '100 MGG',
-      fiat: '1000',
-    },
-  },
-  {
-    name: 'Voidmancer5',
-    spriteName: 'Voidmancer- Wizard',
-    rarity: 'Rare',
-    badge: CLASSES.wizard,
-    price: {
-      token: '100 MGG',
-      fiat: '1000',
-    },
-  },
 ]

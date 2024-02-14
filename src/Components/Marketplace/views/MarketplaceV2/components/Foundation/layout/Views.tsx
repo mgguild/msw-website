@@ -13,7 +13,7 @@ export const StyledViews = styled.div`
   min-height: 100vh;
 `
 
-const withLoading = (WrappedComponent: any) => {
+const withLoading = (WrappedComponent:any) => {
   return (props: any) => {
     const { data } = props
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -48,9 +48,9 @@ const VLayout: React.FC = (props: any) => {
   )
 }
 const WrappedComponent = withLoading(VLayout)
-const ViewsLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ViewsLayout: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
   // const { data } = useMarketplaceV2Data()
-  return <WrappedComponent> {children} </WrappedComponent>
+  return <WrappedComponent > {children} </WrappedComponent>
 }
 
 export default ViewsLayout

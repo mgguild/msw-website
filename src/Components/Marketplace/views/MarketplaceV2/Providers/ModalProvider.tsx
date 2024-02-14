@@ -1,5 +1,5 @@
 import React from 'react'
-import useMarketplaceV2 from '../../../hooks/useMarketplaceV2'
+import useMarketplaceV2 from 'hooks/useMarketplaceV2'
 import BuyModal from '../components/Modals/Buy-token'
 
 const ModalProvider = () => {

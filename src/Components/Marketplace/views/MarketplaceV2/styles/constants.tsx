@@ -58,7 +58,7 @@ export const COLORS: { [key: string]: string } = {
   GRADIENT_INNER: 'linear-gradient(0deg, rgba(42,38,98,1) 0%, rgba(38,3,75,1) 100%)',
   INNER: 'rgb(42,38,98)',
   MENU: '#131737',
-  BORDER: '#3898b8',
+  BORDER: '#3898b8'
 }
 // Margins
 export const MARGIN: { [key: string]: number } = { SM: 24 }
@@ -75,9 +75,9 @@ export const FONTSTYLE: { [key: string]: string } = {
   font2: 'One Splice',
 }
 
-export const customSpacingProps = (type: any) => {
+export const customSpacingProps = (type) => {
   const toFind = Object.entries(JSON.parse(JSON.stringify(type)))
-  const res = toFind.map((f) => ({ [`${POSITION[f[0] as keyof typeof POSITION]}`]: f[1] }))
+  const res = toFind.map((f) => ({ [`${POSITION[`${f[0]}`]}`]: f[1] }))
   const returnValue = res.map((r) => {
     const spaceProp = Object.keys(r).pop()
     const spaceValue = Object.values(r).pop()
