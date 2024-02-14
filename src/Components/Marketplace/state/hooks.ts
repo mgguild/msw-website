@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { useSelector } from 'react-redux'
 import {ThunkDispatch} from "@reduxjs/toolkit";
-import { useAppDispatch } from 'state'
+import { useAppDispatch } from '../state'
 import { orderBy } from 'lodash'
 import {
   AchievementState,
@@ -19,7 +19,6 @@ import {
   TeamsState,
 } from './types'
 import { MAINNET_CHAIN_ID } from '../config'
-import { initializePlayfabAsync } from './playfab'
 import { useDispatch } from 'react-redux';
 
 
@@ -37,94 +36,10 @@ export const useFarms = (): FarmsState => {
   return farms
 }
 
-export const useFarmFromPid = (pid): Farm => {
-  const farm = useSelector((state: State) => state.farms.data.find((f) => f.pid === pid))
-  return farm
-}
-
-export const useFarmFromLpSymbol = (lpSymbol: string): Farm => {
-  const farm = useSelector((state: State) => state.farms.data.find((f) => f.lpSymbol === lpSymbol))
-  return farm
-}
-
-
-
-// Return the base token price for a farm, from a given pid
-export const useBusdPriceFromPid = (pid: number): BigNumber => {
-  const farm = useFarmFromPid(pid)
-  return farm && new BigNumber(farm.token.busdPrice)
-}
 
 
 // Pools
 
-
-export const useCakeVault = () => {
-  const {
-    totalShares: totalSharesAsString,
-    pricePerFullShare: pricePerFullShareAsString,
-    totalCakeInVault: totalCakeInVaultAsString,
-    estimatedCakeBountyReward: estimatedCakeBountyRewardAsString,
-    totalPendingCakeHarvest: totalPendingCakeHarvestAsString,
-    fees: { performanceFee, callFee, withdrawalFee, withdrawalFeePeriod },
-    userData: {
-      isLoading,
-      userShares: userSharesAsString,
-      cakeAtLastUserAction: cakeAtLastUserActionAsString,
-      lastDepositedTime,
-      lastUserActionTime,
-    },
-  } = useSelector((state: State) => state.pools.cakeVault)
-
-  const estimatedCakeBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyRewardAsString)
-  }, [estimatedCakeBountyRewardAsString])
-
-  const totalPendingCakeHarvest = useMemo(() => {
-    return new BigNumber(totalPendingCakeHarvestAsString)
-  }, [totalPendingCakeHarvestAsString])
-
-  const totalShares = useMemo(() => {
-    return new BigNumber(totalSharesAsString)
-  }, [totalSharesAsString])
-
-  const pricePerFullShare = useMemo(() => {
-    return new BigNumber(pricePerFullShareAsString)
-  }, [pricePerFullShareAsString])
-
-  const totalCakeInVault = useMemo(() => {
-    return new BigNumber(totalCakeInVaultAsString)
-  }, [totalCakeInVaultAsString])
-
-  const userShares = useMemo(() => {
-    return new BigNumber(userSharesAsString)
-  }, [userSharesAsString])
-
-  const cakeAtLastUserAction = useMemo(() => {
-    return new BigNumber(cakeAtLastUserActionAsString)
-  }, [cakeAtLastUserActionAsString])
-
-  return {
-    totalShares,
-    pricePerFullShare,
-    totalCakeInVault,
-    estimatedCakeBountyReward,
-    totalPendingCakeHarvest,
-    fees: {
-      performanceFee,
-      callFee,
-      withdrawalFee,
-      withdrawalFeePeriod,
-    },
-    userData: {
-      isLoading,
-      userShares,
-      cakeAtLastUserAction,
-      lastDepositedTime,
-      lastUserActionTime,
-    },
-  }
-}
 
 // Profile
 
@@ -139,16 +54,6 @@ export const useProfile = () => {
 export const useAchievements = () => {
   const achievements: AchievementState['data'] = useSelector((state: State) => state.achievements.data)
   return achievements
-}
-
-export const usePriceBnbBusd = (): BigNumber => {
-  const bnbBusdFarm = useFarmFromPid(251)
-  return new BigNumber(0)
-}
-
-export const usePriceCakeBusd = (): BigNumber => {
-  const cakeBnbFarm = useFarmFromPid(251)
-  return new BigNumber(0)
 }
 
 // Block
@@ -269,20 +174,4 @@ export const useGuildpads = (): GuildpadState => {
 export const useGuildpad = () => {
   const guildpad = useSelector((state: State) => state.guildpads.selected)
   return guildpad
-}
-
-
-
-// PlayFab
-export const useInitializePlayfab = () => {
-  const dispatch = useDispatch<any>()
-
-  useEffect(() => {
-    dispatch(initializePlayfabAsync())
-  }, [dispatch])
-}
-
-export const usePlayfabUser = (): PFuserState => {
-  const user = useSelector((state: PlayfabState) => state.user)
-  return user
 }

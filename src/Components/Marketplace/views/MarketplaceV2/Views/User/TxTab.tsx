@@ -1,15 +1,15 @@
 import { Button } from '@metagg/mgg-uikit'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { MiniBox } from 'views/MarketplaceV2/components/Foundation/Box'
-import { COLORS, DEFAULT_BORDERS } from 'views/MarketplaceV2/styles/constants'
+import { MiniBox } from '../../components/Foundation/Box'
+import { COLORS, DEFAULT_BORDERS } from '../../styles/constants'
 
 const TxTab = ({
   tabController,
 }: {
   tabController: { active: number; setActive: React.Dispatch<React.SetStateAction<any[]>> }
 }) => {
-  const handleChange = (newValue) => {
+  const handleChange = (newValue: any) => {
     tabController.setActive(newValue)
   }
   return (

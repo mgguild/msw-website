@@ -1,4 +1,4 @@
-import { ContextApi } from 'contexts/Localization/types'
+import { ContextApi } from '../../contexts/Localization/types'
 import { PageMeta } from './types'
 
 export const DEFAULT_META: PageMeta = {
@@ -15,7 +15,7 @@ export const MARKETPLACE_META: PageMeta = {
   favico: `${window.location.origin}/favicon-v2.ico`,
 }
 
-export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
+export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta | null => {
   switch (path) {
     case '/farms':
       return {

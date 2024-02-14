@@ -6,8 +6,8 @@ import Main from '../Main'
 import Nftlist from './Nftlist'
 import { useOwnedNFTs, useContract, useAddress, useContractWrite } from "@thirdweb-dev/react"
 import { Web3Button } from "@thirdweb-dev/react";
-import { useMarketplaceV2FetchData } from 'hooks/useMarketplaceV2Data'
-import maticToWei from "utils/maticToWei"
+import { useMarketplaceV2FetchData } from '../../../../hooks/useMarketplaceV2Data'
+import maticToWei from "../../../../utils/maticToWei"
 
 const Market = () => {
   const OwnedNFTs = () => {
@@ -29,7 +29,7 @@ const Market = () => {
       const wei = maticToWei(parseFloat(value))
       setWeiValue(wei)
     }
-    
+
     return (
       <>
         {
@@ -45,7 +45,7 @@ const Market = () => {
 
             return (
               <>
-                <img src={nft.metadata.image} alt="Digger Image" />
+                <img src={nft.metadata.image as string} alt="Digger Image" />
                 <p className="font-bold">{nft.metadata.name}</p>
                 <input type="number" value={maticInput} onChange={handleInput} className={`${marketplaceData.find((item: { id: string }) => item.id === nft.metadata.id) && "hidden"}`} placeholder="Type price in MATIC" />
                 {

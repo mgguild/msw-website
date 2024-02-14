@@ -8,7 +8,7 @@ declare global {
 }
 
 export const MarketplaceV2Context = createContext<any>(null)
-export const MarketplaceV2Provider = ({ children }) => {
+export const MarketplaceV2Provider = ({ children }: any) => {
   const [badgesState, setBadgesState] = useState([])
   const [spritesState, setSpritesState] = useState([])
 

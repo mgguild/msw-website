@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useSubgraphQuery = (query) => {
-  const [data, setData] = useState(null);
+interface listData {
+  data?:{
+    listings: any
+  }
+}
+
+const useSubgraphQuery = (query: any) => {
+  const [data, setData] = useState<listData | null | undefined>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {

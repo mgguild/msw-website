@@ -1,7 +1,7 @@
 import React, { createContext, useEffect } from 'react'
 import { CardType, CLASSES } from './index.d'
-import useSubgraphQuery from 'hooks/useSubgraph'
-import { getBalanceAmount } from 'utils/formatBalance'
+import useSubgraphQuery from '../hooks/useSubgraph'
+import { getBalanceAmount } from '../utils/formatBalance'
 
 const getRarity = (attributes: any[]) => {
   if (attributes.find((attr) => attr.trait_type === "1/1")) {
@@ -43,28 +43,28 @@ const getHashId = (str: string): string => {
   return parts.length > 1 ? parts[1] : '';
 }
 
-const getName = (data) => {
-  if (data.attributes.find((attr) => attr.trait_type === "1/1")) {
-    return data.attributes.find((attr) => attr.trait_type === "1/1").value
+const getName = (data: any) => {
+  if (data.attributes.find((attr: any) => attr.trait_type === "1/1")) {
+    return data.attributes.find((attr: any) => attr.trait_type === "1/1").value
   }
 
   return data.name
 }
 
-const getSpriteName = (data) => {
-  if (data.attributes.find((attr) => attr.trait_type === "1/1")) {
-    return data.attributes.find((attr) => attr.trait_type === "1/1").value
+const getSpriteName = (data: any) => {
+  if (data.attributes.find((attr: any) => attr.trait_type === "1/1")) {
+    return data.attributes.find((attr: any) => attr.trait_type === "1/1").value
   }
 
   return getHashId(data.name)
 }
 
-const getClassName = (data) => {
-  return data.attributes.find((attr) => attr.trait_type === "Class").value
+const getClassName = (data: any) => {
+  return data.attributes.find((attr: any) => attr.trait_type === "Class").value
 }
 
 export const MarketplaceV2DataContext = createContext<any>(null)
-export const MarketplaceV2DataProvider = ({ children }) => {
+export const MarketplaceV2DataProvider = ({ children }: any) => {
   const [nftsState, setNftsState] = React.useState<CardType[] | []>([])
   const [classesState, setClassesState] = React.useState<any[]>([])
 
@@ -83,7 +83,7 @@ export const MarketplaceV2DataProvider = ({ children }) => {
   useEffect(() => {
     if (!loading && !error) {
       const nfts = []
-      const listings = data.data.listings
+      const listings = data?.data?.listings
       for (let i = 0; i < listings.length; i++) {
         nfts.push({
           id: getHashId(listings[i].name),

@@ -1,9 +1,9 @@
 import { IconButton, Flex } from '@metagg/mgg-uikit'
 import React from 'react'
 import styled from 'styled-components'
-import { MiniBox } from 'views/MarketplaceV2/components/Foundation/Box'
-import Iconloader from 'views/MarketplaceV2/components/Foundation/Iconloader'
-import { P } from 'views/MarketplaceV2/components/Foundation/Text'
+import { MiniBox } from '../../components/Foundation/Box'
+import Iconloader from '../../components/Foundation/Iconloader'
+import { P } from '../../components/Foundation/Text'
 
 const Cointable = () => {
   return (

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Flex, IconButton } from '@metagg/mgg-uikit'
 import { Grid } from '@mui/material'
-import Iconloader from 'views/MarketplaceV2/components/Foundation/Iconloader'
-import MarketPlaceButton from 'views/MarketplaceV2/components/Foundation/Button'
-import BasicTooltip from 'views/MarketplaceV2/components/Foundation/Tooltip'
-import { H2, H3, H5, P, TextWrapper } from 'views/MarketplaceV2/components/Foundation/Text'
-import useMarketplaceV2 from 'hooks/useMarketplaceV2'
+import Iconloader from '../../components/Foundation/Iconloader'
+import MarketPlaceButton from '../../components/Foundation/Button'
+import BasicTooltip from '../../components/Foundation/Tooltip'
+import { H2, H3, H5, P, TextWrapper } from '../../components/Foundation/Text'
+import useMarketplaceV2 from '../../../../hooks/useMarketplaceV2'
 import { MiniBox } from '../../components/Foundation/Box'
 import { FIELD_INFO } from './index.d'
 import { ActionDiv, Button, ContentWrapper, NavButton, NavDiv, StyledBox } from './styled'
@@ -13,7 +13,7 @@ import Cointable from './Cointable'
 import Table from './Table'
 import TxTab from './TxTab'
 
-const UserMain = (props) => {
+const UserMain = (props: any) => {
   const {
     controllers: { modal },
   } = useMarketplaceV2()
@@ -56,8 +56,8 @@ const UserMain = (props) => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={10}>
             <Grid container spacing={{ xs: 1, sm: 2 }}>
-              {Object.entries(userInfo).map((info) => {
-                const field = FIELD_INFO[`${info[0]}`]
+              {Object.entries(userInfo).map((info: any) => {
+                const field = FIELD_INFO[info[0] as keyof typeof FIELD_INFO]
                 const val = info[1].toString()
                 return (
                   <>

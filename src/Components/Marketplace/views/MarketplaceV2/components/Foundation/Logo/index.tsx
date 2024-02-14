@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useFetchImg } from 'utils/assetFetch'
-import { PADDING } from 'views/MarketplaceV2/styles/constants'
-import { LOGO, marketplaceURL } from 'views/MarketplaceV2/constants/config'
+import { useFetchImg } from '../../../../../utils/assetFetch'
+import { PADDING } from '../../../styles/constants'
+import { LOGO, marketplaceURL } from '../../../constants/config'
 import SvgIcon from '../SvgIcon'
 import Anchor from '../Anchor'
 

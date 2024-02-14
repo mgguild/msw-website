@@ -1,5 +1,5 @@
 import React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Grid } from '@mui/material'
 import styled from 'styled-components'
 import { Button, Flex } from '@metagg/mgg-uikit'
@@ -130,18 +130,15 @@ const NftDetails = (props: any) => {
 const WrappedMain = withGridLayout(NftMain)
 const WrappedDetails = withGridLayout(NftDetails)
 
-const NftPage: React.FC<RouteComponentProps<{ nftID: string }>> = ({
-  match: {
-    params: { nftID },
-  },
-}) => {
+const NftPage: React.FC = () => {
+  const parms = useParams()
   return (
     <Main>
       <TextWrapper>
         <StyledDiv>
           <Grid container spacing={5}>
-            <WrappedMain nftId={nftID} />
-            <WrappedDetails nftId={nftID} />
+            <WrappedMain nftId={parms.nftID} />
+            <WrappedDetails nftId={parms.nftID} />
           </Grid>
         </StyledDiv>
       </TextWrapper>

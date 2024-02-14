@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 import tokens from '../config/constants/tokens'
-import { Token } from '../config/constants/types'
+import { Token, Address } from '../config/constants/types'
 import { getAddress } from './addressHelpers'
 
 // use this for Header Banners
@@ -19,7 +19,7 @@ export const useFetchImage = (symbol: string) => {
 }
 
 export const getImageUrlFromToken = (token: Token) => {
-  const address = getAddress(token.symbol === 'BNB' ? tokens.wbnb.address : token.address)
+  const address = getAddress(token.symbol === 'BNB' ? tokens.wbnb.address as Address : token.address as Address)
   return `./images/tokens/${address}.${token.iconExtension ?? 'svg'}`
 }
 

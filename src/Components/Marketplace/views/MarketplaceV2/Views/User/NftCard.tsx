@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
-import { COLORS, DEFAULT_BORDERS } from 'views/MarketplaceV2/styles/constants'
-import SpriteDisplay from 'views/MarketplaceV2/components/Card/Display'
-import Header from 'views/MarketplaceV2/components/Card/Header'
+import { useNavigate } from 'react-router-dom'
+import { COLORS, DEFAULT_BORDERS } from '../../styles/constants'
+import SpriteDisplay from '../../components/Card/Display'
+import Header from '../../components/Card/Header'
 import { NftProps } from './index.d'
 
 
 
 const NftCard = (props: NftProps) => {
   const { name, spriteName, rarity, price, badge } = props
-  const history = useHistory()
-  const handleNav = (event) => {
+  const navigate = useNavigate()
+  const handleNav = (event: any) => {
     event.preventDefault()
-    history.push(`/marketplace/${badge}/${name}`)
+    navigate(`/marketplace/${badge}/${name}`)
   }
 
   return (

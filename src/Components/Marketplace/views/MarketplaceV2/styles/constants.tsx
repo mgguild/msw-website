@@ -75,9 +75,9 @@ export const FONTSTYLE: { [key: string]: string } = {
   font2: 'One Splice',
 }
 
-export const customSpacingProps = (type) => {
+export const customSpacingProps = (type: any) => {
   const toFind = Object.entries(JSON.parse(JSON.stringify(type)))
-  const res = toFind.map((f) => ({ [`${POSITION[`${f[0]}`]}`]: f[1] }))
+  const res = toFind.map((f) => ({ [`${POSITION[f[0] as keyof typeof POSITION]}`]: f[1] }))
   const returnValue = res.map((r) => {
     const spaceProp = Object.keys(r).pop()
     const spaceValue = Object.values(r).pop()

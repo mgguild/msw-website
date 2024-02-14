@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Grid } from '@mui/material'
-import { TextWrapper } from 'views/MarketplaceV2/components/Foundation/Text'
+import { TextWrapper } from '../../components/Foundation/Text'
 import withGridLayout from './withGridLayout'
 import Main from '../Main'
 import UserMain from './Usermain'

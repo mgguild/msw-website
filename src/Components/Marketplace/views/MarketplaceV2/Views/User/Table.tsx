@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS } from 'views/MarketplaceV2/styles/constants'
+import { COLORS } from '../../styles/constants'
 import { STATUS, TableProps } from './index.d'
 
 const Table = ({ data }: { data: TableProps[] }) => {
@@ -11,7 +11,7 @@ const Table = ({ data }: { data: TableProps[] }) => {
           return (
             <tr>
               {Object.values(d).map((i) => (
-                <td style={{color: STATUS[i.toLowerCase()]}}>{i}</td>
+                <td style={{color: STATUS[i as keyof typeof STATUS]}}>{i}</td>
               ))}
             </tr>
           )

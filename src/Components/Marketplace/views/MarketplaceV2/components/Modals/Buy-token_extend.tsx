@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@mui/material'
 import styled from 'styled-components'
-import useTheme from 'hooks/useTheme'
+import useTheme from '../../../../hooks/useTheme'
 import { Button, Flex, IconButton } from '@metagg/mgg-uikit'
 import { FaChevronCircleLeft } from 'react-icons/fa'
 import { H1, H3, P, P as Text, TextWrapper } from '../Foundation/Text'

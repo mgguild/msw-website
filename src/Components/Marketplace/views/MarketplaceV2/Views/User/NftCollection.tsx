@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Grid } from '@mui/material'
 import { Flex, IconButton } from '@metagg/mgg-uikit'
-import { useMarketplaceV2FetchData } from 'hooks/useMarketplaceV2Data'
-import BasicTooltip from 'views/MarketplaceV2/components/Foundation/Tooltip'
-import MarketPlaceButton from 'views/MarketplaceV2/components/Foundation/Button'
-import { P, H2, TextWrapper } from 'views/MarketplaceV2/components/Foundation/Text'
-import { MiniBox } from 'views/MarketplaceV2/components/Foundation/Box'
-import Iconloader from 'views/MarketplaceV2/components/Foundation/Iconloader'
-import { StyledButton } from 'views/MarketplaceV2/components/Foundation/Button/styled'
+import { useMarketplaceV2FetchData } from '../../../../hooks/useMarketplaceV2Data'
+import BasicTooltip from '../../components/Foundation/Tooltip'
+import MarketPlaceButton from '../../components/Foundation/Button'
+import { P, H2, TextWrapper } from '../../components/Foundation/Text'
+import { MiniBox } from '../../components/Foundation/Box'
+import Iconloader from '../../components/Foundation/Iconloader'
+import { StyledButton } from '../../components/Foundation/Button/styled'
 import { ContentWrapper, StyledBox } from './styled'
 import CategoryBox from './Cat-Box'
 import NftCard from './NftCard'
 
-const CategoryList = ({ active, setActive }) => (
+const CategoryList = ({ active, setActive }: any) => (
   <Grid container columnGap={3} sx={{ margin: '0.5em 0px 2em 0px' }}>
     <Grid item className="with-animation-enlarge">
       <IconButton onClick={() => setActive(0)}>
@@ -28,10 +28,10 @@ const CategoryList = ({ active, setActive }) => (
   </Grid>
 )
 
-const DisplayNft = ({ data }) => {
+const DisplayNft = ({ data }: any) => {
   return (
     <Grid container wrap="wrap" spacing={5}>
-      {data.map((d) => (
+      {data.map((d: any) => (
         <Grid item xs={12} md={6}>
           <NftCard {...d} />
         </Grid>
@@ -40,7 +40,7 @@ const DisplayNft = ({ data }) => {
   )
 }
 
-const NftCollection = (props) => {
+const NftCollection = (props: any) => {
   // TODO: Update to display user owned NFTs
   const { data } = useMarketplaceV2FetchData()
   const [active, setActive] = useState(0)

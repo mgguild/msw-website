@@ -1,5 +1,5 @@
 import React from 'react'
-import { DEFAULT_BORDERS } from 'views/MarketplaceV2/styles/constants'
+import { DEFAULT_BORDERS } from '../../styles/constants'
 import styled from 'styled-components'
 import Link from '../Foundation/Anchor'
 import { MiniBox as Box } from '../Foundation/Box'

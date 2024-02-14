@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useMarketplaceV2FetchData } from 'hooks/useMarketplaceV2Data'
+import { useMarketplaceV2FetchData } from '../../../../hooks/useMarketplaceV2Data'
 import { sectionProp } from '../Foundation/layout'
 import Cards from './Cards'
 import { H1, TextWrapper } from '../Foundation/Text'

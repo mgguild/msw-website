@@ -73,7 +73,7 @@ export const PageMeta: React.FC = () => {
   }
 
   React.useEffect(() => {
-    updateFavicon(favico)
+    updateFavicon(favico as string)
   }, [favico])
 
   return (

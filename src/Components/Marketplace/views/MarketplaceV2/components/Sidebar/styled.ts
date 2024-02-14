@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { COLORS, SETTINGS_SIDEBAR, breakpointMap } from 'views/MarketplaceV2/styles/constants'
+import { COLORS, SETTINGS_SIDEBAR, breakpointMap } from '../../styles/constants'
 import { CONTAINER_PROPS } from '../Foundation/layout'
 
 

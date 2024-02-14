@@ -13,7 +13,7 @@ const MarketPlaceButton = (props: Props) => {
         {children ?? (
           <TextWrapper className="with-animation-enlarge">
             <P fsize="0.7em">
-              {icon && <Iconloader type={iconType} name={icon} />}
+              {icon && <Iconloader type={iconType as string} name={icon} />}
               {title}
             </P>
           </TextWrapper>

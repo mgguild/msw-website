@@ -1,4 +1,4 @@
-import { CardType } from "contexts/index.d";
+import { CardType } from "../../../../contexts/index.d";
 
 export enum FIELD_INFO {
   email = 'EMAIL ADDRESS',

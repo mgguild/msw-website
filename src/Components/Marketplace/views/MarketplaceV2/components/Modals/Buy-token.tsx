@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, IconButton } from '@metagg/mgg-uikit'
-import useMarketplaceV2 from 'hooks/useMarketplaceV2'
+import useMarketplaceV2 from '../../../../hooks/useMarketplaceV2'
 import BuyExtended from './Buy-token_extend'
 import { H1, TextWrapper, H3 } from '../Foundation/Text'
 import { ModalSection } from './styled'
@@ -15,7 +15,7 @@ const BuyModal: React.FC<any> = (props) => {
   const { controllers } = useMarketplaceV2()
   const { modal } = controllers
 
-  const handleOption = (e) => {
+  const handleOption = (e: any) => {
     e.preventDefault()
     setOption(e.target.name)
   }

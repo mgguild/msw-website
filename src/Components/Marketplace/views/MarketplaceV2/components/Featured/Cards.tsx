@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Card from '../Card'
 import './style.css'
 
-const Cards = (props) => {
+const Cards = (props: any) => {
   const { items } = props
 
   return (
@@ -18,7 +18,7 @@ const Cards = (props) => {
       containerClass="carousel-container"
       dotListClass="custom-dot-list-style"
     >
-      {items.map((item, ind) => {
+      {items.map((item: any, ind: any) => {
         const id = ind + 1
         return (
           <StyledDiv>

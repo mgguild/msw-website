@@ -1,8 +1,8 @@
 import React, { useMemo, useCallback } from 'react'
 import Web3 from 'web3'
-import { useHistory } from 'react-router-dom'
-import useMarketplaceV2, { useQueryAsset, QueryType } from 'hooks/useMarketplaceV2'
-import useTheme from 'hooks/useTheme'
+import { useNavigate } from 'react-router-dom'
+import useMarketplaceV2, { useQueryAsset, QueryType } from '../../../../hooks/useMarketplaceV2'
+import useTheme from '../../../../hooks/useTheme'
 import { Props } from './index.d'
 import { CardContainer, Details, CardText as TextBox, Button } from './styled'
 import { H5, P } from '../Foundation/Text'
@@ -17,17 +17,17 @@ export default function Card(props: Props) {
   const { id, listingId, name, spriteName, rarity, price, badge } = props
   const { controllers } = useMarketplaceV2()
   const { modal } = controllers
-  const history = useHistory()
+  const navigate = useNavigate()
 
-  const handleNav = (event) => {
+  const handleNav = (event: any) => {
     event.preventDefault()
 
-    history.push(`/marketplace/${badge}/${id}`)
+    navigate(`/marketplace/${badge}/${id}`)
   }
 
-  const handleBuy = async (event) => {
+  const handleBuy = async (event: any) => {
     event.stopPropagation()
-  };  
+  };
 
   return (
     <>
@@ -43,7 +43,7 @@ export default function Card(props: Props) {
             </P>
           </TextBox>
           <Web3Button
-            contractAddress={process.env.REACT_APP_MARKETPLACE_ADDRESS} // Your smart contract address
+            contractAddress={process.env.REACT_APP_MARKETPLACE_ADDRESS as string} // Your smart contract address
             contractAbi={ABI}
             action={async (contract) => {
               await contract.call("buy", [listingId], { value: price.raw });

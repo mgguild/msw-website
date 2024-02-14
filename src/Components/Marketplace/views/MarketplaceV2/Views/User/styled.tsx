@@ -1,7 +1,7 @@
 import { Button as MGGButton, Flex } from '@metagg/mgg-uikit';
 import styled from 'styled-components'
-import { DefaultButton } from 'views/MarketplaceV2/components/Foundation/Button/styled'
-import { COLORS } from 'views/MarketplaceV2/styles/constants';
+import { DefaultButton } from '../../components/Foundation/Button/styled'
+import { COLORS } from '../../styles/constants';
 import Box from '../../components/Foundation/Box'
 
 export const ContentWrapper = styled.div`

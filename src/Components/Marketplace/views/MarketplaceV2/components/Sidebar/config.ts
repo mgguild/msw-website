@@ -1,4 +1,4 @@
-import { marketplaceURL } from 'views/MarketplaceV2/constants/config'
+import { marketplaceURL } from '../../constants/config'
 import { Props } from './index.d'
 
 export const links: Props = [

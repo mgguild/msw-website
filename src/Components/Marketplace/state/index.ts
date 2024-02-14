@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
-import playfabReducer from './playfab'
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
   reducer: {
-    playfab: playfabReducer,
+    // playfab: playfabReducer,
   },
 })
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useFetchImg } from 'utils/assetFetch'
-import { MARGIN, PADDING } from 'views/MarketplaceV2/styles/constants'
+import { useFetchImg } from '../../../../utils/assetFetch'
+import { MARGIN, PADDING } from '../../styles/constants'
 import { backgroundProp, sectionProp } from '../Foundation/layout'
 
 const Container = styled(backgroundProp)<{ bg?: string }>`
