@@ -366,27 +366,26 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
                         <NFTClasses className="classes" isScreen575={isScreen575}>
                             {classes.map((nft, index) => {
                                 return (
-                                    <>
-                                        <NFTClass
-                                            onClick={() => {
-                                                setSelectedClass(index);
-                                            }}
-                                            className={`NFTClasses ${
-                                                selectedClass === index
-                                                    ? 'active'
-                                                    : 'grow'
-                                            }`}
-                                            img={nft.images.icon}
+                                    <NFTClass
+                                        onClick={() => {
+                                            setSelectedClass(index);
+                                        }}
+                                        className={`NFTClasses ${
+                                            selectedClass === index
+                                                ? 'active'
+                                                : 'grow'
+                                        }`}
+                                        img={nft.images.icon}
+                                        key={index}
+                                        style={{
+                                            flexShrink: isScreen575 ? 0 : 1,
+                                        }}
+                                    >
+                                        <img
                                             key={index}
-                                            style={{
-                                                flexShrink: isScreen575 ? 0 : 1,
-                                            }}
-                                        >
-                                            <img
-                                                src={require(`../../../../Assets/img/diggers/${nft.images.icon}`)}
-                                            />
-                                        </NFTClass>
-                                    </>
+                                            src={require(`../../../../Assets/img/diggers/${nft.images.icon}`)}
+                                        />
+                                    </NFTClass>
                                 );
                             })}
                         </NFTClasses>
