@@ -94,17 +94,19 @@ const Market = () => {
   }
 
   return (
-    <Main>
-      <Filters />
-      <StyledDiv>
-        <TextWrapper>
-          <H1 fsize="2em">LOREM IPSUM</H1>
-        </TextWrapper>
-        <p>owned nfts test</p>
-        <OwnedNFTs />
-        <Nftlist />
-      </StyledDiv>
-    </Main>
+    <div style={{width: '100%'}}>
+      <Main>
+        <Filters />
+        <StyledDiv>
+          <TextWrapper>
+            <H1 fsize="2em">LOREM IPSUM</H1>
+          </TextWrapper>
+          <p>owned nfts test</p>
+          <OwnedNFTs />
+          <Nftlist />
+        </StyledDiv>
+      </Main>
+    </div>
   )
 }
 

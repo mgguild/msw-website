@@ -3,14 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-// import  Main from './Components/Pages/Main';
-// import AccountDelete from './Components/Pages/AccountDelete'
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
-// const MarketPlace = lazy(() => import('@mgguild/marketplace-v2').then(module => {
-//     return {default: module.Marketplace}
-// }))
+const Marketplace = lazy(() => import('./Components/Marketplace/views/MarketplaceV2'));
+const UserPage = lazy(() => import('./Components/Marketplace/views/MarketplaceV2/Views/User'))
+const NFTMarket = lazy(() => import('./Components/Marketplace/views/MarketplaceV2/Views/Market/Market'))
+
 
 
 function App() {
@@ -35,14 +34,30 @@ function App() {
                         </Suspense>
                     }
                 />
-                {/* <Route
+                <Route
                     path="/marketplace"
                     element={
                         <Suspense fallback={<>...</>}>
-                           <MarketPlace />
+                           <Marketplace />
                         </Suspense>
                     }
-                /> */}
+                />
+                <Route
+                    path="/profile"
+                    element={
+                        <Suspense fallback={<>...</>}>
+                           <UserPage />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/NFTMarket"
+                    element={
+                        <Suspense fallback={<>...</>}>
+                           <NFTMarket />
+                        </Suspense>
+                    }
+                />
             </Routes>
         </>
     );

@@ -75,25 +75,27 @@ const User = () => {
     console.log(userInfo)
   }
   return (
-    <Main>
-      <TextWrapper>
-        <StyledDiv>
-          <Grid container spacing={5}>
-            <WrappedMain
-              {...{
-                mediaQ: { xs: 12, md: 6, lg: 5 },
-                tabController: { active, setActive },
-                txHistory: { ...tempTx },
-                activityHistory: tempActivityData,
-                userInfo,
-                handleFunctions: { handleUserInfo },
-              }}
-            />
-            <WrappedNftList {...{ mediaQ: { xs: 12, md: 6, lg: 7 } }} />
-          </Grid>
-        </StyledDiv>
-      </TextWrapper>
-    </Main>
+    <div style={{width: '100%'}}>
+      <Main>
+        <TextWrapper>
+          <StyledDiv>
+            <Grid container spacing={5}>
+              <WrappedMain
+                {...{
+                  mediaQ: { xs: 12, md: 6, lg: 5 },
+                  tabController: { active, setActive },
+                  txHistory: { ...tempTx },
+                  activityHistory: tempActivityData,
+                  userInfo,
+                  handleFunctions: { handleUserInfo },
+                }}
+              />
+              <WrappedNftList {...{ mediaQ: { xs: 12, md: 6, lg: 7 } }} />
+            </Grid>
+          </StyledDiv>
+        </TextWrapper>
+      </Main>
+    </div>
   )
 }
 
