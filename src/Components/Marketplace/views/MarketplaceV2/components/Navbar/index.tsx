@@ -7,6 +7,8 @@ import { mswURL } from '../../constants/config'
 import Logo from '../Foundation/Logo'
 import Anchor from '../Foundation/Anchor'
 import { useAppDispatch } from '../../../../state'
+import { LoginRegister, UserDashboard } from '../../../../../Modals';
+import usePlayfab from '../../../../../../Hooks/usePlayfab';
 
 
 const Navbar = () => {
@@ -14,12 +16,14 @@ const Navbar = () => {
   const { theme } = useTheme()
   const { modal } = controllers
   const dispatch = useAppDispatch()
+  const user = usePlayfab((state: any) => state.user);
 
   return (
     <StyledNav>
       <Logo size={60} url={mswURL} />
-      <StyledBtn>Sign in</StyledBtn>
-      <StyledBtn>Register</StyledBtn>
+      <div>
+          {user ? <UserDashboard /> : <LoginRegister />}
+      </div>
     </StyledNav>
   )
 }
