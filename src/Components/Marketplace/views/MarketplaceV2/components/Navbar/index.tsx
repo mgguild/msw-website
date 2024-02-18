@@ -1,21 +1,16 @@
-import React, { useCallback, useEffect } from 'react'
+import { LoginRegister, UserDashboard } from '../../../../../Modals';
 import styled from 'styled-components'
 import useTheme from '../../../../hooks/useTheme'
 import useMarketplaceV2 from '../../../../hooks/useMarketplaceV2'
 import { HEIGHT, PADDING } from '../../styles/constants'
 import { mswURL } from '../../constants/config'
 import Logo from '../Foundation/Logo'
-import Anchor from '../Foundation/Anchor'
 import { useAppDispatch } from '../../../../state'
-import { LoginRegister, UserDashboard } from '../../../../../Modals';
 import usePlayfab from '../../../../../../Hooks/usePlayfab';
 
 
 const Navbar = () => {
   const { controllers } = useMarketplaceV2()
-  const { theme } = useTheme()
-  const { modal } = controllers
-  const dispatch = useAppDispatch()
   const user = usePlayfab((state: any) => state.user);
 
   return (

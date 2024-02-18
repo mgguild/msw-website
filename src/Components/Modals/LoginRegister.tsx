@@ -6,6 +6,7 @@ import { PlayFabClient } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 const style = {
     position: 'relative',

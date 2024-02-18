@@ -1,8 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import usePlayfab from './Hooks/usePlayfab';
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
@@ -13,6 +16,13 @@ const NFTMarket = lazy(() => import('./Components/Marketplace/views/MarketplaceV
 
 
 function App() {
+
+    const connect = usePlayfab((state: any) => state.start);
+
+    useEffect(() => {
+        connect();
+    }, []);
+
     return (
         <>
             <ToastContainer theme="dark" />
