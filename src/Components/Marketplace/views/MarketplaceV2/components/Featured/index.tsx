@@ -13,6 +13,14 @@ export default function Featured() {
       <Board className="main-drop-shadow" data-aos="slide-right">
         <TextWrapper>
           <H1 fsize="1.5em">LOREM IPSUM</H1>
+          <div
+            className="uppercase w-100 font-bold text-[24px] text-white text-center py-3 rounded-b-[5px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+          >
+            <a href="/#/NFTMarket"
+              className="text-white"
+            >Visit NFT Market
+            </a>
+          </div>
         </TextWrapper>
         <Cards items={data} />
       </Board>

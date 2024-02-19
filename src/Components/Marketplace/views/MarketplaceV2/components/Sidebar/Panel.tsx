@@ -3,9 +3,6 @@ import { StyledPanel, StyledPanelBody, StyledPanelFooter } from './styled'
 import { Props } from './index.d'
 import Navbutton from './Navbutton'
 import Iconloader from '../Foundation/Iconloader'
-import {
-  ConnectWallet,
-} from "@thirdweb-dev/react";
 
 const Panel: React.FC<{ links: Props }> = (props) => {
   const { links } = props
@@ -19,10 +16,6 @@ const Panel: React.FC<{ links: Props }> = (props) => {
             </Navbutton>
           )
         })}
-        <ConnectWallet
-          theme={"dark"}
-          modalSize={"wide"}
-        />
       </StyledPanelBody>
       {/* <StyledPanelFooter className="sidebar-footer">
         <Navbutton href="/help" className="link" target="_blank" rel="noopener noreferrer">
