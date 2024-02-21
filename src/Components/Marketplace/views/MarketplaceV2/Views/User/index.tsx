@@ -6,6 +6,7 @@ import withGridLayout from './withGridLayout'
 import Main from '../Main'
 import UserMain from './Usermain'
 import NftCollection from './NftCollection'
+import NeedCreds from '../../../../../Modals/NeedCreds'
 import './UserStyle.css'
 
 // Tempdata collection
@@ -76,6 +77,11 @@ const User = () => {
   }
   return (
     <div style={{width: '100%'}}>
+      <NeedCreds
+        wallet={true}
+        walletConnect={true}
+        sameWallet={true}
+      />
       <Main>
         <TextWrapper>
           <StyledDiv>

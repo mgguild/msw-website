@@ -8,6 +8,7 @@ import { useOwnedNFTs, useContract, useAddress, useContractWrite } from "@thirdw
 import { Web3Button } from "@thirdweb-dev/react";
 import { useMarketplaceV2FetchData } from '../../../../hooks/useMarketplaceV2Data'
 import maticToWei from "../../../../utils/maticToWei"
+import NeedCreds from '../../../../../Modals/NeedCreds'
 
 const Market = () => {
   const OwnedNFTs = () => {
@@ -32,6 +33,11 @@ const Market = () => {
 
     return (
       <>
+        <NeedCreds
+          wallet={true}
+          walletConnect={true}
+          sameWallet={true}
+        />
         {
           !isLoading &&
           data?.map((nft) => {

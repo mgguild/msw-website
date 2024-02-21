@@ -1,3 +1,4 @@
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
@@ -6,7 +7,7 @@ import { PlayFabClient } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import {MdlProps} from './types'
 
 const style = {
     position: 'relative',
@@ -27,8 +28,8 @@ const CenterFrame = styled.div`
     align-items: center;
 `;
 
-const Container = styled.div`
-    background-color: #4f19a7;
+const Container = styled.div<{ persistent: boolean; }>`
+    background-color: ${({ persistent }) => persistent ? '#ff8f00' : '#4f19a7'};
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -95,13 +96,20 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
     text-align: center;
 `;
 
-export default function LoginRegister() {
+const LoginRegister = ({
+        show = false,
+        persistent = false,
+        showBtn = true,
+        Header = 'LOGIN ACCOUNT',
+        Subheader
+    }: MdlProps) => {
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
     const setUserTags = usePlayfab((state: any) => state.setUserTags);
     const setUserData = usePlayfab((state: any) => state.setUserData);
     const user = usePlayfab((state: any) => state.user);
+    const userTags = usePlayfab((state: any) => state.userTags);
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(show);
 
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -239,6 +247,7 @@ export default function LoginRegister() {
                     },
                 },
                 (error, result) => {
+                    handleClose();
                     if (error) {
                         toast(error.errorMessage, { type: 'error' });
                         return;
@@ -257,16 +266,18 @@ export default function LoginRegister() {
         }
     };
 
+
     return (
         <>
             <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                disableEscapeKeyDown={persistent}
             >
                 <Box sx={style}>
                     <CenterFrame>
-                        <Container>
+                        <Container persistent={persistent}>
                             <Carousel
                                 showThumbs={false}
                                 selectedItem={carouselItem}
@@ -275,7 +286,10 @@ export default function LoginRegister() {
                                 showStatus={false}
                             >
                                 <CarouselItem style={{ width: '100%' }}>
-                                    <h4>LOGIN ACCOUNT</h4>
+                                    <h4>{Header}</h4>
+                                    {Subheader &&
+                                        <p>{Subheader}</p>
+                                    }
                                     <Col onSubmit={e => handleLoginSubmit(e)}>
                                         <Row>
                                             <span>Email or Username:</span>
@@ -313,14 +327,16 @@ export default function LoginRegister() {
                                             >
                                                 Login
                                             </Button>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => handleClose()}
-                                            >
-                                                Cancel
-                                            </Button>
+                                            {!persistent &&
+                                                <Button
+                                                    borderRadius="8px"
+                                                    padding="0.8rem 1rem"
+                                                    type="button"
+                                                    onClick={e => handleClose()}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            }
                                         </div>
                                         <div>
                                             <a
@@ -411,14 +427,16 @@ export default function LoginRegister() {
                                             >
                                                 Register
                                             </Button>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => handleClose()}
-                                            >
-                                                Cancel
-                                            </Button>
+                                            {!persistent &&
+                                                <Button
+                                                    borderRadius="8px"
+                                                    padding="0.8rem 1rem"
+                                                    type="button"
+                                                    onClick={e => handleClose()}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            }
                                         </div>
                                         <div
                                             style={{
@@ -447,13 +465,17 @@ export default function LoginRegister() {
                     </CenterFrame>
                 </Box>
             </Modal>
-            <Button
-                onClick={() => {
-                    setOpen(true);
-                }}
-            >
-                Login/Register
-            </Button>
+            {showBtn &&
+                <Button
+                    onClick={() => {
+                        setOpen(true);
+                    }}
+                >
+                    Login/Register
+                </Button>
+            }
         </>
     );
 }
+
+export default LoginRegister;

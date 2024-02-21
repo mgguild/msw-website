@@ -12,6 +12,7 @@ const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
 const Marketplace = lazy(() => import('./Components/Marketplace/views/MarketplaceV2'));
 const UserPage = lazy(() => import('./Components/Marketplace/views/MarketplaceV2/Views/User'))
 const NFTMarket = lazy(() => import('./Components/Marketplace/views/MarketplaceV2/Views/Market/Market'))
+const NotSameWallet = lazy(() => import('./Components/Pages/NotSameWallet/index'))
 
 
 
@@ -65,6 +66,14 @@ function App() {
                     element={
                         <Suspense fallback={<>...</>}>
                            <NFTMarket />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/WalletError"
+                    element={
+                        <Suspense fallback={<>...</>}>
+                            <NotSameWallet />
                         </Suspense>
                     }
                 />
