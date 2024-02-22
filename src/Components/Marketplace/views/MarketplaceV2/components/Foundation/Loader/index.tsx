@@ -9,6 +9,7 @@ const Wrapper = styled(StyledPage)`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100%;
 `
 
 const PageLoader: React.FC = () => {

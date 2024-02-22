@@ -88,10 +88,10 @@ export const PageMeta: React.FC = () => {
 
 const Page: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
   return (
-    <>
+    <div style={{width: '100%'}}>
       <PageMeta />
       <StyledPage {...props}>{children}</StyledPage>
-    </>
+    </div>
   )
 }
 
