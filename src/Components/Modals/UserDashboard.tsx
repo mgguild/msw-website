@@ -15,6 +15,7 @@ import {
 } from '@thirdweb-dev/react';
 import { Triangle } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import {MdlProps} from './types'
 
 const style = {
     position: 'relative',
@@ -35,8 +36,8 @@ const CenterFrame = styled.div`
     align-items: center;
 `;
 
-const Container = styled.div`
-    background-color: #4f19a7;
+const Container = styled.div<{ persistent: boolean; }>`
+    background-color: ${({ persistent }) => persistent ? '#ff8f00' : '#4f19a7'};
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -117,13 +118,27 @@ const Field = styled.div`
     align-items: center;
 `;
 
-export default function LoginRegister() {
+const Hdr = styled.div`
+    margin: 2rem 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1rem;
+`;
+
+const UserDashboard = ({
+    show = false,
+    persistent = false,
+    showBtn = true,
+    Header = 'USER DASHBOARD',
+    Subheader
+}: MdlProps) => {
     const user = usePlayfab((state: any) => state.user);
     const userTags = usePlayfab((state: any) => state.userTags);
     const userData = usePlayfab((state: any) => state.userData);
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(show);
     const [binding, setBinding] = useState(false);
     const [_userData, setUserData] = useState<null | any>(null);
     const [_userTags, setUserTags] = useState<string[]>([]);
@@ -147,12 +162,6 @@ export default function LoginRegister() {
         console.log(`_chain: ${_chain?.name}`);
         console.log(`_status: ${_status}`);
     }, [userTags, userData, useChain(), useConnectionStatus()]);
-
-    useEffect(() => {
-        (async () => {
-            console.log('BRUH');
-        })();
-    }, []);
 
     const handleBindWallet = () => {
         _signer
@@ -205,14 +214,25 @@ export default function LoginRegister() {
         <>
             <Modal
                 open={open}
-                onClose={() => setOpen(false)}
+                onClose={() => persistent ? null : setOpen(false)}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                disableEscapeKeyDown={persistent}
             >
                 <Box sx={style}>
                     <CenterFrame>
-                        <Container>
-                            <h4>User Dashboard</h4>
+                        <Container persistent={persistent}>
+                            <div style={{
+                                display: 'flex',
+                                flexFlow: 'column nowrap',
+                                lineHeight: '0.5rem',
+                                alignItems: 'center'
+                            }}>
+                                <h4>{Header}</h4>
+                                {Subheader &&
+                                    <p>{Subheader}</p>
+                                }
+                            </div>
                             <Col>
                                 <Row>
                                     <span>Username:</span>
@@ -229,7 +249,8 @@ export default function LoginRegister() {
                                         <Field>
                                             {_userData
                                                 ? _userData['WalletAddress'].Value
-                                                : ''}
+                                                : ''
+                                            }
                                         </Field>
                                     </Row>
                                 ) : (
@@ -250,17 +271,14 @@ export default function LoginRegister() {
                                                 }}
                                             />
                                         </div>
+                                        {persistent &&
+                                            <p>
+                                                User needs to bind their web3 wallet to use this page
+                                            </p>
+                                        }
 
                                         {_status === 'connected' ? (
-                                            <div
-                                                style={{
-                                                    margin: '2rem 0',
-                                                    display: 'flex',
-                                                    flexFlow: 'column',
-                                                    alignItems: 'center',
-                                                    gap: '1rem',
-                                                }}
-                                            >
+                                            <Hdr>
                                                 {binding ? (
                                                     <>
                                                         <Triangle
@@ -294,7 +312,7 @@ export default function LoginRegister() {
                                                         </span>
                                                     </>
                                                 )}
-                                            </div>
+                                            </Hdr>
                                         ) : (
                                             <></>
                                         )}
@@ -310,9 +328,11 @@ export default function LoginRegister() {
                                             justifyContent: 'center',
                                         }}
                                     >
-                                        <Button style={{ backgroundColor: 'red' }}>
-                                            Delete Account
-                                        </Button>
+                                        {!persistent &&
+                                            <Button style={{ backgroundColor: 'red' }}>
+                                                Delete Account
+                                            </Button>
+                                        }
                                     </Link>
                                     <ConnectWallet
                                         theme={"dark"}
@@ -332,13 +352,17 @@ export default function LoginRegister() {
                     </CenterFrame>
                 </Box>
             </Modal>
-            <Button
-                onClick={() => {
-                    setOpen(true);
-                }}
-            >
-                {user.TitleInfo.DisplayName ?? user.Username}
-            </Button>
+            {showBtn &&
+                <Button
+                    onClick={() => {
+                        setOpen(true);
+                    }}
+                >
+                    {user.TitleInfo.DisplayName ?? user.Username}
+                </Button>
+            }
         </>
     );
 }
+
+export default UserDashboard;

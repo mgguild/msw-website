@@ -1,4 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
 import {
     Home,
@@ -192,6 +193,12 @@ function App() {
                         {item.name}
                     </a>
                 ))}
+                <Link
+                    to="/marketplace"
+                    className="NavButton"
+                >
+                    Marketplace
+                </Link>
                 <DropdownButton id="dropdown-basic-button" title="More">
                     {navItems.slice(4, navItems.length).map((item, i) => (
                         <Dropdown.Item

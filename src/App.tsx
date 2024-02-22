@@ -6,12 +6,13 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
+import MarketplaceV2 from './Components/Marketplace/views/MarketplaceV2/Marketplace';
+import Market from './Components/Marketplace/views/MarketplaceV2/Views/Market/Market';
+import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
-const Marketplace = lazy(() => import('./Components/Marketplace/views/MarketplaceV2'));
-const UserPage = lazy(() => import('./Components/Marketplace/views/MarketplaceV2/Views/User'))
-const NFTMarket = lazy(() => import('./Components/Marketplace/views/MarketplaceV2/Views/Market/Market'))
+const NotSameWallet = lazy(() => import('./Components/Pages/NotSameWallet/index'))
 
 
 
@@ -47,24 +48,26 @@ function App() {
                 <Route
                     path="/marketplace"
                     element={
-                        <Suspense fallback={<>...</>}>
-                           <Marketplace />
-                        </Suspense>
+                        <MarketplaceV2 />
                     }
                 />
                 <Route
                     path="/profile"
                     element={
-                        <Suspense fallback={<>...</>}>
-                           <UserPage />
-                        </Suspense>
+                        <User />
                     }
                 />
                 <Route
                     path="/NFTMarket"
                     element={
+                        <Market />
+                    }
+                />
+                <Route
+                    path="/WalletError"
+                    element={
                         <Suspense fallback={<>...</>}>
-                           <NFTMarket />
+                            <NotSameWallet />
                         </Suspense>
                     }
                 />
