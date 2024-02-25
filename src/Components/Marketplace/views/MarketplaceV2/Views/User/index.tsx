@@ -80,7 +80,7 @@ const User = () => {
       <NeedCreds
         wallet={true}
         walletConnect={true}
-        sameWallet={true}
+        sameWallet={false}
       />
       <Main>
         <TextWrapper>

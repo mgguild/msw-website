@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Grid } from '@mui/material'
 import { Flex, IconButton } from '@metagg/mgg-uikit'
@@ -14,8 +14,12 @@ import CategoryBox from './Cat-Box'
 import NftCard from './NftCard'
 import { CardContainer, CardHeader, CardText } from '../../components/Card/styled'
 import { Web3Button } from "@thirdweb-dev/react";
-import { useOwnedNFTs, useContract, useAddress, useContractWrite } from "@thirdweb-dev/react"
+import { useOwnedNFTs, useContract, useAddress, useContractWrite, useContractRead } from "@thirdweb-dev/react"
 import maticToWei from "../../../../utils/maticToWei"
+import axios from "axios"
+import { CardType, CLASSES } from '../../../../contexts'
+import { getBalanceAmount } from '../../../../utils/formatBalance'
+import ABI from "../../constants/abi.json"
 
 const contractAddress = "0x290ca81d1ba1a31cd78be176df08c89e63c6de91"
 const contractAddressSecond = "0x3A53815FfAf6c14069c00A00D7eE94C370280e87"
@@ -29,7 +33,6 @@ const StyledFlex = styled(Flex)`max-width: 250px;
     }
   `}
 `
-
 
 const CategoryList = ({ active, setActive }: any) => (
   <Grid container columnGap={3} sx={{ margin: '0.5em 0px 2em 0px' }}>
@@ -59,7 +62,8 @@ const DisplayNft = ({ data }: any) => {
 }
 
 const SellModal = (props: any) => {
-  const { isSelling, marketplaceData, nft, handleCloseModal, modalActive } = props
+  const { isSelling, marketplaceData, nft, handleCloseModal, modalActive, key } = props
+  const [modalVisible, setModalVisible] = useState<boolean>(modalActive || false)
 
   const { contract: contractSecond } = useContract(contractAddressSecond);
   const [maticInput, setMaticInput] = useState<number>(0)
@@ -79,8 +83,26 @@ const SellModal = (props: any) => {
     listingId = marketplaceData[listingIndex].listingId
   }
 
+  const address = useAddress();
+
+  const { contract: approvalContract } = useContract(contractAddress)
+  const { data: approvalData, isLoading: approvalIsLoading, error: approvalError} = useContractRead(approvalContract, "isApprovedForAll", [address, "0x3A53815FfAf6c14069c00A00D7eE94C370280e87"])
+
+  const [usedContract, setUsedContract] = useState<string>(contractAddressSecond)
+
+  useEffect(() => {
+    setModalVisible(modalVisible)
+    if (approvalData) {
+      setUsedContract(contractAddressSecond)
+    } else {
+      setUsedContract(process.env.REACT_APP_MARKETPLACE_ADDRESS as string)
+    }
+  }, [modalVisible, modalActive, approvalData, approvalIsLoading, approvalError])
+
   return (
-    <div className={`fixed inset-0 w-full h-full bg-black/50 ${!modalActive && 'hidden'}`}>
+    <>
+    {modalVisible && (
+    <div className={`fixed inset-0 w-full h-full bg-black/50`}>
       <div className="flex justify-center items-center w-full h-full">
         <div className="relative snap-x flex flex-col justify-center items-center bg-gradient-to-b from-[#181020] to-[#2A2964] pb-[5em] w-[727px] px-[2em] pt-[2em] rounded-[20px]">
           <div className="absolute right-[-1em] top-[-1em] bg-[#181020] p-[1em] rounded-full" onClick={handleCloseModal}>
@@ -108,14 +130,25 @@ const SellModal = (props: any) => {
                 <Web3Button
                   theme="dark"
                   className="uppercase w-100 font-bold text-[40px] rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-                  contractAddress={contractAddress}
+                  // contractAddress={contractAddress}
+                  contractAddress={usedContract}
+                  contractAbi={ABI}
                   action={async (contract) => {
                     // approve listing
-                    await contract.erc721.setApprovalForAll("0x3A53815FfAf6c14069c00A00D7eE94C370280e87", true)
+                    if (!approvalData) {
+                      await contract.erc721.setApprovalForAll("0x3A53815FfAf6c14069c00A00D7eE94C370280e87", true)
+                    } else {
+                      await contract.call("cancelListing", [listingId]);
+                    }
                     // listing id
-                    mutateAsyncSecond({
-                      args: [listingId]
-                    })
+                    // mutateAsyncSecond({
+                    //   args: [listingId]
+                    // })
+                  }}
+                  onSuccess={(res) => {
+                    console.log("Listing cancelled")
+                    console.log(res)
+                    setModalVisible(false)
                   }}
                 >
                   Cancel Listing
@@ -125,14 +158,24 @@ const SellModal = (props: any) => {
                   theme="dark"
                   className="uppercase w-100 font-bold text-[40px] rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
                   isDisabled={maticInput < 0 && true}
-                  contractAddress={contractAddress}
+                  contractAddress={usedContract}
+                  contractAbi={ABI}
                   action={async (contract) => {
                     // approve listing
+                    if (!approvalData) {
                     await contract.erc721.setApprovalForAll("0x3A53815FfAf6c14069c00A00D7eE94C370280e87", true)
+                    } else {
+                      await contract.call("createListing", [contractAddress, nft.metadata.id, weiValue.toString()]);
+                    }
                     // contract, token id, price in wei
-                    mutateAsync({
-                      args: [contractAddress, nft.metadata.id, weiValue.toString()]
-                    })
+                    // mutateAsync({
+                    //   args: [contractAddress, nft.metadata.id, weiValue.toString()]
+                    // })
+                  }}
+                  onSuccess={(res) => {
+                    console.log("Success selling")
+                    console.log(res)
+                    setModalVisible(false)
                   }}
                 >
                   Sell
@@ -143,7 +186,15 @@ const SellModal = (props: any) => {
         </div>
       </div>
     </div>
+    )}
+    </>
   )
+}
+
+interface listData {
+  data?:{
+    listings: any
+  }
 }
 
 const NftCollection = (props: any) => {
@@ -155,8 +206,25 @@ const NftCollection = (props: any) => {
     const address = useAddress();
     const { contract } = useContract(contractAddress);
     const { data, isLoading, error } = useOwnedNFTs(contract, address);
-    const { data: marketplaceData } = useMarketplaceV2FetchData()
+    // const { data: marketplaceData } = useMarketplaceV2FetchData()
     const [modalActive, setModalActive] = useState<boolean[]>([])
+
+    const [marketplaceData, setMarketplaceData] = useState<CardType[] | []>([])
+    const [nftState, setNftState] = useState<listData | null | undefined>(null) 
+    const [loading, setLoading] = useState<boolean>(true);
+    const [nftError, setError] = useState<any>(null);
+
+    const query = `
+      query {
+        listings(first: 10, orderBy: id, orderDirection: desc) {
+          id
+          seller
+          tokenId
+          price
+          blockTimestamp
+        }
+      }
+    `
     
     const handleToggleModal = (index: number) => {
       setModalActive((prevVisibility) => {
@@ -165,6 +233,102 @@ const NftCollection = (props: any) => {
       return updatedVisibility
       })
     }
+
+    const getRarity = (attributes: any[]) => {
+      if (attributes.find((attr) => attr.trait_type === "1/1")) {
+        return 'Legendary';
+      }
+
+      switch (attributes.find((attr) => attr.trait_type === "Class").value) {
+        case 'Archer':
+          return 'Common'
+        case 'Artillery':
+          return 'Rare'
+        case 'Berserker':
+          return 'Uncommon'
+        case 'Dark Knight':
+          return 'Epic'
+        case 'Elemental':
+          return 'Rare'
+        case 'Engineer':
+          return 'Uncommon'
+        case 'Knight':
+          return 'Common'
+        case 'Magitek':
+          return 'Epic'
+        case 'Musketeer':
+          return 'Common'
+        case 'Plague Doctor':
+          return 'Uncommon'
+        case 'Vicar':
+          return 'Uncommon'
+        case 'Wizard':
+          return 'Common'
+        default:
+          return 'Unknown'
+      }
+    }
+
+    const getHashId = (str: string): string => {
+      const parts = str.split('#');
+      return parts.length > 1 ? parts[1] : '';
+    }
+
+    const getName = (data: any) => {
+      if (data.attributes.find((attr: any) => attr.trait_type === "1/1")) {
+        return data.attributes.find((attr: any) => attr.trait_type === "1/1").value
+      }
+
+      return data.name
+    }
+
+    const getClassName = (data: any) => {
+      return data.attributes.find((attr: any) => attr.trait_type === "Class").value
+    }
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const url = process.env.REACT_APP_SUBGRAPH_URL ? process.env.REACT_APP_SUBGRAPH_URL : "https://api.thegraph.com/subgraphs/name/pancakeswap/exchange";
+          const response = await axios.post(url, { query });
+
+          for (let i = 0; i < response.data.data.listings.length; i++) {
+            const details = await axios.get(`${process.env.REACT_APP_MSW_API}/api/warrior/${response.data.data.listings[i].tokenId}`);
+            response.data.data.listings[i] = { ...response.data.data.listings[i], ...details.data };
+          }
+
+          setNftState(response.data);
+          setLoading(false);
+
+          // --------
+          const nfts = []
+          const listings = response.data?.data?.listings
+          for (let i = 0; i < listings.length; i++) {
+            nfts.push({
+              id: getHashId(listings[i].name),
+              listingId: listings[i].id,
+              name: getName(listings[i]),
+              spriteName: listings[i].image,
+              rarity: getRarity(listings[i].attributes),
+              badge: getClassName(listings[i]),
+              price: {
+                raw: listings[i].price,
+                token: `${getBalanceAmount(listings[i].price)} MATIC`,
+                fiat: 'Not Available',
+              }
+            })
+          }
+
+          setMarketplaceData(nfts)
+
+        } catch (error) {
+          setError(error);
+          setLoading(false);
+        }
+      }
+
+      fetchData();
+    }, [marketplaceData, query])
 
     return (
       <>
@@ -193,7 +357,7 @@ const NftCollection = (props: any) => {
                               isSelling ? 'Cancel Listing' : 'Sell'
                             }
                           </button>
-                          {modalActive[key] && <SellModal key={key} modalActive={modalActive} nft={nft} isSelling={isSelling} marketplaceData={marketplaceData} handleCloseModal={() => handleToggleModal(key)} />}
+                          {modalActive[key] && <SellModal key={key} modalActive={modalActive[key]} nft={nft} isSelling={isSelling} marketplaceData={marketplaceData} handleCloseModal={() => handleToggleModal(key)} />}
                         </CardContainer>
 
                       </StyledFlex>
