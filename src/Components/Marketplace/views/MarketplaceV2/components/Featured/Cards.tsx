@@ -9,24 +9,11 @@ const Cards = (props: any) => {
   const { items } = props
 
   return (
-    <Carousel
-      responsive={responsive}
-      infinite
-      showDots
-      autoPlay
-      removeArrowOnDeviceType={['tablet', 'mobile']}
-      containerClass="carousel-container"
-      dotListClass="custom-dot-list-style"
-    >
-      {items.map((item: any, ind: any) => {
-        const id = ind + 1
-        return (
-          <StyledDiv>
-            <Card {...item} />
-          </StyledDiv>
-        )
-      })}
-    </Carousel>
+    items.map((item: any) => {
+      return (
+        <Card {...item} />
+      )
+    })
   )
 }
 const responsive = {

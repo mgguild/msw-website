@@ -140,21 +140,21 @@ const Nftlist = () => {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-      <Grid container spacing={{ xs: 2, sm: 4 }} {...settings} pt={5}>
-        {data.slice(0, toDisplay).map((d: any) => (
-          <Grid key={d.name} item xs={12} sm={4} md={3} lg={3} xl={3} justifyContent="center">
-            <StyledFlex>
-              <Card {...d} />
-            </StyledFlex>
-          </Grid>
-        ))}
-      </Grid>
-      <div style={{ marginTop: '1.5rem' }}>
-        {toDisplay <= data.length && (
-          <button onClick={handleDisplay} type="button">
-            view more
-          </button>
-        )}
+        <Grid container spacing={{ xs: 2, sm: 4 }} {...settings} pt={5}>
+          {data.slice(0, toDisplay).map((d: any) => (
+            <Grid key={d.name} item xs={12} sm={4} md={3} lg={3} xl={3} justifyContent="center">
+              <StyledFlex>
+                <Card {...d} />
+              </StyledFlex>
+            </Grid>
+          ))}
+        </Grid>
+        <div style={{ marginTop: '1.5rem' }}>
+          {toDisplay <= data.length && (
+            <button onClick={handleDisplay} type="button">
+              view more
+            </button>
+          )}
       </div>
     </div>
   )
