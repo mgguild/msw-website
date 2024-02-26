@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <StyledNav>
-      <Logo size={60} url={mswURL} />
+      <Logo size={169} url={mswURL} />
       <div>
           {user ? <UserDashboard /> : <LoginRegister />}
       </div>
@@ -26,21 +26,11 @@ const Navbar = () => {
 export default Navbar
 
 const StyledNav = styled.nav`
-  height: ${HEIGHT.MENU}vh;
+  background-color: #181020;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${PADDING.MAIN.SP}px;
-  ${({ theme }) => `
-    ${theme.mediaQueries.sm} {
-      justify-content: space-between;
-      padding: ${PADDING.MAIN.MP}px;
-    }
-
-    ${theme.mediaQueries.md}{
-      padding: 0 ${PADDING.MAIN.LG}px 0 ${PADDING.MAIN.LG}px;
-    }
-  `}
+  padding: 1em 5em 1em 5em !important;
 `
 
 const StyledBtn = styled.button``

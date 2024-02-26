@@ -22,45 +22,41 @@ const StyledFooter = styled.footer`
   `}
 `
 
-const AnchorList = styled(TextWrapper)`
-  display: flex;
-  flex-wrap: wrap;
-  width: 90%;
-  justify-content: space-evenly;
-  & > * {
-    text-decoration: underline;
-  }
-  ${({ theme }) => `
-  color: ${theme.colors.text};
-    ${theme.mediaQueries.sm} {
-      width: 50%;
-    }
-
-    ${theme.mediaQueries.lg} {
-      width: 35%;
-    }
-  `}
+const AnchorList = styled.div`
 `
 
 export default function Footer() {
   return (
-    <StyledFooter>
-      <Logo size={100} url={mswURL} />
-      <AnchorList lineHeight="2em">
-        {Object.entries(links.FOOTER).map((link) => {
-          const name = link[0].toUpperCase()
-          const href = link[1]
-          return (
-            <Anchor key={link[0]} href={href} style={{ fontSize: '0.8em' }}>
-              {name}
-            </Anchor>
-          )
-        })}
-      </AnchorList>
-      <TextWrapper lineHeight="2em" align="center">
-        <P fsize="0.7em">Copyright &copy; 2022 MetaGaming Guild. All Rights Reserved</P>
-      </TextWrapper>
-      <Socials links={socials} />
-    </StyledFooter>
+    // <StyledFooter>
+    //   <Logo size={100} url={mswURL} />
+    //   <AnchorList lineHeight="2em">
+    //     {Object.entries(links.FOOTER).map((link) => {
+    //       const name = link[0].toUpperCase()
+    //       const href = link[1]
+    //       return (
+    //         <Anchor key={link[0]} href={href} style={{ fontSize: '0.8em' }}>
+    //           {name}
+    //         </Anchor>
+    //       )
+    //     })}
+    //   </AnchorList>
+    //   <TextWrapper lineHeight="2em" align="center">
+    //     <P fsize="0.7em">Copyright &copy; 2022 MetaGaming Guild. All Rights Reserved</P>
+    //   </TextWrapper>
+    //   <Socials links={socials} />
+    // </StyledFooter>
+    <div className="w-full flex flex-col justify-center items-center pt-[3em] pb-[1em]">
+      <Logo size={169} url={mswURL} />
+      <div className="py-3">
+        <Socials links={socials} />
+      </div>
+      <div className="flex flex-col justify-center underline decoration-[#A8A8A8] text-[#A8A8A8] items-center gap-2 text-center text-[12px]">
+        <a href="#" className="text-[#A8A8A8]">PRIVACY POLICY</a>
+        <a href="#" className="text-[#A8A8A8]">TERMS AND CONDITION</a>
+      </div>
+      <div className="pt-3">
+        <p className="text-[#A8A8A8] text-[12px]">&copy; Copyright 2022 MetaGaming Guild. All Rights Reserved</p>
+      </div>
+    </div>
   )
 }

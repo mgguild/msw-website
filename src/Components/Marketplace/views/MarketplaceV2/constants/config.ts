@@ -4,7 +4,7 @@ export const marketplaceURL = ''
 export const mswURL = 'https://metasagawarriors.com/'
 export const socials: SocialProp[] = [
   {
-    name: 'Twitter',
+    name: 'XTwitter',
     href: 'https://twitter.com/SparkDeFi',
   },
   {
