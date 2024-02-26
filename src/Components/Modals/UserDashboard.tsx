@@ -334,6 +334,10 @@ const UserDashboard = ({
                                             </Button>
                                         }
                                     </Link>
+                                    <ConnectWallet
+                                        theme={"dark"}
+                                        modalSize={"wide"}
+                                    />
                                     <Button
                                         onClick={() => handleLogout()}
                                         borderRadius="8px"

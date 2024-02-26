@@ -48,7 +48,7 @@ export default function Card(props: Props) {
             action={async (contract) => {
               await contract.call("buy", [listingId], { value: price.raw });
             }}
-            className='flex-1 with-animation-tilt-n-move-shaking w-2/6'
+            className='flex-1 w-2/6'
             style={{ minWidth: "0", maxWidth: "50%", wordBreak: "break-word", textAlign: "center" }}
           >
             Buy
