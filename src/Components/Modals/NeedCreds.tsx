@@ -88,10 +88,10 @@ const NeedCreds = ({
                     Subheader="Missing bound wallet"
                 />
             }
-            {walletConnect && _status !== 'connected' &&
+            {walletConnect && user && _status !== 'connected' &&
                 <NdCnctWlt />
             }
-            { sameWallet && _userData && !(_userData['WalletAddress'].Value === _address) &&
+            { sameWallet && (user && _userData) && _status === 'connected' && _userData['WalletAddress'].Value !== _address &&
                 <NdSmWltAddrs />
             }
         </>
