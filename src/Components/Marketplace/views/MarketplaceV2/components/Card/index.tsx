@@ -108,7 +108,7 @@ export default function Card(props: Props) {
             action={async (contract) => {
               await contract.call("buy", [listingId], { value: price.raw });
             }}
-            className="w-full font-black text-[32px] uppercase rounded-b-[20px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+            className="w-full font-black text-[32px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
           >
             Buy
           </Web3Button>
