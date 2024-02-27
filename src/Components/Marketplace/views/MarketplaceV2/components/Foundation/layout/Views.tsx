@@ -40,10 +40,8 @@ const VLayout: React.FC = (props: any) => {
   const { children } = props
   return (
     <Page>
-      <Navbar />
       {children}
       {modal.openModal['buy-token'] && <BuyModal />}
-      <Footer />
     </Page>
   )
 }

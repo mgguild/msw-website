@@ -8,7 +8,7 @@ const Main: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
     <ViewsLayout>
       <StyledViews>
         <Sidebar>
-          <UserHighlight />
+          {/* <UserHighlight /> */}
           {children}
         </Sidebar>
       </StyledViews>

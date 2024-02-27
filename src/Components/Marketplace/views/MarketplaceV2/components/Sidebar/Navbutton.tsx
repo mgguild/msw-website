@@ -11,7 +11,8 @@ type Props = {
 const Navbutton: React.FC<Props> = ({ href, children, ...props }) => {
   return (
     <Link href={href} {...props}>
-      <Box>{children}</Box>
+      {/* <Box>{children}</Box> */}
+      {children}
     </Link>
   )
 }

@@ -104,7 +104,7 @@ export default function Showcase() {
           </div>
         </div>
         <div className="w-full flex justify-center mt-5">
-          <p className="w-25">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas odit maiores repellat dolore debitis deleniti reiciendis maxime in ipsam assumenda!</p>
+          <p className="w-25">Welcome to the official marketplace of MetaSaga Warriors! 🏹 Here, you can dive into the dynamic world of Diggers, where buying and selling prowess knows no bounds. Join the adventure as you explore, trade, and conquer with your fellow warriors. Happy trading!</p>
         </div>
       </div>
     </ShowcaseWrapper>

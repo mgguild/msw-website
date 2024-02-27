@@ -11,7 +11,10 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
     <Wrapper>
       <BodyWrapper>
         <Panel links={links} />
-        <Inner>{children}</Inner>
+        {/* <Inner>{children}</Inner> */}
+        <div className="w-full p-5 bg-gradient-to-b from-[#181020] to-[#2A2964]">
+          {children}
+        </div>
       </BodyWrapper>
     </Wrapper>
   )

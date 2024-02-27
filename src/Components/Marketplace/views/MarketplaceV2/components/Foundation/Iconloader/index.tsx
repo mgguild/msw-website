@@ -4,7 +4,8 @@ import * as FaIconSixModule from 'react-icons/fa6'
 import * as FiIconModule from 'react-icons/fi'
 import { Props } from './index.d'
 
-const faIcons = FaIconSixModule as unknown as { [key: string]: React.FC }
+const faIcons = FaIconModule as unknown as { [key: string]: React.FC }
+const faSixIcons = FaIconSixModule as unknown as { [key: string]: React.FC }
 const fiIcons = FiIconModule as unknown as { [key: string]: React.FC }
 
 const Iconloader = ({ type, name, ...rest }: Props) => {
@@ -22,6 +23,8 @@ const Iconloader = ({ type, name, ...rest }: Props) => {
           return setIcon(faIcons[src])
         case 'fi':
           return setIcon(fiIcons[src])
+        case 'fa6':
+          return setIcon(faSixIcons[src])
         default:
           return setIcon(faIcons[src])
       }

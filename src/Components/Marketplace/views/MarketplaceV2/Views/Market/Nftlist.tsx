@@ -139,8 +139,8 @@ const Nftlist = () => {
   }, [nftState, query])
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-        <Grid container spacing={{ xs: 2, sm: 4 }} {...settings} pt={5}>
+    <div className="flex flex-col justify-center items-center">
+        {/* <Grid container spacing={{ xs: 2, sm: 4 }} {...settings} pt={5}>
           {data.slice(0, toDisplay).map((d: any) => (
             <Grid key={d.name} item xs={12} sm={4} md={3} lg={3} xl={3} justifyContent="center">
               <StyledFlex>
@@ -148,7 +148,12 @@ const Nftlist = () => {
               </StyledFlex>
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
+        <div className="flex flex-wrap justify-center items-center gap-3 w-full">
+        {data.slice(0, toDisplay).map((data: any) => (
+          <Card {...data} />
+        ))}
+        </div>
         <div style={{ marginTop: '1.5rem' }}>
           {toDisplay <= data.length && (
             <button onClick={handleDisplay} type="button">

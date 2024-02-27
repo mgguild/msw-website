@@ -81,7 +81,7 @@ export default function Card(props: Props) {
         </Details>
       </CardContainer>
       {modal.openModal[`buy-${listingId}`] && <PurchaseNFT {...props} />} */}
-      <div className="w-[20%] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
+      <div className="w-[20%] h-auto bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
         <div>
           <img src={spriteName} alt="Digger" className="rounded-t-[20px]" />
         </div>
