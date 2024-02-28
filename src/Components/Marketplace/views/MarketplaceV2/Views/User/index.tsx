@@ -77,7 +77,7 @@ const User = () => {
     };
     return (
         <div style={{ width: '100%' }}>
-            <NeedCreds wallet={true} walletConnect={true} sameWallet={false} />
+            <NeedCreds wallet={true} walletConnect={true} sameWallet={true} />
             <Main>
                 <TextWrapper>
                     <StyledDiv>

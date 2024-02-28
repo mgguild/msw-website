@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import { Link } from 'react-router-dom';
 import usePlayfab from '../../../Hooks/usePlayfab';
 import { useConnectionStatus, useAddress } from '@thirdweb-dev/react';
+import { ConnectWallet } from '@thirdweb-dev/react';
 
 const Container = styled.div`
     display: flex;
@@ -24,7 +25,7 @@ const Menu = styled.div`
     align-content: center;
     align-items: center;
     width: 100%;
-    height: 20rem;
+    padding: 1rem;
     gap: 1rem;
 
     h1 {
@@ -84,6 +85,19 @@ const Row = styled.div`
     }
 `;
 
+const WalletInfo = styled.div`
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 0.1rem;
+
+    span {
+        font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace !important;
+        font-size: 1.5rem;
+    }
+`
+
 const App: React.FC = () => {
     const navigate = useNavigate();
 
@@ -103,7 +117,7 @@ const App: React.FC = () => {
             setOpen(true);
         }
 
-        if (_userData && _userData['WalletAddress'].Value === _address) {
+        if (_status === 'connected' && _userData && _userData['WalletAddress'].Value === _address) {
             navigate(-1);
         }
     }, [user, userData, _address]);
@@ -136,13 +150,30 @@ const App: React.FC = () => {
                     <Menu>
                         <h1>Connected wallet address must be same as bound wallet</h1>
                         <h1>User must switch to bound wallet address</h1>
-                        <h1>
-                            [
-                            <span style={{ color: '#ffef00' }}>
-                                {_userData['WalletAddress'].Value}
+                        <br />
+                        <br />
+                        <WalletInfo>
+                            <h1>User Bound Wallet:</h1>
+                            <span>
+                                [
+                                <span style={{ color: '#ffef00' }}>
+                                    {_userData['WalletAddress'].Value}
+                                </span>
+                                ]
                             </span>
-                            ]
-                        </h1>
+                        </WalletInfo>
+                        <br />
+                        <WalletInfo>
+                            <h1>Wallet Connected:</h1>
+                            <span>
+                                [
+                                <span style={{ color: '#ff4d00' }}>
+                                    {_address}
+                                </span>
+                                ]
+                            </span>
+                        </WalletInfo>
+                        <ConnectWallet />
                     </Menu>
                 </Container>
             )}

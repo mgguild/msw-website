@@ -61,8 +61,9 @@ const NeedCreds = ({
 
         if (
             sameWallet &&
-            _status === 'connected' &&
+            user &&
             _userData &&
+            _status === 'connected' &&
             _userData['WalletAddress'].Value !== _address
         ) {
             console.log('REDIRECT TO WALLET ERROR');

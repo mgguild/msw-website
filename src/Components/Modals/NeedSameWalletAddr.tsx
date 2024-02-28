@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { ConnectWallet } from '@thirdweb-dev/react';
 
 const style = {
     position: 'relative',
