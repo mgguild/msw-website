@@ -69,15 +69,12 @@ const Col = styled.div`
     text-align: start;
 `;
 
-
-
-
 const NdSmWltAddrs = () => {
     const [open, setOpen] = useState(true);
 
     return (
         <>
-         <Modal
+            <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -85,17 +82,22 @@ const NdSmWltAddrs = () => {
                 <Box sx={style}>
                     <CenterFrame>
                         <Container>
-                            <div style={{
-                                display: 'flex',
-                                flexFlow: 'column nowrap',
-                                lineHeight: '0.5rem',
-                                alignItems: 'center'
-                            }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexFlow: 'column nowrap',
+                                    lineHeight: '0.5rem',
+                                    alignItems: 'center',
+                                }}
+                            >
                                 <h4>WALLET MISMATCH</h4>
                             </div>
                             <Col>
-                                <Row style={{textAlign: 'center'}}>
-                                    <span>Connected wallet needs to be the same as bound wallet!</span>
+                                <Row style={{ textAlign: 'center' }}>
+                                    <span>
+                                        Connected wallet needs to be the same as bound
+                                        wallet!
+                                    </span>
                                 </Row>
                             </Col>
                         </Container>
@@ -103,7 +105,7 @@ const NdSmWltAddrs = () => {
                 </Box>
             </Modal>
         </>
-    )
-}
+    );
+};
 
 export default NdSmWltAddrs;

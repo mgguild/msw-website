@@ -1,4 +1,4 @@
-export type TYPE_ANCHOR = 'top' | 'left' | 'bottom' | 'right'
+export type TYPE_ANCHOR = 'top' | 'left' | 'bottom' | 'right';
 
 export enum CLASSES {
   archer = 'Archer',
@@ -16,17 +16,17 @@ export enum CLASSES {
 }
 
 export type Price = {
-  raw: string
-  token: string
-  fiat: string
-}
+  raw: string;
+  token: string;
+  fiat: string;
+};
 
 export type CardType = {
-  id: string
-  listingId?: string
-  name: string
-  spriteName: string
-  rarity: string
-  badge: CLASSES
-  price: Price
-}
+  id: string;
+  listingId?: string;
+  name: string;
+  spriteName: string;
+  rarity: string;
+  badge: CLASSES;
+  price: Price;
+};

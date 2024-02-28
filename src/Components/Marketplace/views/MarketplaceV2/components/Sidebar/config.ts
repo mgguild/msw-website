@@ -1,5 +1,5 @@
-import { marketplaceURL } from '../../constants/config'
-import { Props } from './index.d'
+import { marketplaceURL } from '../../constants/config';
+import { Props } from './index.d';
 
 export const links: Props = [
   {
@@ -14,4 +14,4 @@ export const links: Props = [
     name: 'ShoppingBasket',
     href: `${marketplaceURL}/NFTMarket`,
   },
-]
+];

@@ -1,10 +1,10 @@
 export interface Links {
   [key: string]: {
-    [key: string]: string
-  }
+    [key: string]: string;
+  };
 }
 
 export interface SocialProp {
-  name: string
-  href: string
+  name: string;
+  href: string;
 }

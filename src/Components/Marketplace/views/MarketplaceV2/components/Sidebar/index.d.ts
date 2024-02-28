@@ -1,6 +1,6 @@
 export type Link = {
-  name: string
-  href: string
-}
+  name: string;
+  href: string;
+};
 
-export type Props = Link[]
+export type Props = Link[];

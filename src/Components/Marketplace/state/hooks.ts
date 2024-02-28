@@ -1,10 +1,10 @@
-import { useEffect, useMemo } from 'react'
-import BigNumber from 'bignumber.js'
-import { useWeb3React } from '@web3-react/core'
-import { useSelector } from 'react-redux'
-import {ThunkDispatch} from "@reduxjs/toolkit";
-import { useAppDispatch } from '../state'
-import { orderBy } from 'lodash'
+import { useEffect, useMemo } from 'react';
+import BigNumber from 'bignumber.js';
+import { useWeb3React } from '@web3-react/core';
+import { useSelector } from 'react-redux';
+import { ThunkDispatch } from '@reduxjs/toolkit';
+import { useAppDispatch } from '../state';
+import { orderBy } from 'lodash';
 import {
   AchievementState,
   Farm,
@@ -17,11 +17,9 @@ import {
   ProfileState,
   State,
   TeamsState,
-} from './types'
-import { MAINNET_CHAIN_ID } from '../config'
+} from './types';
+import { MAINNET_CHAIN_ID } from '../config';
 import { useDispatch } from 'react-redux';
-
-
 
 /**
  * Fetches the "core" farm data used globally
@@ -32,146 +30,148 @@ import { useDispatch } from 'react-redux';
 // Farms
 
 export const useFarms = (): FarmsState => {
-  const farms = useSelector((state: State) => state.farms)
-  return farms
-}
-
-
+  const farms = useSelector((state: State) => state.farms);
+  return farms;
+};
 
 // Pools
 
-
 // Profile
 
-
 export const useProfile = () => {
-  const { isInitialized, isLoading, data, hasRegistered }: ProfileState = useSelector((state: State) => state.profile)
-  return { profile: data, hasProfile: isInitialized && hasRegistered, isInitialized, isLoading }
-}
-
-
+  const { isInitialized, isLoading, data, hasRegistered }: ProfileState = useSelector(
+    (state: State) => state.profile,
+  );
+  return {
+    profile: data,
+    hasProfile: isInitialized && hasRegistered,
+    isInitialized,
+    isLoading,
+  };
+};
 
 export const useAchievements = () => {
-  const achievements: AchievementState['data'] = useSelector((state: State) => state.achievements.data)
-  return achievements
-}
+  const achievements: AchievementState['data'] = useSelector(
+    (state: State) => state.achievements.data,
+  );
+  return achievements;
+};
 
 // Block
 export const useBlock = () => {
-  return useSelector((state: State) => state.block)
-}
+  return useSelector((state: State) => state.block);
+};
 
 export const useInitialBlock = () => {
-  return useSelector((state: State) => state.block.initialBlock)
-}
+  return useSelector((state: State) => state.block.initialBlock);
+};
 
 // Predictions
 export const useIsHistoryPaneOpen = () => {
-  return useSelector((state: State) => state.predictions.isHistoryPaneOpen)
-}
+  return useSelector((state: State) => state.predictions.isHistoryPaneOpen);
+};
 
 export const useIsChartPaneOpen = () => {
-  return useSelector((state: State) => state.predictions.isChartPaneOpen)
-}
+  return useSelector((state: State) => state.predictions.isChartPaneOpen);
+};
 
 export const useGetRounds = () => {
-  return useSelector((state: State) => state.predictions.rounds)
-}
+  return useSelector((state: State) => state.predictions.rounds);
+};
 
 export const useGetSortedRounds = () => {
-  const roundData = useGetRounds()
-  return orderBy(Object.values(roundData), ['epoch'], ['asc'])
-}
+  const roundData = useGetRounds();
+  return orderBy(Object.values(roundData), ['epoch'], ['asc']);
+};
 
 export const useGetCurrentEpoch = () => {
-  return useSelector((state: State) => state.predictions.currentEpoch)
-}
+  return useSelector((state: State) => state.predictions.currentEpoch);
+};
 
 export const useGetIntervalBlocks = () => {
-  return useSelector((state: State) => state.predictions.intervalBlocks)
-}
+  return useSelector((state: State) => state.predictions.intervalBlocks);
+};
 
 export const useGetBufferBlocks = () => {
-  return useSelector((state: State) => state.predictions.bufferBlocks)
-}
+  return useSelector((state: State) => state.predictions.bufferBlocks);
+};
 
 export const useGetTotalIntervalBlocks = () => {
-  const intervalBlocks = useGetIntervalBlocks()
-  const bufferBlocks = useGetBufferBlocks()
-  return intervalBlocks + bufferBlocks
-}
+  const intervalBlocks = useGetIntervalBlocks();
+  const bufferBlocks = useGetBufferBlocks();
+  return intervalBlocks + bufferBlocks;
+};
 
 export const useGetRound = (id: string) => {
-  const rounds = useGetRounds()
-  return rounds[id]
-}
+  const rounds = useGetRounds();
+  return rounds[id];
+};
 
 export const useGetCurrentRound = () => {
-  const currentEpoch = useGetCurrentEpoch()
-  const rounds = useGetSortedRounds()
-  return rounds.find((round) => round.epoch === currentEpoch)
-}
+  const currentEpoch = useGetCurrentEpoch();
+  const rounds = useGetSortedRounds();
+  return rounds.find(round => round.epoch === currentEpoch);
+};
 
 export const useGetPredictionsStatus = () => {
-  return useSelector((state: State) => state.predictions.status)
-}
+  return useSelector((state: State) => state.predictions.status);
+};
 
 export const useGetHistoryFilter = () => {
-  return useSelector((state: State) => state.predictions.historyFilter)
-}
+  return useSelector((state: State) => state.predictions.historyFilter);
+};
 
 export const useGetCurrentRoundBlockNumber = () => {
-  return useSelector((state: State) => state.predictions.currentRoundStartBlockNumber)
-}
+  return useSelector((state: State) => state.predictions.currentRoundStartBlockNumber);
+};
 
 export const useGetMinBetAmount = () => {
-  const minBetAmount = useSelector((state: State) => state.predictions.minBetAmount)
-  return useMemo(() => new BigNumber(minBetAmount), [minBetAmount])
-}
+  const minBetAmount = useSelector((state: State) => state.predictions.minBetAmount);
+  return useMemo(() => new BigNumber(minBetAmount), [minBetAmount]);
+};
 
 export const useGetIsFetchingHistory = () => {
-  return useSelector((state: State) => state.predictions.isFetchingHistory)
-}
+  return useSelector((state: State) => state.predictions.isFetchingHistory);
+};
 
 export const useGetHistory = () => {
-  return useSelector((state: State) => state.predictions.history)
-}
+  return useSelector((state: State) => state.predictions.history);
+};
 
 export const useGetHistoryByAccount = (account: string) => {
-  const bets = useGetHistory()
-  return bets ? bets[account] : []
-}
+  const bets = useGetHistory();
+  return bets ? bets[account] : [];
+};
 
 export const useGetBetByRoundId = (account: string, roundId: string) => {
-  const bets = useSelector((state: State) => state.predictions.bets)
+  const bets = useSelector((state: State) => state.predictions.bets);
 
   if (!bets[account]) {
-    return null
+    return null;
   }
 
   if (!bets[account][roundId]) {
-    return null
+    return null;
   }
 
-  return bets[account][roundId]
-}
-
+  return bets[account][roundId];
+};
 
 export const useGetLastOraclePrice = (): BigNumber => {
-  const lastOraclePrice = useSelector((state: State) => state.predictions.lastOraclePrice)
-  return new BigNumber(lastOraclePrice)
-}
-
-
+  const lastOraclePrice = useSelector(
+    (state: State) => state.predictions.lastOraclePrice,
+  );
+  return new BigNumber(lastOraclePrice);
+};
 
 // Launchpad or Guildpad
 
 export const useGuildpads = (): GuildpadState => {
-  const guildpads = useSelector((state: State) => state.guildpads)
-  return guildpads
-}
+  const guildpads = useSelector((state: State) => state.guildpads);
+  return guildpads;
+};
 
 export const useGuildpad = () => {
-  const guildpad = useSelector((state: State) => state.guildpads.selected)
-  return guildpad
-}
+  const guildpad = useSelector((state: State) => state.guildpads.selected);
+  return guildpad;
+};

@@ -11,17 +11,17 @@ export enum POSITION {
   mr = 'margin-right',
 }
 export type Margins = {
-  m?: string
-  mt?: string
-  mb?: string
-  ml?: string
-  mr?: string
-}
+  m?: string;
+  mt?: string;
+  mb?: string;
+  ml?: string;
+  mr?: string;
+};
 
 export type Paddings = {
-  p?: string
-  pt?: string
-  pb?: string
-  pl?: string
-  pr?: string
-}
+  p?: string;
+  pt?: string;
+  pb?: string;
+  pl?: string;
+  pr?: string;
+};

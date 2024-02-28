@@ -371,9 +371,7 @@ const App: React.FC<{ isScreen800: boolean; isScreen550: boolean }> = ({
                                             setSelectedClass(index);
                                         }}
                                         className={`NFTClasses ${
-                                            selectedClass === index
-                                                ? 'active'
-                                                : 'grow'
+                                            selectedClass === index ? 'active' : 'grow'
                                         }`}
                                         img={nft.images.icon}
                                         key={index}

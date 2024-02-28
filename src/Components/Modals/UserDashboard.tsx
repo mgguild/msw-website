@@ -15,7 +15,7 @@ import {
 } from '@thirdweb-dev/react';
 import { Triangle } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
-import {MdlProps} from './types'
+import { MdlProps } from './types';
 
 const style = {
     position: 'relative',
@@ -36,8 +36,8 @@ const CenterFrame = styled.div`
     align-items: center;
 `;
 
-const Container = styled.div<{ persistent: boolean; }>`
-    background-color: ${({ persistent }) => persistent ? '#ff8f00' : '#4f19a7'};
+const Container = styled.div<{ persistent: boolean }>`
+    background-color: ${({ persistent }) => (persistent ? '#ff8f00' : '#4f19a7')};
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -131,7 +131,7 @@ const UserDashboard = ({
     persistent = false,
     showBtn = true,
     Header = 'USER DASHBOARD',
-    Subheader
+    Subheader,
 }: MdlProps) => {
     const user = usePlayfab((state: any) => state.user);
     const userTags = usePlayfab((state: any) => state.userTags);
@@ -214,7 +214,7 @@ const UserDashboard = ({
         <>
             <Modal
                 open={open}
-                onClose={() => persistent ? null : setOpen(false)}
+                onClose={() => (persistent ? null : setOpen(false))}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
@@ -222,16 +222,16 @@ const UserDashboard = ({
                 <Box sx={style}>
                     <CenterFrame>
                         <Container persistent={persistent}>
-                            <div style={{
-                                display: 'flex',
-                                flexFlow: 'column nowrap',
-                                lineHeight: '0.5rem',
-                                alignItems: 'center'
-                            }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexFlow: 'column nowrap',
+                                    lineHeight: '0.5rem',
+                                    alignItems: 'center',
+                                }}
+                            >
                                 <h4>{Header}</h4>
-                                {Subheader &&
-                                    <p>{Subheader}</p>
-                                }
+                                {Subheader && <p>{Subheader}</p>}
                             </div>
                             <Col>
                                 <Row>
@@ -249,8 +249,7 @@ const UserDashboard = ({
                                         <Field>
                                             {_userData
                                                 ? _userData['WalletAddress'].Value
-                                                : ''
-                                            }
+                                                : ''}
                                         </Field>
                                     </Row>
                                 ) : (
@@ -271,11 +270,12 @@ const UserDashboard = ({
                                                 }}
                                             />
                                         </div>
-                                        {persistent &&
+                                        {persistent && (
                                             <p>
-                                                User needs to bind their web3 wallet to use this page
+                                                User needs to bind their web3 wallet to
+                                                use this page
                                             </p>
-                                        }
+                                        )}
 
                                         {_status === 'connected' ? (
                                             <Hdr>
@@ -328,16 +328,13 @@ const UserDashboard = ({
                                             justifyContent: 'center',
                                         }}
                                     >
-                                        {!persistent &&
+                                        {!persistent && (
                                             <Button style={{ backgroundColor: 'red' }}>
                                                 Delete Account
                                             </Button>
-                                        }
+                                        )}
                                     </Link>
-                                    <ConnectWallet
-                                        theme={"dark"}
-                                        modalSize={"wide"}
-                                    />
+                                    <ConnectWallet theme={'dark'} modalSize={'wide'} />
                                     <Button
                                         onClick={() => handleLogout()}
                                         borderRadius="8px"
@@ -352,7 +349,7 @@ const UserDashboard = ({
                     </CenterFrame>
                 </Box>
             </Modal>
-            {showBtn &&
+            {showBtn && (
                 <Button
                     onClick={() => {
                         setOpen(true);
@@ -360,9 +357,9 @@ const UserDashboard = ({
                 >
                     {user.TitleInfo.DisplayName ?? user.Username}
                 </Button>
-            }
+            )}
         </>
     );
-}
+};
 
 export default UserDashboard;

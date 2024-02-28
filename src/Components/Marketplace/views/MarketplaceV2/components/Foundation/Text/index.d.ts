@@ -1,14 +1,14 @@
-import { POSITION, Margins, Paddings } from 'views/MarketplaceV2/styles/index.d'
+import { POSITION, Margins, Paddings } from 'views/MarketplaceV2/styles/index.d';
 
 export type WrapperProps = {
-  align?: string
-  lineHeight?: string
+  align?: string;
+  lineHeight?: string;
 } & Margins &
-  Paddings
+  Paddings;
 
 export type TextProps = {
-  fsize?: string
-  fstyle?: string
-  weight?: number
+  fsize?: string;
+  fstyle?: string;
+  weight?: number;
 } & Margins &
-  Paddings
+  Paddings;

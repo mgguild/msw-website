@@ -1,7 +1,7 @@
-import { SocialProp, Links } from './config.d'
+import { SocialProp, Links } from './config.d';
 
-export const marketplaceURL = ''
-export const mswURL = 'https://metasagawarriors.com/'
+export const marketplaceURL = '';
+export const mswURL = 'https://metasagawarriors.com/';
 export const socials: SocialProp[] = [
   {
     name: 'XTwitter',
@@ -31,9 +31,9 @@ export const socials: SocialProp[] = [
     name: 'Reddit',
     href: 'https://www.reddit.com/r/SparkPoint/',
   },
-]
+];
 
-export const LOGO = 'MSW Logo'
+export const LOGO = 'MSW Logo';
 
 // Footer
 export const links: Links = {
@@ -41,6 +41,6 @@ export const links: Links = {
     'Privacy Policy': 'https://www.google.com',
     'Terms and Condition': 'https://www.google.com',
   },
-}
+};
 
-export const GoogleDriveLink = 'https://drive.google.com/uc?id='
+export const GoogleDriveLink = 'https://drive.google.com/uc?id=';

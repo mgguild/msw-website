@@ -1,8 +1,8 @@
 export type Props = {
-  children: any
-  type: string
-  withClose?: boolean
-}
+  children: any;
+  type: string;
+  withClose?: boolean;
+};
 
 export enum CONFIRM_TYPE {
   success = 'success',
@@ -11,11 +11,11 @@ export enum CONFIRM_TYPE {
 }
 
 export type ConfirmProps = {
-  type: CONFIRM_TYPE
-  icon: string
-  description: string
-}
+  type: CONFIRM_TYPE;
+  icon: string;
+  description: string;
+};
 
 export const warningMsg = `
   This transaction is not subject to cancellation. Any returns/refunds are not accepted.
-`
+`;

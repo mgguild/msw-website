@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { MiniBox } from '../Foundation/Box'
+import styled from 'styled-components';
+import { MiniBox } from '../Foundation/Box';
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -13,8 +13,8 @@ export const StyledDiv = styled.div`
     //   height: 30px;
     // }
   }
-`
+`;
 
 export const CustomBox = styled(MiniBox)`
   font-size: 1em;
-`
+`;

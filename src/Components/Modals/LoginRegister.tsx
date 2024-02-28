@@ -1,4 +1,4 @@
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
@@ -7,7 +7,7 @@ import { PlayFabClient } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
-import {MdlProps} from './types'
+import { MdlProps } from './types';
 
 const style = {
     position: 'relative',
@@ -28,8 +28,8 @@ const CenterFrame = styled.div`
     align-items: center;
 `;
 
-const Container = styled.div<{ persistent: boolean; }>`
-    background-color: ${({ persistent }) => persistent ? '#ff8f00' : '#4f19a7'};
+const Container = styled.div<{ persistent: boolean }>`
+    background-color: ${({ persistent }) => (persistent ? '#ff8f00' : '#4f19a7')};
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -97,12 +97,12 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
 `;
 
 const LoginRegister = ({
-        show = false,
-        persistent = false,
-        showBtn = true,
-        Header = 'LOGIN ACCOUNT',
-        Subheader
-    }: MdlProps) => {
+    show = false,
+    persistent = false,
+    showBtn = true,
+    Header = 'LOGIN ACCOUNT',
+    Subheader,
+}: MdlProps) => {
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
     const setUserTags = usePlayfab((state: any) => state.setUserTags);
     const setUserData = usePlayfab((state: any) => state.setUserData);
@@ -266,7 +266,6 @@ const LoginRegister = ({
         }
     };
 
-
     return (
         <>
             <Modal
@@ -287,9 +286,7 @@ const LoginRegister = ({
                             >
                                 <CarouselItem style={{ width: '100%' }}>
                                     <h4>{Header}</h4>
-                                    {Subheader &&
-                                        <p>{Subheader}</p>
-                                    }
+                                    {Subheader && <p>{Subheader}</p>}
                                     <Col onSubmit={e => handleLoginSubmit(e)}>
                                         <Row>
                                             <span>Email or Username:</span>
@@ -327,7 +324,7 @@ const LoginRegister = ({
                                             >
                                                 Login
                                             </Button>
-                                            {!persistent &&
+                                            {!persistent && (
                                                 <Button
                                                     borderRadius="8px"
                                                     padding="0.8rem 1rem"
@@ -336,7 +333,7 @@ const LoginRegister = ({
                                                 >
                                                     Cancel
                                                 </Button>
-                                            }
+                                            )}
                                         </div>
                                         <div>
                                             <a
@@ -427,7 +424,7 @@ const LoginRegister = ({
                                             >
                                                 Register
                                             </Button>
-                                            {!persistent &&
+                                            {!persistent && (
                                                 <Button
                                                     borderRadius="8px"
                                                     padding="0.8rem 1rem"
@@ -436,7 +433,7 @@ const LoginRegister = ({
                                                 >
                                                     Cancel
                                                 </Button>
-                                            }
+                                            )}
                                         </div>
                                         <div
                                             style={{
@@ -465,7 +462,7 @@ const LoginRegister = ({
                     </CenterFrame>
                 </Box>
             </Modal>
-            {showBtn &&
+            {showBtn && (
                 <Button
                     onClick={() => {
                         setOpen(true);
@@ -473,9 +470,9 @@ const LoginRegister = ({
                 >
                     Login/Register
                 </Button>
-            }
+            )}
         </>
     );
-}
+};
 
 export default LoginRegister;

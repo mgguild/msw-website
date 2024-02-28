@@ -1,12 +1,12 @@
-import BigNumber from "bignumber.js";
-import { BIG_TEN } from "./bigNumber";
+import BigNumber from 'bignumber.js';
+import { BIG_TEN } from './bigNumber';
 
 export const toBigNumber = (amount: string) => {
-  return new BigNumber(amount)
+  return new BigNumber(amount);
 };
 
 export const getDecimalAccount = (amount: string, decimals: number = 18) => {
-  return new BigNumber(amount).times(BIG_TEN.pow(decimals))
+  return new BigNumber(amount).times(BIG_TEN.pow(decimals));
 };
 
 export const getBalanceAmount = (amount: BigNumber, decimals: number = 18) => {
@@ -17,11 +17,19 @@ export const getBalanceNumber = (balance: BigNumber, decimals: number = 18) => {
   return getBalanceAmount(balance, decimals).toNumber();
 };
 
-export const getFullDisplayBalance = (balance: BigNumber, decimals: number = 18, decimalsToAppear = 2) => {
+export const getFullDisplayBalance = (
+  balance: BigNumber,
+  decimals: number = 18,
+  decimalsToAppear = 2,
+) => {
   return getBalanceAmount(balance, decimals).toFixed(decimalsToAppear);
 };
 
-export const formatNumber = (number: number, minPrecision: number = 2, maxPrecision: number = 2) => {
+export const formatNumber = (
+  number: number,
+  minPrecision: number = 2,
+  maxPrecision: number = 2,
+) => {
   const options = {
     minimumFractionDigits: minPrecision,
     maximumFractionDigits: maxPrecision,

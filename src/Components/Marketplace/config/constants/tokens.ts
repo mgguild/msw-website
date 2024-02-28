@@ -59,7 +59,7 @@ const guildpadTokens = {
     decimals: 18,
     projectLink: '',
   },
-}
+};
 
 const tokens = {
   ...guildpadTokens,
@@ -1800,6 +1800,6 @@ const tokens = {
     decimals: 18,
     iconExtension: 'png',
   },
-}
+};
 
-export default tokens
+export default tokens;

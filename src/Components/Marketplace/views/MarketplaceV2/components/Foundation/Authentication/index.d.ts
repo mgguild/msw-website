@@ -1,3 +1,3 @@
 export type Props = {
-  onDismiss?: () => void
-}
+  onDismiss?: () => void;
+};

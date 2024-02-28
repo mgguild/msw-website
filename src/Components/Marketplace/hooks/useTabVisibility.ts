@@ -1,21 +1,21 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
 const useTabVisibility = () => {
-  const tabVisibleRef = useRef(true)
+  const tabVisibleRef = useRef(true);
 
   useEffect(() => {
     const onVisibilityChange = () => {
-      tabVisibleRef.current = !document.hidden
-    }
+      tabVisibleRef.current = !document.hidden;
+    };
 
-    window.addEventListener('visibilitychange', onVisibilityChange)
+    window.addEventListener('visibilitychange', onVisibilityChange);
 
     return () => {
-      window.removeEventListener('visibilitychange', onVisibilityChange)
-    }
-  }, [])
+      window.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, []);
 
-  return { tabVisibleRef }
-}
+  return { tabVisibleRef };
+};
 
-export default useTabVisibility
+export default useTabVisibility;

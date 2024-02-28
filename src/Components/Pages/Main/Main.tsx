@@ -154,7 +154,6 @@ function App() {
     }, []);
 
     useEffect(() => {
-
         const sections: any[] = gsap.utils.toArray('.page-section');
         const NavButtons: any[] = gsap.utils.toArray('.NavButton');
 
@@ -193,10 +192,7 @@ function App() {
                         {item.name}
                     </a>
                 ))}
-                <Link
-                    to="/marketplace"
-                    className="NavButton"
-                >
+                <Link to="/marketplace" className="NavButton">
                     Marketplace
                 </Link>
                 <DropdownButton id="dropdown-basic-button" title="More">

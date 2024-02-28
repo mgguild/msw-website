@@ -6,12 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Buffer } from 'buffer/';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import { Provider } from 'react-redux';
-import { HelmetProvider } from 'react-helmet-async'
-import { MarketplaceV2Provider } from './Components/Marketplace/contexts/MarketplaceContext'
-import { MarketplaceV2DataProvider } from './Components/Marketplace/contexts/MarketplaceDataContext'
-import { ThemeContextProvider } from './Components/Marketplace/contexts/ThemeContext'
-import { AuthContextProvider } from './Components/Marketplace/contexts/AuthContext'
-import store from './Components/Marketplace/state'
+import { HelmetProvider } from 'react-helmet-async';
+import { MarketplaceV2Provider } from './Components/Marketplace/contexts/MarketplaceContext';
+import { MarketplaceV2DataProvider } from './Components/Marketplace/contexts/MarketplaceDataContext';
+import { ThemeContextProvider } from './Components/Marketplace/contexts/ThemeContext';
+import { AuthContextProvider } from './Components/Marketplace/contexts/AuthContext';
+import store from './Components/Marketplace/state';
 
 window.Buffer = window.Buffer || Buffer;
 
@@ -26,8 +26,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         activeChain={activeChain}
         clientId={process.env.REACT_APP_CLIENT_ID}
     >
-       <Provider store={store}>
-        <HashRouter>
+        <Provider store={store}>
+            <HashRouter>
                 <HelmetProvider>
                     <ThemeContextProvider>
                         <AuthContextProvider>
@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                     </ThemeContextProvider>
                 </HelmetProvider>
             </HashRouter>
-       </Provider>
+        </Provider>
     </ThirdwebProvider>,
     // </React.StrictMode>
 );

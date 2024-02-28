@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import type { Location, Params } from 'react-router-dom';
-import usePlayfab from "../../Hooks/usePlayfab";
-import LoginRegister from "./LoginRegister";
-import UserDashboard from "./UserDashboard";
-import NdCnctWlt from "./NeedConnectWallet";
-import NdSmWltAddrs from './NeedSameWalletAddr'
-import {
-    useChain,
-    useConnectionStatus,
-    useAddress,
-} from '@thirdweb-dev/react';
+import usePlayfab from '../../Hooks/usePlayfab';
+import LoginRegister from './LoginRegister';
+import UserDashboard from './UserDashboard';
+import NdCnctWlt from './NeedConnectWallet';
+import NdSmWltAddrs from './NeedSameWalletAddr';
+import { useChain, useConnectionStatus, useAddress } from '@thirdweb-dev/react';
 
-interface Needs{
+interface Needs {
     wallet?: boolean;
     walletConnect?: boolean;
     sameWallet?: boolean;
@@ -22,14 +18,14 @@ const getRoutePath = (location: Location, params: Params): string => {
     const { pathname } = location;
 
     if (!Object.keys(params).length) {
-      return pathname; // we don't need to replace anything
+        return pathname; // we don't need to replace anything
     }
 
     let path = pathname;
     Object.entries(params).forEach(([paramName, paramValue]) => {
-      if (paramValue) {
-        path = path.replace(paramValue, `:${paramName}`);
-      }
+        if (paramValue) {
+            path = path.replace(paramValue, `:${paramName}`);
+        }
     });
     return path;
 };
@@ -37,7 +33,7 @@ const getRoutePath = (location: Location, params: Params): string => {
 const NeedCreds = ({
     wallet = false,
     sameWallet = false,
-    walletConnect = false
+    walletConnect = false,
 }: Needs) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -59,27 +55,33 @@ const NeedCreds = ({
         setUserTags(userTags);
         setUserData(userData);
 
-        if(path !== '/WalletError'){
+        if (path !== '/WalletError') {
             navigate(path);
         }
 
-        if( sameWallet && _status === 'connected' && (_userData && _userData['WalletAddress'].Value !== _address)){
-            console.log("REDIRECT TO WALLET ERROR");
-            navigate('/WalletError', {replace: true});
+        if (
+            sameWallet &&
+            _status === 'connected' &&
+            _userData &&
+            _userData['WalletAddress'].Value !== _address
+        ) {
+            console.log('REDIRECT TO WALLET ERROR');
+            navigate('/WalletError', { replace: true });
         }
     }, [userTags, userData, _status, _address, useChain(), useConnectionStatus()]);
 
     return (
         <>
-            {!user &&
+            {!user && (
                 <LoginRegister
                     show={true}
                     persistent={true}
-                    showBtn={false} Header="Need User Login"
+                    showBtn={false}
+                    Header="Need User Login"
                     Subheader="User needs to login in order to use this page"
                 />
-            }
-            {wallet && user && userTags.includes === 'title.D4F8F.BoundWallet' &&
+            )}
+            {wallet && user && userTags.includes === 'title.D4F8F.BoundWallet' && (
                 <UserDashboard
                     show={true}
                     persistent={true}
@@ -87,15 +89,15 @@ const NeedCreds = ({
                     Header="Require Bound Wallet"
                     Subheader="Missing bound wallet"
                 />
-            }
-            {walletConnect && user && _status !== 'connected' &&
-                <NdCnctWlt />
-            }
-            { sameWallet && (user && _userData) && _status === 'connected' && _userData['WalletAddress'].Value !== _address &&
-                <NdSmWltAddrs />
-            }
+            )}
+            {walletConnect && user && _status !== 'connected' && <NdCnctWlt />}
+            {sameWallet &&
+                user &&
+                _userData &&
+                _status === 'connected' &&
+                _userData['WalletAddress'].Value !== _address && <NdSmWltAddrs />}
         </>
     );
-}
+};
 
 export default NeedCreds;

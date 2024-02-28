@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 export type Props = {
-  type: string
-  name: string
-  [key: string]: any
-}
+  type: string;
+  name: string;
+  [key: string]: any;
+};

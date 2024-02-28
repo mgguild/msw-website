@@ -1,7 +1,7 @@
 export interface MdlProps {
-    show?: boolean;
-    persistent?: boolean;
-    showBtn?: boolean;
-    Header?: string;
-    Subheader?: string;
+  show?: boolean;
+  persistent?: boolean;
+  showBtn?: boolean;
+  Header?: string;
+  Subheader?: string;
 }

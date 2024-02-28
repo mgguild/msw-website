@@ -69,15 +69,12 @@ const Col = styled.div`
     text-align: start;
 `;
 
-
-
-
 const NdCnctWlt = () => {
     const [open, setOpen] = useState(true);
 
     return (
         <>
-         <Modal
+            <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -85,16 +82,18 @@ const NdCnctWlt = () => {
                 <Box sx={style}>
                     <CenterFrame>
                         <Container>
-                            <div style={{
-                                display: 'flex',
-                                flexFlow: 'column nowrap',
-                                lineHeight: '0.5rem',
-                                alignItems: 'center'
-                            }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexFlow: 'column nowrap',
+                                    lineHeight: '0.5rem',
+                                    alignItems: 'center',
+                                }}
+                            >
                                 <h4>WALLET NOT CONNECTED</h4>
                             </div>
                             <Col>
-                                <Row style={{textAlign: 'center'}}>
+                                <Row style={{ textAlign: 'center' }}>
                                     <span>User needs to connect web3 wallet!</span>
                                 </Row>
                                 <Row>
@@ -112,7 +111,7 @@ const NdCnctWlt = () => {
                 </Box>
             </Modal>
         </>
-    )
-}
+    );
+};
 
 export default NdCnctWlt;

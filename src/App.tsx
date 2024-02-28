@@ -12,12 +12,9 @@ import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
-const NotSameWallet = lazy(() => import('./Components/Pages/NotSameWallet/index'))
-
-
+const NotSameWallet = lazy(() => import('./Components/Pages/NotSameWallet/index'));
 
 function App() {
-
     const connect = usePlayfab((state: any) => state.start);
 
     useEffect(() => {
@@ -45,24 +42,9 @@ function App() {
                         </Suspense>
                     }
                 />
-                <Route
-                    path="/marketplace"
-                    element={
-                        <MarketplaceV2 />
-                    }
-                />
-                <Route
-                    path="/profile"
-                    element={
-                        <User />
-                    }
-                />
-                <Route
-                    path="/NFTMarket"
-                    element={
-                        <Market />
-                    }
-                />
+                <Route path="/marketplace" element={<MarketplaceV2 />} />
+                <Route path="/profile" element={<User />} />
+                <Route path="/NFTMarket" element={<Market />} />
                 <Route
                     path="/WalletError"
                     element={
