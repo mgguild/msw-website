@@ -160,9 +160,9 @@ const UserMain = (props: any) => {
     <ContentWrapper>
       {renderInfo()}
       {renderPoint()}
-      {renderCoin()}
+      {/* {renderCoin()} */}
       {renderActivityHistory()}
-      {renderTxHistory()}
+      {/* {renderTxHistory()} */}
     </ContentWrapper>
   )
 }
