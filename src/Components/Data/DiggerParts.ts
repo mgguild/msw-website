@@ -224,7 +224,7 @@ const Abilities: skAbil = {
   },
   'Quick Dash': {
     name: 'Quick Dash',
-    img: 'Quick Dash',
+    img: 'Quick Dash.png',
     description: 'Quickly dash towards targeted direction.',
   },
   'Reckless Axe': {
