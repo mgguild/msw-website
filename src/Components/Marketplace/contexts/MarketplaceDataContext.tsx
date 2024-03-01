@@ -3,12 +3,10 @@ import { CardType, CLASSES } from './index.d';
 import useSubgraphQuery from '../hooks/useSubgraph';
 import { getBalanceAmount } from '../utils/formatBalance';
 
-const getRarity = (attributes: any[]) => {
-    if (attributes.find(attr => attr.trait_type === '1/1')) {
-        return 'Legendary';
-    }
-
-    switch (attributes.find(attr => attr.trait_type === 'Class').value) {
+export const raritySwitch = (trait: any) => {
+    switch (trait) {
+        case '1/1':
+            return 'Legendary';
         case 'Archer':
             return 'Common';
         case 'Artillery':
@@ -35,6 +33,14 @@ const getRarity = (attributes: any[]) => {
             return 'Common';
         default:
             return 'Unknown';
+    }
+}
+
+export const getRarity = (attributes: any[]) => {
+    if (attributes.find(attr => attr.trait_type === '1/1')) {
+        return raritySwitch('1/1');
+    } else {
+        return raritySwitch(attributes[0].value);
     }
 };
 
