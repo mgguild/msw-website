@@ -38,8 +38,9 @@ export const backgroundProp = styled.div<{ bg?: string }>`
 `;
 
 export const StyledPage = styled.div`
-    background-color: ${COLORS.BACKGROUND};
-`;
+  background-color: ${COLORS.BACKGROUND};
+  width: 100%;
+`
 
 export const StyledSection = styled.main<{ mh?: string }>`
     background-color: ${COLORS.MAIN};

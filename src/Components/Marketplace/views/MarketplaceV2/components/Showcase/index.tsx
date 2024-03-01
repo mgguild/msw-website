@@ -94,33 +94,20 @@ export default function Showcase() {
     const bannerSrc = { name: 'showcase', folder: 'placeholder', extension: 'jpg' };
     const image = useFetchImg(bannerSrc);
 
-    return (
-        <ShowcaseWrapper className="h-auto bg-[#2A2964]">
-            <div className="py-[4em]">
-                <div className="flex justify-center items-stretched text-center">
-                    <img
-                        src={image}
-                        alt="Placeholder thumbnail"
-                        className="rounded-l-[20px]"
-                    />
-                    <div className="bg-[#131737] rounded-r-[20px] flex justify-center items-center flex-col">
-                        <a
-                            href="#"
-                            className="text-[#ECB602] font-black text-[48px] px-5"
-                        >
-                            BUY NOW
-                        </a>
-                        <p>Until x/x lorem ipsum</p>
-                    </div>
-                </div>
-                <div className="w-full flex justify-center mt-5">
-                    <p className="w-25">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas
-                        odit maiores repellat dolore debitis deleniti reiciendis maxime in
-                        ipsam assumenda!
-                    </p>
-                </div>
-            </div>
-        </ShowcaseWrapper>
-    );
+  return (
+    <ShowcaseWrapper className="h-auto bg-[#2A2964]">
+      <div className="py-[4em]">
+        <div className="flex justify-center items-stretched text-center">
+          <img src={image} alt="Placeholder thumbnail" className="rounded-l-[20px]" />
+          <div className="bg-[#131737] rounded-r-[20px] flex justify-center items-center flex-col">
+            <a href="#" className="text-[#ECB602] font-black text-[48px] px-5">BUY NOW</a>
+            <p>Until x/x lorem ipsum</p>
+          </div>
+        </div>
+        <div className="w-full flex justify-center mt-5">
+          <p className="w-25">Welcome to the official marketplace of MetaSaga Warriors! 🏹 Here, you can dive into the dynamic world of Diggers, where buying and selling prowess knows no bounds. Join the adventure as you explore, trade, and conquer with your fellow warriors. Happy trading!</p>
+        </div>
+      </div>
+    </ShowcaseWrapper>
+  )
 }

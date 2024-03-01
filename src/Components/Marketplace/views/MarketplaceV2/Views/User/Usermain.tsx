@@ -25,37 +25,38 @@ const UserMain = (props: any) => {
         controllers: { modal },
     } = useMarketplaceV2();
 
-    const {
-        txHistory: { coin, nft },
-        activityHistory,
-        userInfo,
-        tabController: { active },
-        handleFunctions: { handleUserInfo },
-    } = props;
-    const txD = React.useMemo(() => (active === 0 ? coin : nft), [active, coin, nft]);
-    const [enableEdit, setEnableEdit] = useState<boolean>(false);
-    const handleEdit = () => {
-        setEnableEdit(!enableEdit);
-    };
-    const boxInfo = (name: string, tooltip: string) => {
-        return (
-            <Flex alignItems="center" justifyContent="space-between">
-                <H2 fsize="1.2em">{name}</H2>
-                <Flex justifyContent="space-between" flex="0.2" alignItems="center">
-                    <IconButton variant="text" className="icon-button">
-                        <MiniBox m="0">
-                            <Iconloader type="fa" name="Redo" fontSize="1em" />
-                        </MiniBox>
-                    </IconButton>
-                    <BasicTooltip title={tooltip}>
-                        <MiniBox m="0" style={{ height: '50%' }}>
-                            <Iconloader type="fa" name="InfoCircle" fontSize="1em" />
-                        </MiniBox>
-                    </BasicTooltip>
-                </Flex>
-            </Flex>
-        );
-    };
+  const {
+    txHistory: { coin, nft },
+    activityHistory,
+    userInfo,
+    tabController: { active },
+    handleFunctions: { handleUserInfo },
+    walletInfo
+  } = props
+  const txD = React.useMemo(() => (active === 0 ? coin : nft), [active, coin, nft])
+  const [enableEdit, setEnableEdit] = useState<boolean>(false)
+  const handleEdit = () => {
+    setEnableEdit(!enableEdit)
+  }
+  const boxInfo = (name: string, tooltip: string) => {
+    return (
+      <Flex alignItems="center" justifyContent="space-between">
+        <H2 fsize="1.2em">{name}</H2>
+        <Flex justifyContent="space-between" flex="0.2" alignItems="center">
+          <IconButton variant="text" className="icon-button">
+            <MiniBox m="0">
+              <Iconloader type="fa" name="Redo" fontSize="1em" />
+            </MiniBox>
+          </IconButton>
+          <BasicTooltip title={tooltip}>
+            <MiniBox m="0" style={{ height: '50%' }}>
+              <Iconloader type="fa" name="InfoCircle" fontSize="1em" />
+            </MiniBox>
+          </BasicTooltip>
+        </Flex>
+      </Flex>
+    )
+  }
 
     const renderInfo = () => {
         return (
@@ -116,25 +117,25 @@ const UserMain = (props: any) => {
         );
     };
 
-    const renderPoint = () => {
-        return (
-            <StyledBox p="1em">
-                {boxInfo('point', 'Access point')}
-                <Grid container columnSpacing={{ xs: 2, md: 5 }} mt={2}>
-                    <Grid item xs={9}>
-                        <MiniBox m="0">
-                            <P fsize="0.9em">123456 MGG | 0.00</P>
-                        </MiniBox>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Button h="100%" onClick={() => modal.handleOpen('buy-token')}>
-                            BUY
-                        </Button>
-                    </Grid>
-                </Grid>
-            </StyledBox>
-        );
-    };
+  const renderPoint = () => {
+    return (
+      <StyledBox p="1em">
+        {boxInfo('point', 'Access point')}
+        <Grid container columnSpacing={{ xs: 2, md: 5 }} mt={2}>
+          <Grid item xs={9}>
+            <MiniBox m="0">
+              <P fsize="0.9em">{walletInfo.balance}</P>
+            </MiniBox>
+          </Grid>
+          <Grid item xs={3}>
+            <Button h="100%" onClick={() => modal.handleOpen('buy-token')}>
+              BUY
+            </Button>
+          </Grid>
+        </Grid>
+      </StyledBox>
+    )
+  }
 
     const renderCoin = () => (
         <StyledBox p="1em">
@@ -193,15 +194,15 @@ const UserMain = (props: any) => {
         </StyledBox>
     );
 
-    return (
-        <ContentWrapper>
-            {renderInfo()}
-            {renderPoint()}
-            {renderCoin()}
-            {renderActivityHistory()}
-            {renderTxHistory()}
-        </ContentWrapper>
-    );
-};
+  return (
+    <ContentWrapper>
+      {renderInfo()}
+      {renderPoint()}
+      {/* {renderCoin()} */}
+      {/* {renderActivityHistory()} */}
+      {/* {renderTxHistory()} */}
+    </ContentWrapper>
+  )
+}
 
 export default UserMain;

@@ -9,11 +9,12 @@ type Props = {
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const Navbutton: React.FC<Props> = ({ href, children, ...props }) => {
-    return (
-        <Link href={href} {...props}>
-            <Box>{children}</Box>
-        </Link>
-    );
-};
+  return (
+    <Link href={href} {...props}>
+      {/* <Box>{children}</Box> */}
+      {children}
+    </Link>
+  )
+}
 
 export default Navbutton;

@@ -34,23 +34,21 @@ const withLoading = (WrappedComponent: any) => {
 };
 
 const VLayout: React.FC = (props: any) => {
-    const {
-        controllers: { modal },
-    } = useMarketplaceV2();
-    const { children } = props;
-    return (
-        <Page>
-            <Navbar />
-            {children}
-            {modal.openModal['buy-token'] && <BuyModal />}
-            <Footer />
-        </Page>
-    );
-};
-const WrappedComponent = withLoading(VLayout);
-const ViewsLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    // const { data } = useMarketplaceV2Data()
-    return <WrappedComponent> {children} </WrappedComponent>;
-};
+  const {
+    controllers: { modal },
+  } = useMarketplaceV2()
+  const { children } = props
+  return (
+    <Page>
+      {children}
+      {modal.openModal['buy-token'] && <BuyModal />}
+    </Page>
+  )
+}
+const WrappedComponent = withLoading(VLayout)
+const ViewsLayout: React.FC<{ children: React.ReactNode }> = ( {children} ) => {
+  // const { data } = useMarketplaceV2Data()
+  return <WrappedComponent > {children} </WrappedComponent>
+}
 
 export default ViewsLayout;
