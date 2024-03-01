@@ -1,11 +1,9 @@
-import { at } from 'lodash';
-
 /* eslint-disable import/no-anonymous-default-export */
 enum Atr {
   health = 'Health',
   attkDmg = 'Attack Damage',
   mgkDmg = 'Magic Damage',
-  attkSpd = 'Attack Damage',
+  attkSpd = 'Attack Speed',
   critChc = 'Critical Chance',
   critDmg = 'Critical Damage',
   cdn = 'Cooldown',
@@ -15,227 +13,328 @@ enum Atr {
   regen = 'Health Regen',
 }
 
-const Abilities = {
+interface skAbil{
+  [key: string]:{
+    name: string;
+    img: string;
+    description: string;
+  }
+}
+
+interface ability{
+    name: string;
+    img: string,
+    description: string
+}
+
+const Abilities: skAbil = {
   Ambush: {
+    name: 'Ambush',
     img: 'Ambush.png',
     description: 'Temporarily goes invicible and become invulnerable.',
   },
   'Aqua Protection': {
+    name: 'Aqua Protection',
     img: 'Aqua Protection.png',
     description: 'Blocks all incoming projectiles.',
   },
   'Battle Cry': {
+    name: 'Battle Cry',
     img: 'Battle Cry.png',
     description: 'Erupts dealing 40 damage to all foes nearby and knocking them back.',
   },
   'Berserk Axe': {
+    name: 'Berserk Axe',
     img: 'Berserk Axe.png',
     description:
       'Spawns an orbiting axe that deals damage and a chance to cause bleeding.',
   },
   'Blinding Spark': {
+    name: 'Blinding Spark',
     img: 'Blinding Spark.png',
     description:
       'Spawn an electric circle that follows the player, damages all enemies it passes through and leaving them vulnerable.',
   },
   'Blood Lust': {
+    name: 'Blood Lust',
     img: 'Blood Lust.png',
     description: "Drains portion of all enemies' health in the room.",
   },
   Boomerang: {
+    name: 'Boomerang',
     img: 'Boomerang.png',
     description: "Throws a boomerang that deals damage to enemies' hit.",
   },
   'Brittle Ice Shield': {
+    name: 'Brittle Ice Shield',
     img: 'Brittle Ice Shield.png',
     description:
       'Spawns an ice shield that blocks projectiles. After few hits, the shield breaks then shoots ice shards dealing damage to enemies.',
   },
   Chronobreak: {
+    name: 'Chronobreak',
     img: 'Chronobreak.png',
     description: 'Stops time causing all enemies to be static for a few seconds.',
   },
   Cyclone: {
+    name: 'Cyclone',
     img: 'Cyclone.png',
     description: 'Create a cyclone that moves towards nearest enemy.',
   },
   'Dark Swing': {
+    name: 'Dark Swing',
     img: 'Dark Swing.png',
     description:
       'Swing the sword dealing damage to all enemies hit and can make them vulnerable to succeeding attacks.',
   },
   'Death Gaze': {
+    name: 'Death Gaze',
     img: 'Death Gaze.png',
     description:
       'Sends shivers down the spine of its victims, causing a gradual but inevitable decline in life force.',
   },
   'Death Ray': {
+    name: 'Death Ray',
     img: 'Death Ray.png',
     description: 'Fires a laser dealing huge damage.',
   },
   'Demonic Siphon': {
+    name: 'Demonic Siphon',
     img: 'Demonic Siphon.png',
     description:
       'Deals damage overtime and heals the player by how many enemies are caught in the area.',
   },
   Earthquake: {
+    name: 'Earthquake',
     img: 'Earthquake.png',
     description: 'Cause an earthquake that damages and stun enemies in a huge area. ',
   },
   'Electric Discharge': {
+    name: 'Electric Discharge',
     img: 'Electric Discharge.png',
     description:
       'Discharge stored energy dealing heavy damage and stuns surrounding foes.',
   },
   Eruption: {
+    name: 'Eruption',
     img: 'Eruption.png',
     description: 'Explodes and damages all surrounding foes inflicting burn.',
   },
   'Fire Arrow': {
+    name: 'Fire Arrow',
     img: 'Fire Arrow.png',
     description: 'Fires a flaming projectile that inflicts damage and burn.',
   },
   'Fire Barrage': {
+    name: 'Fire Barrage',
     img: 'Fire Barrage.png',
     description:
       'Fires a barrage of fireballs dealing damage to enemies and has a chance to inflict burn.',
   },
   'Fire Cloak': {
+    name: 'Fire Cloak',
     img: 'Fire Cloak.png',
     description:
       'Shrouds self in fire dealing damage and inflicting burn to nearby enemies.',
   },
   'Giant Stomp': {
+    name: 'Giant Stomp',
     img: 'Giant Stomp.png',
     description: 'Summons a Golem foot that crashes into an area dealing AoE damage.',
   },
   Gigantum: {
+    name: 'Gigantum',
     img: 'Gigantum.png',
     description: 'Increases size and attack damage for a short amount of time.',
   },
   'Hail of Blades': {
+    name: 'Hail of Blades',
     img: 'Hail of Blades.png',
     description: 'Throw leaf blades dealing damage to enemies and causing them to bleed.',
   },
   'Hail Storm': {
+    name: 'Hail Storm',
     img: 'HailStorm.png',
     description: 'Deals damage and slow all enemies in the room.',
   },
   'Healing Call': {
+    name: 'Healing Call',
     img: 'Healing Call.png',
     description: 'Mend the wounds of all team members.',
   },
   'Ice Path': {
+    name: 'Ice Path',
     img: 'Ice Path.png',
     description: 'Creates an ice path that freezes enemies on collision.',
   },
   'Ice Shot': {
+    name: 'Ice Shot',
     img: 'Ice Shot.png',
     description: 'Shoots an icy projectile that freezes foes that have been hit.',
   },
   'Ice Wall': {
+    name: 'Ice Wall',
     img: 'Ice Wall.png',
     description:
       'Spawns pillar of ice at the targetted location that blocks projectiles.',
   },
   'Ice Tornado': {
+    name: 'Ice Tornado',
     img: 'IceTornado.png',
     description: 'Spawns an ice tornado that freezes enemies and deal damage over time.',
   },
   'Impaling Bolt': {
+    name: 'Impaling Bolt',
     img: 'Impaling Bolt.png',
     description:
       'Shoots a bolt that pierces through enemies dealing damage and stuns them.',
   },
   'Meteor Shower': {
+    name: 'Meteor Shower',
     img: 'MeteorShower.png',
     description:
       'Cast a shower of meteor dealing damage to all enemies in the area for few seconds.',
   },
   Miasma: {
+    name: 'Miasma',
     img: 'Miasma.png',
     description:
       'Creates an area around the player that inflicts random various negative effects to foes entering it.',
   },
   Multishot: {
+    name: 'Multishot',
     img: 'Multishot.png',
     description: 'Fires a multiple shot of arrows dealing damage to enemies.',
   },
   'Path of Fire': {
+    name: 'Path of Fire',
     img: 'Path of Fire.png',
     description: 'Leaves a burning trail that damages foes that walk on to it.',
   },
   'Plasma Cannon': {
+    name: 'Plasma Cannon',
     img: 'Plasma Cannon.png',
     description:
       "Fires a straight beam of lightning dealing damage to all enemies in it's path",
   },
   'Poisoned Tip': {
+    name: 'Poisoned Tip',
     img: 'Poisoned Tip.png',
     description: 'Fires a penatrating shot that inflicts poison to all in its path.',
   },
   'Quick Dash': {
+    name: 'Quick Dash',
     img: 'Quick Dash',
     description: 'Quickly dash towards targeted direction.',
   },
   'Reckless Axe': {
+    name: 'Reckless Axe',
     img: 'Reckless Axe.png',
     description:
       'Spawn an axe that strikes the ground dealing damage to all enemies around and has a chance to stun them.',
   },
   'Rock Throw': {
+    name: 'Rock Thrown',
     img: 'Boulder Toss.png',
     description:
       'Throws a boulder of rock dealing damage and has a chance to stun enemies.',
   },
   Smite: {
+    name: 'Smite',
     img: 'Smite.png',
     description:
       'Throws a boulder of rock dealing damage and has a chance to stun enemies.',
   },
   'Spark Sanctuary': {
+    name: 'Spark Sanctuary',
     img: 'Spark Sanctuary.png',
     description:
       'Cast a thunderstorm that only targets all enemies across the room, damaging and stunning them.',
   },
   'Spark Splitter': {
+    name: 'Spark Splitter',
     img: 'Spark Splitter.png',
     description:
       'Fires 3 low damage spark projectiles that stun foes hit for a short time.',
   },
   'Static Jolt': {
+    name: 'Static Jolt',
     img: 'Static Jolt.png',
     description: 'Inflicts static charges to enemies that the player passes.',
   },
   'Thorn Shield': {
+    name: 'Thorn Shield',
     img: 'Thorn Shield.png',
     description: 'Creates a spiky shield that damages nearby enemies.',
   },
   Torrent: {
+    name: 'Torrent',
     img: 'Torrent.png',
     description: 'Summons a pillar of water damaging surrounding foes.',
   },
   'Toxic Gas': {
+    name: 'Toxic Gas',
     img: 'Toxic Gas.png',
     description: 'Leaves a trail of poisonous gas that damages enemy.',
   },
   Tsunami: {
+    name: 'Tsunami',
     img: 'Tsunami.png',
     description: 'Summons a tidal wave dealing damage to foes in its path.',
   },
   Vanguard: {
+    name: 'Vanguard',
     img: 'Vanguard.png',
     description: 'Spawns two protective shields at both sides blocking projectiles.',
   },
   Winter: {
+    name: 'Winter',
     img: 'Winter.png',
     description:
       'Summons a snowstorm encompassing the whole room, dealing damage overtime.',
   },
 };
 
-const Parts = {
-  archer: {
+interface stats {
+  attribute: Atr;
+  modifier: string;
+}
+
+interface parts {
+  [key: string]:{
+    badgeImg: string;
+    baseStats: stats[];
+    legendary:{
+      ability: ability;
+      stat: stats[];
+    }
+    hats:{
+      [key: string]: {ability: ability}
+    }
+    eyes?:{
+      [key: string]:{
+        correction?: string,
+        stat: stats[]
+      }
+    }
+    noses?:{
+      [key: string]:{
+        correction?: string,
+        stat: stats[]
+      }
+    }
+    clothes:{
+      [key: string]:{
+        correction?: string,
+        stat: stats[]
+      }
+    }
+  }
+}
+
+const Parts:parts = {
+  Archer: {
+    badgeImg: '/images/nfts/MSW/classIcons/Archer.png',
     baseStats: [
       { attribute: Atr.health, modifier: '60' },
       { attribute: Atr.attkDmg, modifier: '5 (Ranged)' },
@@ -269,7 +368,7 @@ const Parts = {
     eyes: {
       'I See You': { stat: [{ attribute: Atr.critChc, modifier: '10%' }] },
       'Suspicious Figure': { stat: [{ attribute: Atr.mvSpd, modifier: '10%' }] },
-      'Target Locked': { stat: [{ attrigute: Atr.attkDmg, modifier: '2' }] },
+      'Target Locked': { stat: [{ attribute: Atr.attkDmg, modifier: '2' }] },
       'Cat Scratch': { stat: [{ attribute: Atr.attkDmg, modifier: '10' }] },
       'Arrrrgh!': { stat: [{ attribute: Atr.attkSpd, modifier: '10%' }] },
     },
@@ -280,14 +379,14 @@ const Parts = {
       },
       Ninja: { stat: [{ attribute: Atr.mvSpd, modifier: '5%' }] },
       'Dew Drop Fancy': { stat: [{ attribute: Atr.attkDmg, modifier: '1' }] },
-      Bane: { stat: [{ attibute: Atr.health, modifier: '5' }] },
+      Bane: { stat: [{ attribute: Atr.health, modifier: '5' }] },
       'Dew Drop Mole': { stat: [{ attribute: Atr.attkSpd, modifier: '5%' }] },
     },
     clothes: {
       'Breast Guard': {
         stat: [
           {
-            attibute: Atr.attkSpd,
+            attribute: Atr.attkSpd,
             modifier: '10%',
           },
           {
@@ -342,7 +441,8 @@ const Parts = {
       },
     },
   },
-  artillery: {
+  Artillery: {
+    badgeImg: '/images/nfts/MSW/classIcons/Artillery.png',
     baseStats: [
       { attribute: Atr.health, modifier: '60' },
       { attribute: Atr.attkDmg, modifier: '5 (Ranged)' },
@@ -395,7 +495,8 @@ const Parts = {
       Arsenal: { stat: [{ attribute: Atr.critDmg, modifier: '20%' }] },
     },
   },
-  berserker: {
+  Berserker: {
+    badgeImg: '/images/nfts/MSW/classIcons/Berserker.png',
     baseStats: [
       { attribute: Atr.health, modifier: '100' },
       { attribute: Atr.attkDmg, modifier: '8 (Meelee)' },
@@ -478,7 +579,8 @@ const Parts = {
       Stronger: { stat: [{ attribute: Atr.health, modifier: '20' }] },
     },
   },
-  'dark knight': {
+  'Dark Knight': {
+    badgeImg: '/images/nfts/MSW/classIcons/Dark Knight.png',
     baseStats: [
       { attribute: Atr.health, modifier: '90' },
       { attribute: Atr.attkDmg, modifier: '8 (Melee)' },
@@ -529,7 +631,8 @@ const Parts = {
       },
     },
   },
-  elemental: {
+  Elemental: {
+    badgeImg: '/images/nfts/MSW/classIcons/Elemental.png',
     baseStats: [
       { attribute: Atr.health, modifier: '80' },
       { attribute: Atr.attkDmg, modifier: '5 (Melee)' },
@@ -602,7 +705,8 @@ const Parts = {
       'Magma Armor': { stat: [{ attribute: Atr.attkDmg, modifier: '4' }] },
     },
   },
-  engineer: {
+  Engineer: {
+    badgeImg: '/images/nfts/MSW/classIcons/Engineer.png',
     baseStats: [
       { attribute: Atr.health, modifier: '60' },
       { attribute: Atr.attkDmg, modifier: '5 (Ranged)' },
@@ -670,7 +774,8 @@ const Parts = {
       Buttons: { stat: [{ attribute: Atr.health, modifier: '20' }] },
     },
   },
-  knight: {
+  Knight: {
+    badgeImg: '/images/nfts/MSW/classIcons/Knight.png',
     baseStats: [
       { attribute: Atr.health, modifier: '90' },
       { attribute: Atr.attkDmg, modifier: '8 (Melee)' },
@@ -738,7 +843,8 @@ const Parts = {
       },
     },
   },
-  magitek: {
+  Magitek: {
+    badgeImg: '/images/nfts/MSW/classIcons/Engineer.png',
     baseStats: [
       { attribute: Atr.health, modifier: '80' },
       { attribute: Atr.attkDmg, modifier: '5 (Ranged)' },
@@ -821,7 +927,8 @@ const Parts = {
       },
     },
   },
-  musketeer: {
+  Musketeer: {
+    badgeImg: '/images/nfts/MSW/classIcons/Musketeer.png',
     baseStats: [
       { attribute: Atr.health, modifier: '60' },
       { attribute: Atr.attkDmg, modifier: '3 (Melee)' },
@@ -884,7 +991,8 @@ const Parts = {
       'Chest Hair': { stat: [{ attribute: Atr.critChc, modifier: '20%' }] },
     },
   },
-  'plague doctor': {
+  'Plague Doctor': {
+    badgeImg: '/images/nfts/MSW/classIcons/Plague Doctor.png',
     baseStats: [
       { attribute: Atr.health, modifier: '50' },
       { attribute: Atr.attkDmg, modifier: '5 (Melee)' },
@@ -957,7 +1065,8 @@ const Parts = {
       Recovering: { stat: [{ attribute: Atr.health, modifier: '20' }] },
     },
   },
-  vicar: {
+  Vicar: {
+    badgeImg: '/images/nfts/MSW/classIcons/Vicar.png',
     baseStats: [
       { attribute: Atr.health, modifier: '50' },
       { attribute: Atr.attkDmg, modifier: '0 (Ranged)' },
@@ -1020,7 +1129,8 @@ const Parts = {
       Friar: { stat: [{ attribute: Atr.attkSpd, modifier: '15%' }] },
     },
   },
-  wizard: {
+  Wizard: {
+    badgeImg: '/images/nftss/MSW/classIcons/Wizard.png',
     baseStats: [
       { attribute: Atr.health, modifier: '60' },
       { attribute: Atr.attkDmg, modifier: '0 (Ranged)' },
