@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMarketplaceV2FetchData } from '../../../../hooks/useMarketplaceV2Data';
 import { sectionProp } from '../Foundation/layout';
@@ -16,7 +16,9 @@ export default function Featured() {
         <b className="text-[64px] bg-gradient-to-b from-[#4ED2FB] to-[#6B3CD3] bg-clip-text text-transparent font-black">LOREM IPSUM</b>
       </div>
       <div className="flex justify-center text-center items-center font-black pb-[5em]">
-        <a href="/#/NFTMarket" className="font-black text-[48px] text-[#ECAF02] underline">VIEW MORE</a>
+        <Link to='/marketplace/NFT'>
+            <span className="font-black text-[48px] text-[#ECAF02] underline">VIEW MORE</span>
+        </Link>
       </div>
       <Cards items={item} />
     </div>

@@ -58,9 +58,9 @@ export default function Card(props: Props) {
 
   return (
     <div className="w-[300px] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
-      <div>
-        <img src={spriteName} alt="Digger" className="rounded-t-[20px] w-full h-auto" />
-      </div>
+        <Link to={`/marketplace/NFT/${id}/${listingId}`}>
+            <img src={spriteName} alt="Digger" className="rounded-t-[20px] w-full h-auto" />
+        </Link>
       <div className="py-3 px-3">
         <div className="flex flex-row justify-between items-center">
           <p className="text-[24px] text-[#C2C2C2] font-bold grow">{name}</p>
@@ -69,9 +69,7 @@ export default function Card(props: Props) {
         <div className="flex flex-row justify-between items-center">
           <p className="flex flex-row justify-start items-center gap-2 text-[18px] font-bold text-[#49D9F8]">
             <span className="rounded">
-                <Link to={`/marketplace/NFT/${id}/${listingId}`}>
-                    <img src={image} alt="Polygon MATIC" className="w-[30px] h-[30px]" />
-                </Link>
+                <img src={image} alt="Polygon MATIC" className="w-[30px] h-[30px]" />
             </span>
             {price.token}
           </p>
