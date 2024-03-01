@@ -17,9 +17,7 @@ export default function Featured() {
       <div className="flex justify-center text-center items-center font-black pb-[5em]">
         <a href="/#/NFTMarket" className="font-black text-[48px] text-[#ECAF02] underline">VIEW MORE</a>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-3">
-        <Cards items={item} />
-      </div>
+      <Cards items={item} />
     </div>
     // <Container>
     //   <Board className="main-drop-shadow" data-aos="slide-right">

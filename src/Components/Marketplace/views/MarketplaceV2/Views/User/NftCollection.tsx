@@ -24,7 +24,8 @@ import ABI from "../../constants/abi.json"
 const contractAddress = "0x290ca81d1ba1a31cd78be176df08c89e63c6de91"
 const contractAddressSecond = "0x3A53815FfAf6c14069c00A00D7eE94C370280e87"
 
-const StyledFlex = styled(Flex)`max-width: 250px;
+const StyledFlex = styled(Flex)`
+  max-width: 250px;
   // padding: 5px 10px;
   margin: 0 auto;
   ${({ theme }) => `
@@ -338,32 +339,21 @@ const NftCollection = (props: any) => {
             const isSelling = marketplaceData.find((item: { id: string }) => item.id === nft.metadata.id)
 
             return (
-              <div key={key}>
-                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                  <Grid container spacing={{ xs: 2, sm: 4 }} pt={5}>
-                    <Grid item xs={12} sm={4} md={3} lg={3} xl={3} justifyContent="center">
-                      <StyledFlex>
-                        <CardContainer className="secondary-drop-shadow">
-                          <CardHeader>
-                            <CardText>
-                              {nft.metadata.name}
-                            </CardText>
-                          </CardHeader>
-                          <img src={nft.metadata.image as string} alt="Digger" />
-                          <button onClick={() => handleToggleModal(key)}
-                            className="uppercase w-100 font-bold text-[24px] py-3 rounded-b-[5px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-                          >
-                            {
-                              isSelling ? 'Cancel Listing' : 'Sell'
-                            }
-                          </button>
-                          {modalActive[key] && <SellModal key={key} modalActive={modalActive[key]} nft={nft} isSelling={isSelling} marketplaceData={marketplaceData} handleCloseModal={() => handleToggleModal(key)} />}
-                        </CardContainer>
-
-                      </StyledFlex>
-                    </Grid>
-                  </Grid>
-                </div>
+              <div key={key} className="w-[30%]">
+                <CardContainer className="secondary-drop-shadow">
+                  <img src={nft.metadata.image as string} alt="Digger" />
+                  <CardHeader>
+                    <p className="text-[24px] text-[#C2C2C2] font-bold grow">{nft.metadata.name}</p>
+                  </CardHeader>
+                  <button onClick={() => handleToggleModal(key)}
+                    className="uppercase w-100 font-bold text-[24px] py-3 rounded-b-[5px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                  >
+                    {
+                      isSelling ? 'Cancel Listing' : 'Sell'
+                    }
+                  </button>
+                  {modalActive[key] && <SellModal key={key} modalActive={modalActive[key]} nft={nft} isSelling={isSelling} marketplaceData={marketplaceData} handleCloseModal={() => handleToggleModal(key)} />}
+                </CardContainer>
               </div>
             )
           })
@@ -380,22 +370,26 @@ const NftCollection = (props: any) => {
     <ContentWrapper>
       <StyledBox p="1em">
         <Flex alignItems="center" justifyContent="space-between">
-          <H2 fsize="1.2em">OWNED CHARACTERS/ITEMS</H2>
+          <div className="py-3">
+            <b className="text-[24px] text-[#ECB602] font-black">OWNED CHARACTERS / ITEMS</b>
+          </div>
           <Flex justifyContent="space-between" alignItems="center" flex="0.2">
-            <BasicTooltip title="Owned Characters or Items">
+            {/* <BasicTooltip title="Owned Characters or Items">
               <MiniBox>
                 <Iconloader type="fa" name="InfoCircle" fontSize="1em" />
               </MiniBox>
-            </BasicTooltip>
+            </BasicTooltip> */}
 
-            <MarketPlaceButton variant="text" title="Item List" style={{ justifyContent: 'center' }} height="50%" />
+            {/* <MarketPlaceButton variant="text" title="Item List" style={{ justifyContent: 'center' }} height="50%" /> */}
           </Flex>
         </Flex>
 
         <Content>
-          <CategoryList {...{ active, setActive }} />
+          <div className="flex flex-wrap justify-start items-center gap-3">
+            <OwnedNFTs />
+          </div>
+          {/* <CategoryList {...{ active, setActive }} /> */}
           {/* <DisplayNft data={data} /> */}
-          <OwnedNFTs />
         </Content>
       </StyledBox>
     </ContentWrapper>

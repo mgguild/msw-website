@@ -44,7 +44,7 @@ export default function Card(props: Props) {
         setRarityBorder("border-[#94FF88] text-[#94FF88]")
         break;
       case "Rare":
-        setRarityBorder("border-[#4BDEFD] text-[#4BDEFD]")
+       setRarityBorder("border-[#4BDEFD] text-[#4BDEFD]")
         break;
       case "Epic":
         setRarityBorder("border-[#EB88FF] text-[#EB88FF]")
@@ -56,64 +56,38 @@ export default function Card(props: Props) {
   }, [rarity])
 
   return (
-    <>
-      {/* <CardContainer className="secondary-drop-shadow">
-        <Header {...{ name, rarity, badge }} />
-        <img src={spriteName} />
-        <Details className="flex">
-          <TextBox className="flex-none w-1/2">
-            <H5 fsize="0.8em">Current Price</H5>
-            <P fsize="1em" color={theme.colors.MGG_accent2}>
-              {price.token}
-            </P>
-          </TextBox>
-          <Web3Button
-            contractAddress={process.env.REACT_APP_MARKETPLACE_ADDRESS as string} // Your smart contract address
-            contractAbi={ABI}
-            action={async (contract) => {
-              await contract.call("buy", [listingId], { value: price.raw });
-            }}
-            className='flex-1 w-2/6'
-            style={{ minWidth: "0", maxWidth: "50%", wordBreak: "break-word", textAlign: "center" }}
-          >
-            Buy
-          </Web3Button>
-        </Details>
-      </CardContainer>
-      {modal.openModal[`buy-${listingId}`] && <PurchaseNFT {...props} />} */}
-      <div className="w-[20%] h-auto bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
-        <div>
-          <img src={spriteName} alt="Digger" className="rounded-t-[20px]" />
+    <div className="w-[300px] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
+      <div>
+        <img src={spriteName} alt="Digger" className="rounded-t-[20px] w-full h-auto" />
+      </div>
+      <div className="py-3 px-3">
+        <div className="flex flex-row justify-between items-center">
+          <p className="text-[24px] text-[#C2C2C2] font-bold grow">{name}</p>
+          <p className={`border-2 ${rarityBorder} p-2 rounded-[5px] text-[12px]`}>{rarity}</p>
         </div>
-        <div className="py-3 px-3">
-          <div className="flex flex-row justify-between items-center">
-            <p className="text-[32px] text-[#C2C2C2] font-bold grow">{name}</p>
-            <p className={`border-2 ${rarityBorder} p-2 rounded-[5px] text-[12px]`}>{rarity}</p>
-          </div>
-          <div className="flex flex-row justify-between items-center">
-            <p className="flex flex-row justify-start items-center gap-2 text-[24px] font-bold text-[#49D9F8]">
-              <span className="rounded">
-                <img src={image} alt="Polygon MATIC" className="w-[40px] h-[40px]" />
-              </span>
-              {price.token}
-            </p>
-            <p></p>
-            {/* <p>$0.00</p> */}
-          </div>
-        </div>
-        <div className="w-full">
-          <Web3Button
-            contractAddress={process.env.REACT_APP_MARKETPLACE_ADDRESS as string} // Your smart contract address
-            contractAbi={ABI}
-            action={async (contract) => {
-              await contract.call("buy", [listingId], { value: price.raw });
-            }}
-            className="w-full font-black text-[32px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-          >
-            Buy
-          </Web3Button>
+        <div className="flex flex-row justify-between items-center">
+          <p className="flex flex-row justify-start items-center gap-2 text-[18px] font-bold text-[#49D9F8]">
+            <span className="rounded">
+              <img src={image} alt="Polygon MATIC" className="w-[30px] h-[30px]" />
+            </span>
+            {price.token}
+          </p>
+          <p></p>
+          {/* <p>$0.00</p> */}
         </div>
       </div>
-    </>
+      <div className="w-full">
+        <Web3Button
+          contractAddress={process.env.REACT_APP_MARKETPLACE_ADDRESS as string} // Your smart contract address
+          contractAbi={ABI}
+          action={async (contract) => {
+            await contract.call("buy", [listingId], { value: price.raw });
+          }}
+          className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+        >
+          Buy
+        </Web3Button>
+      </div>
+    </div>
   )
 }

@@ -9,11 +9,17 @@ const Cards = (props: any) => {
   const { items } = props
 
   return (
-    items.map((item: any) => {
-      return (
-        <Card {...item} />
-      )
-    })
+    <div className="flex flex-wrap justify-center items-center gap-1">
+    {
+      items.map((item: any) => {
+        return (
+          <div className="w-[20%]">
+            <Card {...item} />
+          </div>
+        )
+      })
+    }
+    </div>
   )
 }
 const responsive = {

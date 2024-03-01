@@ -24,6 +24,7 @@ const UserMain = (props: any) => {
     userInfo,
     tabController: { active },
     handleFunctions: { handleUserInfo },
+    walletInfo
   } = props
   const txD = React.useMemo(() => (active === 0 ? coin : nft), [active, coin, nft])
   const [enableEdit, setEnableEdit] = useState<boolean>(false)
@@ -99,7 +100,7 @@ const UserMain = (props: any) => {
         <Grid container columnSpacing={{ xs: 2, md: 5 }} mt={2}>
           <Grid item xs={9}>
             <MiniBox m="0">
-              <P fsize="0.9em">123456 MGG | 0.00</P>
+              <P fsize="0.9em">{walletInfo.balance}</P>
             </MiniBox>
           </Grid>
           <Grid item xs={3}>
@@ -161,7 +162,7 @@ const UserMain = (props: any) => {
       {renderInfo()}
       {renderPoint()}
       {/* {renderCoin()} */}
-      {renderActivityHistory()}
+      {/* {renderActivityHistory()} */}
       {/* {renderTxHistory()} */}
     </ContentWrapper>
   )
