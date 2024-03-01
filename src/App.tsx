@@ -9,6 +9,7 @@ import usePlayfab from './Hooks/usePlayfab';
 import MarketplaceV2 from './Components/Marketplace/views/MarketplaceV2/Marketplace';
 import Market from './Components/Marketplace/views/MarketplaceV2/Views/Market/Market';
 import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
+import NFTPage from './Components/Marketplace/views/MarketplaceV2/Views/NFTPage';
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
@@ -44,7 +45,8 @@ function App() {
                 />
                 <Route path="/marketplace" element={<MarketplaceV2 />} />
                 <Route path="/profile" element={<User />} />
-                <Route path="/NFTMarket" element={<Market />} />
+                <Route path="/marketplace/NFT" element={<Market />} />
+                <Route path="/marketplace/NFT/:id/:lid" element={<NFTPage />} />
                 <Route
                     path="/WalletError"
                     element={
