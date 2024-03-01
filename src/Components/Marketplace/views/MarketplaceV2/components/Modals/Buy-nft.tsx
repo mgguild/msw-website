@@ -25,7 +25,7 @@ const PurchaseNFT: React.FC<any> = props => {
     const renderMain = () => (
         <Container>
             <Header {...{ name, rarity, badge }} />
-            <Display {...{ spriteName }} />
+            <Display {...{ spriteURL: 'asdasd' }} />
             <DetailsBox justifyContent="space-between" margin="1rem 0">
                 <H4>PURCHASE AMOUNT</H4>
                 <H4 color={theme!.colors.MGG_accent2}>12,345 MGG</H4>

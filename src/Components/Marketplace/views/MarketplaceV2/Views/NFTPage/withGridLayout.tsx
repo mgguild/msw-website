@@ -21,7 +21,7 @@ const withGridLayout = (WrappedComponent: any) => {
         };
         return (
             <Grid item xs={12} sm={6}>
-                {loaded ? <WrappedComponent {...modifiedProps} /> : <>Loading...</>}
+                <WrappedComponent {...modifiedProps} />
             </Grid>
         );
     };

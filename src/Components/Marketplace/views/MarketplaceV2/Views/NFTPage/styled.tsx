@@ -13,7 +13,7 @@ export const ContentWrapper = styled.div`
 
     ${({ theme }) => `
     ${theme.mediaQueries.md} {
-      padding: 0 5em;
+      padding: 0 2em;
     }
   `}
 `;

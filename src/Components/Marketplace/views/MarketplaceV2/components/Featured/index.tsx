@@ -7,6 +7,7 @@ import { H1, TextWrapper } from '../Foundation/Text';
 
 export default function Featured() {
     const { data } = useMarketplaceV2FetchData();
+    console.log(data);
     const item = data.sort(() => Math.random() - 0.5).slice(0, 4);
 
     return (

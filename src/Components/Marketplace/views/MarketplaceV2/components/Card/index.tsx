@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
 import Web3 from 'web3';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import useMarketplaceV2, {
     useQueryAsset,
     QueryType,
@@ -25,8 +25,6 @@ export default function Card(props: Props) {
 
     const handleNav = (event: any) => {
         event.preventDefault();
-
-        navigate(`/marketplace/${badge}/${id}`);
     };
 
     const handleBuy = async (event: any) => {
@@ -85,9 +83,9 @@ export default function Card(props: Props) {
       </CardContainer>
       {modal.openModal[`buy-${listingId}`] && <PurchaseNFT {...props} />} */}
             <div className="w-[20%] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
-                <div>
+                <Link to={`/marketplace/NFT/${id}/${listingId}`}>
                     <img src={spriteName} alt="Digger" className="rounded-t-[20px]" />
-                </div>
+                </Link>
                 <div className="py-3 px-3">
                     <div className="flex flex-row justify-between items-center">
                         <p className="text-[32px] text-[#C2C2C2] font-bold grow">

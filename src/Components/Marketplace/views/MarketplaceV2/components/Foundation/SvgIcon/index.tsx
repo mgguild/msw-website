@@ -8,6 +8,7 @@ interface Props {
     width?: number;
     height?: number;
     fill?: string;
+    className?: string;
 }
 
 export const SvgContainer = styled.div<{
