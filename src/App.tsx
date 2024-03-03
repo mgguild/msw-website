@@ -44,7 +44,7 @@ function App() {
                     }
                 />
                 <Route path="/marketplace" element={<MarketplaceV2 />} />
-                <Route path="/profile" element={<User />} />
+                <Route path="/marketplace/profile" element={<User />} />
                 <Route path="/marketplace/NFT" element={<Market />} />
                 <Route path="/marketplace/NFT/:id/:lid" element={<NFTPage />} />
                 <Route

@@ -22,7 +22,7 @@ const Nftlist = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<any>(null);
     // const { data } = useMarketplaceV2FetchData()
-    const [toDisplay, setToDisplay] = React.useState<number>(6);
+    const [toDisplay, setToDisplay] = React.useState<number>(10);
 
     const query = `
     query {
@@ -155,7 +155,7 @@ const Nftlist = () => {
             </Grid>
           ))}
         </Grid> */}
-        <div className="flex flex-wrap justify-center items-center gap-3 w-full">
+        <div className="flex flex-wrap justify-start items-center gap-3 w-full">
         {data.slice(0, toDisplay).map((data: any) => (
           <Card {...data} />
         ))}

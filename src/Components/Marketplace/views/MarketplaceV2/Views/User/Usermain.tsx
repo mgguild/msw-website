@@ -60,80 +60,37 @@ const UserMain = (props: any) => {
 
     const renderInfo = () => {
         return (
-            <StyledBox p="1em">
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={10}>
-                        <Grid container spacing={{ xs: 1, sm: 2 }}>
-                            {Object.entries(userInfo).map((info: any) => {
-                                const field =
-                                    FIELD_INFO[info[0] as keyof typeof FIELD_INFO];
-                                const val = info[1].toString();
-                                return (
-                                    <>
-                                        <Grid item xs={5} sm={5}>
-                                            <H5 fsize="0.9em">{field}:</H5>
-                                        </Grid>
-                                        <Grid item xs={7} sm={7}>
-                                            {enableEdit ? (
-                                                <input
-                                                    className="user-input"
-                                                    value={val}
-                                                    onChange={e =>
-                                                        handleUserInfo({
-                                                            field: info[0],
-                                                            value: e.target.value,
-                                                        })
-                                                    }
-                                                />
-                                            ) : (
-                                                <P fsize="0.9em">{val}</P>
-                                            )}
-                                        </Grid>
-                                    </>
-                                );
-                            })}
-                        </Grid>
-                    </Grid>
-                    <Grid
-                        item
-                        xs={12}
-                        sm={2}
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                    >
-                        <IconButton
-                            variant="text"
-                            className="icon-button"
-                            onClick={handleEdit}
-                        >
-                            <MiniBox>
-                                <Iconloader type="fa" name="Edit" fontSize="1em" />
-                            </MiniBox>
-                        </IconButton>
-                    </Grid>
-                </Grid>
-            </StyledBox>
+          <div className="flex flex-wrap justify-evenly w-full items-center gap-3 my-3">
+            {Object.entries(userInfo).map((info: any) => {
+              const field =
+                FIELD_INFO[info[0] as keyof typeof FIELD_INFO];
+              const val = info[1].toString();
+              return (
+                <div className="grow flex justify-start items-center bg-[#131737] rounded-[10px] pr-[1em]">
+                  <div className="bg-[#181020] p-3 rounded-l-[10px] mr-[1em]">
+                    {field === "EMAIL ADDRESS" ?
+                      <Iconloader type="fa" name={"At"} />
+                      :
+                      <Iconloader type="fa" name={"Wallet"} />
+                    }
+                  </div>
+                  <b>{val}</b>
+                </div>
+              );
+            })}
+            {renderPoint()}
+          </div>
         );
     };
 
   const renderPoint = () => {
     return (
-      <StyledBox p="1em">
-        {boxInfo('point', 'Access point')}
-        <Grid container columnSpacing={{ xs: 2, md: 5 }} mt={2}>
-          <Grid item xs={9}>
-            <MiniBox m="0">
-              <P fsize="0.9em">{walletInfo.balance}</P>
-            </MiniBox>
-          </Grid>
-          <Grid item xs={3}>
-            <Button h="100%" onClick={() => modal.handleOpen('buy-token')}>
-              BUY
-            </Button>
-          </Grid>
-        </Grid>
-      </StyledBox>
+      <div className="flex flex-wrap justify-center items-center bg-[#131737] rounded-[10px] pr-[1em]">
+        <div className="bg-[#181020] p-3 rounded-l-[10px] mr-[1em]">
+          <Iconloader type="fa" name={"DollarSign"} />
+        </div>
+        <b>{walletInfo.balance}</b>
+      </div>
     )
   }
 
@@ -195,13 +152,12 @@ const UserMain = (props: any) => {
     );
 
   return (
-    <ContentWrapper>
+    <div className="flex flex-row w-full justify-center items-center">
       {renderInfo()}
-      {renderPoint()}
       {/* {renderCoin()} */}
       {/* {renderActivityHistory()} */}
       {/* {renderTxHistory()} */}
-    </ContentWrapper>
+    </div>
   )
 }
 

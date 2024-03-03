@@ -8,10 +8,10 @@ export const links: Props = [
   },
   {
     name: 'User',
-    href: `${marketplaceURL}/profile`,
+    href: `${marketplaceURL}/marketplace/profile`,
   },
   {
     name: 'ShoppingBasket',
-    href: `${marketplaceURL}/NFTMarket`,
+    href: `${marketplaceURL}/marketplace/NFT`,
   },
 ];

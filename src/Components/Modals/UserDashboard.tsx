@@ -16,6 +16,7 @@ import {
 import { Triangle } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { MdlProps } from './types';
+import { useFetchImg } from '../Marketplace/utils/assetFetch';
 
 const style = {
     position: 'relative',
@@ -132,6 +133,7 @@ const UserDashboard = ({
     showBtn = true,
     Header = 'USER DASHBOARD',
     Subheader,
+    mobile = false,
 }: MdlProps) => {
     const user = usePlayfab((state: any) => state.user);
     const userTags = usePlayfab((state: any) => state.userTags);
@@ -154,6 +156,9 @@ const UserDashboard = ({
         setOpen(false);
         _disoconnect();
     };
+
+    const src= { name: 'mgg', folder: 'logo' }
+    const mgg = useFetchImg(src)
 
     useEffect(() => {
         setUserTags(userTags);
@@ -350,13 +355,19 @@ const UserDashboard = ({
                 </Box>
             </Modal>
             {showBtn && (
-                <Button
-                    onClick={() => {
-                        setOpen(true);
-                    }}
-                >
-                    {user.TitleInfo.DisplayName ?? user.Username}
-                </Button>
+                mobile ? (
+                    <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
+                        <img src={mgg} alt="Meta Gaming Guild" className="w-[60px] h-[60px] rounded-full" />
+                    </div>
+                ) : (
+                    <Button
+                        onClick={() => {
+                            setOpen(true);
+                        }}
+                    >
+                        {user.TitleInfo.DisplayName ?? user.Username}
+                    </Button>
+                )
             )}
         </>
     );

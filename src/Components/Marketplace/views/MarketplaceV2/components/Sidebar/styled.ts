@@ -44,7 +44,8 @@ export const Inner = styled.div`
       padding: 24px;
     }
     ${theme.mediaQueries.lg}{
-      ${CONTAINER_PROPS}
+      max-width: 100%;
+      margin: 0em 3em 0em 11em;
     }
 
   `}

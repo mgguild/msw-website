@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
 import { MdlProps } from './types';
+import Iconloader from '../Marketplace/views/MarketplaceV2/components/Foundation/Iconloader';
 
 const style = {
     position: 'relative',
@@ -102,6 +103,7 @@ const LoginRegister = ({
     showBtn = true,
     Header = 'LOGIN ACCOUNT',
     Subheader,
+    mobile = false,
 }: MdlProps) => {
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
     const setUserTags = usePlayfab((state: any) => state.setUserTags);
@@ -462,15 +464,23 @@ const LoginRegister = ({
                     </CenterFrame>
                 </Box>
             </Modal>
-            {showBtn && (
-                <Button
-                    onClick={() => {
-                        setOpen(true);
-                    }}
-                >
-                    Login/Register
-                </Button>
-            )}
+            {showBtn && 
+                (
+                mobile ? (
+                    <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
+                        <Iconloader type="fa" name="SignInAlt" />
+                    </div>
+                ) : (
+                    <Button
+                        onClick={() => {
+                            setOpen(true);
+                        }}
+                    >
+                        Login/Register
+                    </Button>
+                    )
+                )
+            }
         </>
     );
 };

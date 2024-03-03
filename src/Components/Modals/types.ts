@@ -4,4 +4,5 @@ export interface MdlProps {
   showBtn?: boolean;
   Header?: string;
   Subheader?: string;
+  mobile?: boolean;
 }

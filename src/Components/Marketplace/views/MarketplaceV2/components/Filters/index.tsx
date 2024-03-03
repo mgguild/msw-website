@@ -18,7 +18,7 @@ const Filters = () => {
     } = useMarketplaceV2();
 
   return (
-    <div className="flex flex-wrap justify-between items-center">
+    <div className="flex flex-wrap justify-between items-center w-full">
       <b className="font-black text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#4ED2FB] to-[#6B3CD3]">NFT MARKET</b>
       <Container>
         <TextWrapper className="filter-actions">

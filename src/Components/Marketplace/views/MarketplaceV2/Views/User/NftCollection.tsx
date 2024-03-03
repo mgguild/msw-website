@@ -403,7 +403,7 @@ const NftCollection = (props: any) => {
                         );
 
             return (
-              <div key={key} className="w-[30%]">
+              <div key={key} className="w-[300px]">
                 <CardContainer className="secondary-drop-shadow">
                   <img src={nft.metadata.image as string} alt="Digger" />
                   <CardHeader>
@@ -431,32 +431,14 @@ const NftCollection = (props: any) => {
     )
   }
   return (
-    <ContentWrapper>
-      <StyledBox p="1em">
-        <Flex alignItems="center" justifyContent="space-between">
-          <div className="py-3">
-            <b className="text-[24px] text-[#ECB602] font-black">OWNED CHARACTERS / ITEMS</b>
+      <div>
+          <div className="py-[2em]">
+              <b className="text-[24px] text-[#ECB602] font-black">OWNED CHARACTERS / ITEMS</b>
           </div>
-          <Flex justifyContent="space-between" alignItems="center" flex="0.2">
-            {/* <BasicTooltip title="Owned Characters or Items">
-              <MiniBox>
-                <Iconloader type="fa" name="InfoCircle" fontSize="1em" />
-              </MiniBox>
-            </BasicTooltip> */}
-
-            {/* <MarketPlaceButton variant="text" title="Item List" style={{ justifyContent: 'center' }} height="50%" /> */}
-          </Flex>
-        </Flex>
-
-        <Content>
           <div className="flex flex-wrap justify-start items-center gap-3">
-            <OwnedNFTs />
+              <OwnedNFTs />
           </div>
-          {/* <CategoryList {...{ active, setActive }} /> */}
-          {/* <DisplayNft data={data} /> */}
-        </Content>
-      </StyledBox>
-    </ContentWrapper>
+      </div>
   )
 }
 

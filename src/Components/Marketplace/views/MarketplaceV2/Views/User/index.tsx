@@ -9,7 +9,7 @@ import NftCollection from './NftCollection'
 import NeedCreds from '../../../../../Modals/NeedCreds'
 import './UserStyle.css'
 import usePlayfab from '../../../../../../Hooks/usePlayfab'
-import { useSDK, useWatchTransactions } from "@thirdweb-dev/react"
+import { useAddress, useBalance } from "@thirdweb-dev/react"
 
 // Tempdata collection
 
@@ -60,8 +60,7 @@ const tempTx = {
 
 // Tempdata collection -- end
 
-const WrappedMain = withGridLayout(UserMain)
-const WrappedNftList = withGridLayout(NftCollection)
+const WrappedNftList = NftCollection
 
 const userData = {
   email: 'email.add@mgg.com',
@@ -69,15 +68,16 @@ const userData = {
 }
 
 type TWalletData = {
-  balance: number
+  balance: number,
 }
 
 const walletData: TWalletData = {
-  balance: 0
+  balance: 0,
 }
 
+const WrappedMain = UserMain
+
 const User = () => {
-  const sdk = useSDK()
   const currentUser = usePlayfab((state: any) => state.user);
   const [active, setActive] = useState(0)
   // TODO: Replace with actual data
@@ -85,31 +85,20 @@ const User = () => {
   const [walletInfo, setWalletInfo] = useState(walletData)
   const handleUserInfo = (payload: { field: string, value: string }) => {
     setUserInfo({ ...userInfo, [`${payload.field}`]: payload.value })
-    console.log(userInfo)
   }
+  const walletAddress = useAddress()
+  const { data, isLoading } = useBalance()
 
   useEffect(() => {
-      const fetchWalletData = async () => {
-        const walletAddress = await sdk?.wallet?.getAddress()
-        const walletBalance = await sdk?.wallet?.balance()
+    setWalletInfo({
+      balance: Number(Number(data?.displayValue || 0).toFixed(4))
+    })
 
-        setWalletInfo({
-          balance: Number(walletBalance) || 0
-        })
-
-        setUserInfo((prev) => ({
-          ...prev,
-          wallet: walletAddress || "0x0000"
-        }))
-      }
-
-      fetchWalletData()
-
-      setUserInfo((prev) => ({
-        ...prev,
-        email: currentUser?.PrivateInfo?.Email || "email.add@mgg.com",
-      }))
-  }, [currentUser, sdk])
+    setUserInfo({
+      email: currentUser?.PrivateInfo?.Email || "email.add@mgg.com",
+      wallet: walletAddress || "0x0000",
+    })
+  }, [currentUser, walletAddress, data])
 
   return (
     <div style={{width: '100%'}}>
@@ -136,6 +125,7 @@ const User = () => {
                   walletInfo
                 }}
               />
+              <div className="border-t-[1px] border-[#606060] w-full h-full mt-[1em]"></div>
               <WrappedNftList {...{ mediaQ: { xs: 12, md: 6, lg: 7 } }} />
             </Grid>
           </StyledDiv>
