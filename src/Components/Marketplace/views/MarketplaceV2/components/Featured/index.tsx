@@ -13,7 +13,7 @@ export default function Featured() {
   return (
     <div className="w-full h-auto bg-gradient-to-b from-[#2A2964] to-[#181020] py-[5em]">
       <div className="flex justify-center text-center items-center">
-        <b className="text-[64px] bg-gradient-to-b from-[#4ED2FB] to-[#6B3CD3] bg-clip-text text-transparent font-black">LOREM IPSUM</b>
+        <b className="text-[64px] bg-gradient-to-b from-[#4ED2FB] to-[#6B3CD3] bg-clip-text text-transparent font-black">EXPLORE MARKETPLACE</b>
       </div>
       <div className="flex justify-center text-center items-center font-black pb-[5em]">
         <Link to='/marketplace/NFT'>

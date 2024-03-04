@@ -9,11 +9,11 @@ const Cards = (props: any) => {
   const { items } = props
 
   return (
-    <div className="flex flex-wrap justify-center items-center gap-1">
+    <div className="flex flex-wrap justify-center items-center gap-3">
     {
       items.map((item: any) => {
         return (
-          <div className="w-[20%]">
+          <div className="w-[300px]">
             <Card {...item} />
           </div>
         )

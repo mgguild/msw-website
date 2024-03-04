@@ -34,6 +34,9 @@ export default function Card(props: Props) {
     const src = { name: 'polygon-matic-logo', folder: 'logo' };
     const image = useFetchImg(src);
 
+    const badgeSrc = { name: badge, folder: 'classIcons' }
+    const badgeImage = useFetchImg(badgeSrc)
+
     const [rarityBorder, setRarityBorder] = useState<string>('');
 
   useEffect(() => {
@@ -67,13 +70,15 @@ export default function Card(props: Props) {
           <p className={`border-2 ${rarityBorder} p-2 rounded-[5px] text-[12px]`}>{rarity}</p>
         </div>
         <div className="flex flex-row justify-between items-center">
-          <p className="flex flex-row justify-start items-center gap-2 text-[18px] font-bold text-[#49D9F8]">
+          <p className="flex flex-row justify-start items-center gap-2 text-[24px] font-bold text-[#49D9F8]">
             <span className="rounded">
-                <img src={image} alt="Polygon MATIC" className="w-[30px] h-[30px]" />
+                <img src={image} alt="Polygon MATIC" className="w-[40px] h-[40px]" />
             </span>
             {price.token}
           </p>
-          <p></p>
+          <div>
+            <img src={badgeImage} alt="Badge" className="w-[60px] h-[60px]" />
+          </div>
           {/* <p>$0.00</p> */}
         </div>
       </div>

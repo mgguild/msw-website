@@ -4,32 +4,28 @@ export const marketplaceURL = '';
 export const mswURL = 'https://metasagawarriors.com/';
 export const socials: SocialProp[] = [
   {
-    name: 'XTwitter',
-    href: 'https://twitter.com/SparkDeFi',
+    name: 'Twitter',
+    href: 'https://twitter.com/metasagawarrior',
   },
   {
     name: 'Facebook',
-    href: 'https://www.facebook.com/SparkDeFi',
+    href: 'https://www.facebook.com/MetaSagaWarriorsOfficial',
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/sparkdefi',
+    href: 'https://www.instagram.com/metasagawarriors/?hl=en',
   },
   {
     name: 'Discord',
-    href: 'https://discord.com/invite/Sgc6yDEAAe',
+    href: 'https://discord.com/invite/5mDJmv7su3',
   },
   {
     name: 'Youtube',
-    href: 'https://www.youtube.com/c/sparkpointio',
+    href: 'https://www.youtube.com/@metasagawarriors',
   },
   {
     name: 'Medium',
-    href: 'https://medium.com/theecosystem',
-  },
-  {
-    name: 'Reddit',
-    href: 'https://www.reddit.com/r/SparkPoint/',
+    href: 'https://medium.com/@metasagawarriors',
   },
 ];
 

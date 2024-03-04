@@ -33,14 +33,14 @@ const BannerHolder = styled(backgroundProp)<{ bg?: string }>`
 
 export default function Hero() {
     // const bannerSrc = { name: 'Banner', folder: 'banner' }
-    const bannerSrc = { name: 'banner_placeholder', folder: 'banner', extension: 'jpg' };
+    const bannerSrc = { name: 'main', folder: 'banner' };
     const image = useFetchImg(bannerSrc);
 
     return (
         // <Container bg={image} data-aos="fade-in">
         //   <BannerHolder bg={image} />
         // </Container>
-        <div className="h-50">
+        <div className="h-50 w-full">
             <img src={image} alt="MetaSaga Warriors banner" />
         </div>
     );
