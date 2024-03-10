@@ -7,4 +7,5 @@ export interface Links {
 export interface SocialProp {
   name: string;
   href: string;
+  type: string;
 }

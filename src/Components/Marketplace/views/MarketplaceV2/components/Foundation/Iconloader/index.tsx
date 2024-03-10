@@ -24,7 +24,7 @@ const Iconloader = ({ type, name, ...rest }: Props) => {
         case 'fi':
           return setIcon(fiIcons[src])
         case 'fa6':
-          return setIcon(faSixIcons[src])
+          return setIcon(faSixIcons[`Fa${src.slice(3)}`])
         default:
           return setIcon(faIcons[src])
       }

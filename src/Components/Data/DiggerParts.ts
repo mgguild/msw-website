@@ -1130,7 +1130,7 @@ const Parts:parts = {
     },
   },
   Wizard: {
-    badgeImg: '/images/nftss/MSW/classIcons/Wizard.png',
+    badgeImg: '/images/nfts/MSW/classIcons/Wizard.png',
     baseStats: [
       { attribute: Atr.health, modifier: '60' },
       { attribute: Atr.attkDmg, modifier: '0 (Ranged)' },

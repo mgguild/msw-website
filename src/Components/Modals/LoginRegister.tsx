@@ -1,6 +1,7 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { PlayFabClient } from 'playfab-sdk';
@@ -15,6 +16,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    zIndex: 10,
 };
 
 const CenterFrame = styled.div`
@@ -23,7 +25,7 @@ const CenterFrame = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgb(0, 0, 0); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -215,6 +217,9 @@ const LoginRegister = ({
                     },
                 },
                 (error, result) => {
+                    if(!persistent){
+                        handleClose();
+                    }
                     if (error) {
                         toast(error.errorMessage, { type: 'error' });
                         return;
@@ -249,7 +254,9 @@ const LoginRegister = ({
                     },
                 },
                 (error, result) => {
-                    handleClose();
+                    if(!persistent){
+                        handleClose();
+                    }
                     if (error) {
                         toast(error.errorMessage, { type: 'error' });
                         return;
@@ -269,12 +276,13 @@ const LoginRegister = ({
     };
 
     return (
-        <>
+        <div style={{position: 'relative'}}>
             <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
+                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
             >
                 <Box sx={style}>
                     <CenterFrame>
@@ -335,6 +343,20 @@ const LoginRegister = ({
                                                 >
                                                     Cancel
                                                 </Button>
+                                            )}
+
+                                            {persistent && (
+                                                <Link to='/marketplace'>
+                                                    <Button
+                                                        borderRadius="8px"
+                                                        padding="0.8rem 1rem"
+                                                        type="button"
+                                                        onClick={e => handleClose()}
+                                                        style={{color: 'white'}}
+                                                    >
+                                                        Go Back
+                                                    </Button>
+                                                </Link>
                                             )}
                                         </div>
                                         <div>
@@ -464,7 +486,7 @@ const LoginRegister = ({
                     </CenterFrame>
                 </Box>
             </Modal>
-            {showBtn && 
+            {showBtn &&
                 (
                 mobile ? (
                     <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
@@ -481,7 +503,7 @@ const LoginRegister = ({
                     )
                 )
             }
-        </>
+        </div>
     );
 };
 

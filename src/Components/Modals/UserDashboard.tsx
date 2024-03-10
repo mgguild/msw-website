@@ -223,6 +223,7 @@ const UserDashboard = ({
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
+                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
             >
                 <Box sx={style}>
                     <CenterFrame>

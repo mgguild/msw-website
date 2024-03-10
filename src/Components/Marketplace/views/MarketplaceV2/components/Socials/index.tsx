@@ -26,7 +26,7 @@ export default function Socials({ links }: { links: SocialProp[] }) {
                         rel="noreferrer noopener"
                         className="link with-animation-enlarge"
                     >
-                        <Iconloader type={link.name === "XTwitter" ? "fa6" : "fa"} name={link.name} />
+                        <Iconloader type={link.type} name={link.name} />
                     </a>
                 );
             })}
