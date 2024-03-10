@@ -15,7 +15,7 @@ import store from './Components/Marketplace/state';
 
 window.Buffer = window.Buffer || Buffer;
 
-const activeChain = 'mumbai';
+const activeChain = 'polygon';
 
 // const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 // root.render(<App />);
