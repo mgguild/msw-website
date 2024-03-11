@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import styled from 'styled-components';
@@ -14,6 +15,7 @@ import {
     P,
     TextWrapper,
 } from '../../../../views/MarketplaceV2/components/Foundation/Text';
+import { ToastContainer, toast } from 'react-toastify';
 import SpriteDisplay from '../../../../views/MarketplaceV2/components/Card/Display';
 import Main from '../Main';
 import Box, { MiniBox } from '../../components/Foundation/Box';
@@ -25,7 +27,8 @@ import { getBalanceAmount } from '../../../../utils/formatBalance';
 import { useFetchImg } from '../../../../utils/assetFetch';
 import ABI from '../../constants/abi.json';
 import { Web3Button } from '@thirdweb-dev/react';
-
+import { MdlWarn } from '../../../../../Modals'
+import Iconloader from '../../components/Foundation/Iconloader';
 
 const StatField = styled.div`
     display: flex;
@@ -84,7 +87,11 @@ const NftPage: React.FC = () => {
             console.log(modal);
         };
 
-        return loading ? <></>:
+        const handleError = (e: any) => {
+            MdlWarn(e);
+        }
+
+        return loading ? <>Loading...</>:
         (
             <ContentWrapper>
                 <Flex justifyContent="center" alignItems="center" style={{flexFlow: 'column nowrap', textAlign: 'center', margin: '0 1rem'}}>
@@ -98,7 +105,7 @@ const NftPage: React.FC = () => {
                 </Flex>
                 <div>
                     <SpriteDisplay
-                        {...{ spriteURL: data ? data.img : '', width: 300, height: 300, style }}
+                        {...{ spriteURL: data ? data.img : '' }}
                     />
                 </div>
                 <Box className="bg-gradient-to-b from-[#2A3169] to-[#141839]">
@@ -121,6 +128,7 @@ const NftPage: React.FC = () => {
                             await contract.call('buy', [params.lid], { value: data?.listingData.price?.raw });
                         }}
                         className="w-full font-black text-[32px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                        onError={(e) => handleError(e)}
                 >
                         Buy
                         &nbsp;
@@ -251,6 +259,9 @@ const NftPage: React.FC = () => {
 
     return (
         <Main>
+            <Link to='/marketplace'>
+                <Iconloader  type='fa' name='ArrowLeft'/>
+            </Link>
             <TextWrapper>
                 <StyledDiv>
                     <Grid container spacing={5}>

@@ -14,6 +14,7 @@ import NFTPage from './Components/Marketplace/views/MarketplaceV2/Views/NFTPage'
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
 const NotSameWallet = lazy(() => import('./Components/Pages/NotSameWallet/index'));
+const AccVerified = lazy(() => import('./Components/Pages/AccountVerfied'));
 
 function App() {
     const connect = usePlayfab((state: any) => state.start);
@@ -52,6 +53,14 @@ function App() {
                     element={
                         <Suspense fallback={<>...</>}>
                             <NotSameWallet />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/AccountVerified"
+                    element={
+                        <Suspense fallback={<>...</>}>
+                            <AccVerified />
                         </Suspense>
                     }
                 />

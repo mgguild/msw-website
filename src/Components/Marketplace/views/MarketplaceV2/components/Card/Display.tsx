@@ -16,7 +16,7 @@ type Props = {
 const SpriteDisplay = ({ spriteURL, width, height, style, hideBg }: Props) => {
     const w = width ?? 130;
     const h = height ?? 130;
-    const Img = <img alt="logo" className='rounded-[20px]' src={spriteURL} />;
+    const Img = <img alt="logo" style={{width: '100%', height: '100%',maxWidth: '500px'}} className='rounded-[20px]' src={spriteURL} />;
     return (
         <Flex alignItems="center" justifyContent="center" style={style}>
             <SvgIcon Img={Img} width={w} height={h} />

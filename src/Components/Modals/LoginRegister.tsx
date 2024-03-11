@@ -1,9 +1,10 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { PlayFabClient } from 'playfab-sdk';
+import { PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
@@ -15,6 +16,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    zIndex: 10,
 };
 
 const CenterFrame = styled.div`
@@ -23,7 +25,7 @@ const CenterFrame = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgb(0, 0, 0); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +99,8 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
     text-align: center;
 `;
 
+const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 const LoginRegister = ({
     show = false,
     persistent = false,
@@ -112,6 +116,7 @@ const LoginRegister = ({
     const userTags = usePlayfab((state: any) => state.userTags);
 
     const [open, setOpen] = useState(show);
+    const [shwMsg, setShwMsg] = useState(false);
 
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -123,12 +128,16 @@ const LoginRegister = ({
     const [login, setLogin] = useState('');
     const [loginPass, setLoginPass] = useState('');
 
+    const [resEmail, setResEmail] = useState('')
+
     const handleClose = () => {
         setEmail('');
         setUsername('');
         setPassword('');
         setConfPassword('');
+        setResEmail('');
         setOpen(false);
+        setShwMsg(false);
     };
 
     const handleRegisterSubmit = (e: any) => {
@@ -193,8 +202,6 @@ const LoginRegister = ({
 
     const handleLoginSubmit = (e: any) => {
         e.preventDefault();
-        let re =
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (re.test(login)) {
             PlayFabClient.LoginWithEmailAddress(
@@ -215,6 +222,9 @@ const LoginRegister = ({
                     },
                 },
                 (error, result) => {
+                    if(!persistent){
+                        handleClose();
+                    }
                     if (error) {
                         toast(error.errorMessage, { type: 'error' });
                         return;
@@ -249,7 +259,9 @@ const LoginRegister = ({
                     },
                 },
                 (error, result) => {
-                    handleClose();
+                    if(!persistent){
+                        handleClose();
+                    }
                     if (error) {
                         toast(error.errorMessage, { type: 'error' });
                         return;
@@ -268,13 +280,42 @@ const LoginRegister = ({
         }
     };
 
+    const handleResetAccount = (e: any) => {
+        e.preventDefault();
+
+        if (!re.test(resEmail)) {
+            toast.error('Invalid Email Address')
+            return;
+        }
+
+        PlayFabCloudScript.ExecuteFunction(
+            {
+                FunctionName: 'ResetAccount',
+                FunctionParameter: {
+                    email: resEmail,
+                    playFabID: user.PlayFabId,
+                },
+            },
+            (error, result) => {
+                if (error) {
+                    toast(error.errorMessage, { type: 'error' });
+                    return;
+                }
+
+                toast('Reset account request sent!', { type: 'success' })
+                setShwMsg(true);
+            }
+        )
+    }
+
     return (
-        <>
+        <div style={{position: 'relative'}}>
             <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
+                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
             >
                 <Box sx={style}>
                     <CenterFrame>
@@ -336,6 +377,20 @@ const LoginRegister = ({
                                                     Cancel
                                                 </Button>
                                             )}
+
+                                            {persistent && (
+                                                <Link to='/marketplace'>
+                                                    <Button
+                                                        borderRadius="8px"
+                                                        padding="0.8rem 1rem"
+                                                        type="button"
+                                                        onClick={e => handleClose()}
+                                                        style={{color: 'white'}}
+                                                    >
+                                                        Go Back
+                                                    </Button>
+                                                </Link>
+                                            )}
                                         </div>
                                         <div>
                                             <a
@@ -343,6 +398,7 @@ const LoginRegister = ({
                                                     cursor: 'pointer',
                                                     fontSize: '1rem',
                                                 }}
+                                                onClick={e => {setCarouselItem(2);}}
                                             >
                                                 Forgot Password?
                                             </a>
@@ -459,12 +515,83 @@ const LoginRegister = ({
                                         </div>
                                     </Col>
                                 </CarouselItem>
+                                <CarouselItem style={{ width: '100%' }}>
+                                    <h4>Account Recovery</h4>
+                                    <Col onSubmit={e => handleResetAccount(e)}>
+                                        <Row>
+                                            <span>Email</span>
+                                            <input
+                                                type="input"
+                                                placeholder=""
+                                                defaultValue={resEmail}
+                                                onChange={e => setResEmail(e.target.value)}
+                                                required
+                                            />
+                                        </Row>
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                gap: '2rem',
+                                                marginTop: '1rem',
+                                            }}
+                                        >
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="submit"
+                                            >
+                                                Reset Account
+                                            </Button>
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="button"
+                                                onClick={e => {setCarouselItem(0); setShwMsg(false)}}
+                                            >
+                                                Go Back
+                                            </Button>
+                                        </div>
+                                        {shwMsg &&
+                                            <div>
+                                                If email matches, an email will be sent for account recovery
+                                            </div>
+                                        }
+
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                flexFlow: 'row nowrap',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                            }}
+                                        >
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="button"
+                                                onClick={e => {setCarouselItem(1); setShwMsg(false)}}
+                                            >
+                                                Register
+                                            </Button>
+                                            {!persistent && (
+                                                <Button
+                                                    borderRadius="8px"
+                                                    padding="0.8rem 1rem"
+                                                    type="button"
+                                                    onClick={e => handleClose()}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </Col>
+                                </CarouselItem>
                             </Carousel>
                         </Container>
                     </CenterFrame>
                 </Box>
             </Modal>
-            {showBtn && 
+            {showBtn &&
                 (
                 mobile ? (
                     <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
@@ -481,7 +608,7 @@ const LoginRegister = ({
                     )
                 )
             }
-        </>
+        </div>
     );
 };
 

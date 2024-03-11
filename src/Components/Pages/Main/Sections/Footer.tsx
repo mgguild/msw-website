@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { SectHdr, TitleCard, SectCont } from '../../../Styled';
 import { PrivPolTermsCond } from '../../../Modals';
 import React, { useState, useEffect } from 'react';
+import * as FaIconSixModule from 'react-icons/fa6';
+
+const faSixIcons = FaIconSixModule as unknown as { [key: string]: React.FC }
 
 const Content = styled.div`
     background-color: #0f0015;
@@ -67,6 +70,7 @@ const ImgContainer = styled.div`
 export default function App() {
     const [email, setEmail] = useState('');
     const [termsChecked, setTermsChecked] = useState(false);
+    const [icon, setIcon] = React.useState<any | null>(null);
     const handleCheckboxChange = () => {
         setTermsChecked(!termsChecked);
     };
@@ -85,6 +89,10 @@ export default function App() {
             window.alert('Please enter a valid email and agree to Terms and Privacy.');
         }
     };
+
+    React.useEffect(() => {
+        setIcon(faSixIcons['FaXTwitter']);
+    }, [])
 
     return (
         <>
@@ -237,8 +245,9 @@ export default function App() {
                                     className="btn-footer btn-social "
                                     href="https://twitter.com/metasagawarrior"
                                     target="_blank"
+                                    style={{display: 'flex', alignContent: 'center', alignItems: 'center'}}
                                 >
-                                    <i className="fab fa-fw fa-twitter"></i>
+                                    {icon}
                                 </a>
                                 <a
                                     className="btn-footer btn-social "
