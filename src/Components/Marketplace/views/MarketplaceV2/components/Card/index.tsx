@@ -1,4 +1,5 @@
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Web3 from 'web3';
 import { useNavigate, Link } from 'react-router-dom';
 import useMarketplaceV2, {
@@ -59,6 +60,17 @@ export default function Card(props: Props) {
     }
   }, [rarity])
 
+  const handleError = (e: any) => {
+    console.log(e);
+    toast.error(`${e}`);
+  }
+
+  const handleSuccess = (e: any) => {
+    console.log(e);
+    toast.success(`${e}`);
+  }
+
+
   return (
     <div className="w-[300px] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
         <Link to={`/marketplace/NFT/${id}/${listingId}`}>
@@ -90,6 +102,8 @@ export default function Card(props: Props) {
             await contract.call("buy", [listingId], { value: price.raw });
           }}
           className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+          onError={(e) => handleError(e)}
+          onSuccess={(e) => handleSuccess(e)}
         >
           Buy
         </Web3Button>

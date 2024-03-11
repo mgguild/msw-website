@@ -15,7 +15,7 @@ import {
     P,
     TextWrapper,
 } from '../../../../views/MarketplaceV2/components/Foundation/Text';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import SpriteDisplay from '../../../../views/MarketplaceV2/components/Card/Display';
 import Main from '../Main';
 import Box, { MiniBox } from '../../components/Foundation/Box';
@@ -88,7 +88,13 @@ const NftPage: React.FC = () => {
         };
 
         const handleError = (e: any) => {
-            MdlWarn(e);
+            console.log(e);
+            toast.error(`${e}`);
+        }
+
+        const handleSuccess = (e: any) => {
+            console.log(e);
+            toast.success(`${e}`);
         }
 
         return loading ? <>Loading...</>:
@@ -120,15 +126,16 @@ const NftPage: React.FC = () => {
                     </TextWrapper>
                 </Box>
                 <Web3Button
-                        contractAddress={
-                            process.env.REACT_APP_MARKETPLACE_ADDRESS as string
-                        } // Your smart contract address
-                        contractAbi={ABI}
-                        action={async contract => {
-                            await contract.call('buy', [params.lid], { value: data?.listingData.price?.raw });
-                        }}
-                        className="w-full font-black text-[32px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-                        onError={(e) => handleError(e)}
+                    contractAddress={
+                        process.env.REACT_APP_MARKETPLACE_ADDRESS as string
+                    } // Your smart contract address
+                    contractAbi={ABI}
+                    action={async contract => {
+                        await contract.call('buy', [params.lid], { value: data?.listingData.price?.raw });
+                    }}
+                    className="w-full font-black text-[32px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                    onError={(e) => handleError(e)}
+                    onSuccess={(e) => handleSuccess(e)}
                 >
                         Buy
                         &nbsp;

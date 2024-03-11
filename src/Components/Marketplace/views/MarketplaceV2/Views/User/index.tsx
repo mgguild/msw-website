@@ -105,7 +105,7 @@ const User = () => {
       <NeedCreds
         wallet={true}
         walletConnect={true}
-        sameWallet={false}
+        sameWallet={true}
       />
       <Main>
         <div>

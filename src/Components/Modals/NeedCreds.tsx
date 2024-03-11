@@ -69,7 +69,7 @@ const NeedCreds = ({
             console.log('REDIRECT TO WALLET ERROR');
             navigate('/WalletError', { replace: true });
         }
-    }, [userTags, userData, _status, _address, useChain(), useConnectionStatus()]);
+    }, [userTags, userData, _userData, _status, _address, useChain(), useConnectionStatus()]);
 
     return (
         <>

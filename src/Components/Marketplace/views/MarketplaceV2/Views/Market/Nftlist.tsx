@@ -163,7 +163,7 @@ const Nftlist = () => {
         <div style={{ marginTop: '1.5rem' }}>
           {toDisplay <= data.length && (
             <button onClick={handleDisplay} type="button">
-              view more
+              View more
             </button>
           )}
       </div>
