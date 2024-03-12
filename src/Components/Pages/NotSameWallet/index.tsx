@@ -117,10 +117,10 @@ const App: React.FC = () => {
             setOpen(true);
         }
 
-        if (_status === 'connected' && _userData && _userData['WalletAddress'].Value === _address) {
+        if (_status === 'connected' && _userData && `${_userData['WalletAddress'].Value}`.toUpperCase() === `${_address}`.toUpperCase()) {
             navigate(-1);
         }
-    }, [user, userData, _address]);
+    }, [user, userData, _userData, _address]);
 
     return (
         <>
@@ -157,7 +157,7 @@ const App: React.FC = () => {
                             <span>
                                 [
                                 <span style={{ color: '#ffef00' }}>
-                                    {_userData['WalletAddress'].Value}
+                                    {`${_userData['WalletAddress'].Value}`.toUpperCase()}
                                 </span>
                                 ]
                             </span>
@@ -168,7 +168,7 @@ const App: React.FC = () => {
                             <span>
                                 [
                                 <span style={{ color: '#ff4d00' }}>
-                                    {_address}
+                                    {`${_address}`.toUpperCase()}
                                 </span>
                                 ]
                             </span>
