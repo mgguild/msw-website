@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useFetchImg } from '../../../../utils/assetFetch';
 import { Flex, IconButton } from '@metagg/mgg-uikit';
 import { Grid } from '@mui/material';
 import Iconloader from '../../components/Foundation/Iconloader';
@@ -21,9 +22,9 @@ import Table from './Table';
 import TxTab from './TxTab';
 
 const UserMain = (props: any) => {
-    const {
-        controllers: { modal },
-    } = useMarketplaceV2();
+  const {
+      controllers: { modal },
+  } = useMarketplaceV2();
 
   const {
     txHistory: { coin, nft },
@@ -33,11 +34,16 @@ const UserMain = (props: any) => {
     handleFunctions: { handleUserInfo },
     walletInfo
   } = props
+
   const txD = React.useMemo(() => (active === 0 ? coin : nft), [active, coin, nft])
   const [enableEdit, setEnableEdit] = useState<boolean>(false)
   const handleEdit = () => {
     setEnableEdit(!enableEdit)
   }
+
+  const src = { name: 'polygon-matic-logo', folder: 'logo' };
+  const imgMatic = useFetchImg(src);
+
   const boxInfo = (name: string, tooltip: string) => {
     return (
       <Flex alignItems="center" justifyContent="space-between">
@@ -87,7 +93,7 @@ const UserMain = (props: any) => {
     return (
       <div className="flex flex-wrap justify-center items-center bg-[#131737] rounded-[10px] pr-[1em]">
         <div className="bg-[#181020] p-3 rounded-l-[10px] mr-[1em]">
-          <Iconloader type="fa" name={"DollarSign"} />
+          <img src={imgMatic} alt="Polygon MATIC" className="w-[30px] h-[30px]" />
         </div>
         <b>{walletInfo.balance}</b>
       </div>

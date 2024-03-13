@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Grid } from '@mui/material';
-import { Flex, IconButton } from '@metagg/mgg-uikit';
-import { useMarketplaceV2FetchData } from '../../../../hooks/useMarketplaceV2Data';
-import BasicTooltip from '../../components/Foundation/Tooltip';
-import MarketPlaceButton from '../../components/Foundation/Button';
-import { P, H2, TextWrapper } from '../../components/Foundation/Text';
-import { MiniBox } from '../../components/Foundation/Box';
-import Iconloader from '../../components/Foundation/Iconloader';
-import { StyledButton } from '../../components/Foundation/Button/styled';
-import { ContentWrapper, StyledBox } from './styled';
+import { Button, Flex, IconButton } from '@metagg/mgg-uikit';
+import { toast } from 'react-toastify';
+import Diggers from '../../../../../Data/DiggerParts';
+import SvgIcon from '../../components/Foundation/SvgIcon';
+import { Grid, Modal, Box } from '@mui/material';
+import FBox, { MiniBox } from '../../components/Foundation/Box';
 import CategoryBox from './Cat-Box';
 import NftCard from './NftCard';
-import { CardContainer, CardHeader, CardText } from '../../components/Card/styled';
+import SpriteDisplay from '../../components/Card/Display';
+import withGridLayout from '../NFTPage/withGridLayout';
+import { H3, H4, P, TextWrapper } from '../../components/Foundation/Text';
+import Iconloader from '../../components/Foundation/Iconloader';
+import { CardContainer, BadgeContainer, CardHeader, CardText } from '../../components/Card/styled';
 import { Web3Button } from '@thirdweb-dev/react';
 import {
     useOwnedNFTs,
@@ -29,6 +29,47 @@ import ABI from '../../constants/abi.json';
 
 const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
 const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
+const mdlStyle = {
+    position: 'relative',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+};
+
+const CenterFrame = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const MdlContainer = styled.div`
+    position: relative;
+    background-color: #4f19a7;
+    overflow-y: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    border: white solid 2px;
+    border-radius: 10px;
+    min-width: 15rem;
+    width: 60rem;
+    max-height: 100vh;
+    padding: 1rem;
+`;
+
+const StatField = styled.div`
+    display: flex;
+    flex-flow: column;
+    background-color: #0d123a;
+    border: 2px solid #379cbf;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+`
 
 const StyledFlex = styled(Flex)`
   max-width: 250px;
@@ -37,6 +78,23 @@ const StyledFlex = styled(Flex)`
   ${({ theme }) => `
     ${theme.mediaQueries.xl} {
       max-width: 100%;
+    }
+  `}
+`;
+
+const ContentWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & > * {
+        margin: 1rem 0px;
+    }
+
+    ${({ theme }) => `
+    ${theme.mediaQueries.md} {
+      padding: 0 1.4rem;
     }
   `}
 `;
@@ -230,9 +288,15 @@ const SellModal = (props: any) => {
                                             //   args: [contractAddress, nft.metadata.id, weiValue.toString()]
                                             // })
                                         }}
+                                        onError={res => {
+                                            console.log('Error selling!');
+                                            console.log(res);
+                                            toast.success(`Error: ${res}`)
+                                        }}
                                         onSuccess={res => {
                                             console.log('Success selling');
                                             console.log(res);
+                                            toast.success(`NFT is now listed`)
                                             setModalVisible(false);
                                         }}
                                     >
@@ -254,10 +318,69 @@ interface listData {
     };
 }
 
+interface nftData {
+    name: string;
+    image: string;
+    description: string;
+    rarity: string;
+    attributes: any;
+}
+
 const NftCollection = (props: any) => {
     // TODO: Update to display user owned NFTs
     // const { data } = useMarketplaceV2FetchData()
-    const [active, setActive] = useState(0);
+    const [MdlNFT, setMdlNFT] = useState(false);
+    const [actData, setActData] = useState<nftData>()
+
+    const getRarity = (attributes: any[]) => {
+        if (attributes.find(attr => attr.trait_type === '1/1')) {
+            return 'Legendary';
+        }
+
+        switch (attributes.find(attr => attr.trait_type === 'Class').value) {
+            case 'Archer':
+                return 'Common';
+            case 'Artillery':
+                return 'Rare';
+            case 'Berserker':
+                return 'Uncommon';
+            case 'Dark Knight':
+                return 'Epic';
+            case 'Elemental':
+                return 'Rare';
+            case 'Engineer':
+                return 'Uncommon';
+            case 'Knight':
+                return 'Common';
+            case 'Magitek':
+                return 'Epic';
+            case 'Musketeer':
+                return 'Common';
+            case 'Plague Doctor':
+                return 'Uncommon';
+            case 'Vicar':
+                return 'Uncommon';
+            case 'Wizard':
+                return 'Common';
+            default:
+                return 'Unknown';
+        }
+    };
+
+    const getRarityBorder = (rarity: string) => {
+        switch (rarity) {
+            case 'Common':
+                return('border-[#C2C2C2] text-[#C2C2C2]');
+            case 'Uncommon':
+                return('border-[#94FF88] text-[#94FF88]');
+            case 'Rare':
+                return('border-[#4BDEFD] text-[#4BDEFD]');
+            case 'Epic':
+                return('border-[#EB88FF] text-[#EB88FF]');
+            default:
+                return('border-[#C2C2C2] text-[#C2C2C2]');
+        }
+    }
 
     const OwnedNFTs = () => {
         const address = useAddress();
@@ -272,16 +395,16 @@ const NftCollection = (props: any) => {
         const [nftError, setError] = useState<any>(null);
 
         const query = `
-      query {
-        listings(first: 10, orderBy: id, orderDirection: desc) {
-          id
-          seller
-          tokenId
-          price
-          blockTimestamp
-        }
-      }
-    `;
+            query {
+                listings(first: 10, orderBy: id, orderDirection: desc) {
+                    id
+                    seller
+                    tokenId
+                    price
+                    blockTimestamp
+                }
+            }
+        `;
 
         const handleToggleModal = (index: number) => {
             setModalActive(prevVisibility => {
@@ -289,41 +412,6 @@ const NftCollection = (props: any) => {
                 updatedVisibility[index] = !updatedVisibility[index];
                 return updatedVisibility;
             });
-        };
-
-        const getRarity = (attributes: any[]) => {
-            if (attributes.find(attr => attr.trait_type === '1/1')) {
-                return 'Legendary';
-            }
-
-            switch (attributes.find(attr => attr.trait_type === 'Class').value) {
-                case 'Archer':
-                    return 'Common';
-                case 'Artillery':
-                    return 'Rare';
-                case 'Berserker':
-                    return 'Uncommon';
-                case 'Dark Knight':
-                    return 'Epic';
-                case 'Elemental':
-                    return 'Rare';
-                case 'Engineer':
-                    return 'Uncommon';
-                case 'Knight':
-                    return 'Common';
-                case 'Magitek':
-                    return 'Epic';
-                case 'Musketeer':
-                    return 'Common';
-                case 'Plague Doctor':
-                    return 'Uncommon';
-                case 'Vicar':
-                    return 'Uncommon';
-                case 'Wizard':
-                    return 'Common';
-                default:
-                    return 'Unknown';
-            }
         };
 
         const getHashId = (str: string): string => {
@@ -343,6 +431,11 @@ const NftCollection = (props: any) => {
         const getClassName = (data: any) => {
             return data.attributes.find((attr: any) => attr.trait_type === 'Class').value;
         };
+
+        const handleNFTClick = (data: nftData) => {
+            setMdlNFT(true)
+            setActData(data)
+        }
 
         useEffect(() => {
             const fetchData = async () => {
@@ -396,48 +489,262 @@ const NftCollection = (props: any) => {
 
         return (
             <>
-                {!isLoading &&
+                {isLoading ? <>Loading...</> :
                     data?.map((nft, key) => {
                         const isSelling = marketplaceData.find(
                             (item: { id: string }) => item.id === nft.metadata.id,
                         );
 
-            return (
-              <div key={key} className="w-[300px]">
-                <CardContainer className="secondary-drop-shadow">
-                  <img src={nft.metadata.image as string} alt="Digger" />
-                  <CardHeader>
-                    <p className="text-[24px] text-[#C2C2C2] font-bold grow">{nft.metadata.name}</p>
-                  </CardHeader>
-                  <button onClick={() => handleToggleModal(key)}
-                    className="uppercase w-100 font-bold text-[24px] py-3 rounded-b-[5px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-                  >
-                    {
-                      isSelling ? 'Cancel Listing' : 'Sell'
-                    }
-                  </button>
-                  {modalActive[key] && <SellModal key={key} modalActive={modalActive[key]} nft={nft} isSelling={isSelling} marketplaceData={marketplaceData} handleCloseModal={() => handleToggleModal(key)} />}
-                </CardContainer>
-              </div>
-            )
-          })
-        }
-        {
-          error && (
-            <p>Something went wrong</p>
-          )
-        }
-      </>
+                        const attributes:any = nft.metadata.attributes ? Object.values(nft.metadata.attributes) : [];
+                        const rarity = getRarity(attributes)
+                        const badgeImg = <img alt="badge-logo" src={ Diggers[ attributes[0].value ].badgeImg} />;
+
+                        return (
+                            <div key={key} className="w-[300px]">
+                                <CardContainer className="secondary-drop-shadow">
+                                    <div onClick={() => handleNFTClick({
+                                            name: nft.metadata.name as string ?? '',
+                                            image: nft.metadata.image ?? '',
+                                            description: nft.metadata.description ?? '',
+                                            rarity: rarity,
+                                            attributes: attributes,
+                                        })
+                                    }>
+                                        <img src={nft.metadata.image as string} alt="Digger" />
+                                        <BadgeContainer>
+                                            <SvgIcon Img={badgeImg} width={60} height={60} />
+                                        </BadgeContainer>
+                                        <CardHeader>
+                                            <p className="text-[24px] text-[#C2C2C2] font-bold grow">{nft.metadata.name}</p>
+                                            <p
+                                                className={`border-2 ${getRarityBorder(rarity)} p-2 rounded-[5px] text-[12px]`}
+                                                style={{maxWidth: '6rem'}}
+                                            >{rarity}</p>
+                                        </CardHeader>
+                                    </div>
+                                    <button onClick={() => handleToggleModal(key)}
+                                        className="uppercase w-100 font-bold text-[24px] py-3 rounded-b-[5px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                                    >
+                                        {
+                                            isSelling ? 'Cancel Listing' : 'Sell'
+                                        }
+                                    </button>
+                                    {modalActive[key] && <SellModal key={key} modalActive={modalActive[key]} nft={nft} isSelling={isSelling} marketplaceData={marketplaceData} handleCloseModal={() => handleToggleModal(key)} />}
+                                </CardContainer>
+                            </div>
+                        )
+                    })
+                }
+                { error && ( <p>Something went wrong</p> ) }
+            </>
     )
   }
+
+  const NftMain = () => {
+    return(
+        <ContentWrapper>
+                <Flex justifyContent="center" alignItems="center" style={{flexFlow: 'column nowrap', textAlign: 'center', margin: '0 1rem'}}>
+                    <h1>{actData?.name}</h1>
+                    <p
+                        className={`border-2 ${getRarityBorder(actData ? actData.rarity : 'Common')} p-2 rounded-[5px] text-[12px]`}
+                        style={{maxWidth: '6rem'}}
+                    >
+                        {actData?.rarity}
+                    </p>
+                </Flex>
+                <div>
+                    <SpriteDisplay
+                        {...{ spriteURL: actData ? actData.image : '' }}
+                    />
+                </div>
+                <FBox style={{padding: '1rem'}} className="bg-gradient-to-b from-[#2A3169] to-[#141839]">
+                    <TextWrapper align="center">
+                        <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center', gap: '1rem'}}>
+                            <SvgIcon Img={<img alt="badge-logo" src={ Diggers[ actData?.attributes[0].value ].badgeImg} />} width={60} height={60} />
+                            <H4 fsize="1.5em">{actData?.attributes[0].value}</H4>
+                        </div>
+                        <p style={{fontWeight: '500', textAlign: 'left', margin: '1rem 0 0 0'}}>
+                            {actData?.description}
+                        </p>
+                    </TextWrapper>
+                </FBox>
+            </ContentWrapper>
+    )
+  }
+
+  const NftDetails = () => {
+    const isUnique = actData ? actData.attributes[1].trait_type !== '1/1' : false;
+    const digClass = actData ? actData.attributes[0].value : 'Knight'
+    const digHat = actData ? actData.attributes[4].value : 'Giant King'
+    const digEyes = actData ? actData.attributes[5].value : 'Seasoned Veteran'
+    const digNose = actData ? actData.attributes[6].value : 'Seasoned Beard'
+    const digClothes = actData ? actData.attributes[3].value : 'Light Muscle Armor'
+
+
+    const skillImg = isUnique ?
+                        <img alt="skill-logo" className='rounded-[20rem]' src={ `images/nfts/MSW/abilities/${Diggers[ digClass ].legendary.ability.img}` } />
+                        :
+                        <img alt="skill-logo" className='rounded-[20rem]' src={ `images/nfts/MSW/abilities/${Diggers[ digClass ].hats[ digHat ].ability.img}` } />
+                        ;
+    const eyes = Diggers[ digClass ].eyes
+    const noses = Diggers[ digClass ].noses
+    const clothes = Diggers[ digClass ].clothes
+
+    const renderStats = () => (
+        <>
+            <Grid container spacing={0.5} mt={0.5}>
+                {isUnique ?
+                    Diggers[ digClass ].legendary.stat.map((s, ind) => {
+                        const key = ind + 1;
+                        return (
+                            <Grid item xs={12} sm={6} key={key}>
+                                <StatField>
+                                    <div>{s.attribute}</div>
+                                    <div style={{fontWeight: 1000}}>{s.modifier}</div>
+                                </StatField>
+                            </Grid>
+                        );
+                    })
+                :
+                    Diggers[ digClass ].baseStats.map((s, ind) => {
+                        const key = ind + 1;
+                        return (
+                            <Grid item xs={12} sm={6} key={key}>
+                                <StatField>
+                                    <div>{s.attribute}</div>
+                                    <div style={{fontWeight: 1000}}>{s.modifier}</div>
+                                </StatField>
+                            </Grid>
+                        );
+                    })
+                }
+            </Grid>
+            {isUnique &&
+                <div style={{display: 'flex', margin: '0.5rem 0 0 0', flexFlow: 'column', gap: '0.2rem'}}>
+                    <h1>Modifiers</h1>
+                    {eyes &&
+                        <StatField>
+                            <div>{digEyes}</div>
+                            <div style={{fontWeight: 1000}}>
+                                {eyes[digEyes].stat.map((s, i) => {
+                                        return(
+                                            <div key={i}>
+                                                + {s.modifier} {s.attribute}
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </StatField>
+                    }
+                    {noses &&
+                        <StatField>
+                            <div>{digNose}</div>
+                            <div style={{fontWeight: 1000}}>
+                                {noses[digNose].stat.map((s, i) => {
+                                        return(
+                                            <div key={i}>
+                                                + {s.modifier} {s.attribute}
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </StatField>
+                    }
+                    {clothes &&
+                        <StatField>
+                            <div>{digClothes}</div>
+                            <div style={{fontWeight: 1000}}>
+                                {clothes[digClothes].stat.map((s, i) => {
+                                        return(
+                                            <div key={i}>
+                                                + {s.modifier} {s.attribute}
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </StatField>
+                    }
+                </div>
+            }
+        </>
+    );
+
+    const renderSkill = () => {
+        return (
+            <div>
+                <MiniBox p="1em">
+                    <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', width: '100%'}}>
+                        <div style={{width: '100%'}}>
+                            <SvgIcon Img={skillImg} width={80} height={80} />
+                        </div>
+                        <P fsize="0.8em">
+                            {isUnique ?
+                                Diggers[ digClass ].legendary.ability.description
+                            :
+                                Diggers[ digClass ].hats[ digHat ].ability.description
+                            }
+                        </P>
+                    </div>
+                </MiniBox>
+            </div>
+        );
+    };
+
+    return (
+        <ContentWrapper>
+            <Box>
+                <Flex>
+                    <h1>Base Stats</h1>
+                </Flex>
+                {renderStats()}
+                <Flex style={{margin: '1rem 0 0 0'}}>
+                    <h2>Ability: {isUnique ?
+                            Diggers[ digClass ].legendary.ability.name
+                        :
+                            Diggers[ digClass ].hats[ digHat ].ability.name
+                        }
+                    </h2>
+                </Flex>
+                {renderSkill()}
+            </Box>
+        </ContentWrapper>
+    );
+};
+
+    const WrappedMain = withGridLayout(NftMain);
+    const WrappedDetails = withGridLayout(NftDetails);
+
   return (
       <div>
-          <div className="py-[2em]">
-              <b className="text-[24px] text-[#ECB602] font-black">OWNED CHARACTERS / ITEMS</b>
-          </div>
-          <div className="flex flex-wrap justify-start items-center gap-3">
-              <OwnedNFTs />
-          </div>
+            <Modal
+                open={MdlNFT}
+                onClose={() => setMdlNFT(false)}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={mdlStyle}>
+                    <CenterFrame>
+                        <MdlContainer>
+                            <button style={{position: 'absolute', right: '1rem'}} onClick={() => setMdlNFT(false)}>
+                                <Iconloader type='fa' name='RegWindowClose' />
+                            </button>
+                            <Grid container spacing={0.3}>
+                                <WrappedMain />
+                                <WrappedDetails />
+                            </Grid>
+                        </MdlContainer>
+                    </CenterFrame>
+                </Box>
+            </Modal>
+            <div className="py-[2em]">
+                <b className="text-[24px] text-[#ECB602] font-black">OWNED CHARACTERS / ITEMS</b>
+            </div>
+            <div className="flex flex-wrap justify-start items-center gap-3">
+                <OwnedNFTs />
+            </div>
       </div>
   )
 }
