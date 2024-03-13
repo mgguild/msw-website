@@ -84,7 +84,7 @@ export default function Card(props: Props) {
       </div>
       <div className="w-full">
         <Web3Button
-          contractAddress={process.env.REACT_APP_MARKETPLACE_ADDRESS as string} // Your smart contract address
+          contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
           contractAbi={ABI}
           action={async (contract) => {
             await contract.call("buy", [listingId], { value: price.raw });
