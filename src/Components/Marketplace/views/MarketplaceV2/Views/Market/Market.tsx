@@ -17,7 +17,7 @@ import NeedCreds from '../../../../../Modals/NeedCreds';
 
 const Market = () => {
     const OwnedNFTs = () => {
-        const contractAddress = '0x290ca81d1ba1a31cd78be176df08c89e63c6de91';
+        const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
         const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
         const address = useAddress();
         const { contract } = useContract(contractAddress);
@@ -86,7 +86,7 @@ const Market = () => {
                                         action={async contract => {
                                             // approve listing
                                             await contract.erc721.setApprovalForAll(
-                                                '0x90ba9328748cf652f9bba12be0436acf4f782076',
+                                                '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78',
                                                 true,
                                             );
                                             // listing id
@@ -104,7 +104,7 @@ const Market = () => {
                                         action={async contract => {
                                             // approve listing
                                             await contract.erc721.setApprovalForAll(
-                                                '0x90ba9328748cf652f9bba12be0436acf4f782076',
+                                                '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78',
                                                 true,
                                             );
                                             // contract, token id, price in wei

@@ -167,17 +167,19 @@ const SellModal = (props: any) => {
         error: approvalError,
     } = useContractRead(approvalContract, 'isApprovedForAll', [
         address,
-        '0x90ba9328748cf652f9bba12be0436acf4f782076',
+        contractAddressSecond
     ]);
 
     const [usedContract, setUsedContract] = useState<string>(contractAddressSecond);
 
     useEffect(() => {
         setModalVisible(modalVisible);
+        console.log("address is approved", approvalData)
         if (approvalData) {
             setUsedContract(contractAddressSecond);
         } else {
             setUsedContract(process.env.REACT_APP_MARKETPLACE_ADDRESS as string);
+            //setUsedContract(contractAddressSecond);
         }
     }, [modalVisible, modalActive, approvalData, approvalIsLoading, approvalError]);
 
@@ -240,10 +242,16 @@ const SellModal = (props: any) => {
                                         action={async contract => {
                                             // approve listing
                                             if (!approvalData) {
+                                                console.log("Approving")
                                                 await contract.erc721.setApprovalForAll(
-                                                    '0x90ba9328748cf652f9bba12be0436acf4f782076',
+                                                    contractAddressSecond,
                                                     true,
                                                 );
+                                                console.log("Approved")
+                                                console.log("Cancelling Listing")
+                                                await contract.call('cancelListing', [
+                                                    listingId,
+                                                ]);
                                             } else {
                                                 await contract.call('cancelListing', [
                                                     listingId,
@@ -270,13 +278,23 @@ const SellModal = (props: any) => {
                                         contractAddress={usedContract}
                                         contractAbi={ABI}
                                         action={async contract => {
+                                            console.log(usedContract)
                                             // approve listing
                                             if (!approvalData) {
+                                                console.log("Approving")
                                                 await contract.erc721.setApprovalForAll(
-                                                    '0x90ba9328748cf652f9bba12be0436acf4f782076',
+                                                    contractAddressSecond,
                                                     true,
                                                 );
+                                                console.log("Approved")
+                                                console.log("Listing...")
+                                                await contract.call('createListing', [
+                                                    contractAddress,
+                                                    nft.metadata.id,
+                                                    weiValue.toString(),
+                                                ]);
                                             } else {
+                                                console.log("creating listing...")
                                                 await contract.call('createListing', [
                                                     contractAddress,
                                                     nft.metadata.id,
