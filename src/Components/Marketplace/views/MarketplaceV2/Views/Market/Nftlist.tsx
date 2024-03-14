@@ -7,6 +7,7 @@ import Card from '../../components/Card';
 import axios from 'axios';
 import { getBalanceAmount } from '../../../../utils/formatBalance';
 import { CardType, CLASSES } from '../../../../contexts';
+import useFilter from '../../../../hooks/useFilter';
 
 interface listData {
     data?: {
@@ -24,17 +25,20 @@ const Nftlist = () => {
     // const { data } = useMarketplaceV2FetchData()
     const [toDisplay, setToDisplay] = React.useState<number>(10);
 
-    const query = `
-    query {
-      listings(first: 10, orderBy: id, orderDirection: desc) {
-        id
-        seller
-        tokenId
-        price
-        blockTimestamp
-      }
-    }
-  `;
+    const filter = useFilter((state: any) => state.filter);
+    const order = useFilter((state: any) => state.order);
+
+    const [query, setQuery] = useState(`
+        query {
+            listings(first: 10, orderBy: ${filter}, orderDirection: ${order}) {
+                id
+                seller
+                tokenId
+                price
+                blockTimestamp
+            }
+        }
+    `);
 
     const handleDisplay = () => {
         if (toDisplay !== data.length) {
@@ -93,6 +97,18 @@ const Nftlist = () => {
     const getClassName = (data: any) => {
         return data.attributes.find((attr: any) => attr.trait_type === 'Class').value;
     };
+
+    useEffect(() => {
+        setQuery(` query {
+            listings(first: 10, orderBy: ${filter}, orderDirection: ${order}) {
+                id
+                seller
+                tokenId
+                price
+                blockTimestamp
+            }
+        }`)
+    }, [filter, order])
 
     useEffect(() => {
         const fetchData = async () => {

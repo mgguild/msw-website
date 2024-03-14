@@ -2,6 +2,7 @@ import React, { createContext, useEffect } from 'react';
 import { CardType, CLASSES } from './index.d';
 import useSubgraphQuery from '../hooks/useSubgraph';
 import { getBalanceAmount } from '../utils/formatBalance';
+import useFilter from '../hooks/useFilter';
 
 export const raritySwitch = (trait: any) => {
     switch (trait) {
@@ -74,16 +75,19 @@ export const MarketplaceV2DataProvider = ({ children }: any) => {
     const [nftsState, setNftsState] = React.useState<CardType[] | []>([]);
     const [classesState, setClassesState] = React.useState<any[]>([]);
 
+    const filter = useFilter((state: any) => state.filter);
+    const order = useFilter((state: any) => state.order);
+
     const { data, loading, error } = useSubgraphQuery(`
-    query {
-      listings(first: 10, orderBy: id, orderDirection: desc) {
-        id
-        seller
-        tokenId
-        price
-        blockTimestamp
-      }
-    }
+        query {
+            listings(first: 10, orderBy: ${filter}, orderDirection: ${order}) {
+                id
+                seller
+                tokenId
+                price
+                blockTimestamp
+            }
+        }
   `);
 
     useEffect(() => {
@@ -108,7 +112,7 @@ export const MarketplaceV2DataProvider = ({ children }: any) => {
 
             setNftsState(nfts);
         }
-    }, [data, loading, error]);
+    }, [data, loading, error, filter, order]);
 
     useEffect(() => {
         setClassesState(classes);

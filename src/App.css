@@ -2593,3 +2593,10 @@ input {
 
 }
 }
+
+#dropdown-marketplace-filter{
+  margin: 0 1rem !important;
+  border-radius: 10px !important;
+  background: none !important;
+  border: solid 2px white !important;
+}
