@@ -104,7 +104,7 @@ const Market = () => {
                                         action={async contract => {
                                             // approve listing
                                             await contract.erc721.setApprovalForAll(
-                                                '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78',
+                                                '0x90ba9328748cf652f9bba12be0436acf4f782076',
                                                 true,
                                             );
                                             // contract, token id, price in wei
