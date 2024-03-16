@@ -17,6 +17,7 @@ import {
   ProfileState,
   State,
   TeamsState,
+  ThirdwebState,
 } from './types';
 import { MAINNET_CHAIN_ID } from '../config';
 import { useDispatch } from 'react-redux';
@@ -175,3 +176,9 @@ export const useGuildpad = () => {
   const guildpad = useSelector((state: State) => state.guildpads.selected);
   return guildpad;
 };
+
+// Thirdweb
+export const useFetchOwnerNFTs = () => {
+  const nfts = useSelector((state: ThirdwebState ) => state.ownerNFTs)
+  return nfts
+}
