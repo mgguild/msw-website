@@ -66,7 +66,7 @@ const UserMain = (props: any) => {
 
     const renderInfo = () => {
         return (
-          <div className="flex flex-wrap justify-evenly w-full items-center gap-3 my-3">
+          <div className="flex flex-wrap justify-end w-full items-center gap-3 my-3">
             {Object.entries(userInfo).map((info: any) => {
               const field =
                 FIELD_INFO[info[0] as keyof typeof FIELD_INFO];

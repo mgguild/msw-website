@@ -78,16 +78,19 @@ const walletData: TWalletData = {
 const WrappedMain = UserMain
 
 const User = () => {
+  const walletAddress = useAddress()
+  const { data, isLoading } = useBalance()
+
   const currentUser = usePlayfab((state: any) => state.user);
+
   const [active, setActive] = useState(0)
-  // TODO: Replace with actual data
   const [userInfo, setUserInfo] = useState(userData)
   const [walletInfo, setWalletInfo] = useState(walletData)
+
   const handleUserInfo = (payload: { field: string, value: string }) => {
     setUserInfo({ ...userInfo, [`${payload.field}`]: payload.value })
   }
-  const walletAddress = useAddress()
-  const { data, isLoading } = useBalance()
+
 
   useEffect(() => {
     setWalletInfo({
@@ -126,7 +129,7 @@ const User = () => {
                 }}
               />
               <div className="border-t-[1px] border-[#606060] w-full h-full mt-[1em]"></div>
-              <WrappedNftList {...{ mediaQ: { xs: 12, md: 6, lg: 7 } }} />
+              {currentUser && walletAddress && <WrappedNftList {...{ mediaQ: { xs: 12, md: 6, lg: 7 } }} />}
             </Grid>
           </StyledDiv>
         </TextWrapper>
