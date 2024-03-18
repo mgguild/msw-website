@@ -13,8 +13,10 @@ export const CardContainer = styled.div`
     outline: solid 0px ${COLORS.BORDER};
     border-radius: 5px;
     display: flex;
+    position: relative;
     flex-direction: column;
     width: 100%;
+    z-index: 1;
     ${({ theme }) => `
     ${theme.mediaQueries.xl} {
       max-width: 100%;
@@ -27,6 +29,13 @@ export const CardContainer = styled.div`
         outline-width: 5px;
     }
 `;
+
+export const BadgeContainer = styled.div`
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+`
+
 const commonSectionStyle = (props?: {
     justify?: string;
     align?: string;

@@ -9,6 +9,7 @@ import {
   Team,
   GuildpadConfig,
 } from '../config/constants/types';
+import { NFT } from '@thirdweb-dev/react'
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
@@ -27,6 +28,10 @@ export type TranslatableText =
     };
 
 export type SerializedBigNumber = string;
+
+export interface Default {
+  data?: any;
+}
 
 export interface Farm extends FarmConfig {
   totalDeposits?: string;
@@ -321,4 +326,24 @@ export interface PlayfabLoginResult {
   code: number;
   data: PlayFabClientModels.LoginResult;
   stateus: string;
+}
+
+export interface ThirdwebState{
+  ownerNFTs: TWOwnerResult;
+}
+
+export interface TWOwnerResult {
+  data: NFT[] | undefined;
+  isLoading: boolean;
+  error: unknown;
+}
+
+export interface TWAddresses {
+  user?: string | undefined;
+  contract?: any;
+}
+
+export interface CookieData {
+  name: string;
+  data?: any;
 }

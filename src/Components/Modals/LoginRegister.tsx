@@ -1,15 +1,19 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useState } from 'react';
+import moment from 'moment'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
+import { useAppDispatch } from '../Marketplace/state';
+import { newCookie } from '../Marketplace/state/cookies/cookies';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
 import { MdlProps } from './types';
 import Iconloader from '../Marketplace/views/MarketplaceV2/components/Foundation/Iconloader';
+
 
 const style = {
     position: 'relative',
@@ -109,6 +113,8 @@ const LoginRegister = ({
     Subheader,
     mobile = false,
 }: MdlProps) => {
+    const dispatch = useAppDispatch()
+
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
     const setUserTags = usePlayfab((state: any) => state.setUserTags);
     const setUserData = usePlayfab((state: any) => state.setUserData);
@@ -168,6 +174,7 @@ const LoginRegister = ({
     };
 
     const FetchTags = (playfabId: string) => {
+
         PlayFabClient.GetPlayerTags(
             {
                 PlayFabId: playfabId,
@@ -186,11 +193,14 @@ const LoginRegister = ({
                             PlayFabId: playfabId,
                             Keys: ['WalletAddress'],
                         },
-                        (error, result) => {
+                        async (error, result) => {
                             if (error) {
                                 toast(error.errorMessage, { type: 'error' });
                                 return;
                             }
+
+                            const cookie = await dispatch(newCookie({name: 'playerTags', data: result.data.Data}))
+                            console.log(cookie);
 
                             setUserData(result.data.Data);
                         },
@@ -203,81 +213,51 @@ const LoginRegister = ({
     const handleLoginSubmit = (e: any) => {
         e.preventDefault();
 
-        if (re.test(login)) {
-            PlayFabClient.LoginWithEmailAddress(
-                {
-                    Email: login,
-                    Password: loginPass,
-                    InfoRequestParameters: {
-                        GetUserAccountInfo: true,
-                        GetCharacterInventories: false,
-                        GetCharacterList: false,
-                        GetPlayerProfile: false,
-                        GetPlayerStatistics: false,
-                        GetTitleData: false,
-                        GetUserData: false,
-                        GetUserInventory: false,
-                        GetUserReadOnlyData: false,
-                        GetUserVirtualCurrency: false,
-                    },
-                },
-                (error, result) => {
-                    if(!persistent){
-                        handleClose();
-                    }
-                    if (error) {
-                        toast(error.errorMessage, { type: 'error' });
-                        return;
-                    }
-
-                    toast(`${login} logged in`, { type: 'success' });
-                    setUserInfo(result.data.InfoResultPayload?.AccountInfo);
-
-                    setTimeout(() => {
-                        FetchTags(
-                            result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
-                        );
-                    }, 100);
-                },
-            );
-        } else {
-            PlayFabClient.LoginWithPlayFab(
-                {
-                    Username: login,
-                    Password: loginPass,
-                    InfoRequestParameters: {
-                        GetUserAccountInfo: true,
-                        GetCharacterInventories: false,
-                        GetCharacterList: false,
-                        GetPlayerProfile: false,
-                        GetPlayerStatistics: false,
-                        GetTitleData: false,
-                        GetUserData: false,
-                        GetUserInventory: false,
-                        GetUserReadOnlyData: false,
-                        GetUserVirtualCurrency: false,
-                    },
-                },
-                (error, result) => {
-                    if(!persistent){
-                        handleClose();
-                    }
-                    if (error) {
-                        toast(error.errorMessage, { type: 'error' });
-                        return;
-                    }
-
-                    toast(`${login} logged in`, { type: 'success' });
-                    setUserInfo(result.data.InfoResultPayload?.AccountInfo);
-
-                    setTimeout(() => {
-                        FetchTags(
-                            result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
-                        );
-                    }, 100);
-                },
-            );
+        if (!re.test(login)) {
+            toast.error('Invalid Email Address')
+            return;
         }
+
+        PlayFabClient.LoginWithEmailAddress(
+            {
+                Email: login,
+                Password: loginPass,
+                InfoRequestParameters: {
+                    GetUserAccountInfo: true,
+                    GetCharacterInventories: false,
+                    GetCharacterList: false,
+                    GetPlayerProfile: false,
+                    GetPlayerStatistics: false,
+                    GetTitleData: false,
+                    GetUserData: false,
+                    GetUserInventory: false,
+                    GetUserReadOnlyData: false,
+                    GetUserVirtualCurrency: false,
+                },
+            },
+            async (error, result) => {
+                if(!persistent){
+                    handleClose();
+                }
+                if (error) {
+                    toast(error.errorMessage, { type: 'error' });
+                    return;
+                }
+
+                toast(`${login} logged in`, { type: 'success' });
+
+                const cookie = await dispatch(newCookie({name: 'playerInfo', data: result.data.InfoResultPayload?.AccountInfo}))
+                console.log(cookie);
+
+                setUserInfo(result.data.InfoResultPayload?.AccountInfo);
+
+                setTimeout(() => {
+                    FetchTags(
+                        result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
+                    );
+                }, 100);
+            },
+        );
     };
 
     const handleResetAccount = (e: any) => {
@@ -315,6 +295,7 @@ const LoginRegister = ({
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
+                disableAutoFocus
                 slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
             >
                 <Box sx={style}>
@@ -332,9 +313,9 @@ const LoginRegister = ({
                                     {Subheader && <p>{Subheader}</p>}
                                     <Col onSubmit={e => handleLoginSubmit(e)}>
                                         <Row>
-                                            <span>Email or Username:</span>
+                                            <span>Email:</span>
                                             <input
-                                                type="input"
+                                                type="email"
                                                 placeholder=""
                                                 defaultValue={login}
                                                 onChange={e => setLogin(e.target.value)}

@@ -15,7 +15,7 @@ import {
     P,
     TextWrapper,
 } from '../../../../views/MarketplaceV2/components/Foundation/Text';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import SpriteDisplay from '../../../../views/MarketplaceV2/components/Card/Display';
 import Main from '../Main';
 import Box, { MiniBox } from '../../components/Foundation/Box';
@@ -45,6 +45,10 @@ const NftPage: React.FC = () => {
 
     const {data, loading, error} = useGetDiggerData(`${params.id}`, `${params.lid}`);
     const [rarityBorder, setRarityBorder] = useState<string>('');
+
+    const isUnique = data ? data?.rarity !== 'Legendary' : false;
+    const digClass = data ? data.class : 'Knight'
+    const digHat = data ? data.parts.hat : 'Giant King'
 
     const src = { name: 'polygon-matic-logo', folder: 'logo' };
     const tokenImage = useFetchImg(src);
@@ -80,7 +84,7 @@ const NftPage: React.FC = () => {
         const style = {
             minHeight: '300px',
         };
-        const badgeImg = <img alt="badge-logo" src={ Diggers[ data ? data.class : '' ].badgeImg} />;
+        const badgeImg = <img alt="badge-logo" src={ Diggers[ digClass ].badgeImg} />;
 
         const handleBuy = (event: any) => {
             modal.handleOpen(`buy-Digger`);
@@ -88,7 +92,13 @@ const NftPage: React.FC = () => {
         };
 
         const handleError = (e: any) => {
-            MdlWarn(e);
+            console.log(e);
+            toast.error(`${e}`);
+        }
+
+        const handleSuccess = (e: any) => {
+            console.log(e);
+            toast.success(`${e}`);
         }
 
         return loading ? <>Loading...</>:
@@ -120,25 +130,24 @@ const NftPage: React.FC = () => {
                     </TextWrapper>
                 </Box>
                 <Web3Button
-                        contractAddress={
-                            process.env.REACT_APP_MARKETPLACE_ADDRESS as string
-                        } // Your smart contract address
-                        contractAbi={ABI}
-                        action={async contract => {
-                            await contract.call('buy', [params.lid], { value: data?.listingData.price?.raw });
-                        }}
-                        className="w-full font-black text-[32px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-                        onError={(e) => handleError(e)}
+                    contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
+                    contractAbi={ABI}
+                    action={async (contract) => {
+                        await contract.call("buy", [params.lid], { value: data?.listingData.price?.raw });
+                    }}
+                    className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                    onError={(e) => handleError(e)}
+                    onSuccess={(e) => handleSuccess(e)}
                 >
-                        Buy
-                        &nbsp;
-                        <img
-                                    src={tokenImage}
-                                    alt="Polygon MATIC"
-                                    className="w-[40px] h-[40px]"
-                        />
-                        &nbsp;
-                        {data?.listingData.price?.token}
+                    Buy
+                    &nbsp;
+                    <img
+                        src={tokenImage}
+                        alt="Polygon MATIC"
+                        className="w-[40px] h-[40px]"
+                    />
+                    &nbsp;
+                    {data?.listingData.price?.token}
                 </Web3Button>
                 {modal.openModal[`buy-Digger`] && <PurchaseNFT {...{ ...item }} />}
             </ContentWrapper>
@@ -146,27 +155,46 @@ const NftPage: React.FC = () => {
     };
 
     const NftDetails = (props: any) => {
-        const skillImg = <img alt="skill-logo" className='rounded-[20rem]' src={ `images/nfts/MSW/abilities/${Diggers[data ? data.class : ''].hats[data ? data.parts.hat : ''].ability.img}` } />;
-        const eyes = Diggers[ data ? data.class : '' ].eyes
-        const noses = Diggers[ data ? data.class : '' ].noses
-        const clothes = Diggers[ data ? data.class : '' ].clothes
+        const skillImg = isUnique  ?
+                            <img alt="skill-logo" className='rounded-[20rem]' src={ `images/nfts/MSW/abilities/${Diggers[ digClass ].legendary.ability.img}` } />
+                            :
+                            <img alt="skill-logo" className='rounded-[20rem]' src={ `images/nfts/MSW/abilities/${Diggers[ digClass ].hats[ digHat ].ability.img}` } />
+                            ;
+
+        const eyes = Diggers[ digClass ].eyes
+        const noses = Diggers[ digClass ].noses
+        const clothes = Diggers[ digClass ].clothes
 
         const renderStats = () => (
             <>
                 <Grid container spacing={1} mt={1}>
-                    {Diggers[ data ? data.class : '' ].baseStats.map((s, ind) => {
-                        const key = ind + 1;
-                        return (
-                            <Grid item xs={12} sm={6} key={key}>
-                                <StatField>
-                                    <div>{s.attribute}</div>
-                                    <div style={{fontWeight: 1000}}>{s.modifier}</div>
-                                </StatField>
-                            </Grid>
-                        );
-                    })}
+                    {isUnique ?
+                        Diggers[ digClass ].baseStats.map((s, ind) => {
+                            const key = ind + 1;
+                            return (
+                                <Grid item xs={12} sm={6} key={key}>
+                                    <StatField>
+                                        <div>{s.attribute}</div>
+                                        <div style={{fontWeight: 1000}}>{s.modifier}</div>
+                                    </StatField>
+                                </Grid>
+                            );
+                        })
+                    :
+                        Diggers[ digClass ].baseStats.map((s, ind) => {
+                            const key = ind + 1;
+                            return (
+                                <Grid item xs={12} sm={6} key={key}>
+                                    <StatField>
+                                        <div>{s.attribute}</div>
+                                        <div style={{fontWeight: 1000}}>{s.modifier}</div>
+                                    </StatField>
+                                </Grid>
+                            );
+                        })
+                    }
                 </Grid>
-                { data?.rarity !== 'Legendary' &&
+                { isUnique &&
                     <div style={{display: 'flex', flexFlow: 'column', margin: '1rem 0 0 0', gap: '0.5rem'}}>
                         <H4 fsize="1.5em">Modifiers</H4>
                         {data?.parts.eyes && eyes &&
@@ -223,12 +251,16 @@ const NftPage: React.FC = () => {
             return (
                 <div>
                     <MiniBox p="1em">
-                        <div style={{display: 'grid', gridTemplateColumns: '1fr 1.6fr'}}>
+                        <div style={{display: 'grid', gridTemplateColumns: '1fr 1.6fr', width: '100%'}}>
                             <div style={{width: '100%'}}>
                                 <SvgIcon Img={skillImg} width={100} height={100} />
                             </div>
                             <P fsize="0.8em">
-                                {Diggers[ data ? data.class : '' ].hats[ data ? data.parts.hat : '' ].ability.description}
+                                {isUnique ?
+                                    Diggers[ digClass ].legendary.ability.description
+                                :
+                                    Diggers[ digClass ].hats[ digHat ].ability.description
+                                }
                             </P>
                         </div>
                     </MiniBox>
@@ -246,7 +278,13 @@ const NftPage: React.FC = () => {
                 </Box>
                 <Box className="bg-gradient-to-b from-[#2A3169] to-[#141839]">
                     <Flex>
-                        <H4 fsize="1.5em">Ability: {Diggers[data ? data.class : '' ].hats[ data ? data.parts.hat : ''].ability.name}</H4>
+                        <H4 fsize="1.5em">
+                            Ability: {isUnique ?
+                                Diggers[ digClass ].legendary.ability.name
+                            :
+                                Diggers[ digClass ].hats[ digHat ].ability.name
+                            }
+                        </H4>
                     </Flex>
                     {renderSkill()}
                 </Box>

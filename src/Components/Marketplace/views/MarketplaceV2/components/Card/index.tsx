@@ -1,5 +1,6 @@
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
-import Web3 from 'web3';
+import { toast } from 'react-toastify';
+import styled from 'styled-components';
 import { useNavigate, Link } from 'react-router-dom';
 import useMarketplaceV2, {
     useQueryAsset,
@@ -7,14 +8,23 @@ import useMarketplaceV2, {
 } from '../../../../hooks/useMarketplaceV2';
 import useTheme from '../../../../hooks/useTheme';
 import { Props } from './index.d';
-import { CardContainer, Details, CardText as TextBox, Button } from './styled';
-import { H5, P } from '../Foundation/Text';
-import PurchaseNFT from '../Modals/Buy-nft';
-import Header from './Header';
-import SpriteDisplay from './Display';
 import ABI from '../../constants/abi.json';
 import { Web3Button } from '@thirdweb-dev/react';
 import { useFetchImg } from '../../../../utils/assetFetch';
+
+const CardContainer = styled.div`
+  position: relative;
+`
+
+const PriceDetails = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  color: #49D9F8;
+  font-size: 20px;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+`
 
 export default function Card(props: Props) {
     const { theme } = useTheme();
@@ -59,8 +69,20 @@ export default function Card(props: Props) {
     }
   }, [rarity])
 
+  const handleError = (e: any) => {
+    console.log(e);
+    toast.error(`${e}`);
+  }
+
+  const handleSuccess = (e: any) => {
+    console.log(e);
+    toast.success(`${e}`);
+  }
+
+
   return (
-    <div className="w-[300px] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
+    <CardContainer className="w-[300px] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
+        <img style={{position: 'absolute', top: '0.5rem', right: '0.5rem'}} src={badgeImage} alt="Badge" className="w-[60px] h-[60px]" />
         <Link to={`/marketplace/NFT/${id}/${listingId}`}>
             <img src={spriteName} alt="Digger" className="rounded-t-[20px] w-full h-auto" />
         </Link>
@@ -69,31 +91,28 @@ export default function Card(props: Props) {
           <p className="text-[24px] text-[#C2C2C2] font-bold grow">{name}</p>
           <p className={`border-2 ${rarityBorder} p-2 rounded-[5px] text-[12px]`}>{rarity}</p>
         </div>
-        <div className="flex flex-row justify-between items-center">
-          <p className="flex flex-row justify-start items-center gap-2 text-[24px] font-bold text-[#49D9F8]">
+        <PriceDetails>
             <span className="rounded">
-                <img src={image} alt="Polygon MATIC" className="w-[40px] h-[40px]" />
+              <img src={image} alt="Polygon MATIC" className="w-[40px] h-[40px]" />
             </span>
             {price.token}
-          </p>
-          <div>
-            <img src={badgeImage} alt="Badge" className="w-[60px] h-[60px]" />
-          </div>
           {/* <p>$0.00</p> */}
-        </div>
+        </PriceDetails>
       </div>
       <div className="w-full">
         <Web3Button
-          contractAddress={process.env.REACT_APP_MARKETPLACE_ADDRESS as string} // Your smart contract address
+          contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
           contractAbi={ABI}
           action={async (contract) => {
             await contract.call("buy", [listingId], { value: price.raw });
           }}
           className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+          onError={(e) => handleError(e)}
+          onSuccess={(e) => handleSuccess(e)}
         >
           Buy
         </Web3Button>
       </div>
-    </div>
+    </CardContainer>
   )
 }
