@@ -130,26 +130,24 @@ const NftPage: React.FC = () => {
                     </TextWrapper>
                 </Box>
                 <Web3Button
-                    contractAddress={
-                        process.env.REACT_APP_MARKETPLACE_ADDRESS as string
-                    } // Your smart contract address
+                    contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
                     contractAbi={ABI}
-                    action={async contract => {
-                        await contract.call('buy', [params.lid], { value: data?.listingData.price?.raw });
+                    action={async (contract) => {
+                        await contract.call("buy", [params.lid], { value: data?.listingData.price?.raw });
                     }}
-                    className="w-full font-black text-[32px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                    className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
                     onError={(e) => handleError(e)}
                     onSuccess={(e) => handleSuccess(e)}
                 >
-                        Buy
-                        &nbsp;
-                        <img
-                                    src={tokenImage}
-                                    alt="Polygon MATIC"
-                                    className="w-[40px] h-[40px]"
-                        />
-                        &nbsp;
-                        {data?.listingData.price?.token}
+                    Buy
+                    &nbsp;
+                    <img
+                        src={tokenImage}
+                        alt="Polygon MATIC"
+                        className="w-[40px] h-[40px]"
+                    />
+                    &nbsp;
+                    {data?.listingData.price?.token}
                 </Web3Button>
                 {modal.openModal[`buy-Digger`] && <PurchaseNFT {...{ ...item }} />}
             </ContentWrapper>

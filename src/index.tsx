@@ -11,6 +11,7 @@ import { MarketplaceV2Provider } from './Components/Marketplace/contexts/Marketp
 import { MarketplaceV2DataProvider } from './Components/Marketplace/contexts/MarketplaceDataContext';
 import { ThemeContextProvider } from './Components/Marketplace/contexts/ThemeContext';
 import { AuthContextProvider } from './Components/Marketplace/contexts/AuthContext';
+import { CookiesProvider } from 'react-cookie';
 import store from './Components/Marketplace/state';
 
 window.Buffer = window.Buffer || Buffer;
@@ -27,19 +28,21 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         clientId={process.env.REACT_APP_CLIENT_ID}
     >
         <Provider store={store}>
-            <HashRouter>
-                <HelmetProvider>
-                    <ThemeContextProvider>
-                        <AuthContextProvider>
-                            <MarketplaceV2Provider>
-                                <MarketplaceV2DataProvider>
-                                    <App />
-                                </MarketplaceV2DataProvider>
-                            </MarketplaceV2Provider>
-                        </AuthContextProvider>
-                    </ThemeContextProvider>
-                </HelmetProvider>
-            </HashRouter>
+            <CookiesProvider defaultSetOptions={{ path: '/'}}>
+                <HashRouter>
+                    <HelmetProvider>
+                        <ThemeContextProvider>
+                            <AuthContextProvider>
+                                <MarketplaceV2Provider>
+                                    <MarketplaceV2DataProvider>
+                                        <App />
+                                    </MarketplaceV2DataProvider>
+                                </MarketplaceV2Provider>
+                            </AuthContextProvider>
+                        </ThemeContextProvider>
+                    </HelmetProvider>
+                </HashRouter>
+            </CookiesProvider>
         </Provider>
     </ThirdwebProvider>,
     // </React.StrictMode>

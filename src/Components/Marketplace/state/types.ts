@@ -29,6 +29,10 @@ export type TranslatableText =
 
 export type SerializedBigNumber = string;
 
+export interface Default {
+  data?: any;
+}
+
 export interface Farm extends FarmConfig {
   totalDeposits?: string;
   rewardRate?: SerializedBigNumber;
@@ -337,4 +341,9 @@ export interface TWOwnerResult {
 export interface TWAddresses {
   user?: string | undefined;
   contract?: any;
+}
+
+export interface CookieData {
+  name: string;
+  data?: any;
 }
