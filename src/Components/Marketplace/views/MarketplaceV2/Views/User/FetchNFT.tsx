@@ -187,6 +187,7 @@ const SellModal = (props: any) => {
                                         }}
                                         onSuccess={res => {
                                             console.log('Listing cancelled');
+                                            toast.success(`Digger #${nft.metadata.id} listing cancelled`)
                                             console.log(res);
                                             setModalVisible(false);
                                         }}
