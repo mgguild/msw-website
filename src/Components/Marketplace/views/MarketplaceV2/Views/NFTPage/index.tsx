@@ -1,4 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {
+    useAddress,
+    useContract,
+    useContractRead,
+} from '@thirdweb-dev/react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Grid } from '@mui/material';
@@ -40,11 +45,15 @@ const StatField = styled.div`
     padding: 0.5rem;
 `
 
+const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
+const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
+
 const NftPage: React.FC = () => {
     const params = useParams();
 
     const {data, loading, error} = useGetDiggerData(`${params.id}`, `${params.lid}`);
     const [rarityBorder, setRarityBorder] = useState<string>('');
+    const [usedContract, setUsedContract] = useState<string>(contractAddressSecond);
 
     const isUnique = data ? data?.rarity !== 'Legendary' : false;
     const digClass = data ? data.class : 'Knight'
@@ -52,6 +61,17 @@ const NftPage: React.FC = () => {
 
     const src = { name: 'polygon-matic-logo', folder: 'logo' };
     const tokenImage = useFetchImg(src);
+
+    const address = useAddress();
+    const { contract: approvalContract } = useContract(contractAddress);
+    const {
+        data: approvalData,
+        isLoading: approvalIsLoading,
+        error: approvalError,
+    } = useContractRead(approvalContract, 'isApprovedForAll', [
+        address,
+        contractAddressSecond
+    ]);
 
     useEffect(() => {
         if(data !== null){
@@ -98,7 +118,10 @@ const NftPage: React.FC = () => {
 
         const handleSuccess = (e: any) => {
             console.log(e);
-            toast.success(`${e}`);
+            toast.success(`NFT is now listed`);
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
         }
 
         return loading ? <>Loading...</>:
@@ -129,26 +152,70 @@ const NftPage: React.FC = () => {
                         </p>
                     </TextWrapper>
                 </Box>
-                <Web3Button
-                    contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
-                    contractAbi={ABI}
-                    action={async (contract) => {
-                        await contract.call("buy", [params.lid], { value: data?.listingData.price?.raw });
-                    }}
-                    className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-                    onError={(e) => handleError(e)}
-                    onSuccess={(e) => handleSuccess(e)}
-                >
-                    Buy
-                    &nbsp;
-                    <img
-                        src={tokenImage}
-                        alt="Polygon MATIC"
-                        className="w-[40px] h-[40px]"
-                    />
-                    &nbsp;
-                    {data?.listingData.price?.token}
-                </Web3Button>
+                { `${data?.listingData.seller}`.toUpperCase() !== `${address}`.toUpperCase() ?
+                    <Web3Button
+                        contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
+                        contractAbi={ABI}
+                        action={async (contract) => {
+                            await contract.call("buy", [params.lid], { value: data?.listingData.price?.raw });
+                        }}
+                        className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                        onError={(e) => handleError(e)}
+                        onSuccess={(e) => handleSuccess(e)}
+                    >
+                        Buy
+                        &nbsp;
+                        <img
+                            src={tokenImage}
+                            alt="Polygon MATIC"
+                            className="w-[40px] h-[40px]"
+                        />
+                        &nbsp;
+                        {data?.listingData.price?.token}
+                    </Web3Button>
+                    :
+                    <Web3Button
+                        theme="dark"
+                        className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                        // contractAddress={contractAddress}
+                        contractAddress={usedContract}
+                        contractAbi={ABI}
+                        action={async contract => {
+                            // approve listing
+                            if (!approvalData) {
+                                console.log("Approving")
+                                await contract.erc721.setApprovalForAll(
+                                    contractAddressSecond,
+                                    true,
+                                );
+                                console.log("Approved")
+                                console.log("Cancelling Listing")
+                                await contract.call('cancelListing', [
+                                    params.lid,
+                                ]);
+                            } else {
+                                await contract.call('cancelListing', [
+                                    params.lid,
+                                ]);
+                            }
+                            // listing id
+                            // mutateAsyncSecond({
+                            //   args: [listingId]
+                            // })
+                        }}
+                        onSuccess={res => {
+                            console.log('Listing cancelled');
+                            toast.success(`${data?.name} listing cancelled`)
+                            setTimeout(() => {
+                            window.location.reload();
+                            }, 500)
+                            console.log(res);
+                        }}
+                    >
+                        Cancel Listing
+                    </Web3Button>
+                }
+
                 {modal.openModal[`buy-Digger`] && <PurchaseNFT {...{ ...item }} />}
             </ContentWrapper>
         );

@@ -98,6 +98,7 @@ export const MarketplaceV2DataProvider = ({ children }: any) => {
                 nfts.push({
                     id: getHashId(listings[i].name),
                     listingId: listings[i].id,
+                    seller: listings[i].seller,
                     name: getName(listings[i]),
                     spriteName: listings[i].image,
                     rarity: getRarity(listings[i].attributes),

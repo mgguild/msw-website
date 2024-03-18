@@ -23,18 +23,20 @@ interface listingData{
   blockTimestamp?: string;
 }
 
+interface partsData{
+  hat: string;
+  eyes?: string;
+  nose?: string;
+  clothes: string;
+}
+
 interface nftData{
   name: string;
   class: string;
   description: string;
   rarity: string;
   listingData: listingData;
-  parts:{
-    hat: string;
-    eyes: string;
-    nose: string;
-    clothes: string;
-  }
+  parts: partsData;
   img: string;
 }
 
@@ -153,6 +155,25 @@ export const useGetDiggerData = (id: string, lid: string) => {
         if (response.data.attributes[1].trait_type === '1/1'){
           setData(response.data);
         }else{
+          let _parts: partsData = {
+            hat: '',
+            clothes: '',
+          }
+
+          if(response.data.attributes[0].value === 'Dark Knight'){
+            _parts = {
+              hat: response.data.attributes[4].value,
+              clothes: response.data.attributes[3].value
+            }
+          }else{
+            _parts = {
+              hat: response.data.attributes[4].value,
+              eyes: response.data.attributes[5].value,
+              nose: response.data.attributes[6].value,
+              clothes: response.data.attributes[3].value
+            }
+          }
+
           setData({
             name: response.data.name,
             class: response.data.attributes[0].value,
@@ -167,12 +188,7 @@ export const useGetDiggerData = (id: string, lid: string) => {
                 fiat: 'Not available'
               }
             },
-            parts:{
-              hat: response.data.attributes[4].value,
-              eyes: response.data.attributes[5].value,
-              nose: response.data.attributes[6].value,
-              clothes: response.data.attributes[3].value
-            },
+            parts: _parts,
             img: response.data.image,
           });
         }

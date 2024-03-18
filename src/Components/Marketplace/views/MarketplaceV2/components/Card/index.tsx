@@ -1,4 +1,9 @@
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
+import {
+  useAddress,
+  useContract,
+  useContractRead,
+} from '@thirdweb-dev/react';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { useNavigate, Link } from 'react-router-dom';
@@ -26,28 +31,43 @@ const PriceDetails = styled.div`
   align-items: center;
 `
 
+const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
+const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
+
 export default function Card(props: Props) {
-    const { theme } = useTheme();
-    const { id, listingId, name, spriteName, rarity, price, badge } = props;
-    const { controllers } = useMarketplaceV2();
-    const { modal } = controllers;
-    const navigate = useNavigate();
+  const { theme } = useTheme();
+  const { id, listingId, seller, name, spriteName, rarity, price, badge } = props;
+  const { controllers } = useMarketplaceV2();
+  const { modal } = controllers;
+  const navigate = useNavigate();
+  const address = useAddress();
 
-    const handleNav = (event: any) => {
-        event.preventDefault();
-    };
+  const { contract: approvalContract } = useContract(contractAddress);
+  const {
+    data: approvalData,
+    isLoading: approvalIsLoading,
+    error: approvalError,
+  } = useContractRead(approvalContract, 'isApprovedForAll', [
+      address,
+      contractAddressSecond
+  ]);
 
-    const handleBuy = async (event: any) => {
-        event.stopPropagation();
-    };
+  const handleNav = (event: any) => {
+      event.preventDefault();
+  };
 
-    const src = { name: 'polygon-matic-logo', folder: 'logo' };
-    const image = useFetchImg(src);
+  const handleBuy = async (event: any) => {
+      event.stopPropagation();
+  };
 
-    const badgeSrc = { name: badge, folder: 'classIcons' }
-    const badgeImage = useFetchImg(badgeSrc)
+  const src = { name: 'polygon-matic-logo', folder: 'logo' };
+  const image = useFetchImg(src);
 
-    const [rarityBorder, setRarityBorder] = useState<string>('');
+  const badgeSrc = { name: badge, folder: 'classIcons' }
+  const badgeImage = useFetchImg(badgeSrc)
+
+  const [rarityBorder, setRarityBorder] = useState<string>('');
+  const [usedContract, setUsedContract] = useState<string>(contractAddressSecond);
 
   useEffect(() => {
     switch (rarity) {
@@ -76,7 +96,10 @@ export default function Card(props: Props) {
 
   const handleSuccess = (e: any) => {
     console.log(e);
-    toast.success(`${e}`);
+    toast.success(`NFT is now listed`);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
 
@@ -100,18 +123,61 @@ export default function Card(props: Props) {
         </PriceDetails>
       </div>
       <div className="w-full">
-        <Web3Button
-          contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
-          contractAbi={ABI}
-          action={async (contract) => {
-            await contract.call("buy", [listingId], { value: price.raw });
-          }}
-          className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-          onError={(e) => handleError(e)}
-          onSuccess={(e) => handleSuccess(e)}
-        >
-          Buy
-        </Web3Button>
+        { `${seller}`.toUpperCase() !== `${address}`.toUpperCase() ?
+            <Web3Button
+              contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
+              contractAbi={ABI}
+              action={async (contract) => {
+                await contract.call("buy", [listingId], { value: price.raw });
+              }}
+              className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+              onError={(e) => handleError(e)}
+              onSuccess={(e) => handleSuccess(e)}
+          >
+            Buy
+          </Web3Button>
+          :
+          <Web3Button
+              theme="dark"
+              className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+              // contractAddress={contractAddress}
+              contractAddress={usedContract}
+              contractAbi={ABI}
+              action={async contract => {
+                  // approve listing
+                  if (!approvalData) {
+                      console.log("Approving")
+                      await contract.erc721.setApprovalForAll(
+                          contractAddressSecond,
+                          true,
+                      );
+                      console.log("Approved")
+                      console.log("Cancelling Listing")
+                      await contract.call('cancelListing', [
+                          listingId,
+                      ]);
+                  } else {
+                      await contract.call('cancelListing', [
+                          listingId,
+                      ]);
+                  }
+                  // listing id
+                  // mutateAsyncSecond({
+                  //   args: [listingId]
+                  // })
+              }}
+              onSuccess={res => {
+                  console.log('Listing cancelled');
+                  toast.success(`${name} listing cancelled`)
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 500)
+                  console.log(res);
+              }}
+          >
+              Cancel Listing
+          </Web3Button>
+        }
       </div>
     </CardContainer>
   )
