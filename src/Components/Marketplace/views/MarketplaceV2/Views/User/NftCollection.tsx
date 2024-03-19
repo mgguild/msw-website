@@ -447,7 +447,7 @@ const NftCollection = (props: any) => {
                 />
                 { data &&
                     <div style={{display: 'flex', gap: '1rem', width: '100%', justifyContent: 'center', alignContent: 'center'}}>
-                    <Button disabled={nftCount <= 0} onClick={() => hndlPrev()}>
+                    <Button disabled={nftStart <= 0} onClick={() => hndlPrev()}>
                         <FaChevronLeft />
                     </Button>
                     <h1 style={{justifyItems: 'center'}}>
