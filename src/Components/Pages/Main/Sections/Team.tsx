@@ -154,6 +154,7 @@ export default function App() {
                         }
                         return (
                             <div
+                                key={i}
                                 style={{
                                     display: 'flex',
                                     flexWrap: 'wrap',

@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMemo, useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
 import {
     Home,
@@ -15,7 +15,6 @@ import {
 } from './Sections';
 import { LoginRegister, UserDashboard } from '../../Modals';
 import navItems from '../../Data/NavItems';
-import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -123,10 +122,8 @@ function App() {
     const [isScreen550, setIsScreen600] = useState(false);
     const [open, setOpen] = useState(false);
 
-    const connect = usePlayfab((state: any) => state.start);
-    const user = usePlayfab((state: any) => state.user);
-
     const navBtns = useRef<any | HTMLElement[]>([]);
+    const user = usePlayfab((state: any) => state.user);
 
     const sections = [
         <Home isScreen550={isScreen550} />,
@@ -157,8 +154,6 @@ function App() {
     }, []);
 
     useEffect(() => {
-        connect();
-
         const sections: any[] = gsap.utils.toArray('.page-section');
         const NavButtons: any[] = gsap.utils.toArray('.NavButton');
 
@@ -197,6 +192,9 @@ function App() {
                         {item.name}
                     </a>
                 ))}
+                <Link to="/marketplace" className="NavButton">
+                    Marketplace
+                </Link>
                 <DropdownButton id="dropdown-basic-button" title="More">
                     {navItems.slice(4, navItems.length).map((item, i) => (
                         <Dropdown.Item

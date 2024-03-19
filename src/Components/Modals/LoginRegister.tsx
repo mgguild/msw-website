@@ -1,17 +1,26 @@
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useState } from 'react';
+import moment from 'moment'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { PlayFabClient } from 'playfab-sdk';
+import { PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
+import { useAppDispatch } from '../Marketplace/state';
+import { newCookie } from '../Marketplace/state/cookies/cookies';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
+import { MdlProps } from './types';
+import Iconloader from '../Marketplace/views/MarketplaceV2/components/Foundation/Iconloader';
+
 
 const style = {
     position: 'relative',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    zIndex: 10,
 };
 
 const CenterFrame = styled.div`
@@ -20,14 +29,14 @@ const CenterFrame = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgb(0, 0, 0); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-const Container = styled.div`
-    background-color: #4f19a7;
+const Container = styled.div<{ persistent: boolean }>`
+    background-color: ${({ persistent }) => (persistent ? '#ff8f00' : '#4f19a7')};
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -94,13 +103,26 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
     text-align: center;
 `;
 
-export default function LoginRegister() {
+const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const LoginRegister = ({
+    show = false,
+    persistent = false,
+    showBtn = true,
+    Header = 'LOGIN ACCOUNT',
+    Subheader,
+    mobile = false,
+}: MdlProps) => {
+    const dispatch = useAppDispatch()
+
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
     const setUserTags = usePlayfab((state: any) => state.setUserTags);
     const setUserData = usePlayfab((state: any) => state.setUserData);
     const user = usePlayfab((state: any) => state.user);
+    const userTags = usePlayfab((state: any) => state.userTags);
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(show);
+    const [shwMsg, setShwMsg] = useState(false);
 
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -112,12 +134,16 @@ export default function LoginRegister() {
     const [login, setLogin] = useState('');
     const [loginPass, setLoginPass] = useState('');
 
+    const [resEmail, setResEmail] = useState('')
+
     const handleClose = () => {
         setEmail('');
         setUsername('');
         setPassword('');
         setConfPassword('');
+        setResEmail('');
         setOpen(false);
+        setShwMsg(false);
     };
 
     const handleRegisterSubmit = (e: any) => {
@@ -148,6 +174,7 @@ export default function LoginRegister() {
     };
 
     const FetchTags = (playfabId: string) => {
+
         PlayFabClient.GetPlayerTags(
             {
                 PlayFabId: playfabId,
@@ -166,11 +193,14 @@ export default function LoginRegister() {
                             PlayFabId: playfabId,
                             Keys: ['WalletAddress'],
                         },
-                        (error, result) => {
+                        async (error, result) => {
                             if (error) {
                                 toast(error.errorMessage, { type: 'error' });
                                 return;
                             }
+
+                            const cookie = await dispatch(newCookie({name: 'playerTags', data: result.data.Data}))
+                            console.log(cookie);
 
                             setUserData(result.data.Data);
                         },
@@ -182,90 +212,95 @@ export default function LoginRegister() {
 
     const handleLoginSubmit = (e: any) => {
         e.preventDefault();
-        let re =
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        if (re.test(login)) {
-            PlayFabClient.LoginWithEmailAddress(
-                {
-                    Email: login,
-                    Password: loginPass,
-                    InfoRequestParameters: {
-                        GetUserAccountInfo: true,
-                        GetCharacterInventories: false,
-                        GetCharacterList: false,
-                        GetPlayerProfile: false,
-                        GetPlayerStatistics: false,
-                        GetTitleData: false,
-                        GetUserData: false,
-                        GetUserInventory: false,
-                        GetUserReadOnlyData: false,
-                        GetUserVirtualCurrency: false,
-                    },
-                },
-                (error, result) => {
-                    if (error) {
-                        toast(error.errorMessage, { type: 'error' });
-                        return;
-                    }
-
-                    toast(`${login} logged in`, { type: 'success' });
-                    setUserInfo(result.data.InfoResultPayload?.AccountInfo);
-
-                    setTimeout(() => {
-                        FetchTags(
-                            result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
-                        );
-                    }, 100);
-                },
-            );
-        } else {
-            PlayFabClient.LoginWithPlayFab(
-                {
-                    Username: login,
-                    Password: loginPass,
-                    InfoRequestParameters: {
-                        GetUserAccountInfo: true,
-                        GetCharacterInventories: false,
-                        GetCharacterList: false,
-                        GetPlayerProfile: false,
-                        GetPlayerStatistics: false,
-                        GetTitleData: false,
-                        GetUserData: false,
-                        GetUserInventory: false,
-                        GetUserReadOnlyData: false,
-                        GetUserVirtualCurrency: false,
-                    },
-                },
-                (error, result) => {
-                    if (error) {
-                        toast(error.errorMessage, { type: 'error' });
-                        return;
-                    }
-
-                    toast(`${login} logged in`, { type: 'success' });
-                    setUserInfo(result.data.InfoResultPayload?.AccountInfo);
-
-                    setTimeout(() => {
-                        FetchTags(
-                            result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
-                        );
-                    }, 100);
-                },
-            );
+        if (!re.test(login)) {
+            toast.error('Invalid Email Address')
+            return;
         }
+
+        PlayFabClient.LoginWithEmailAddress(
+            {
+                Email: login,
+                Password: loginPass,
+                InfoRequestParameters: {
+                    GetUserAccountInfo: true,
+                    GetCharacterInventories: false,
+                    GetCharacterList: false,
+                    GetPlayerProfile: false,
+                    GetPlayerStatistics: false,
+                    GetTitleData: false,
+                    GetUserData: false,
+                    GetUserInventory: false,
+                    GetUserReadOnlyData: false,
+                    GetUserVirtualCurrency: false,
+                },
+            },
+            async (error, result) => {
+                if(!persistent){
+                    handleClose();
+                }
+                if (error) {
+                    toast(error.errorMessage, { type: 'error' });
+                    return;
+                }
+
+                toast(`${login} logged in`, { type: 'success' });
+
+                const cookie = await dispatch(newCookie({name: 'playerInfo', data: result.data.InfoResultPayload?.AccountInfo}))
+                console.log(cookie);
+
+                setUserInfo(result.data.InfoResultPayload?.AccountInfo);
+
+                setTimeout(() => {
+                    FetchTags(
+                        result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
+                    );
+                }, 100);
+            },
+        );
     };
 
+    const handleResetAccount = (e: any) => {
+        e.preventDefault();
+
+        if (!re.test(resEmail)) {
+            toast.error('Invalid Email Address')
+            return;
+        }
+
+        PlayFabCloudScript.ExecuteFunction(
+            {
+                FunctionName: 'ResetAccount',
+                FunctionParameter: {
+                    email: resEmail,
+                    playFabID: user.PlayFabId,
+                },
+            },
+            (error, result) => {
+                if (error) {
+                    toast(error.errorMessage, { type: 'error' });
+                    return;
+                }
+
+                toast('Reset account request sent!', { type: 'success' })
+                setShwMsg(true);
+            }
+        )
+    }
+
     return (
-        <>
+        <div style={{position: 'relative'}}>
             <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                disableEscapeKeyDown={persistent}
+                disableAutoFocus
+                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
             >
                 <Box sx={style}>
                     <CenterFrame>
-                        <Container>
+                        <Container persistent={persistent}>
                             <Carousel
                                 showThumbs={false}
                                 selectedItem={carouselItem}
@@ -274,12 +309,13 @@ export default function LoginRegister() {
                                 showStatus={false}
                             >
                                 <CarouselItem style={{ width: '100%' }}>
-                                    <h4>LOGIN ACCOUNT</h4>
+                                    <h4>{Header}</h4>
+                                    {Subheader && <p>{Subheader}</p>}
                                     <Col onSubmit={e => handleLoginSubmit(e)}>
                                         <Row>
-                                            <span>Email or Username:</span>
+                                            <span>Email:</span>
                                             <input
-                                                type="input"
+                                                type="email"
                                                 placeholder=""
                                                 defaultValue={login}
                                                 onChange={e => setLogin(e.target.value)}
@@ -312,14 +348,30 @@ export default function LoginRegister() {
                                             >
                                                 Login
                                             </Button>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => handleClose()}
-                                            >
-                                                Cancel
-                                            </Button>
+                                            {!persistent && (
+                                                <Button
+                                                    borderRadius="8px"
+                                                    padding="0.8rem 1rem"
+                                                    type="button"
+                                                    onClick={e => handleClose()}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            )}
+
+                                            {persistent && (
+                                                <Link to='/marketplace'>
+                                                    <Button
+                                                        borderRadius="8px"
+                                                        padding="0.8rem 1rem"
+                                                        type="button"
+                                                        onClick={e => handleClose()}
+                                                        style={{color: 'white'}}
+                                                    >
+                                                        Go Back
+                                                    </Button>
+                                                </Link>
+                                            )}
                                         </div>
                                         <div>
                                             <a
@@ -327,6 +379,7 @@ export default function LoginRegister() {
                                                     cursor: 'pointer',
                                                     fontSize: '1rem',
                                                 }}
+                                                onClick={e => {setCarouselItem(2);}}
                                             >
                                                 Forgot Password?
                                             </a>
@@ -410,14 +463,16 @@ export default function LoginRegister() {
                                             >
                                                 Register
                                             </Button>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => handleClose()}
-                                            >
-                                                Cancel
-                                            </Button>
+                                            {!persistent && (
+                                                <Button
+                                                    borderRadius="8px"
+                                                    padding="0.8rem 1rem"
+                                                    type="button"
+                                                    onClick={e => handleClose()}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            )}
                                         </div>
                                         <div
                                             style={{
@@ -441,18 +496,101 @@ export default function LoginRegister() {
                                         </div>
                                     </Col>
                                 </CarouselItem>
+                                <CarouselItem style={{ width: '100%' }}>
+                                    <h4>Account Recovery</h4>
+                                    <Col onSubmit={e => handleResetAccount(e)}>
+                                        <Row>
+                                            <span>Email</span>
+                                            <input
+                                                type="input"
+                                                placeholder=""
+                                                defaultValue={resEmail}
+                                                onChange={e => setResEmail(e.target.value)}
+                                                required
+                                            />
+                                        </Row>
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                gap: '2rem',
+                                                marginTop: '1rem',
+                                            }}
+                                        >
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="submit"
+                                            >
+                                                Reset Account
+                                            </Button>
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="button"
+                                                onClick={e => {setCarouselItem(0); setShwMsg(false)}}
+                                            >
+                                                Go Back
+                                            </Button>
+                                        </div>
+                                        {shwMsg &&
+                                            <div>
+                                                If email matches, an email will be sent for account recovery
+                                            </div>
+                                        }
+
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                flexFlow: 'row nowrap',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                            }}
+                                        >
+                                            <Button
+                                                borderRadius="8px"
+                                                padding="0.8rem 1rem"
+                                                type="button"
+                                                onClick={e => {setCarouselItem(1); setShwMsg(false)}}
+                                            >
+                                                Register
+                                            </Button>
+                                            {!persistent && (
+                                                <Button
+                                                    borderRadius="8px"
+                                                    padding="0.8rem 1rem"
+                                                    type="button"
+                                                    onClick={e => handleClose()}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </Col>
+                                </CarouselItem>
                             </Carousel>
                         </Container>
                     </CenterFrame>
                 </Box>
             </Modal>
-            <Button
-                onClick={() => {
-                    setOpen(true);
-                }}
-            >
-                Login/Register
-            </Button>
-        </>
+            {showBtn &&
+                (
+                mobile ? (
+                    <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
+                        <Iconloader type="fa" name="SignInAlt" />
+                    </div>
+                ) : (
+                    <Button
+                        onClick={() => {
+                            setOpen(true);
+                        }}
+                    >
+                        Login/Register
+                    </Button>
+                    )
+                )
+            }
+        </div>
     );
-}
+};
+
+export default LoginRegister;
