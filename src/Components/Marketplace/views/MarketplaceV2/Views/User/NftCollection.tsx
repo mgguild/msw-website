@@ -118,7 +118,7 @@ const NftCollection = (props: any) => {
     const { contract } = useContract(contractAddress);
 
     const [nftCount, setNftCount] = useState(10);
-    const [nftStart, setNftStart] = useState(55);
+    const [nftStart, setNftStart] = useState(0);
 
     const [isFetching, setIsFetching] = useState<boolean>(true);
     const [oldData, setOldData] = useState<NFT | undefined>();
@@ -397,7 +397,7 @@ const NftCollection = (props: any) => {
 
             // getNFTs();
 
-            if(data && data[0].metadata.id !== oldData?.metadata.id)
+            if(data && data[0].metadata && data[0].metadata.id !== oldData?.metadata.id)
             {
                 setOldData(data[0])
                 setIsFetching(false);
