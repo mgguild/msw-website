@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getRarity } from '../contexts/MarketplaceDataContext';
 import { getBalanceAmount } from '../utils/formatBalance';
+import {
+  useAddress,
+} from '@thirdweb-dev/react';
 
 interface listData {
   data?: {
@@ -121,6 +124,27 @@ export const useCheckOnListing = (id: string) => {
 
   return { data: isNull, loading, error };
 };
+
+export const useGetNFTcount = () => {
+  const address = useAddress();
+  console.log('useGetNFTcount')
+  console.log(address)
+  useEffect(() => {
+    const fetchData = async () => {
+      if(address){
+        const response = await axios.get(
+          `${process.env.REACT_APP_MSW_API}/api/balance/${address}`,
+        );
+
+        console.log(response)
+      }
+    }
+
+    fetchData();
+  },[])
+
+
+}
 
 export const useGetDiggerData = (id: string, lid: string) => {
   const [data, setData] = useState<nftData>();

@@ -24,10 +24,10 @@ import {
     useOwnedNFTs,
     useContract,
     useAddress,
-    useContractWrite,
-    useContractRead,
+    useNFTBalance,
     NFT
 } from '@thirdweb-dev/react';
+import { useGetNFTcount } from '../../../../hooks/useSubgraph';
 import maticToWei from '../../../../utils/maticToWei';
 import axios from 'axios';
 import { CardType, CLASSES } from '../../../../contexts';
@@ -38,6 +38,7 @@ import { getRarity, getRarityBorder, getClassName, getHashId, getName } from './
 
 const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
 const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
+
 const mdlStyle = {
     position: 'relative',
     top: '50%',
@@ -128,6 +129,7 @@ const NftCollection = (props: any) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [nftError, setError] = useState<any>(null);
 
+
     const query = `
         query {
             listings(first: 10, orderBy: id, orderDirection: desc, where:{seller_contains: "${address}"} ) {
@@ -200,16 +202,6 @@ const NftCollection = (props: any) => {
         // const [data, setData] = useState<NFT[] | undefined >([]);
         // const [isLoading, setLoading] = useState(true);
         // const [error, setError] = useState();
-
-        const hndlPrev = async () => {
-            setIsFetching(true);
-            setNftStart(Math.max(0, nftStart - 1));
-        }
-
-        const hndleNext = async () => {
-            setIsFetching(true);
-            setNftStart(nftStart + 1);
-        }
 
         const NftMain = () => {
             return(
@@ -384,6 +376,18 @@ const NftCollection = (props: any) => {
             );
         };
 
+        const hndlPrev = async () => {
+            setIsFetching(true);
+            setNftStart(Math.max(0, nftStart - 1));
+        }
+
+        const hndleNext = async () => {
+            if(data && data?.length >= 10){
+                setIsFetching(true);
+                setNftStart(nftStart + 1);
+            }
+        }
+
         const WrappedMain = withGridLayout(NftMain);
         const WrappedDetails = withGridLayout(NftDetails);
 
@@ -397,10 +401,15 @@ const NftCollection = (props: any) => {
 
             // getNFTs();
 
-            if(data && data[0].metadata && data[0].metadata.id !== oldData?.metadata.id)
+            if(data && data[0].metadata)
             {
-                setOldData(data[0])
-                setIsFetching(false);
+                if(data[0].metadata){
+                    if(data[0].metadata.id !== oldData?.metadata.id){
+                        console.log(data);
+                        setOldData(data[0])
+                        setIsFetching(false);
+                    }
+                }
             }
         }, [data, isLoading, nftStart, nftCount])
 
@@ -436,20 +445,19 @@ const NftCollection = (props: any) => {
                     setNftData={setActData}
                     setNFTModal={setMdlNFT}
                 />
-                <div style={{display: 'flex', gap: '1rem', width: '100%', justifyContent: 'center', alignContent: 'center'}}>
-                    {/* <button onClick={() => setNftCount(nftCount + 10)}>
-                        view more
-                    </button> */}
-                    <Button onClick={() => hndlPrev()}>
+                { data &&
+                    <div style={{display: 'flex', gap: '1rem', width: '100%', justifyContent: 'center', alignContent: 'center'}}>
+                    <Button disabled={nftCount <= 0} onClick={() => hndlPrev()}>
                         <FaChevronLeft />
                     </Button>
                     <h1 style={{justifyItems: 'center'}}>
                         page: {nftStart + 1}
                     </h1>
-                    <Button onClick={() => hndleNext()}>
+                    <Button disabled={data.length < 10} onClick={() => hndleNext()}>
                         <FaChevronRight />
                     </Button>
-                </div>
+            </div>
+                }
             </>
             }
         </>)
