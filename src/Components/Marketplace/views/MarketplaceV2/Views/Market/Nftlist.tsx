@@ -134,10 +134,12 @@ const Nftlist = () => {
                 // --------
                 const nfts = [];
                 const listings = response.data?.data?.listings;
+
                 for (let i = 0; i < listings.length; i++) {
                     nfts.push({
                         id: getHashId(listings[i].name),
                         listingId: listings[i].id,
+                        seller: listings[i].seller,
                         name: getName(listings[i]),
                         spriteName: listings[i].image,
                         rarity: getRarity(listings[i].attributes),
