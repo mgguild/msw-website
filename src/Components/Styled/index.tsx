@@ -56,6 +56,13 @@ export const TitleCard = styled.div<{ padding?: string }>`
             font-size: 2.4rem !important;
         }
     }
+
+    @media (max-width: 320px) {
+        padding: 3rem 5rem !important;
+        h1 {
+            font-size: 2rem !important;
+        }
+    }
 `;
 
 export const SectCont = styled.div<{

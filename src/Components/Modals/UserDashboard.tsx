@@ -1,16 +1,22 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { PlayFab, PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
+import { PlayFabCloudScript } from 'playfab-sdk';
 import { toast } from 'react-toastify';
-import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
-import { ConnectKitButton } from 'connectkit';
-import { useAccount, useSignMessage } from 'wagmi';
+import {
+    ConnectWallet,
+    useChain,
+    useConnectionStatus,
+    useDisconnect,
+    useSigner,
+    useAddress,
+} from '@thirdweb-dev/react';
 import { Triangle } from 'react-loader-spinner';
-import { marginTop } from 'styled-system';
-import { recoverMessageAddress } from 'viem';
+import { Link } from 'react-router-dom';
+import { MdlProps } from './types';
+import { useFetchImg } from '../Marketplace/utils/assetFetch';
 
 const style = {
     position: 'relative',
@@ -31,8 +37,8 @@ const CenterFrame = styled.div`
     align-items: center;
 `;
 
-const Container = styled.div`
-    background-color: #4f19a7;
+const Container = styled.div<{ persistent: boolean }>`
+    background-color: ${({ persistent }) => (persistent ? '#ff8f00' : '#4f19a7')};
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -88,6 +94,18 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
     text-align: center;
 `;
 
+const Buttons = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+    justify-content: center;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+`;
+
 const Field = styled.div`
     display: block;
     width: 100%;
@@ -101,54 +119,68 @@ const Field = styled.div`
     align-items: center;
 `;
 
-export default function LoginRegister() {
+const Hdr = styled.div`
+    margin: 2rem 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1rem;
+`;
+
+const UserDashboard = ({
+    show = false,
+    persistent = false,
+    showBtn = true,
+    Header = 'USER DASHBOARD',
+    Subheader,
+    mobile = false,
+}: MdlProps) => {
     const user = usePlayfab((state: any) => state.user);
     const userTags = usePlayfab((state: any) => state.userTags);
     const userData = usePlayfab((state: any) => state.userData);
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(show);
     const [binding, setBinding] = useState(false);
     const [_userData, setUserData] = useState<null | any>(null);
     const [_userTags, setUserTags] = useState<string[]>([]);
-    const { address, isConnecting, isDisconnected, isConnected } = useAccount();
-    const [recoveredAddress, setRecoveredAddress] = useState<string>();
-    const {
-        data: signMessageData,
-        error,
-        isLoading,
-        signMessage,
-        variables,
-    } = useSignMessage();
+
+    const _chain = useChain();
+    const _status = useConnectionStatus();
+    const _address = useAddress();
+    const _disoconnect = useDisconnect();
+    const _signer = useSigner();
 
     const handleLogout = () => {
         setUserInfo(null);
         setOpen(false);
+        _disoconnect();
     };
+
+    const src= { name: 'mgg', folder: 'logo' }
+    const mgg = useFetchImg(src)
 
     useEffect(() => {
         setUserTags(userTags);
         setUserData(userData);
-    }, [userTags, userData]);
 
-    useEffect(() => {
-        (async () => {
-            if (variables?.message && signMessageData) {
-                const recoveredAddress = await recoverMessageAddress({
-                    message: variables?.message,
-                    signature: signMessageData,
-                });
-                setRecoveredAddress(recoveredAddress);
-                setBinding(true);
-                RunBindingWallet();
-            }
-        })();
-    }, [signMessageData, variables?.message]);
+        console.log(`_chain: ${_chain?.name}`);
+        console.log(`_status: ${_status}`);
+    }, [userTags, userData, useChain(), useConnectionStatus()]);
 
     const handleBindWallet = () => {
-        signMessage({
-            message: 'Binding your wallet address to MSW',
-        });
+        _signer
+            ?.signMessage('Binding your wallet address to MSW')
+            .then(e => {
+                if (_address) {
+                    setBinding(true);
+                    RunBindingWallet();
+                }
+            })
+            .catch((err: any) => {
+                toast('Bind wallet confirmation rejected!', { type: 'warning' });
+                console.log(err);
+            });
     };
 
     const RunBindingWallet = () => {
@@ -156,7 +188,7 @@ export default function LoginRegister() {
             {
                 FunctionName: 'CheckWalletAddress',
                 FunctionParameter: {
-                    wallet: address,
+                    wallet: _address,
                     playFabID: user.PlayFabId,
                 },
             },
@@ -174,7 +206,7 @@ export default function LoginRegister() {
 
                     var obj: any = {};
                     obj['WalletAddress'] = {};
-                    obj['WalletAddress'].Value = address;
+                    obj['WalletAddress'].Value = _address;
                     setUserData(obj);
                 } else {
                     toast('Error: Wallet address already in use!', { type: 'error' });
@@ -187,14 +219,26 @@ export default function LoginRegister() {
         <>
             <Modal
                 open={open}
-                onClose={() => setOpen(false)}
+                onClose={() => (persistent ? null : setOpen(false))}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                disableEscapeKeyDown={persistent}
+                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
             >
                 <Box sx={style}>
                     <CenterFrame>
-                        <Container>
-                            <h4>User Dashboard</h4>
+                        <Container persistent={persistent}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexFlow: 'column nowrap',
+                                    lineHeight: '0.5rem',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <h4>{Header}</h4>
+                                {Subheader && <p>{Subheader}</p>}
+                            </div>
                             <Col>
                                 <Row>
                                     <span>Username:</span>
@@ -224,19 +268,23 @@ export default function LoginRegister() {
                                         }}
                                     >
                                         <div>
-                                            <ConnectKitButton />
-                                        </div>
-
-                                        {isConnected ? (
-                                            <div
-                                                style={{
-                                                    margin: '2rem 0',
-                                                    display: 'flex',
-                                                    flexFlow: 'column',
-                                                    alignItems: 'center',
-                                                    gap: '1rem',
+                                            <ConnectWallet
+                                                theme="dark"
+                                                switchToActiveChain={true}
+                                                auth={{
+                                                    loginOptional: false,
                                                 }}
-                                            >
+                                            />
+                                        </div>
+                                        {persistent && (
+                                            <p>
+                                                User needs to bind their web3 wallet to
+                                                use this page
+                                            </p>
+                                        )}
+
+                                        {_status === 'connected' ? (
+                                            <Hdr>
                                                 {binding ? (
                                                     <>
                                                         <Triangle
@@ -270,15 +318,29 @@ export default function LoginRegister() {
                                                         </span>
                                                     </>
                                                 )}
-                                            </div>
+                                            </Hdr>
                                         ) : (
                                             <></>
                                         )}
                                     </div>
                                 )}
-                                <div
-                                    style={{ display: 'flex', justifyContent: 'center' }}
-                                >
+                                <Buttons>
+                                    <Link
+                                        to="account/delete"
+                                        style={{
+                                            width: '100%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        {!persistent && (
+                                            <Button style={{ backgroundColor: 'red' }}>
+                                                Delete Account
+                                            </Button>
+                                        )}
+                                    </Link>
+                                    <ConnectWallet theme={'dark'} modalSize={'wide'} />
                                     <Button
                                         onClick={() => handleLogout()}
                                         borderRadius="8px"
@@ -287,19 +349,29 @@ export default function LoginRegister() {
                                     >
                                         Logout
                                     </Button>
-                                </div>
+                                </Buttons>
                             </Col>
                         </Container>
                     </CenterFrame>
                 </Box>
             </Modal>
-            <Button
-                onClick={() => {
-                    setOpen(true);
-                }}
-            >
-                {user.TitleInfo.DisplayName ?? user.Username}
-            </Button>
+            {showBtn && (
+                mobile ? (
+                    <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
+                        <img src={mgg} alt="Meta Gaming Guild" className="w-[60px] h-[60px] rounded-full" />
+                    </div>
+                ) : (
+                    <Button
+                        onClick={() => {
+                            setOpen(true);
+                        }}
+                    >
+                        {user.TitleInfo.DisplayName ?? user.Username}
+                    </Button>
+                )
+            )}
         </>
     );
-}
+};
+
+export default UserDashboard;

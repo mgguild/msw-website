@@ -2,9 +2,9 @@ name: Github Pages Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,16 +16,23 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - name: Setup node v16
+      - name: Setup node v18
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: v18.16.1
       - name: Install and Build 🔧
         run: |
           yarn install
           GENERATE_SOURCEMAP=false
           CI=false
           yarn build
+        env:
+          REACT_APP_WALLETCONNECT_PROJECT_ID: ${{ secrets.REACT_APP_WALLETCONNECT_PROJECT_ID }}
+          REACT_APP_ALCHEMY_ID: ${{ secrets.REACT_APP_ALCHEMY_ID }}
+          REACT_APP_PLAYFAB_TITLE_ID: ${{ secrets.REACT_APP_PLAYFAB_TITLE_ID }}
+          REACT_APP_PLAYFAB_DEV_KEY: ${{ secrets.REACT_APP_PLAYFAB_DEV_KEY }}
+          REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+          NODE_PATH: ${{ secrets.NODE_PATH }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5

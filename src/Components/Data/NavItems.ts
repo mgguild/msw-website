@@ -1,39 +1,39 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default [
   {
-    name:'Home',
-    id: 'home'
+    name: 'Home',
+    id: 'home',
   },
   {
-    name:'About',
-    id: 'about'
+    name: 'About',
+    id: 'about',
   },
   {
-    name:'Gameplay',
-    id: 'gameplay'
+    name: 'Gameplay',
+    id: 'gameplay',
   },
   {
-    name:'Lore',
-    id: 'lore'
+    name: 'Lore',
+    id: 'lore',
   },
   {
-    name:'NFT Characters',
-    id: 'nftCharacters'
+    name: 'NFT Characters',
+    id: 'nftCharacters',
   },
   {
-    name:'Gallery',
-    id: 'gallery'
+    name: 'Gallery',
+    id: 'gallery',
   },
   {
-    name:'FAQs',
-    id: 'faqs'
+    name: 'FAQs',
+    id: 'faqs',
   },
   {
-    name:'Partners',
-    id: 'partners'
+    name: 'Partners',
+    id: 'partners',
   },
   {
-    name:'Team',
-    id: 'team'
-  }
+    name: 'Team',
+    id: 'team',
+  },
 ];

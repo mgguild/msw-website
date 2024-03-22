@@ -7,6 +7,10 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 ::before,
 ::after {
@@ -110,14 +114,14 @@ body {
   line-height: inherit;
   background-size: cover !important;
   /* 2 */
-  background: linear-gradient(0deg, #17022b 0%, rgb(26, 0, 37) 60%, #17022b 80%);
+  background: linear-gradient(0deg, #17022b 0%, rgb(26, 0, 37) 60%, #17022b 80%) !important;
 
   background-repeat: no-repeat;
   background-position: center;
   min-height: 100vh;
   display: flex;
   font-size: calc(10px + 1vmin);
-  color: white;
+  color: white !important;
 
   margin: 0;
   padding: 0;
@@ -709,7 +713,6 @@ button {
 .Header-content {
   width: 100%;
   align-items: start;
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
@@ -2241,7 +2244,7 @@ form {
   justify-content: center;
   align-items: center;
   margin: auto;
-  padding: 9px;
+  padding: 0px;
   margin-left: 0px;
 }
 
@@ -2285,7 +2288,7 @@ form input {
   width: 100px;
   max-width: 100%;
   font-size: 700;
-  padding: 16px;
+  padding: 15px;
   font-size: 14px;
   color: #f0f4ef;
   font-family: inherit;
@@ -2294,6 +2297,38 @@ form input {
   border-radius: 0px 10px 10px 0px;
   outline: 0;
   transition: all 0.2s;
+  &:disabled {
+    /* Styles for the disabled state */
+    background-color: #808080;
+    cursor: not-allowed;
+    /* Add any other styles for the disabled state */
+    }
+
+    &:hover:disabled {
+        /* Styles for the disabled state on hover */
+        background-color: #808080;
+        /* Add any other styles for the disabled state on hover */
+    }
+
+    &:hover {
+        /* Styles for the hover state */
+        background-color: #007bff;
+        /* Add any other styles for the hover state */
+    }
+
+    input[type="checkbox"] {
+        margin-left: 10px; /* Add space between the button and the checkbox */
+    }
+}
+
+   /* Add some margin to the right of the checkbox */
+   label {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    margin-right: 10px; 
 }
 
 #mc-embedded-subscribe:hover {
@@ -2335,38 +2370,64 @@ form input {
 
 @media screen and (max-width: 480px) {
   #mc-embedded-subscribe {
-    width: 108%;
-    margin: 2px;
-    border-radius: 12px;
-    padding: 9px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 12.6px;
     font-size: 11px;
+    margin-right: 10px;
+    margin-left: -13px;
   }
   #mce-EMAIL {
     width: 100%;
-    margin: 16px;
     text-align: center;
-    font-size: 10px;
-    padding: 8px 18px 8px 8px;
+    font-size: 14px;
+    padding: 8px 20px 11px 16px;
+    margin-left: 0px;
+    margin-right: 40px
   }
   #subscribebox {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 280px) {
+@media screen and (max-width: 375px) {
   #mc-embedded-subscribe {
     width: 100%;
-    margin: 0px;
-    border-radius: 9px;
-    padding: 6px;
+    border-radius: 10px;
+    padding: 11.6px;
     font-size: 11px;
+    margin-right: 10px;
+    margin-left: -13px;
   }
   #mce-EMAIL {
-    width: 106%;
-    margin: 20px;
+    width: 100%;
     text-align: center;
-    font-size: 9px;
-    padding: 8px 18px 8px 0px;
+    font-size: 12.5px;
+    padding: 10px 14px 10px 10px;
+    margin-left: 5px;
+    margin-right: 43px
+  }
+  #subscribebox {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #mc-embedded-subscribe {
+    width: 100%;
+    border-radius: 10px;
+    padding: 11.6px;
+    font-size: 11px;
+    margin-right: 10px;
+    margin-left: -13px;
+  }
+  #mce-EMAIL {
+    width: 100%;
+    text-align: center;
+    font-size: 11.5px;
+    padding: 11px 4px 10px 0px;
+    margin-left: 0px;
+    margin-right: 40px;
   }
   #subscribebox {
     width: 100%;
@@ -2394,7 +2455,7 @@ form input {
   cursor: pointer; /* Optional: Change the cursor style on hover */
 }
 
-.btn {
+.btn-footer {
   display: inline-block;
   right: 120px;
   color: #ffffff;
@@ -2504,17 +2565,17 @@ form input {
 }
 
 .ViewCollectionButton {
-  background-color: #2b164f; 
-  color: #fff; 
-  padding: 10px 20px; 
+  background-color: #2b164f;
+  color: #fff;
+  padding: 10px 20px;
   border-radius: 2.26rem;
   border-color: #7e6aa1;
-  text-decoration: none; 
-  cursor: pointer; 
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .ViewCollectionButton:hover {
-  background-color: #5bc0de; 
+  background-color: #5bc0de;
   color: #fff;
 }
 
@@ -2547,4 +2608,11 @@ form input {
 
 .bg-opacity-50 {
   opacity: 0.5;
+}
+
+#dropdown-marketplace-filter{
+  margin: 0 1rem !important;
+  border-radius: 10px !important;
+  background: none !important;
+  border: solid 2px white !important;
 }

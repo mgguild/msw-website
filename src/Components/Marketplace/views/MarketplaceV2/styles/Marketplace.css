@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'Mustica Pro';
+  src: url('./fonts/MusticaPro-SemiBold.otf');
+}
+
+@font-face {
+  font-family: 'One Splice';
+  src: url('./fonts/One\ Slice.otf');
+}
+
+@keyframes tilt-n-move-shaking {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, 5px) rotate(5deg); }
+  50% { transform: translate(0, 0) rotate(0eg); }
+  75% { transform: translate(-5px, 5px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.main-drop-shadow {
+  -webkit-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.75);
+}
+
+.secondary-drop-shadow {
+  -webkit-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.75);
+}
+
+.nav-drop-shadow {
+  -webkit-box-shadow: 14px 5px 25px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 14px 5px 25px -9px rgba(0, 0, 0, 0.75);
+  box-shadow: 14px 5px 25px -9px rgba(0, 0, 0, 0.75);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'One Splice';
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+p {
+  font-family: 'Mustica Pro';
+  font-weight: 400;
+}
+
+button {
+  border-radius: 3px !important;
+  font-family: 'Mustica Pro' !important;
+  &:focus,
+  &:active {
+    box-shadow: none !important;
+  }
+}
+
+button.option {
+  border-radius: none !important;
+}
+
+/* 
+.link,
+.icon-button {
+  transition: transform 0.3s;
+}
+
+.link:hover {
+  transform: scale(1.1);
+} */
+
+.with-animation-tilt-n-move-shaking:hover {
+  animation: tilt-n-move-shaking 0.25s infinite;
+}
+
+.icon-button {
+  width: auto;
+}
+
+.icon-button:hover {
+  background-color: transparent !important;
+}
+
+.with-animation-enlarge {
+  transition: transform 0.3s;
+}
+
+.with-animation-enlarge:hover {
+  transform: scale(1.1);
+}
+
+/* Override styles */
+.dsEMXs {
+  background-color: #131737 !important;
+  border: 2px solid #3898b8;
+}
