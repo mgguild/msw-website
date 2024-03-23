@@ -29,7 +29,7 @@ function MainApp() {
 
     useEffect(() => {
         connect();
-    }, []);
+    }, [connect]);
 
     return (
         <>
@@ -97,7 +97,7 @@ const Dashboard: FC = () => (
 
 const App = () => (
   <Routes>
-    <Route path='/' element={<MainApp />} />
+    <Route path='/*' element={<MainApp />} />
     <Route path='/dashboard/*' element={<Dashboard />} />
   </Routes>
 )

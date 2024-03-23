@@ -1,8 +1,12 @@
 import {FC} from "react"
 import {Link} from "react-router-dom"
 import Logo from "../../../Assets/img/MSW_Logo_header2.png"
+import usePlayfab from "../../../Hooks/usePlayfab"
+import { LoginRegister, UserDashboard } from "../../Modals"
 
 const Navigation: FC = () => {
+  const user = usePlayfab((state: any) => state.user)
+
   return (
     <nav className="w-full">
       <div className="flex flex-wrap justify-between items-center bg-[#0F1637] px-[5em] py-[1em]">
@@ -19,6 +23,9 @@ const Navigation: FC = () => {
           <Link to="/dashboard/guilds" className="hover:text-white">Guilds</Link>
           <Link to="/dashboard/leaderboards" className="hover:text-white">Leaderboards</Link>
           <p className="cursor-pointer text-[#FFB800]">Login</p>
+          <div>
+            {user ? <UserDashboard /> : <LoginRegister />}
+          </div>
         </div>
       </div>
     </nav>
