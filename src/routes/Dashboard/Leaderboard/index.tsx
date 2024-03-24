@@ -1,7 +1,16 @@
-import {FC, useState} from "react"
+import {FC, useState, useEffect} from "react"
 import Logo from "../../../Assets/img/discord_logo.png"
+import usePlayfab from "../../../Hooks/usePlayfab"
 
 const Leaderboard: FC = () => {
+  const getLeaderboard = usePlayfab((state: any) => state.getLeaderboard)
+  const leaderboard = usePlayfab((state: any) => state.leaderboard)
+  console.log('---')
+  console.log(leaderboard)
+
+  useEffect(() => {
+    getLeaderboard()
+  }, [getLeaderboard])
   return (
     <>
       <div>
@@ -28,60 +37,16 @@ const Leaderboard: FC = () => {
               
               <div className="line justify-center"></div>
 
-              <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <img src={Logo} width={122} alt="MetaSaga Warriors logo" style={{ marginRight: '10px' }} />
-                  <div>
-                    <p>Lorem Ipsum</p>
-                    <p>@loremipsum</p>
-                  </div>
-                </div>
+              <div className="fle flex-col justify-center items-center gap-2 w-full">
+                {leaderboard.map((data: any) => (
+                  <>
+                    <div className="flex flex-wrap justify-between items-center gap-5">
+                      <p>{data?.DisplayName}</p>
+                      <p>{data?.StatValue}</p>
+                    </div>
+                  </>
+                ))}
               </div>
-            
-              <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <div>
-                    <p>237489234</p>
-                  </div>
-                </div>
-              </div>
-          
-              <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <img src={Logo} width={122} alt="MetaSaga Warriors logo" style={{ marginRight: '10px' }} />
-                  <div>
-                    <p>Lorem Ipsum</p>
-                    <p>@loremipsum</p>
-                  </div>
-                </div>
-              </div>
-            
-              <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <div>
-                    <p>237489234</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <img src={Logo} width={122} alt="MetaSaga Warriors logo" style={{ marginRight: '10px' }} />
-                  <div>
-                    <p>Lorem Ipsum</p>
-                    <p>@loremipsum</p>
-                  </div>
-                </div>
-              </div>
-            
-              <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <div>
-                    <p>237489234</p>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
 

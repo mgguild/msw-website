@@ -10,6 +10,13 @@ const Exchange: FC = () => {
       <div className="flex flex-wrap justify-center items-center">
         <p className="uppercase text-[48px] font-bold">Withdraw & Deposit</p>
       </div>
+      <div className="bg-[#0F1637] rounded-[5px] w-full h-auto p-5 flex flex-col justify-around items-center my-[2em] gap-5">
+        <p className="uppercase text-[24px] font-bold">Purchase MGG Tokens</p>
+        <div className="flex flex-col justify-center items-center gap-2">
+          <a href="https://sparkswap.finance/" target="_blank" rel="noreferrer">SparkSwap</a>
+          <a href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer">Pancake Swap</a>
+        </div>
+      </div>
       <div className="bg-[#0F1637] rounded-[5px] w-full h-[131px] p-5 flex flex-wrap justify-around items-center my-[2em] gap-5">
         <p>Contract Address: <span className="text-[#FFB800]">1234567890</span></p>
         <p>In-Game Balance: <span>1234567890</span></p>

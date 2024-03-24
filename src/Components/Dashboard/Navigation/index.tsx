@@ -22,7 +22,6 @@ const Navigation: FC = () => {
           <Link to="/dashboard/social" className="hover:text-white">Social</Link>
           <Link to="/dashboard/guilds" className="hover:text-white">Guilds</Link>
           <Link to="/dashboard/leaderboards" className="hover:text-white">Leaderboards</Link>
-          <p className="cursor-pointer text-[#FFB800]">Login</p>
           <div>
             {user ? <UserDashboard /> : <LoginRegister />}
           </div>
