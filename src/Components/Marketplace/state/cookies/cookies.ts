@@ -14,7 +14,7 @@ const initialState: Default = {
 export const newCookie = createAsyncThunk<string, CookieData>(
     'cookie/createCookie',
     async (cki) => {
-        cookies.set(`${cki.name}`, cki.data, {expires: moment().add(2, 'weeks').toDate()})
+        cookies.set(`${cki.name}`, cki.data, {expires: moment().add(2, 'weeks').toDate(), secure: true})
         return `created cookie ${cki.name}: ok`
     }
 )
@@ -26,12 +26,22 @@ export const getCookie = createAsyncThunk<any, {name: string}>(
     }
 )
 
-export const delCookie = createAsyncThunk<string, {name: string}>(
-    'cookie/deleteCookie',
-    async (cki) => {
-        cookies.remove(`${cki.name}`)
+export const delCookies = createAsyncThunk<string, {names: string[]}>(
+    'cookie/deleteCookies',
+    async ({names}) => {
 
-        return `deleted cookie ${cki.name}: ok`
+        names.forEach(name => {
+            cookies.remove(`${name}`)
+        });
+
+        return `deleted cookie ${names}: ok`
+    }
+)
+
+export const getCookies = createAsyncThunk<string>(
+    'cookie/getCookie',
+    async () => {
+        return cookies.getAll();
     }
 )
 
@@ -48,7 +58,7 @@ export const cookiSlice = createSlice({
             console.log(action.payload)
         })
 
-        builder.addCase(delCookie.fulfilled, (state, action) => {
+        builder.addCase(delCookies.fulfilled, (state, action) => {
             console.log(action.payload)
         })
     },

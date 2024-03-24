@@ -14,8 +14,10 @@ import useMarketplaceV2, {
 import useTheme from '../../../../hooks/useTheme';
 import { Props } from './index.d';
 import ABI from '../../constants/abi.json';
-import { Web3Button } from '@thirdweb-dev/react';
+import { Web3Button, useBalance } from '@thirdweb-dev/react';
 import { useFetchImg } from '../../../../utils/assetFetch';
+import { toBigNumber, getBalanceAmount } from '../../../../utils/formatBalance';
+import BigNumber from 'bignumber.js';
 
 const CardContainer = styled.div`
   position: relative;
@@ -31,6 +33,14 @@ const PriceDetails = styled.div`
   align-items: center;
 `
 
+type TWalletData = {
+  balance: BigNumber,
+}
+
+const defaultWallet: TWalletData = {
+  balance: toBigNumber('0'),
+}
+
 const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
 const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
 
@@ -41,6 +51,9 @@ export default function Card(props: Props) {
   const { modal } = controllers;
   const navigate = useNavigate();
   const address = useAddress();
+  const { data: walletData, isLoading } = useBalance()
+
+  const [walletInfo, setWalletInfo] = useState(defaultWallet)
 
   const { contract: approvalContract } = useContract(contractAddress);
   const {
@@ -68,6 +81,13 @@ export default function Card(props: Props) {
 
   const [rarityBorder, setRarityBorder] = useState<string>('');
   const [usedContract, setUsedContract] = useState<string>(contractAddressSecond);
+
+  useEffect(() => {
+    setWalletInfo({
+      balance: toBigNumber(walletData?.displayValue || '0')
+    })
+
+  }, [walletData])
 
   useEffect(() => {
     switch (rarity) {
@@ -102,7 +122,6 @@ export default function Card(props: Props) {
     }, 500);
   }
 
-
   return (
     <CardContainer className="w-[300px] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
         <img style={{position: 'absolute', top: '0.5rem', right: '0.5rem'}} src={badgeImage} alt="Badge" className="w-[60px] h-[60px]" />
@@ -118,65 +137,77 @@ export default function Card(props: Props) {
             <span className="rounded">
               <img src={image} alt="Polygon MATIC" className="w-[40px] h-[40px]" />
             </span>
-            {price.token}
+            {price.token} MATIC
           {/* <p>$0.00</p> */}
         </PriceDetails>
       </div>
       <div className="w-full">
-        { `${seller}`.toUpperCase() !== `${address}`.toUpperCase() ?
-            <Web3Button
-              contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
-              contractAbi={ABI}
-              action={async (contract) => {
-                await contract.call("buy", [listingId], { value: price.raw });
-              }}
-              className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-              onError={(e) => handleError(e)}
-              onSuccess={(e) => handleSuccess(e)}
+        {walletInfo.balance < getBalanceAmount(toBigNumber(`${price.raw}`)) ?
+          <button
+            disabled
+            style={{padding: '0.8rem'}}
+            className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#696969] to-[#464646]"
           >
-            Buy
-          </Web3Button>
+            Insufficent Token
+          </button>
           :
-          <Web3Button
-              theme="dark"
-              className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-              // contractAddress={contractAddress}
-              contractAddress={usedContract}
-              contractAbi={ABI}
-              action={async contract => {
-                  // approve listing
-                  if (!approvalData) {
-                      console.log("Approving")
-                      await contract.erc721.setApprovalForAll(
-                          contractAddressSecond,
-                          true,
-                      );
-                      console.log("Approved")
-                      console.log("Cancelling Listing")
-                      await contract.call('cancelListing', [
-                          listingId,
-                      ]);
-                  } else {
-                      await contract.call('cancelListing', [
-                          listingId,
-                      ]);
-                  }
-                  // listing id
-                  // mutateAsyncSecond({
-                  //   args: [listingId]
-                  // })
-              }}
-              onSuccess={res => {
-                  console.log('Listing cancelled');
-                  toast.success(`${name} listing cancelled`)
-                  setTimeout(() => {
-                    window.location.reload();
-                  }, 500)
-                  console.log(res);
-              }}
-          >
-              Cancel Listing
-          </Web3Button>
+          <>
+            { `${seller}`.toUpperCase() !== `${address}`.toUpperCase() ?
+                <Web3Button
+                  contractAddress={"0x90ba9328748cf652f9bba12be0436acf4f782076"} // Your smart contract address
+                  contractAbi={ABI}
+                  action={async (contract) => {
+                    await contract.call("buy", [listingId], { value: price.raw });
+                  }}
+                  className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                  onError={(e) => handleError(e)}
+                  onSuccess={(e) => handleSuccess(e)}
+              >
+                Buy
+              </Web3Button>
+              :
+              <Web3Button
+                  theme="dark"
+                  className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                  // contractAddress={contractAddress}
+                  contractAddress={usedContract}
+                  contractAbi={ABI}
+                  action={async contract => {
+                      // approve listing
+                      if (!approvalData) {
+                          console.log("Approving")
+                          await contract.erc721.setApprovalForAll(
+                              contractAddressSecond,
+                              true,
+                          );
+                          console.log("Approved")
+                          console.log("Cancelling Listing")
+                          await contract.call('cancelListing', [
+                              listingId,
+                          ]);
+                      } else {
+                          await contract.call('cancelListing', [
+                              listingId,
+                          ]);
+                      }
+                      // listing id
+                      // mutateAsyncSecond({
+                      //   args: [listingId]
+                      // })
+                  }}
+                  onSuccess={res => {
+                      console.log('Listing cancelled');
+                      toast.success(`${name} listing cancelled`)
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 500)
+                      console.log(res);
+                  }}
+              >
+                  Cancel Listing
+              </Web3Button>
+            }
+          </>
         }
       </div>
     </CardContainer>
