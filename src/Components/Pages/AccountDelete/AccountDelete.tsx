@@ -7,6 +7,8 @@ import { PlayFabCloudScript } from 'playfab-sdk';
 import usePlayfab from '../../../Hooks/usePlayfab';
 import { toast } from 'react-toastify';
 import { padding } from 'styled-system';
+import { useAppDispatch } from '../../Marketplace/state';
+import { delCookies } from '../../Marketplace/state/cookies/cookies';
 
 const Container = styled.div`
     display: flex;
@@ -164,6 +166,8 @@ const style = {
 };
 
 const App: React.FC = () => {
+    const dispatch = useAppDispatch();
+
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
@@ -215,9 +219,10 @@ const App: React.FC = () => {
         }
     };
 
-    const Logout = () => {
+    const Logout = async () => {
         setUserInfo('');
         setOpen3(true);
+        await dispatch(delCookies({names: ['playerInfo', 'playerTags', 'userData']}))
     };
 
     return (

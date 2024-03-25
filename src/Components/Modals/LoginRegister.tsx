@@ -1,6 +1,5 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useState } from 'react';
-import moment from 'moment'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
@@ -179,13 +178,14 @@ const LoginRegister = ({
             {
                 PlayFabId: playfabId,
             },
-            (error, result) => {
+            async (error, result) => {
                 if (error) {
                     toast(error.errorMessage, { type: 'error' });
                     return;
                 }
 
                 setUserTags(result.data.Tags);
+                await dispatch(newCookie({name: 'playerTags', data: result.data.Tags}))
 
                 if (result.data.Tags.includes('title.D4F8F.BoundWallet')) {
                     PlayFabClient.GetUserData(
@@ -199,10 +199,8 @@ const LoginRegister = ({
                                 return;
                             }
 
-                            const cookie = await dispatch(newCookie({name: 'playerTags', data: result.data.Data}))
-                            console.log(cookie);
-
                             setUserData(result.data.Data);
+                            await dispatch(newCookie({name: 'userData', data: result.data.Data}))
                         },
                     );
                 }
@@ -246,10 +244,8 @@ const LoginRegister = ({
 
                 toast(`${login} logged in`, { type: 'success' });
 
-                const cookie = await dispatch(newCookie({name: 'playerInfo', data: result.data.InfoResultPayload?.AccountInfo}))
-                console.log(cookie);
-
                 setUserInfo(result.data.InfoResultPayload?.AccountInfo);
+                await dispatch(newCookie({name: 'playerInfo', data: result.data.InfoResultPayload?.AccountInfo}))
 
                 setTimeout(() => {
                     FetchTags(

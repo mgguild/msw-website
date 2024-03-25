@@ -112,6 +112,13 @@ const ContentWrapper = styled.div`
   `}
 `;
 
+const Center = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+`
+
 const NftCollection = (props: any) => {
     const dispatch = useAppDispatch();
 
@@ -163,7 +170,6 @@ const NftCollection = (props: any) => {
                 setNftState(response.data);
                 setLoading(false);
 
-                // --------
                 const nfts = [];
                 const listings = response.data?.data?.listings;
                 for (let i = 0; i < listings.length; i++) {
@@ -193,7 +199,6 @@ const NftCollection = (props: any) => {
     }, [query]);
 
     const OwnedNFTs = () => {
-
         const {data, isLoading, error} = useOwnedNFTs(contract, address, {start: (nftStart * 10), count: nftCount})
         const [MdlNFT, setMdlNFT] = useState(false);
         const [actData, setActData] = useState<nftData | undefined>()
@@ -401,14 +406,17 @@ const NftCollection = (props: any) => {
 
             // getNFTs();
 
-            if(data && data[0].metadata)
+            if(data)
             {
-                if(data[0].metadata){
+                console.log('data not emtpy!')
+                if(data.length > 0 && data[0].metadata){
                     if(data[0].metadata.id !== oldData?.metadata.id){
                         console.log(data);
                         setOldData(data[0])
                         setIsFetching(false);
                     }
+                }else{
+                    setIsFetching(false);
                 }
             }
         }, [data, isLoading, nftStart, nftCount])
@@ -435,30 +443,37 @@ const NftCollection = (props: any) => {
                     </CenterFrame>
                 </Box>
             </Modal>
-            {isFetching ? <div style={{display:'flex', width: '100%', justifyContent: 'center', alignItems: 'center'}}>Loading...</div> :
-            <>
-                <FetchNFT
-                    data={data}
-                    marketplaceData={marketplaceData}
-                    start={nftStart}
-                    count={nftCount}
-                    setNftData={setActData}
-                    setNFTModal={setMdlNFT}
-                />
-                { data &&
-                    <div style={{display: 'flex', gap: '1rem', width: '100%', justifyContent: 'center', alignContent: 'center'}}>
-                    <Button disabled={nftStart <= 0} onClick={() => hndlPrev()}>
-                        <FaChevronLeft />
-                    </Button>
-                    <h1 style={{justifyItems: 'center'}}>
-                        page: {nftStart + 1}
-                    </h1>
-                    <Button disabled={data.length < 10} onClick={() => hndleNext()}>
-                        <FaChevronRight />
-                    </Button>
-            </div>
-                }
-            </>
+            {isFetching ?
+                <Center>Loading...</Center>
+                :
+                <>
+                    {data && data?.length > 0 ?
+                        <>
+                            <FetchNFT
+                                data={data}
+                                marketplaceData={marketplaceData}
+                                start={nftStart}
+                                count={nftCount}
+                                setNftData={setActData}
+                                setNFTModal={setMdlNFT}
+                            />
+                            <div style={{display: 'flex', gap: '1rem', width: '100%', justifyContent: 'center', alignContent: 'center'}}>
+                                <Button disabled={nftStart <= 0} onClick={() => hndlPrev()}>
+                                    <FaChevronLeft />
+                                </Button>
+                                <h1 style={{justifyItems: 'center'}}>
+                                    page: {nftStart + 1}
+                                </h1>
+                                <Button disabled={data.length < 10} onClick={() => hndleNext()}>
+                                    <FaChevronRight />
+                                </Button>
+                            </div>
+                        </>
+                        :
+                        <Center>No diggers in wallet</Center>
+
+                    }
+                </>
             }
         </>)
     }

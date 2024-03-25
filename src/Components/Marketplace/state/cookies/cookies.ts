@@ -1,9 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { useCookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 import moment from 'moment'
 import { useOwnedNFTs, useContract, useAddress, } from '@thirdweb-dev/react'
 import { Default, CookieData } from '../types'
+
+const cookies = new Cookies(null, { path: '/' });
 
 const initialState: Default = {
     data: {}
@@ -12,9 +14,7 @@ const initialState: Default = {
 export const newCookie = createAsyncThunk<string, CookieData>(
     'cookie/createCookie',
     async (cki) => {
-        const [cookie, setCookie] = useCookies([`${cki.name}`])
-        setCookie(cki.name, cki.data, {expires: moment().add(2, 'weeks').toDate()})
-
+        cookies.set(`${cki.name}`, cki.data, {expires: moment().add(2, 'weeks').toDate(), secure: true})
         return `created cookie ${cki.name}: ok`
     }
 )
@@ -22,18 +22,26 @@ export const newCookie = createAsyncThunk<string, CookieData>(
 export const getCookie = createAsyncThunk<any, {name: string}>(
     'cookie/getCookie',
     async (cki) => {
-        const [cookie, setCookie] = useCookies([`${cki.name}`])
-        return cookie
+        return cookies.get(`${cki.name}`)
     }
 )
 
-export const delCookie = createAsyncThunk<string, {name: string}>(
-    'cookie/deleteCookie',
-    async (cki) => {
-        const [cookie, setCookie, removeCookie] = useCookies([`${cki.name}`])
-        removeCookie(cki.name);
+export const delCookies = createAsyncThunk<string, {names: string[]}>(
+    'cookie/deleteCookies',
+    async ({names}) => {
 
-        return `deleted cookie ${cki.name}: ok`
+        names.forEach(name => {
+            cookies.remove(`${name}`)
+        });
+
+        return `deleted cookie ${names}: ok`
+    }
+)
+
+export const getCookies = createAsyncThunk<string>(
+    'cookie/getCookie',
+    async () => {
+        return cookies.getAll();
     }
 )
 
@@ -50,7 +58,7 @@ export const cookiSlice = createSlice({
             console.log(action.payload)
         })
 
-        builder.addCase(delCookie.fulfilled, (state, action) => {
+        builder.addCase(delCookies.fulfilled, (state, action) => {
             console.log(action.payload)
         })
     },

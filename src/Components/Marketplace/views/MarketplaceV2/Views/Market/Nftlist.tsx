@@ -146,7 +146,7 @@ const Nftlist = () => {
                         badge: getClassName(listings[i]),
                         price: {
                             raw: listings[i].price,
-                            token: `${getBalanceAmount(listings[i].price)} MATIC`,
+                            token: `${getBalanceAmount(listings[i].price)}`,
                             fiat: 'Not Available',
                         },
                     });

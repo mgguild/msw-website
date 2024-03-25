@@ -17,6 +17,8 @@ import { Triangle } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { MdlProps } from './types';
 import { useFetchImg } from '../Marketplace/utils/assetFetch';
+import { useAppDispatch } from '../Marketplace/state';
+import { delCookies } from '../Marketplace/state/cookies/cookies';
 
 const style = {
     position: 'relative',
@@ -135,6 +137,7 @@ const UserDashboard = ({
     Subheader,
     mobile = false,
 }: MdlProps) => {
+    const dispatch = useAppDispatch();
     const user = usePlayfab((state: any) => state.user);
     const userTags = usePlayfab((state: any) => state.userTags);
     const userData = usePlayfab((state: any) => state.userData);
@@ -151,10 +154,11 @@ const UserDashboard = ({
     const _disoconnect = useDisconnect();
     const _signer = useSigner();
 
-    const handleLogout = () => {
+    const handleLogout = async() => {
         setUserInfo(null);
         setOpen(false);
         _disoconnect();
+        await dispatch(delCookies({names: ['playerInfo', 'playerTags', 'userData']}))
     };
 
     const src= { name: 'mgg', folder: 'logo' }
