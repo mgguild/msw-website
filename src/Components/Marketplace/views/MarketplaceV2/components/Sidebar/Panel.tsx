@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyledPanel, StyledPanelBody, StyledPanelFooter } from './styled';
+import React, { useState, useMemo } from 'react';
+import styled from 'styled-components';
 import { Props } from './index.d';
 import Navbutton from './Navbutton';
 import Iconloader from '../Foundation/Iconloader';
@@ -7,12 +7,26 @@ import usePlayfab from '../../../../../../Hooks/usePlayfab';
 import { LoginRegister, UserDashboard } from '../../../../../Modals';
 import { useFetchImg } from '../../../../utils/assetFetch';
 
+const NavPanel = styled.div`
+  z-index: 100;
+`
+
 const Panel: React.FC<{ links: Props }> = (props) => {
   const { links } = props
   const user = usePlayfab((state: any) => state.user)
 
   const src = { name: 'msw', folder: 'logo' }
   const msw = useFetchImg(src)
+
+  const [isScreen480, setIsScreen480] = useState(false);
+
+  const handleResize = () => {
+      setIsScreen480(window.innerWidth < 480);
+  };
+
+  useMemo(() => {
+      handleResize();
+  }, []);
 
   return (
     // <StyledPanel className="sidebar-container nav-drop-shadow">
@@ -31,7 +45,7 @@ const Panel: React.FC<{ links: Props }> = (props) => {
     //     </Navbutton>
     //   </StyledPanelFooter> */}
     // </StyledPanel>
-    <div className="flex flex-col h-[100vh] fixed justify-between items-center bg-[#181020]">
+    <NavPanel className={`flex flex-col h-[100vh] fixed justify-between items-center bg-[#181020]`}>
       <div className="flex flex-col justify-center items-center gap-4 py-4 px-3">
         <div className="border-[#606060] border-b-2 pb-4">
           <img src={msw} alt="Meta Saga Warriors" className="w-[60px] h-[60px] rounded-full" />
@@ -49,7 +63,7 @@ const Panel: React.FC<{ links: Props }> = (props) => {
       <div className="px-3 pb-4">
         {user ? <UserDashboard mobile={true} /> : <LoginRegister mobile={true} />}
       </div>
-    </div>
+    </NavPanel>
   )
 }
 

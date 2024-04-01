@@ -9,8 +9,8 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     return (
         <Wrapper>
+            <Panel links={links} />
             <BodyWrapper>
-                <Panel links={links} />
                 <Inner>{children}</Inner>
             </BodyWrapper>
         </Wrapper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import { useFetchImg } from '../../../../utils/assetFetch';
 import { SCREEN_SIZE } from '../../styles/constants';
@@ -93,6 +93,15 @@ const ShowcaseWrapper = styled.div`
 export default function Showcase() {
     const bannerSrc = { name: 'showcase', folder: 'placeholder', extension: 'jpg' };
     const image = useFetchImg(bannerSrc);
+    const [isScreen450, setIsScreen450] = useState(false);
+
+    const handleResize = () => {
+        setIsScreen450(window.innerWidth < 450);
+    };
+
+    useMemo(() => {
+        handleResize();
+    }, []);
 
   return (
     <ShowcaseWrapper className="h-auto bg-[#2A2964]">
@@ -105,7 +114,7 @@ export default function Showcase() {
           </div>
         </div> */}
         <div className="w-full flex justify-center mt-5">
-          <p className="w-[75%] text-[32px]">Welcome to the official marketplace of MetaSaga Warriors! 🏹 Here, you can dive into the dynamic world of Diggers, where buying and selling prowess knows no bounds. Join the adventure as you explore, trade, and conquer with your fellow warriors. Happy trading!</p>
+          <p className={`w-[75%] text-[${isScreen450 ? '25px' : '32px'}]`}>Welcome to the official marketplace of MetaSaga Warriors! 🏹 Here, you can dive into the dynamic world of Diggers, where buying and selling prowess knows no bounds. Join the adventure as you explore, trade, and conquer with your fellow warriors. Happy trading!</p>
         </div>
       </div>
     </ShowcaseWrapper>

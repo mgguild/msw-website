@@ -258,7 +258,7 @@ const UserDashboard = ({
                                         <span>Bound Wallet Address</span>
                                         <Field>
                                             {_userData
-                                                ? _userData['WalletAddress'].Value
+                                                ? _userData['WalletAddress'] ? _userData['WalletAddress'].Value : ''
                                                 : ''}
                                         </Field>
                                     </Row>

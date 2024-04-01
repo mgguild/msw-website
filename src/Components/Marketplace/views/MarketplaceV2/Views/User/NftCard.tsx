@@ -17,7 +17,7 @@ const NftCard = (props: NftProps) => {
     return (
         <Container className="secondary-drop-shadow" onClick={handleNav}>
             <Header {...{ name, rarity, badge }} />
-            <SpriteDisplay {...{ spriteURL: 'asdfsdfds' }} />
+            <SpriteDisplay {...{ spriteURL: '' }} />
         </Container>
     );
 };

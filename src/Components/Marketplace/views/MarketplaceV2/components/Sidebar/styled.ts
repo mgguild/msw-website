@@ -40,12 +40,17 @@ export const Inner = styled.div`
   flex-grow: 1;
   padding: 10px;
   ${({ theme }) => `
+    ${theme.mediaQueries.xs} {
+      padding: 0 10px 0 10px;
+      margin: 0em 0em 0em 5.5em;
+    }
     ${theme.mediaQueries.sm} {
-      padding: 24px;
+      padding: 0 0 0 18px;
+      margin: 0em 0em 0em 7em;
     }
     ${theme.mediaQueries.lg}{
       max-width: 100%;
-      margin: 0em 3em 0em 11em;
+      margin: 0em 3em 0em 13em;
     }
 
   `}

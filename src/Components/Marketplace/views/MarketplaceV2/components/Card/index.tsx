@@ -1,11 +1,12 @@
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
+import styled from 'styled-components';
 import {
+  useConnectionStatus,
   useAddress,
   useContract,
   useContractRead,
 } from '@thirdweb-dev/react';
 import { toast } from 'react-toastify';
-import styled from 'styled-components';
 import { useNavigate, Link } from 'react-router-dom';
 import useMarketplaceV2, {
     useQueryAsset,
@@ -41,6 +42,10 @@ const defaultWallet: TWalletData = {
   balance: toBigNumber('0'),
 }
 
+const Text = styled.p<{isScreenSm?: boolean}>`
+  font-size: ${({isScreenSm}) => (isScreenSm ? '18px' : '24px')};
+`
+
 const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
 const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
 
@@ -51,6 +56,7 @@ export default function Card(props: Props) {
   const { modal } = controllers;
   const navigate = useNavigate();
   const address = useAddress();
+  const status = useConnectionStatus();
   const { data: walletData, isLoading } = useBalance()
 
   const [walletInfo, setWalletInfo] = useState(defaultWallet)
@@ -81,6 +87,15 @@ export default function Card(props: Props) {
 
   const [rarityBorder, setRarityBorder] = useState<string>('');
   const [usedContract, setUsedContract] = useState<string>(contractAddressSecond);
+  const [isScreen472, setIsScreen472] = useState(false);
+
+  const handleResize = () => {
+      setIsScreen472(window.innerWidth < 472);
+  };
+
+  useMemo(() => {
+      handleResize();
+  }, []);
 
   useEffect(() => {
     setWalletInfo({
@@ -123,14 +138,14 @@ export default function Card(props: Props) {
   }
 
   return (
-    <CardContainer className="w-[300px] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]">
+    <CardContainer className={`w-[${isScreen472 ? '80px' : '300px'}] bg-gradient-to-b from-[#2A3169] to-[#141839] rounded-[20px]`}>
         <img style={{position: 'absolute', top: '0.5rem', right: '0.5rem'}} src={badgeImage} alt="Badge" className="w-[60px] h-[60px]" />
         <Link to={`/marketplace/NFT/${id}/${listingId}`}>
             <img src={spriteName} alt="Digger" className="rounded-t-[20px] w-full h-auto" />
         </Link>
       <div className="py-3 px-3">
         <div className="flex flex-row justify-between items-center">
-          <p className="text-[24px] text-[#C2C2C2] font-bold grow">{name}</p>
+          <Text isScreenSm={isScreen472} className="text-[#C2C2C2] font-bold grow">{name}</Text>
           <p className={`border-2 ${rarityBorder} p-2 rounded-[5px] text-[12px]`}>{rarity}</p>
         </div>
         <PriceDetails>
@@ -142,13 +157,13 @@ export default function Card(props: Props) {
         </PriceDetails>
       </div>
       <div className="w-full">
-        {walletInfo.balance < getBalanceAmount(toBigNumber(`${price.raw}`)) ?
+        {status === 'connected' && (walletInfo.balance < getBalanceAmount(toBigNumber(`${price.raw}`))) ?
           <button
             disabled
             style={{padding: '0.8rem'}}
-            className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#696969] to-[#464646]"
+            className={`w-full font-black uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#696969] to-[#464646]`}
           >
-            Insufficent Token
+            <Text isScreenSm={isScreen472}>Insufficent Token</Text>
           </button>
           :
           <>
@@ -159,16 +174,16 @@ export default function Card(props: Props) {
                   action={async (contract) => {
                     await contract.call("buy", [listingId], { value: price.raw });
                   }}
-                  className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                  className={`text-[${isScreen472 ? '18px' : '24px'}] w-full font-black uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]`}
                   onError={(e) => handleError(e)}
                   onSuccess={(e) => handleSuccess(e)}
               >
-                Buy
+                <Text isScreenSm={isScreen472}>Buy</Text>
               </Web3Button>
               :
               <Web3Button
                   theme="dark"
-                  className="w-full font-black text-[24px] uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                  className="w-full font-black uppercase rounded-b-[20px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
                   // contractAddress={contractAddress}
                   contractAddress={usedContract}
                   contractAbi={ABI}
@@ -204,7 +219,7 @@ export default function Card(props: Props) {
                       console.log(res);
                   }}
               >
-                  Cancel Listing
+                  <Text isScreenSm={isScreen472}>Cancel Listing</Text>
               </Web3Button>
             }
           </>
