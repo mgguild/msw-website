@@ -82,7 +82,7 @@ const Dashboard: FC = () => (
     <Navigation />
     <div className='mx-[5em] my-[5em]'>
       <Routes>
-        <Route path="/" element={<DashboardHome />} />
+        <Route path="/" element={<DashboardRewards />} />
         <Route path="/rewards" element={<DashboardRewards />} />
         <Route path="/wallet" element={<DashboardWallet />} />
         <Route path="/exchange" element={<DashboardExchange />} />

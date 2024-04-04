@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies(null, { path: '/' });
 
 const usePlayfab = create(set => ({
+  leaderboard: [],
   initialized: false,
   user: '',
   userTags: [],
@@ -48,6 +49,25 @@ const usePlayfab = create(set => ({
     );
 
     set({ initialized: true });
+  },
+  getLeaderboard: () => {
+    PlayFab.settings.titleId = process.env.REACT_APP_PLAYFAB_TITLE_ID ?? '';
+    PlayFab.settings.developerSecretKey = process.env.REACT_APP_PLAYFAB_DEV_KEY ?? '';
+
+    PlayFabClient.GetLeaderboard(
+      {
+        StartPosition: 0,
+        StatisticName: "Kills"
+      },
+      (error, result) => {
+        if (error) {
+          toast(error.errorMessage, { type: 'error' });
+          set({ initialized: false });
+          return;
+        }
+        set({ leaderboard: result.data.Leaderboard })
+      }
+    );
   },
   getTitleData: async () => {
     const test = await PlayFabClient.GetTitleData(
