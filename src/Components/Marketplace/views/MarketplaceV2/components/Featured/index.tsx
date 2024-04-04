@@ -1,3 +1,4 @@
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMarketplaceV2FetchData } from '../../../../hooks/useMarketplaceV2Data';
@@ -7,17 +8,26 @@ import { H1, TextWrapper } from '../Foundation/Text';
 
 export default function Featured() {
     const { data } = useMarketplaceV2FetchData();
-    console.log(data);
     const item = data.sort(() => Math.random() - 0.5).slice(0, 4);
+
+    const [isScreen450, setIsScreen450] = useState(false);
+
+    const handleResize = () => {
+        setIsScreen450(window.innerWidth < 450);
+    };
+
+    useMemo(() => {
+        handleResize();
+    }, []);
 
   return (
     <div className="w-full h-auto bg-gradient-to-b from-[#2A2964] to-[#181020] py-[5em]">
       <div className="flex justify-center text-center items-center">
-        <b className="text-[64px] bg-gradient-to-b from-[#4ED2FB] to-[#6B3CD3] bg-clip-text text-transparent font-black">EXPLORE MARKETPLACE</b>
+        <b className={`text-[${isScreen450 ? '40px':'64px'}] bg-gradient-to-b from-[#4ED2FB] to-[#6B3CD3] bg-clip-text text-transparent font-black`}>EXPLORE MARKETPLACE</b>
       </div>
       <div className="flex justify-center text-center items-center font-black pb-[5em]">
         <Link to='/marketplace/NFT'>
-            <span className="font-black text-[48px] text-[#ECAF02] underline">VIEW MORE</span>
+            <span className={`font-black text-[${isScreen450 ? '32px' : '48px'}] text-[#ECAF02] underline`}>VIEW MORE</span>
         </Link>
       </div>
       <Cards items={item} />

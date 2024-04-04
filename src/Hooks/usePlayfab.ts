@@ -1,6 +1,9 @@
 import { PlayFab, PlayFabClient } from 'playfab-sdk';
 import { create } from 'zustand';
 import { toast } from 'react-toastify';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies(null, { path: '/' });
 
 const usePlayfab = create(set => ({
   initialized: false,
@@ -17,7 +20,25 @@ const usePlayfab = create(set => ({
         CreateAccount: true,
         CustomTags: { AccType: 'AnonymousGuest' },
       },
-      (error, result) => {
+      async (error, result) => {
+        const ckies = cookies.getAll()
+
+        if(Object.keys(ckies).length !== 0){
+          if(ckies.playerInfo){
+            set(() => ({user: ckies.playerInfo}))
+          }
+
+          if(ckies.playerTags){
+            set(() => ({userTags: ckies.playerTags}))
+          }
+
+          if(ckies.userData){
+            set(() => ({userData: ckies.userData}))
+          }else{
+            set(() => ({userData: {}}))
+          }
+        }
+
         if (error) {
           toast(error.errorMessage, { type: 'error' });
           set({ initialized: false });
