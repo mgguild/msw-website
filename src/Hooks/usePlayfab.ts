@@ -22,21 +22,21 @@ const usePlayfab = create(set => ({
         CustomTags: { AccType: 'AnonymousGuest' },
       },
       async (error, result) => {
-        const ckies = cookies.getAll()
+        const ckies = cookies.getAll();
 
-        if(Object.keys(ckies).length !== 0){
-          if(ckies.playerInfo){
-            set(() => ({user: ckies.playerInfo}))
+        if (Object.keys(ckies).length !== 0) {
+          if (ckies.playerInfo) {
+            set(() => ({ user: ckies.playerInfo }));
           }
 
-          if(ckies.playerTags){
-            set(() => ({userTags: ckies.playerTags}))
+          if (ckies.playerTags) {
+            set(() => ({ userTags: ckies.playerTags }));
           }
 
-          if(ckies.userData){
-            set(() => ({userData: ckies.userData}))
-          }else{
-            set(() => ({userData: {}}))
+          if (ckies.userData) {
+            set(() => ({ userData: ckies.userData }));
+          } else {
+            set(() => ({ userData: {} }));
           }
         }
 
@@ -57,7 +57,7 @@ const usePlayfab = create(set => ({
     PlayFabClient.GetLeaderboard(
       {
         StartPosition: 0,
-        StatisticName: "Kills"
+        StatisticName: 'Kills',
       },
       (error, result) => {
         if (error) {
@@ -65,8 +65,8 @@ const usePlayfab = create(set => ({
           set({ initialized: false });
           return;
         }
-        set({ leaderboard: result.data.Leaderboard })
-      }
+        set({ leaderboard: result.data.Leaderboard });
+      },
     );
   },
   getTitleData: async () => {

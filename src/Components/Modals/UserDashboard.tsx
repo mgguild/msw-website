@@ -154,15 +154,15 @@ const UserDashboard = ({
     const _disoconnect = useDisconnect();
     const _signer = useSigner();
 
-    const handleLogout = async() => {
+    const handleLogout = async () => {
         setUserInfo(null);
         setOpen(false);
         _disoconnect();
-        await dispatch(delCookies({names: ['playerInfo', 'playerTags', 'userData']}))
+        await dispatch(delCookies({ names: ['playerInfo', 'playerTags', 'userData'] }));
     };
 
-    const src= { name: 'mgg', folder: 'logo' }
-    const mgg = useFetchImg(src)
+    const src = { name: 'mgg', folder: 'logo' };
+    const mgg = useFetchImg(src);
 
     useEffect(() => {
         setUserTags(userTags);
@@ -227,7 +227,11 @@ const UserDashboard = ({
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
-                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
+                slotProps={
+                    persistent
+                        ? { backdrop: { sx: { background: 'rgba(0, 0, 0)' } } }
+                        : {}
+                }
             >
                 <Box sx={style}>
                     <CenterFrame>
@@ -258,7 +262,9 @@ const UserDashboard = ({
                                         <span>Bound Wallet Address</span>
                                         <Field>
                                             {_userData
-                                                ? _userData['WalletAddress'] ? _userData['WalletAddress'].Value : ''
+                                                ? _userData['WalletAddress']
+                                                    ? _userData['WalletAddress'].Value
+                                                    : ''
                                                 : ''}
                                         </Field>
                                     </Row>
@@ -359,10 +365,17 @@ const UserDashboard = ({
                     </CenterFrame>
                 </Box>
             </Modal>
-            {showBtn && (
-                mobile ? (
-                    <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
-                        <img src={mgg} alt="Meta Gaming Guild" className="w-[60px] h-[60px] rounded-full" />
+            {showBtn &&
+                (mobile ? (
+                    <div
+                        onClick={() => setOpen(true)}
+                        className="cursor-pointer border-[#606060] pt-4 border-t-2"
+                    >
+                        <img
+                            src={mgg}
+                            alt="Meta Gaming Guild"
+                            className="w-[60px] h-[60px] rounded-full"
+                        />
                     </div>
                 ) : (
                     <Button
@@ -372,8 +385,7 @@ const UserDashboard = ({
                     >
                         {user.TitleInfo.DisplayName ?? user.Username}
                     </Button>
-                )
-            )}
+                ))}
         </>
     );
 };

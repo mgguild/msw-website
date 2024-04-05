@@ -93,10 +93,10 @@ const WalletInfo = styled.div`
     line-height: 0.1rem;
 
     span {
-        font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace !important;
+        font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !important;
         font-size: 1.5rem;
     }
-`
+`;
 
 const App: React.FC = () => {
     const navigate = useNavigate();
@@ -117,7 +117,12 @@ const App: React.FC = () => {
             setOpen(true);
         }
 
-        if (_status === 'connected' && _userData && `${_userData['WalletAddress'].Value}`.toUpperCase() === `${_address}`.toUpperCase()) {
+        if (
+            _status === 'connected' &&
+            _userData &&
+            `${_userData['WalletAddress'].Value}`.toUpperCase() ===
+                `${_address}`.toUpperCase()
+        ) {
             navigate(-1);
         }
     }, [user, userData, _userData, _address]);

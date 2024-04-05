@@ -1,11 +1,11 @@
-import {FC} from "react"
+import { FC } from 'react';
 
 const Completed: FC = () => {
-  return (
-    <>
-      <p>Completed Section</p>
-    </>
-  )
-}
+    return (
+        <>
+            <p>Completed Section</p>
+        </>
+    );
+};
 
-export default Completed
+export default Completed;

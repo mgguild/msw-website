@@ -35,7 +35,7 @@ export const raritySwitch = (trait: any) => {
         default:
             return 'Unknown';
     }
-}
+};
 
 export const getRarity = (attributes: any[]) => {
     if (attributes.find(attr => attr.trait_type === '1/1')) {

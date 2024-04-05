@@ -107,8 +107,8 @@ const Nftlist = () => {
                 price
                 blockTimestamp
             }
-        }`)
-    }, [filter, order])
+        }`);
+    }, [filter, order]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -162,9 +162,9 @@ const Nftlist = () => {
         fetchData();
     }, [nftState, query]);
 
-  return (
-    <div className="flex flex-col justify-center items-center">
-        {/* <Grid container spacing={{ xs: 2, sm: 4 }} {...settings} pt={5}>
+    return (
+        <div className="flex flex-col justify-center items-center">
+            {/* <Grid container spacing={{ xs: 2, sm: 4 }} {...settings} pt={5}>
           {data.slice(0, toDisplay).map((d: any) => (
             <Grid key={d.name} item xs={12} sm={4} md={3} lg={3} xl={3} justifyContent="center">
               <StyledFlex>
@@ -173,21 +173,21 @@ const Nftlist = () => {
             </Grid>
           ))}
         </Grid> */}
-        <div className="flex flex-wrap justify-start items-center gap-3 w-full">
-        {data.slice(0, toDisplay).map((data: any) => (
-          <Card {...data} />
-        ))}
+            <div className="flex flex-wrap justify-start items-center gap-3 w-full">
+                {data.slice(0, toDisplay).map((data: any) => (
+                    <Card {...data} />
+                ))}
+            </div>
+            <div style={{ marginTop: '1.5rem' }}>
+                {toDisplay <= data.length && (
+                    <button onClick={handleDisplay} type="button">
+                        View more
+                    </button>
+                )}
+            </div>
         </div>
-        <div style={{ marginTop: '1.5rem' }}>
-          {toDisplay <= data.length && (
-            <button onClick={handleDisplay} type="button">
-              View more
-            </button>
-          )}
-      </div>
-    </div>
-  )
-}
+    );
+};
 
 export default Nftlist;
 

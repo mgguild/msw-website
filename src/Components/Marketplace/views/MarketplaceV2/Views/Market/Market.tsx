@@ -128,16 +128,16 @@ const Market = () => {
         );
     };
 
-  return (
-    <div style={{ width: '100%' }}>
-      <Main>
-        <Filters />
-        <div className="mt-5">
-          <Nftlist />
+    return (
+        <div style={{ width: '100%' }}>
+            <Main>
+                <Filters />
+                <div className="mt-5">
+                    <Nftlist />
+                </div>
+            </Main>
         </div>
-      </Main>
-    </div>
-  )
-}
+    );
+};
 
-export default Market
+export default Market;

@@ -1,1 +1,1 @@
-export {default as thirdwebReducer} from './thirdweb'
+export { default as thirdwebReducer } from './thirdweb';

@@ -6,22 +6,20 @@ import Card from '../Card';
 import './style.css';
 
 const Cards = (props: any) => {
-  const { items } = props
+    const { items } = props;
 
-  return (
-    <div className="flex flex-wrap justify-center items-center gap-3">
-    {
-      items.map((item: any) => {
-        return (
-          <div className="w-[300px]">
-            <Card {...item} />
-          </div>
-        )
-      })
-    }
-    </div>
-  )
-}
+    return (
+        <div className="flex flex-wrap justify-center items-center gap-3">
+            {items.map((item: any) => {
+                return (
+                    <div className="w-[300px]">
+                        <Card {...item} />
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
 const responsive = {
     desktop: {
         breakpoint: { max: 3000, min: 1024 },

@@ -9,7 +9,7 @@ import {
   Team,
   GuildpadConfig,
 } from '../config/constants/types';
-import { NFT } from '@thirdweb-dev/react'
+import { NFT } from '@thirdweb-dev/react';
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
@@ -328,7 +328,7 @@ export interface PlayfabLoginResult {
   stateus: string;
 }
 
-export interface ThirdwebState{
+export interface ThirdwebState {
   ownerNFTs: TWOwnerResult;
 }
 

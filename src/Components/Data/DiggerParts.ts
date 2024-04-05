@@ -13,18 +13,18 @@ enum Atr {
   regen = 'Health Regen',
 }
 
-interface skAbil{
-  [key: string]:{
+interface skAbil {
+  [key: string]: {
     name: string;
     img: string;
     description: string;
-  }
+  };
 }
 
-interface ability{
-    name: string;
-    img: string,
-    description: string
+interface ability {
+  name: string;
+  img: string;
+  description: string;
 }
 
 const Abilities: skAbil = {
@@ -301,38 +301,38 @@ interface stats {
 }
 
 interface parts {
-  [key: string]:{
+  [key: string]: {
     badgeImg: string;
     baseStats: stats[];
-    legendary:{
+    legendary: {
       ability: ability;
       stat: stats[];
-    }
-    hats:{
-      [key: string]: {ability: ability}
-    }
-    eyes?:{
-      [key: string]:{
-        correction?: string,
-        stat: stats[]
-      }
-    }
-    noses?:{
-      [key: string]:{
-        correction?: string,
-        stat: stats[]
-      }
-    }
-    clothes:{
-      [key: string]:{
-        correction?: string,
-        stat: stats[]
-      }
-    }
-  }
+    };
+    hats: {
+      [key: string]: { ability: ability };
+    };
+    eyes?: {
+      [key: string]: {
+        correction?: string;
+        stat: stats[];
+      };
+    };
+    noses?: {
+      [key: string]: {
+        correction?: string;
+        stat: stats[];
+      };
+    };
+    clothes: {
+      [key: string]: {
+        correction?: string;
+        stat: stats[];
+      };
+    };
+  };
 }
 
-const Parts:parts = {
+const Parts: parts = {
   Archer: {
     badgeImg: '/images/nfts/MSW/classIcons/Archer.png',
     baseStats: [

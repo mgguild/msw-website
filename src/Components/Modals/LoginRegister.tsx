@@ -13,7 +13,6 @@ import usePlayfab from '../../Hooks/usePlayfab';
 import { MdlProps } from './types';
 import Iconloader from '../Marketplace/views/MarketplaceV2/components/Foundation/Iconloader';
 
-
 const style = {
     position: 'relative',
     top: '50%',
@@ -102,7 +101,8 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
     text-align: center;
 `;
 
-const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const LoginRegister = ({
     show = false,
@@ -112,7 +112,7 @@ const LoginRegister = ({
     Subheader,
     mobile = false,
 }: MdlProps) => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
     const setUserTags = usePlayfab((state: any) => state.setUserTags);
@@ -133,7 +133,7 @@ const LoginRegister = ({
     const [login, setLogin] = useState('');
     const [loginPass, setLoginPass] = useState('');
 
-    const [resEmail, setResEmail] = useState('')
+    const [resEmail, setResEmail] = useState('');
 
     const handleClose = () => {
         setEmail('');
@@ -173,7 +173,6 @@ const LoginRegister = ({
     };
 
     const FetchTags = (playfabId: string) => {
-
         PlayFabClient.GetPlayerTags(
             {
                 PlayFabId: playfabId,
@@ -185,7 +184,7 @@ const LoginRegister = ({
                 }
 
                 setUserTags(result.data.Tags);
-                await dispatch(newCookie({name: 'playerTags', data: result.data.Tags}))
+                await dispatch(newCookie({ name: 'playerTags', data: result.data.Tags }));
 
                 if (result.data.Tags.includes('title.D4F8F.BoundWallet')) {
                     PlayFabClient.GetUserData(
@@ -200,7 +199,9 @@ const LoginRegister = ({
                             }
 
                             setUserData(result.data.Data);
-                            await dispatch(newCookie({name: 'userData', data: result.data.Data}))
+                            await dispatch(
+                                newCookie({ name: 'userData', data: result.data.Data }),
+                            );
                         },
                     );
                 }
@@ -212,7 +213,7 @@ const LoginRegister = ({
         e.preventDefault();
 
         if (!re.test(login)) {
-            toast.error('Invalid Email Address')
+            toast.error('Invalid Email Address');
             return;
         }
 
@@ -234,7 +235,7 @@ const LoginRegister = ({
                 },
             },
             async (error, result) => {
-                if(!persistent){
+                if (!persistent) {
                     handleClose();
                 }
                 if (error) {
@@ -245,7 +246,12 @@ const LoginRegister = ({
                 toast(`${login} logged in`, { type: 'success' });
 
                 setUserInfo(result.data.InfoResultPayload?.AccountInfo);
-                await dispatch(newCookie({name: 'playerInfo', data: result.data.InfoResultPayload?.AccountInfo}))
+                await dispatch(
+                    newCookie({
+                        name: 'playerInfo',
+                        data: result.data.InfoResultPayload?.AccountInfo,
+                    }),
+                );
 
                 setTimeout(() => {
                     FetchTags(
@@ -260,7 +266,7 @@ const LoginRegister = ({
         e.preventDefault();
 
         if (!re.test(resEmail)) {
-            toast.error('Invalid Email Address')
+            toast.error('Invalid Email Address');
             return;
         }
 
@@ -278,21 +284,25 @@ const LoginRegister = ({
                     return;
                 }
 
-                toast('Reset account request sent!', { type: 'success' })
+                toast('Reset account request sent!', { type: 'success' });
                 setShwMsg(true);
-            }
-        )
-    }
+            },
+        );
+    };
 
     return (
-        <div style={{position: 'relative'}}>
+        <div style={{ position: 'relative' }}>
             <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
                 disableAutoFocus
-                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
+                slotProps={
+                    persistent
+                        ? { backdrop: { sx: { background: 'rgba(0, 0, 0)' } } }
+                        : {}
+                }
             >
                 <Box sx={style}>
                     <CenterFrame>
@@ -356,13 +366,13 @@ const LoginRegister = ({
                                             )}
 
                                             {persistent && (
-                                                <Link to='/marketplace'>
+                                                <Link to="/marketplace">
                                                     <Button
                                                         borderRadius="8px"
                                                         padding="0.8rem 1rem"
                                                         type="button"
                                                         onClick={e => handleClose()}
-                                                        style={{color: 'white'}}
+                                                        style={{ color: 'white' }}
                                                     >
                                                         Go Back
                                                     </Button>
@@ -375,7 +385,9 @@ const LoginRegister = ({
                                                     cursor: 'pointer',
                                                     fontSize: '1rem',
                                                 }}
-                                                onClick={e => {setCarouselItem(2);}}
+                                                onClick={e => {
+                                                    setCarouselItem(2);
+                                                }}
                                             >
                                                 Forgot Password?
                                             </a>
@@ -501,7 +513,9 @@ const LoginRegister = ({
                                                 type="input"
                                                 placeholder=""
                                                 defaultValue={resEmail}
-                                                onChange={e => setResEmail(e.target.value)}
+                                                onChange={e =>
+                                                    setResEmail(e.target.value)
+                                                }
                                                 required
                                             />
                                         </Row>
@@ -523,16 +537,20 @@ const LoginRegister = ({
                                                 borderRadius="8px"
                                                 padding="0.8rem 1rem"
                                                 type="button"
-                                                onClick={e => {setCarouselItem(0); setShwMsg(false)}}
+                                                onClick={e => {
+                                                    setCarouselItem(0);
+                                                    setShwMsg(false);
+                                                }}
                                             >
                                                 Go Back
                                             </Button>
                                         </div>
-                                        {shwMsg &&
+                                        {shwMsg && (
                                             <div>
-                                                If email matches, an email will be sent for account recovery
+                                                If email matches, an email will be sent
+                                                for account recovery
                                             </div>
-                                        }
+                                        )}
 
                                         <div
                                             style={{
@@ -546,7 +564,10 @@ const LoginRegister = ({
                                                 borderRadius="8px"
                                                 padding="0.8rem 1rem"
                                                 type="button"
-                                                onClick={e => {setCarouselItem(1); setShwMsg(false)}}
+                                                onClick={e => {
+                                                    setCarouselItem(1);
+                                                    setShwMsg(false);
+                                                }}
                                             >
                                                 Register
                                             </Button>
@@ -569,9 +590,11 @@ const LoginRegister = ({
                 </Box>
             </Modal>
             {showBtn &&
-                (
-                mobile ? (
-                    <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
+                (mobile ? (
+                    <div
+                        onClick={() => setOpen(true)}
+                        className="cursor-pointer border-[#606060] pt-4 border-t-2"
+                    >
                         <Iconloader type="fa" name="SignInAlt" />
                     </div>
                 ) : (
@@ -582,9 +605,7 @@ const LoginRegister = ({
                     >
                         Login/Register
                     </Button>
-                    )
-                )
-            }
+                ))}
         </div>
     );
 };

@@ -179,6 +179,6 @@ export const useGuildpad = () => {
 
 // Thirdweb
 export const useFetchOwnerNFTs = () => {
-  const nfts = useSelector((state: ThirdwebState ) => state.ownerNFTs)
-  return nfts
-}
+  const nfts = useSelector((state: ThirdwebState) => state.ownerNFTs);
+  return nfts;
+};

@@ -164,15 +164,11 @@ const style = {
 };
 
 const App: React.FC = () => {
-
-
     return (
         <>
             <Container>
                 <Menu>
-                    <h1>
-                        Thank you! Your account has been verified
-                    </h1>
+                    <h1>Thank you! Your account has been verified</h1>
                     <Buttons>
                         <Link to={'/'}>
                             <Button padding={'1rem 2.5rem'}>RETURN HOME</Button>

@@ -6,8 +6,17 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
-import { DashboardExchange, DashboardGuilds, DashboardHome, DashboardMembership, DashboardRewards, DashboardSocial, DashboardWallet, DashboardLeaderboard } from './routes';
-import {Navigation} from './Components/Dashboard'
+import {
+    DashboardExchange,
+    DashboardGuilds,
+    DashboardHome,
+    DashboardMembership,
+    DashboardRewards,
+    DashboardSocial,
+    DashboardWallet,
+    DashboardLeaderboard,
+} from './routes';
+import { Navigation } from './Components/Dashboard';
 import MarketplaceV2 from './Components/Marketplace/views/MarketplaceV2/Marketplace';
 import Market from './Components/Marketplace/views/MarketplaceV2/Views/Market/Market';
 import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
@@ -78,28 +87,28 @@ function MainApp() {
 }
 
 const Dashboard: FC = () => (
-  <div className='flex flex-col w-full'>
-    <Navigation />
-    <div className='mx-[5em] my-[5em]'>
-      <Routes>
-        <Route path="/" element={<DashboardRewards />} />
-        <Route path="/rewards" element={<DashboardRewards />} />
-        <Route path="/wallet" element={<DashboardWallet />} />
-        <Route path="/exchange" element={<DashboardExchange />} />
-        <Route path="/membership" element={<DashboardMembership />} />
-        <Route path="/social" element={<DashboardSocial />} />
-        <Route path="/guilds" element={<DashboardGuilds />} />
-        <Route path="/leaderboards" element={<DashboardLeaderboard />} />
-      </Routes>
+    <div className="flex flex-col w-full">
+        <Navigation />
+        <div className="mx-[5em] my-[5em]">
+            <Routes>
+                <Route path="/" element={<DashboardRewards />} />
+                <Route path="/rewards" element={<DashboardRewards />} />
+                <Route path="/wallet" element={<DashboardWallet />} />
+                <Route path="/exchange" element={<DashboardExchange />} />
+                <Route path="/membership" element={<DashboardMembership />} />
+                <Route path="/social" element={<DashboardSocial />} />
+                <Route path="/guilds" element={<DashboardGuilds />} />
+                <Route path="/leaderboards" element={<DashboardLeaderboard />} />
+            </Routes>
+        </div>
     </div>
-  </div>
-)
+);
 
 const App = () => (
-  <Routes>
-    <Route path='/*' element={<MainApp />} />
-    <Route path='/dashboard/*' element={<Dashboard />} />
-  </Routes>
-)
+    <Routes>
+        <Route path="/*" element={<MainApp />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
+    </Routes>
+);
 
 export default App;
