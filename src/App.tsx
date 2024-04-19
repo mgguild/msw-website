@@ -88,7 +88,7 @@ const Dashboard: FC = () => (
         <Route path="/exchange" element={<DashboardExchange />} />
         <Route path="/membership" element={<DashboardMembership />} />
         <Route path="/social" element={<DashboardSocial />} />
-        <Route path="/guilds" element={<DashboardGuilds />} />
+        {/* <Route path="/guilds" element={<DashboardGuilds />} /> */}
         <Route path="/leaderboards" element={<DashboardLeaderboard />} />
       </Routes>
     </div>

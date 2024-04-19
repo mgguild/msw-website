@@ -5,8 +5,6 @@ import usePlayfab from "../../../Hooks/usePlayfab"
 const Leaderboard: FC = () => {
   const getLeaderboard = usePlayfab((state: any) => state.getLeaderboard)
   const leaderboard = usePlayfab((state: any) => state.leaderboard)
-  console.log('---')
-  console.log(leaderboard)
 
   useEffect(() => {
     getLeaderboard()
