@@ -36,7 +36,6 @@ function MainApp() {
 
     return (
         <>
-            <ToastContainer theme="dark" />
             <Routes>
                 <Route
                     index
@@ -106,10 +105,13 @@ const App = () => {
     }, []);
 
     return (
-        <Routes>
-            <Route path="/*" element={<MainApp />} />
-            <Route path="/dashboard/*" element={<Dashboard />} />
-        </Routes>
+        <>
+            <ToastContainer theme="dark" />
+            <Routes>
+                <Route path="/*" element={<MainApp />} />
+                <Route path="/dashboard/*" element={<Dashboard />} />
+            </Routes>
+        </>
     );
 };
 
