@@ -1,7 +1,9 @@
-import { PlayFab, PlayFabClient } from 'playfab-sdk';
+import { PlayFab, PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
 import { create } from 'zustand';
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
+import { result } from 'lodash';
+import { group } from 'console';
 
 const cookies = new Cookies(null, { path: '/' });
 
@@ -9,6 +11,7 @@ const usePlayfab = create(set => ({
   leaderboard: [],
   initialized: false,
   user: '',
+  userGuild: null,
   userTags: [],
   userData: '',
   start: async () => {
@@ -31,6 +34,10 @@ const usePlayfab = create(set => ({
 
           if (ckies.playerTags) {
             set(() => ({ userTags: ckies.playerTags }));
+          }
+
+          if (ckies.userGuild) {
+            set(() => ({ userGuild: ckies.userGuild }));
           }
 
           if (ckies.userData) {
@@ -81,6 +88,21 @@ const usePlayfab = create(set => ({
       },
     );
   },
+  getGuilds: async () => {
+    PlayFabClient.ExecuteCloudScript(
+      {
+        FunctionName: 'GetListGuilds',
+      },
+      (error, result) => {
+        if (error) {
+          toast.error(error.errorMessage);
+          return;
+        } else {
+          console.log(result);
+        }
+      },
+    );
+  },
   setUserInfo: (userInfo: any) => {
     set({ user: userInfo });
   },
@@ -89,6 +111,9 @@ const usePlayfab = create(set => ({
   },
   setUserData: (data: any) => {
     set({ userData: data });
+  },
+  setUserGuild: (data: any) => {
+    set({ userGuild: data });
   },
 }));
 

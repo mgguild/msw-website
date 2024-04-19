@@ -10,7 +10,7 @@ import { newCookie } from '../Marketplace/state/cookies/cookies';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
-import { MdlProps } from './types';
+import { MdlProps, LogRegCarouselProps } from './types';
 import Iconloader from '../Marketplace/views/MarketplaceV2/components/Foundation/Iconloader';
 
 const style = {
@@ -104,14 +104,12 @@ const Button = styled.button<{ padding?: any; borderRadius?: any }>`
 const re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const LoginRegister = ({
-    show = false,
-    persistent = false,
-    showBtn = true,
+export const LoginRegCarousel = ({
+    persistent,
     Header = 'LOGIN ACCOUNT',
     Subheader,
-    mobile = false,
-}: MdlProps) => {
+    setOpen,
+}: LogRegCarouselProps) => {
     const dispatch = useAppDispatch();
 
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
@@ -120,9 +118,7 @@ const LoginRegister = ({
     const user = usePlayfab((state: any) => state.user);
     const userTags = usePlayfab((state: any) => state.userTags);
 
-    const [open, setOpen] = useState(show);
     const [shwMsg, setShwMsg] = useState(false);
-
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -209,6 +205,35 @@ const LoginRegister = ({
         );
     };
 
+    const FetchUserGuild = (entity: any) => {
+        PlayFabClient.ExecuteCloudScript(
+            {
+                FunctionName: 'GetListGuilds',
+                FunctionParameter: {
+                    playerEntity: entity,
+                },
+            },
+            async (error, result) => {
+                if (error) {
+                    toast.error(error.errorMessage);
+                    return;
+                } else if (result.data.FunctionResult) {
+                    await dispatch(
+                        newCookie({
+                            name: 'userGuild',
+                            data: {
+                                name: result.data.FunctionResult.Groups[0].GroupName,
+                                entity: result.data.FunctionResult.Groups[0].Group,
+                                role: result.data.FunctionResult.Groups[0].Roles[0]
+                                    .RoleName,
+                            },
+                        }),
+                    );
+                }
+            },
+        );
+    };
+
     const handleLoginSubmit = (e: any) => {
         e.preventDefault();
 
@@ -257,6 +282,10 @@ const LoginRegister = ({
                     FetchTags(
                         result.data.InfoResultPayload?.AccountInfo?.PlayFabId ?? '',
                     );
+                    FetchUserGuild(
+                        result.data.InfoResultPayload?.AccountInfo?.TitleInfo
+                            ?.TitlePlayerAccount,
+                    );
                 }, 100);
             },
         );
@@ -291,6 +320,271 @@ const LoginRegister = ({
     };
 
     return (
+        <Carousel
+            showThumbs={false}
+            selectedItem={carouselItem}
+            showArrows={false}
+            showIndicators={false}
+            showStatus={false}
+        >
+            <CarouselItem style={{ width: '100%' }}>
+                <h4>{Header}</h4>
+                {Subheader && <p>{Subheader}</p>}
+                <Col onSubmit={e => handleLoginSubmit(e)}>
+                    <Row>
+                        <span>Email:</span>
+                        <input
+                            type="email"
+                            placeholder=""
+                            defaultValue={login}
+                            onChange={e => setLogin(e.target.value)}
+                            required
+                        />
+                    </Row>
+                    <Row>
+                        <span>Password:</span>
+                        <input
+                            type="password"
+                            placeholder=""
+                            defaultValue={loginPass}
+                            onChange={e => setLoginPass(e.target.value)}
+                            required
+                        />
+                    </Row>
+                    <div
+                        style={{
+                            display: 'flex',
+                            gap: '2rem',
+                            marginTop: '1rem',
+                        }}
+                    >
+                        <Button borderRadius="8px" padding="0.8rem 1rem" type="submit">
+                            Login
+                        </Button>
+                        {!persistent && (
+                            <Button
+                                borderRadius="8px"
+                                padding="0.8rem 1rem"
+                                type="button"
+                                onClick={e => handleClose()}
+                            >
+                                Cancel
+                            </Button>
+                        )}
+
+                        {persistent && (
+                            <Link to="/marketplace">
+                                <Button
+                                    borderRadius="8px"
+                                    padding="0.8rem 1rem"
+                                    type="button"
+                                    onClick={e => handleClose()}
+                                    style={{ color: 'white' }}
+                                >
+                                    Go Back
+                                </Button>
+                            </Link>
+                        )}
+                    </div>
+                    <div>
+                        <a
+                            style={{
+                                cursor: 'pointer',
+                                fontSize: '1rem',
+                            }}
+                            onClick={e => {
+                                setCarouselItem(2);
+                            }}
+                        >
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexFlow: 'column',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                        }}
+                    >
+                        <span style={{ fontSize: '1rem' }}>Not yet registered?</span>
+                        <Button
+                            borderRadius="8px"
+                            padding="0.8rem 1rem"
+                            type="button"
+                            onClick={e => setCarouselItem(1)}
+                        >
+                            Register
+                        </Button>
+                    </div>
+                </Col>
+            </CarouselItem>
+            <CarouselItem>
+                <h4>REGISTER ACCOUNT</h4>
+                <Col onSubmit={e => handleRegisterSubmit(e)}>
+                    <Row>
+                        <span>Email:</span>
+                        <input
+                            type="email"
+                            placeholder="example@email.com"
+                            defaultValue={email}
+                            onChange={e => setEmail(e.target.value)}
+                            required
+                        />
+                    </Row>
+                    <Row>
+                        <span>Username:</span>
+                        <input
+                            type="username"
+                            placeholder="must be 4 characters (no spaces & special characters)"
+                            defaultValue={username}
+                            onChange={e => setUsername(e.target.value)}
+                            required
+                        />
+                    </Row>
+                    <Row>
+                        <span>Password:</span>
+                        <input
+                            type="password"
+                            placeholder="must be 6 characters long"
+                            defaultValue={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required
+                        />
+                    </Row>
+                    <Row>
+                        <span>Confirm Password:</span>
+                        <input
+                            type="password"
+                            placeholder="re-type password"
+                            defaultValue={confPassword}
+                            onChange={e => setConfPassword(e.target.value)}
+                            required
+                        />
+                    </Row>
+                    <div style={{ display: 'flex', gap: '2rem' }}>
+                        <Button borderRadius="8px" padding="0.8rem 1rem" type="submit">
+                            Register
+                        </Button>
+                        {!persistent && (
+                            <Button
+                                borderRadius="8px"
+                                padding="0.8rem 1rem"
+                                type="button"
+                                onClick={e => handleClose()}
+                            >
+                                Cancel
+                            </Button>
+                        )}
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexFlow: 'column',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                        }}
+                    >
+                        <span style={{ fontSize: '1rem' }}>Already registered?</span>
+                        <Button
+                            borderRadius="8px"
+                            padding="0.8rem 1rem"
+                            type="button"
+                            onClick={e => setCarouselItem(0)}
+                        >
+                            Login
+                        </Button>
+                    </div>
+                </Col>
+            </CarouselItem>
+            <CarouselItem style={{ width: '100%' }}>
+                <h4>Account Recovery</h4>
+                <Col onSubmit={e => handleResetAccount(e)}>
+                    <Row>
+                        <span>Email</span>
+                        <input
+                            type="input"
+                            placeholder=""
+                            defaultValue={resEmail}
+                            onChange={e => setResEmail(e.target.value)}
+                            required
+                        />
+                    </Row>
+                    <div
+                        style={{
+                            display: 'flex',
+                            gap: '2rem',
+                            marginTop: '1rem',
+                        }}
+                    >
+                        <Button borderRadius="8px" padding="0.8rem 1rem" type="submit">
+                            Reset Account
+                        </Button>
+                        <Button
+                            borderRadius="8px"
+                            padding="0.8rem 1rem"
+                            type="button"
+                            onClick={e => {
+                                setCarouselItem(0);
+                                setShwMsg(false);
+                            }}
+                        >
+                            Go Back
+                        </Button>
+                    </div>
+                    {shwMsg && (
+                        <div>
+                            If email matches, an email will be sent for account recovery
+                        </div>
+                    )}
+
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexFlow: 'row nowrap',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                        }}
+                    >
+                        <Button
+                            borderRadius="8px"
+                            padding="0.8rem 1rem"
+                            type="button"
+                            onClick={e => {
+                                setCarouselItem(1);
+                                setShwMsg(false);
+                            }}
+                        >
+                            Register
+                        </Button>
+                        {!persistent && (
+                            <Button
+                                borderRadius="8px"
+                                padding="0.8rem 1rem"
+                                type="button"
+                                onClick={e => handleClose()}
+                            >
+                                Cancel
+                            </Button>
+                        )}
+                    </div>
+                </Col>
+            </CarouselItem>
+        </Carousel>
+    );
+};
+
+const LoginRegister = ({
+    show = false,
+    persistent = false,
+    showBtn = true,
+    Header = 'LOGIN ACCOUNT',
+    Subheader,
+    mobile = false,
+}: MdlProps) => {
+    const [open, setOpen] = useState(show);
+
+    return (
         <div style={{ position: 'relative' }}>
             <Modal
                 open={open}
@@ -307,284 +601,12 @@ const LoginRegister = ({
                 <Box sx={style}>
                     <CenterFrame>
                         <Container persistent={persistent}>
-                            <Carousel
-                                showThumbs={false}
-                                selectedItem={carouselItem}
-                                showArrows={false}
-                                showIndicators={false}
-                                showStatus={false}
-                            >
-                                <CarouselItem style={{ width: '100%' }}>
-                                    <h4>{Header}</h4>
-                                    {Subheader && <p>{Subheader}</p>}
-                                    <Col onSubmit={e => handleLoginSubmit(e)}>
-                                        <Row>
-                                            <span>Email:</span>
-                                            <input
-                                                type="email"
-                                                placeholder=""
-                                                defaultValue={login}
-                                                onChange={e => setLogin(e.target.value)}
-                                                required
-                                            />
-                                        </Row>
-                                        <Row>
-                                            <span>Password:</span>
-                                            <input
-                                                type="password"
-                                                placeholder=""
-                                                defaultValue={loginPass}
-                                                onChange={e =>
-                                                    setLoginPass(e.target.value)
-                                                }
-                                                required
-                                            />
-                                        </Row>
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                gap: '2rem',
-                                                marginTop: '1rem',
-                                            }}
-                                        >
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="submit"
-                                            >
-                                                Login
-                                            </Button>
-                                            {!persistent && (
-                                                <Button
-                                                    borderRadius="8px"
-                                                    padding="0.8rem 1rem"
-                                                    type="button"
-                                                    onClick={e => handleClose()}
-                                                >
-                                                    Cancel
-                                                </Button>
-                                            )}
-
-                                            {persistent && (
-                                                <Link to="/marketplace">
-                                                    <Button
-                                                        borderRadius="8px"
-                                                        padding="0.8rem 1rem"
-                                                        type="button"
-                                                        onClick={e => handleClose()}
-                                                        style={{ color: 'white' }}
-                                                    >
-                                                        Go Back
-                                                    </Button>
-                                                </Link>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <a
-                                                style={{
-                                                    cursor: 'pointer',
-                                                    fontSize: '1rem',
-                                                }}
-                                                onClick={e => {
-                                                    setCarouselItem(2);
-                                                }}
-                                            >
-                                                Forgot Password?
-                                            </a>
-                                        </div>
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                flexFlow: 'column',
-                                                alignItems: 'center',
-                                                gap: '0.5rem',
-                                            }}
-                                        >
-                                            <span style={{ fontSize: '1rem' }}>
-                                                Not yet registered?
-                                            </span>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => setCarouselItem(1)}
-                                            >
-                                                Register
-                                            </Button>
-                                        </div>
-                                    </Col>
-                                </CarouselItem>
-                                <CarouselItem>
-                                    <h4>REGISTER ACCOUNT</h4>
-                                    <Col onSubmit={e => handleRegisterSubmit(e)}>
-                                        <Row>
-                                            <span>Email:</span>
-                                            <input
-                                                type="email"
-                                                placeholder="example@email.com"
-                                                defaultValue={email}
-                                                onChange={e => setEmail(e.target.value)}
-                                                required
-                                            />
-                                        </Row>
-                                        <Row>
-                                            <span>Username:</span>
-                                            <input
-                                                type="username"
-                                                placeholder="must be 4 characters (no spaces & special characters)"
-                                                defaultValue={username}
-                                                onChange={e =>
-                                                    setUsername(e.target.value)
-                                                }
-                                                required
-                                            />
-                                        </Row>
-                                        <Row>
-                                            <span>Password:</span>
-                                            <input
-                                                type="password"
-                                                placeholder="must be 6 characters long"
-                                                defaultValue={password}
-                                                onChange={e =>
-                                                    setPassword(e.target.value)
-                                                }
-                                                required
-                                            />
-                                        </Row>
-                                        <Row>
-                                            <span>Confirm Password:</span>
-                                            <input
-                                                type="password"
-                                                placeholder="re-type password"
-                                                defaultValue={confPassword}
-                                                onChange={e =>
-                                                    setConfPassword(e.target.value)
-                                                }
-                                                required
-                                            />
-                                        </Row>
-                                        <div style={{ display: 'flex', gap: '2rem' }}>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="submit"
-                                            >
-                                                Register
-                                            </Button>
-                                            {!persistent && (
-                                                <Button
-                                                    borderRadius="8px"
-                                                    padding="0.8rem 1rem"
-                                                    type="button"
-                                                    onClick={e => handleClose()}
-                                                >
-                                                    Cancel
-                                                </Button>
-                                            )}
-                                        </div>
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                flexFlow: 'column',
-                                                alignItems: 'center',
-                                                gap: '0.5rem',
-                                            }}
-                                        >
-                                            <span style={{ fontSize: '1rem' }}>
-                                                Already registered?
-                                            </span>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => setCarouselItem(0)}
-                                            >
-                                                Login
-                                            </Button>
-                                        </div>
-                                    </Col>
-                                </CarouselItem>
-                                <CarouselItem style={{ width: '100%' }}>
-                                    <h4>Account Recovery</h4>
-                                    <Col onSubmit={e => handleResetAccount(e)}>
-                                        <Row>
-                                            <span>Email</span>
-                                            <input
-                                                type="input"
-                                                placeholder=""
-                                                defaultValue={resEmail}
-                                                onChange={e =>
-                                                    setResEmail(e.target.value)
-                                                }
-                                                required
-                                            />
-                                        </Row>
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                gap: '2rem',
-                                                marginTop: '1rem',
-                                            }}
-                                        >
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="submit"
-                                            >
-                                                Reset Account
-                                            </Button>
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => {
-                                                    setCarouselItem(0);
-                                                    setShwMsg(false);
-                                                }}
-                                            >
-                                                Go Back
-                                            </Button>
-                                        </div>
-                                        {shwMsg && (
-                                            <div>
-                                                If email matches, an email will be sent
-                                                for account recovery
-                                            </div>
-                                        )}
-
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                flexFlow: 'row nowrap',
-                                                alignItems: 'center',
-                                                gap: '0.5rem',
-                                            }}
-                                        >
-                                            <Button
-                                                borderRadius="8px"
-                                                padding="0.8rem 1rem"
-                                                type="button"
-                                                onClick={e => {
-                                                    setCarouselItem(1);
-                                                    setShwMsg(false);
-                                                }}
-                                            >
-                                                Register
-                                            </Button>
-                                            {!persistent && (
-                                                <Button
-                                                    borderRadius="8px"
-                                                    padding="0.8rem 1rem"
-                                                    type="button"
-                                                    onClick={e => handleClose()}
-                                                >
-                                                    Cancel
-                                                </Button>
-                                            )}
-                                        </div>
-                                    </Col>
-                                </CarouselItem>
-                            </Carousel>
+                            <LoginRegCarousel
+                                persistent={persistent}
+                                Header={Header}
+                                Subheader={Subheader}
+                                setOpen={setOpen}
+                            />
                         </Container>
                     </CenterFrame>
                 </Box>

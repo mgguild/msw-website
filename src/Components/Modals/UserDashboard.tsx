@@ -142,6 +142,7 @@ const UserDashboard = ({
     const userTags = usePlayfab((state: any) => state.userTags);
     const userData = usePlayfab((state: any) => state.userData);
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
+    const setUserGuild = usePlayfab((state: any) => state.setUserGuild);
 
     const [open, setOpen] = useState(show);
     const [binding, setBinding] = useState(false);
@@ -156,9 +157,12 @@ const UserDashboard = ({
 
     const handleLogout = async () => {
         setUserInfo(null);
+        setUserGuild(null);
         setOpen(false);
         _disoconnect();
-        await dispatch(delCookies({ names: ['playerInfo', 'playerTags', 'userData'] }));
+        await dispatch(
+            delCookies({ names: ['playerInfo', 'playerTags', 'userData', 'userGuild'] }),
+        );
     };
 
     const src = { name: 'mgg', folder: 'logo' };

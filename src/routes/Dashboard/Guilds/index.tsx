@@ -1,8 +1,30 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Button } from '../../../Components/Dashboard';
 import Logo from '../../../Assets/img/discord_logo.png';
+import usePlayfab from '../../../Hooks/usePlayfab';
+import { CreateGuild } from '../../../Components/Modals';
 
 const Guilds: FC = () => {
+    const getGuilds = usePlayfab((state: any) => state.getGuilds);
+    const userGuild = usePlayfab((state: any) => state.userGuild);
+
+    const [usrGuild, setUsrGuild] = useState(null);
+
+    console.log(userGuild);
+
+    useEffect(() => {
+        if (userGuild) {
+            setUsrGuild(userGuild.name);
+        } else {
+            setUsrGuild(null);
+        }
+
+        setTimeout(() => {
+            console.log('get Guilds');
+            getGuilds();
+        }, 1000);
+    }, [userGuild]);
+
     return (
         <>
             <div>
@@ -14,7 +36,7 @@ const Guilds: FC = () => {
                     </p>
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                    <Button value="Create Guild" />
+                    {usrGuild ? <>{usrGuild}</> : <CreateGuild />}
                 </div>
                 <div className="bg-[#0F1637] rounded-[5px] w-full p-5 my-[2em] gap-5">
                     <p className="uppercase text-[48px] font-bold text-center ">

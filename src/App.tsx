@@ -34,12 +34,6 @@ function MainApp() {
     const [isScreen550, setIsScreen600] = useState(false);
     const [open, setOpen] = useState(false);
 
-    const connect = usePlayfab((state: any) => state.start);
-
-    useEffect(() => {
-        connect();
-    }, [connect]);
-
     return (
         <>
             <ToastContainer theme="dark" />
@@ -104,11 +98,19 @@ const Dashboard: FC = () => (
     </div>
 );
 
-const App = () => (
-    <Routes>
-        <Route path="/*" element={<MainApp />} />
-        <Route path="/dashboard/*" element={<Dashboard />} />
-    </Routes>
-);
+const App = () => {
+    const connect = usePlayfab((state: any) => state.start);
+
+    useEffect(() => {
+        connect();
+    }, []);
+
+    return (
+        <Routes>
+            <Route path="/*" element={<MainApp />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
+        </Routes>
+    );
+};
 
 export default App;

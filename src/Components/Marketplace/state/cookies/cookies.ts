@@ -5,7 +5,7 @@ import moment from 'moment';
 import { useOwnedNFTs, useContract, useAddress } from '@thirdweb-dev/react';
 import { Default, CookieData } from '../types';
 
-const cookies = new Cookies(null, { path: '/' });
+const cookies = new Cookies(null, { path: '/', sameSite: 'strict' });
 
 const initialState: Default = {
   data: {},

@@ -6,3 +6,10 @@ export interface MdlProps {
   Subheader?: string;
   mobile?: boolean;
 }
+
+export interface LogRegCarouselProps {
+  persistent?: boolean;
+  Header?: string;
+  Subheader?: string;
+  setOpen: any;
+}
