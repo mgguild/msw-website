@@ -7,6 +7,7 @@ const Membership: FC = () => {
     <div className="w-full text-center text-[64px] text-[#FFB800]">
       <b>Coming Soon</b>
     </div>
+    {/* todo */}
       {/* <div className="text-center">
         <p className="text-[48px] uppercase">Membership</p>
       </div>
