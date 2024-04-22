@@ -56,7 +56,6 @@ function MainApp() {
                 <Route path="/marketplace/profile" element={<User />} />
                 <Route path="/marketplace/NFT" element={<Market />} />
                 <Route path="/marketplace/NFT/:id/:lid" element={<NFTPage />} />
-                <Route path="/dashboard" element={<Dashboard />} />
                 <Route
                     path="/WalletError"
                     element={
