@@ -32,7 +32,7 @@ const Rewards: FC = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center gap-5 pb-[2em]">
-        <p className="font-bold text-[48px]">Welcome, {user?.TitleInfo?.DisplayName || "Username"}!</p>
+        <p className="font-bold text-[48px]">Welcome{(user?.TitleInfo?.DisplayName !== undefined ? `, ${user?.TitleInfo?.DisplayName}` : "")}!</p>
       </div>
       <div className="flex flex-wrap justify-between items-start gap-3">
         <div className="bg-[#0F1637] rounded-[5px] w-[55%] h-auto p-5 flex flex-col justify-start items-center mb-[2em]">

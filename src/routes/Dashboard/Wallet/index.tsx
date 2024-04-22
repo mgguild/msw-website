@@ -10,7 +10,7 @@ const Wallet: FC = () => {
     <>
       <div className="flex flex-col justify-center items-center mb-2">
         <p className="text-[36px] font-bold uppercase">Crypto Wallets</p>
-        <p>Lorem ipsum dolor sit amet</p>
+        <p>Binded email and wallet address</p>
       </div>
       <div className="bg-[#0F1637] rounded-[5px] w-full h-auto p-5 flex flex-col justify-center items-center mb-[2em] gap-3">
         <div>
