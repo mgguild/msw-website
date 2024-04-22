@@ -2594,6 +2594,22 @@ input {
 }
 }
 
+.line {
+  width: 100%; /* Adjust the width as needed */
+  height: 2px; /* Adjust the height as needed */
+  background-color: #2B326A; /* Adjust the color as needed */
+}
+
+.line-white {
+  width: 100%; /* Adjust the width as needed */
+  height: 2px; /* Adjust the height as needed */
+  background-color: #ffffff; /* Adjust the color as needed */
+}
+
+.bg-opacity-50 {
+  opacity: 0.5;
+}
+
 #dropdown-marketplace-filter{
   margin: 0 1rem !important;
   border-radius: 10px !important;
