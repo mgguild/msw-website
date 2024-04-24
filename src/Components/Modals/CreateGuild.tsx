@@ -5,11 +5,14 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '../Marketplace/state';
+import { createGuild, editGuild, deleteGuild } from '../Marketplace/state/playfab/playfab';
+import { useRGuild } from '../Marketplace/state/hooks';
 import usePlayfab from '../../Hooks/usePlayfab';
 import { Hourglass } from 'react-loader-spinner';
 import { MdlProps } from './types';
 import { LoginRegCarousel } from './LoginRegister';
-import { newCookie } from '../Marketplace/state/cookies/cookies';
+import { newCookie, delCookies } from '../Marketplace/state/cookies/cookies';
+import { EntityKey, UserGuildData } from '../Marketplace/state/types';
 
 const style = {
     position: 'relative',
@@ -126,67 +129,132 @@ const InputLabel = styled.span`
     font-size: 1.2rem;
 `;
 
-const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
+const CreateGuild = ({ show = false, persistent = false, mode = 'create' }: MdlProps) => {
     const dispatch = useAppDispatch();
     const user = usePlayfab((state: any) => state.user);
-    const setUserGuild = usePlayfab((state: any) => state.setUserGuild);
+    const userGuild = useRGuild();
+    console.log(user);
 
     const [open, setOpen] = useState(show);
     const [open2, setOpen2] = useState(false);
     const [name, setName] = useState('');
     const [loading, setLoading] = useState('none');
 
-    const handleCreateGuild = () => {
-        setLoading('yes');
-        PlayFabClient.ExecuteCloudScript(
-            {
-                FunctionName: 'CreateTitleGroup',
-                FunctionParameter: {
-                    name: name,
-                    creatorEntity: user.TitleInfo.TitlePlayerAccount,
-                },
-            },
-            async (error, result) => {
-                if (error) {
-                    toast.error(error.errorMessage);
-                    setLoading('fail');
-                    return;
-                } else {
-                    if (result.data.Error) {
-                        toast.error(`Guild name ${name} not available`);
-                        setLoading('fail');
-                    } else if (result.data.FunctionResult) {
+    const handleFunction = async () => {
+        if(name.length < 6 && mode !== 'delete'){
+            toast.warn("Guild name must be at least 6 characters long");
+            setLoading('none');
+            setOpen2(false);
+            return
+        }else{
+            setLoading('yes');
+
+            switch (mode) {
+                case 'create':
+                    const newGuild = await dispatch(createGuild({guildName: name, userEntity:  user.TitleInfo.TitlePlayerAccount}))
+                    if((newGuild.payload as UserGuildData).status !== null){
                         toast.success(`Guild ${name} successfully created`);
                         setLoading('success');
-                        setUserGuild({
-                            name: name,
-                            entity: result.data.FunctionResult.groupData,
-                        });
+
                         await dispatch(
                             newCookie({
                                 name: 'userGuild',
-                                data: {
-                                    name: name,
-                                    entity: result.data.FunctionResult.groupData,
-                                    role: 'Administrators',
-                                },
+                                data: newGuild.payload,
                             }),
                         );
                     }
-                    setOpen(false);
-                    setOpen2(false);
-                    setLoading('none');
-                    setName('');
-                }
-            },
-        );
+                break;
+                case 'edit':
+                    const reGuild = await dispatch(editGuild({_guildName: name, _groupEntity: userGuild.entity as EntityKey }))
+                    console.log("EDIT GUILD")
+
+                    if((reGuild.payload as UserGuildData).status !== null){
+                        toast.success(`Guild successfully renamed`);
+                        setLoading('success');
+
+                        await dispatch(
+                            newCookie({
+                                name: 'userGuild',
+                                data: reGuild.payload,
+                            }),
+                        );
+                    }
+
+                break;
+
+                case 'delete':
+                    setOpen(true);
+
+                break;
+
+                default:
+                    toast.error("Somthing went wrong!");
+                break;
+            }
+            if(mode !== 'delete'){
+                setOpen(false);
+                setOpen2(false);
+                setLoading('none');
+                setName('');
+            }
+        }
     };
+
+    const handleCheck = async () => {
+        if(mode === 'delete'){
+            if(name.length <= 0){
+                toast.warn("Confirmation input must not be empty");
+                return;
+            }
+            if(name !== userGuild.name){
+                toast.warn("Name and input mismatch, please try again");
+                return;
+            }
+            setOpen(false);
+            const delGuild = await dispatch(deleteGuild({_guildName: userGuild.name, _groupEntity: userGuild.entity as EntityKey}));
+
+            if(((delGuild.payload as UserGuildData).status) === 'succesfully deleted'){
+                toast.success("Guid successfully deleted");
+                await dispatch(delCookies({ names: ['userGuild'] }))
+            }
+
+            setOpen(false);
+            setOpen2(false);
+            setLoading('none');
+            setName('');
+            return
+        }
+
+        if(name.length <= 0){
+            if(mode === 'invite'){
+                toast.warn("Player Id input must not be emtpy");
+            }else{
+                toast.warn("Name input must not be empty");
+            }
+            return;
+        }else if(name.length < 6 && mode !== 'invite'){
+            toast.warn("Guild name must be at least 6 characters long");
+            return;
+        }else if(mode === 'invite'){
+
+        }else{
+            if (mode === 'edit' && name === userGuild.name){
+                toast.warn("New name cannot be same as current");
+                return;
+            }
+            setOpen2(true);
+        }
+    }
 
     return (
         <>
+            {/* Modal 1 */}
             <Modal
                 open={open}
-                onClose={() => (persistent ? null : setOpen(false))}
+                onClose={() => {
+                    setOpen(false);
+                    setOpen2(false);
+                }}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
@@ -204,11 +272,19 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                                             alignItems: 'center',
                                         }}
                                     >
-                                        <h4>Create Guild</h4>
+                                        {mode === 'create' && <h4>Create Guild</h4>}
+                                        {mode === 'edit' && <h4>Edit Guild</h4>}
+                                        {mode === 'delete' && <h4>Delete Guild</h4>}
+                                        {mode === 'invite' && <h4>Invite Player</h4>}
                                     </div>
                                     <Col>
                                         <Row>
-                                            <InputLabel>NAME</InputLabel>
+                                            <InputLabel>
+                                                {mode === 'create' && <h4>NAME</h4>}
+                                                {mode === 'edit' && <h4>NEW GUILD NAME</h4>}
+                                                {mode === 'delete' && <h4>TYPE "{userGuild.name}" TO DELETE YOUR GUILD</h4>}
+                                                {mode === 'invite' && <h4>Player code Id</h4>}
+                                            </InputLabel>
                                             <Input
                                                 type="text"
                                                 placeholder=""
@@ -219,12 +295,15 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                                         </Row>
                                         <Buttons>
                                             <Button
-                                                onClick={() => setOpen2(true)}
+                                                onClick={() => handleCheck()}
                                                 borderRadius="8px"
                                                 padding="0.8rem 1rem"
                                                 type="submit"
                                             >
-                                                Create
+                                                {mode === 'create' && <h4>Create</h4>}
+                                                {mode === 'edit' && <h4>Rename</h4>}
+                                                {mode === 'delete' && <h4>Delete</h4>}
+                                                {mode === 'invite' && <h4>Invite</h4>}
                                             </Button>
                                         </Buttons>
                                     </Col>
@@ -240,6 +319,7 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                     </CenterFrame>
                 </Box>
             </Modal>
+            {/* Modal 2 */}
             <Modal
                 open={open2}
                 aria-labelledby="modal-modal-title"
@@ -260,7 +340,11 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                                     >
                                         <h4>
                                             {loading === 'yes'
-                                                ? 'Creating Guild...'
+                                                ? <>
+                                                    {mode === 'create' && 'Creating Guild...'}
+                                                    {mode === 'edit' && 'Renaming Guild...'}
+                                                    {mode === 'delete' && 'Deleting Guild...'}
+                                                </>
                                                 : 'Are you sure?'}
                                         </h4>
                                     </div>
@@ -287,11 +371,39 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                                                 </div>
                                             ) : (
                                                 <InputLabel>
-                                                    Guild "{' '}
-                                                    <span style={{ color: 'orange' }}>
-                                                        {name}
-                                                    </span>{' '}
-                                                    " will be created.
+                                                    { mode === 'crate' &&
+                                                        <>
+                                                            Guild "{' '}
+                                                            <span style={{ color: 'orange' }}>
+                                                                {name}
+                                                            </span>{' '}
+                                                            " will be created.
+                                                        </>
+                                                    }
+
+                                                    { mode === 'edit' &&
+                                                        <>
+                                                            Guild "{' '}
+                                                            <span style={{ color: 'orange' }}>
+                                                                {userGuild.name}
+                                                            </span>{' '}
+                                                            " will be renamed to "{' '}
+                                                            <span style={{ color: 'orange' }}>
+                                                                {name}
+                                                            </span>{' '}
+                                                            ".
+                                                        </>
+                                                    }
+
+                                                    { mode === 'delete' &&
+                                                        <>
+                                                            Guild "{' '}
+                                                            <span style={{ color: 'orange' }}>
+                                                                {userGuild.name}
+                                                            </span>{' '}
+                                                            " will be deleted.
+                                                        </>
+                                                    }
                                                 </InputLabel>
                                             )}
                                         </Row>
@@ -300,7 +412,7 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                                                 <>
                                                     <Button
                                                         onClick={() =>
-                                                            handleCreateGuild()
+                                                            handleFunction()
                                                         }
                                                         borderRadius="8px"
                                                         padding="0.8rem 1rem"
@@ -332,7 +444,7 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                     </CenterFrame>
                 </Box>
             </Modal>
-            <button
+            {mode === 'create' && <button
                 className="bg-[#FFB800] p-5 skew-x-[-6deg] rounded-[5px]"
                 onClick={() => {
                     setOpen(true);
@@ -341,7 +453,37 @@ const CreateGuild = ({ show = false, persistent = false }: MdlProps) => {
                 <p className="font-bold uppercase text-[28px] skew-x-[6deg]">
                     Create Guild
                 </p>
-            </button>
+            </button>}
+            {mode === 'edit' && <button
+                className="bg-[#FFB800] p-2 skew-x-[-6deg] rounded-[5px]"
+                onClick={() => {
+                    setOpen(true);
+                }}
+            >
+                <p className="font-bold uppercase text-[1.2rem] skew-x-[6deg]" style={{marginBottom: '0.2rem'}}>
+                    Rename
+                </p>
+            </button>}
+            {mode === 'delete' && <button
+                className="bg-[#f32121] p-2 skew-x-[-6deg] rounded-[5px]"
+                onClick={() => {
+                    setOpen2(true);
+                }}
+            >
+                <p className="font-bold uppercase text-[1.2rem] skew-x-[6deg]" style={{marginBottom: '0.2rem'}}>
+                    Delete
+                </p>
+            </button>}
+            {mode === 'invite' && <button
+                className="bg-[#2f8cfd] p-2 skew-x-[-6deg] rounded-[5px]"
+                onClick={() => {
+                    setOpen(true);
+                }}
+            >
+                <p className="font-bold uppercase text-[1.2rem] skew-x-[6deg]" style={{marginBottom: '0.2rem'}}>
+                    Invite
+                </p>
+            </button>}
         </>
     );
 };

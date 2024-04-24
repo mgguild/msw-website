@@ -30,7 +30,7 @@ export const getOwnerNFTs = createAsyncThunk<
 });
 
 export const thirdwebSlice = createSlice({
-  name: 'Playfab',
+  name: 'thirdweb',
   initialState,
   reducers: {},
   extraReducers: builder => {

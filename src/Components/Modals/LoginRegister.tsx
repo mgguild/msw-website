@@ -6,7 +6,10 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
 import { useAppDispatch } from '../Marketplace/state';
-import { newCookie } from '../Marketplace/state/cookies/cookies';
+import { useRGuild } from '../Marketplace/state/hooks';
+
+import { getPlyrGuild } from '../Marketplace/state/playfab/playfab';
+import { newCookie, delCookies } from '../Marketplace/state/cookies/cookies';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import usePlayfab from '../../Hooks/usePlayfab';
@@ -205,33 +208,18 @@ export const LoginRegCarousel = ({
         );
     };
 
-    const FetchUserGuild = (entity: any) => {
-        PlayFabClient.ExecuteCloudScript(
-            {
-                FunctionName: 'GetListGuilds',
-                FunctionParameter: {
-                    playerEntity: entity,
-                },
-            },
-            async (error, result) => {
-                if (error) {
-                    toast.error(error.errorMessage);
-                    return;
-                } else if (result.data.FunctionResult) {
-                    await dispatch(
-                        newCookie({
-                            name: 'userGuild',
-                            data: {
-                                name: result.data.FunctionResult.Groups[0].GroupName,
-                                entity: result.data.FunctionResult.Groups[0].Group,
-                                role: result.data.FunctionResult.Groups[0].Roles[0]
-                                    .RoleName,
-                            },
-                        }),
-                    );
-                }
-            },
-        );
+    const FetchUserGuild = async (entity: any) => {
+        console.log("FetchUserGuild");
+        const getGuild = await dispatch(getPlyrGuild(entity));
+
+        if(getGuild.payload){
+            await dispatch(
+                newCookie({
+                    name: 'userGuild',
+                    data: getGuild.payload,
+                }),
+            );
+        }
     };
 
     const handleLoginSubmit = (e: any) => {

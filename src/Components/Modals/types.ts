@@ -5,6 +5,7 @@ export interface MdlProps {
   Header?: string;
   Subheader?: string;
   mobile?: boolean;
+  mode?: string;
 }
 
 export interface LogRegCarouselProps {

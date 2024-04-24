@@ -2,8 +2,6 @@ import { PlayFab, PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
 import { create } from 'zustand';
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
-import { result } from 'lodash';
-import { group } from 'console';
 
 const cookies = new Cookies(null, { path: '/' });
 

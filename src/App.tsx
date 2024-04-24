@@ -6,6 +6,8 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
+import { useAppDispatch } from './Components/Marketplace/state';
+import { setGuildfromCookies, getGuildList } from './Components/Marketplace/state/playfab/playfab';
 import {
     DashboardExchange,
     DashboardGuilds,
@@ -99,9 +101,15 @@ const Dashboard: FC = () => (
 
 const App = () => {
     const connect = usePlayfab((state: any) => state.start);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         connect();
+        dispatch(setGuildfromCookies());
+
+        setTimeout( () => {
+            dispatch(getGuildList());
+        }, 1500)
     }, []);
 
     return (

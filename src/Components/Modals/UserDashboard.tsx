@@ -19,6 +19,7 @@ import { MdlProps } from './types';
 import { useFetchImg } from '../Marketplace/utils/assetFetch';
 import { useAppDispatch } from '../Marketplace/state';
 import { delCookies } from '../Marketplace/state/cookies/cookies';
+import { playFabLogOut } from '../Marketplace/state/playfab/playfab';
 
 const style = {
     position: 'relative',
@@ -160,6 +161,7 @@ const UserDashboard = ({
         setUserGuild(null);
         setOpen(false);
         _disoconnect();
+        await dispatch(playFabLogOut());
         await dispatch(
             delCookies({ names: ['playerInfo', 'playerTags', 'userData', 'userGuild'] }),
         );
@@ -172,8 +174,8 @@ const UserDashboard = ({
         setUserTags(userTags);
         setUserData(userData);
 
-        console.log(`_chain: ${_chain?.name}`);
-        console.log(`_status: ${_status}`);
+        // console.log(`_chain: ${_chain?.name}`);
+        // console.log(`_status: ${_status}`);
     }, [userTags, userData, useChain(), useConnectionStatus()]);
 
     const handleBindWallet = () => {

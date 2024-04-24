@@ -300,32 +300,70 @@ export interface GuildpadState {
 // Global state
 
 export interface State {
-  achievements: AchievementState;
-  block: BlockState;
-  farms: FarmsState;
-  guildpads: GuildpadState;
-  pools: PoolsState;
-  predictions: PredictionsState;
-  profile: ProfileState;
-  teams: TeamsState;
-  collectibles: CollectiblesState;
-}
-
-export interface PlayfabState {
-  isInitialized: boolean;
-  isLoggedIn: boolean;
-  user: PFuserState;
-}
-
-export interface PFuserState {
-  data?: PlayFabClientModels.GetPlayerCombinedInfoResultPayload;
-  walletAddress?: string;
+  thirdweb: any;
+  cookies: any;
+  playfab: PlayfabState;
 }
 
 export interface PlayfabLoginResult {
   code: number;
   data: PlayFabClientModels.LoginResult;
   stateus: string;
+}
+
+export interface PlayfabState {
+  isInitialized: boolean;
+  isLoggedIn: boolean;
+  user: PlayfabUserData;
+  guildList: PFGuildData[] | null;
+}
+
+export interface PlayfabCloudScriptResult {
+  data: PlayFabCloudScriptModels.ExecuteCloudScriptResult;
+}
+
+export interface PlayfabUserData {
+  guild: UserGuildData;
+}
+
+export interface UserGuildData {
+  coMembers: MembersRole[];
+  name?: string | undefined | null;
+  entity?: EntityKey;
+  role?: string;
+  status: string | null;
+}
+
+export interface PFGuildData {
+  GroupName: string;
+  Group: EntityKey;
+  ProfileVersion: number;
+  Roles: GuildRole[]
+}
+
+export interface GuildRole {
+  RoleName: string;
+  RoleId: string
+}
+
+export interface MembersRole {
+  RoleName?: string;
+  RoleId?: string
+  Members: MembersData[]
+}
+
+export interface MembersData {
+  Key: EntityKey;
+  Lineage?:{
+    master_player_account: EntityKey;
+    title_player_account?: EntityKey;
+  }
+}
+
+export interface EntityKey {
+  Id: string;
+  Type: string;
+  TypeString: string;
 }
 
 export interface ThirdwebState {
