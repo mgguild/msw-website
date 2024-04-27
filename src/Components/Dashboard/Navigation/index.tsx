@@ -11,9 +11,9 @@ const Navigation: FC = () => {
   return (
     <nav className="w-full">
       <div className="flex flex-wrap justify-between items-center bg-[#0F1637] px-[5em] py-[1em]">
-        <div>
+        <Link to="/">
           <img src={Logo} width={122} alt="MetaSaga Warriors logo" />
-        </div>
+        </Link>
         <div className="flex flex-wrap justify-center items-center gap-[50px] text-[18px] text-[#999999]">
           {/* <Link to="/dashboard" className="hover:text-white">Home</Link> */}
           <Link to="/dashboard/rewards" onClick={() => setActiveTab("rewards")} className={`${activeTab === "rewards" && "text-white"} hover:text-white`}>Rewards</Link>

@@ -196,6 +196,12 @@ function App() {
                     Marketplace
                 </Link>
                 <DropdownButton id="dropdown-basic-button" title="More">
+                    <Dropdown.Item
+                        className="NavButton"
+                        href="/#/dashboard"
+                    >
+                        Dashboard
+                    </Dropdown.Item>
                     {navItems.slice(4, navItems.length).map((item, i) => (
                         <Dropdown.Item
                             className="NavButton"

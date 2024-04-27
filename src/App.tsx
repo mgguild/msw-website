@@ -77,23 +77,31 @@ function MainApp() {
     );
 }
 
-const Dashboard: FC = () => (
-  <div className='flex flex-col w-full'>
-    <Navigation />
-    <div className='mx-[5em] my-[5em]'>
-      <Routes>
-        <Route path="/" element={<DashboardRewards />} />
-        <Route path="/rewards" element={<DashboardRewards />} />
-        <Route path="/wallet" element={<DashboardWallet />} />
-        <Route path="/exchange" element={<DashboardExchange />} />
-        <Route path="/membership" element={<DashboardMembership />} />
-        <Route path="/social" element={<DashboardSocial />} />
-        {/* <Route path="/guilds" element={<DashboardGuilds />} /> */}
-        <Route path="/leaderboards" element={<DashboardLeaderboard />} />
-      </Routes>
-    </div>
-  </div>
-)
+const Dashboard: FC = () => {
+    const connect = usePlayfab((state: any) => state.start);
+
+    useEffect(() => {
+        connect();
+    }, [connect]);
+    return (
+        <div className='flex flex-col w-full'>
+            <ToastContainer theme="dark" />
+            <Navigation />
+            <div className='mx-[5em] my-[5em]'>
+                <Routes>
+                    <Route path="/" element={<DashboardRewards />} />
+                    <Route path="/rewards" element={<DashboardRewards />} />
+                    <Route path="/wallet" element={<DashboardWallet />} />
+                    <Route path="/exchange" element={<DashboardExchange />} />
+                    <Route path="/membership" element={<DashboardMembership />} />
+                    <Route path="/social" element={<DashboardSocial />} />
+                    {/* <Route path="/guilds" element={<DashboardGuilds />} /> */}
+                    <Route path="/leaderboards" element={<DashboardLeaderboard />} />
+                </Routes>
+            </div>
+        </div>
+    )
+}
 
 const App = () => (
   <Routes>
