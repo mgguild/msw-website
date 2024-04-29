@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.b640b701.css",
-    "main.js": "/static/js/main.58c2da5c.js",
+    "main.css": "/static/css/main.6ec911e5.css",
+    "main.js": "/static/js/main.7ef5fc37.js",
     "static/css/9160.6f3f824a.chunk.css": "/static/css/9160.6f3f824a.chunk.css",
-    "static/js/9160.a6beb443.chunk.js": "/static/js/9160.a6beb443.chunk.js",
-    "static/js/804.33b89b95.chunk.js": "/static/js/804.33b89b95.chunk.js",
+    "static/js/9160.c8080514.chunk.js": "/static/js/9160.c8080514.chunk.js",
+    "static/js/804.8d764194.chunk.js": "/static/js/804.8d764194.chunk.js",
     "static/js/9400.2dac8d61.chunk.js": "/static/js/9400.2dac8d61.chunk.js",
     "static/js/4912.bffa0825.chunk.js": "/static/js/4912.bffa0825.chunk.js",
     "static/js/8672.f6766b12.chunk.js": "/static/js/8672.f6766b12.chunk.js",
@@ -191,7 +191,7 @@
     "static/media/legazpi_6.jpg": "/static/media/legazpi_6.1e192a8d2482b7633d3c.jpg",
     "static/media/sltcfi_1.jpg": "/static/media/sltcfi_1.3ffab30c3756cd558a91.jpg",
     "static/media/Andy_Agnas.png": "/static/media/Andy_Agnas.dff69639ecf31877b605.png",
-    "static/media/252882728-65be9865-bb92-4679-88e5-5101f0b8d65f.png": "/static/media/252882728-65be9865-bb92-4679-88e5-5101f0b8d65f.7e17b18cc622a77ab79c.png",
+    "static/media/not-moving-bg.png": "/static/media/not-moving-bg.7e17b18cc622a77ab79c.png",
     "static/media/DEVCON_Legazpi2023_2.jpg": "/static/media/DEVCON_Legazpi2023_2.1b80c9f2e28d6d16cc36.jpg",
     "static/media/conquest_5.jpg": "/static/media/conquest_5.9e82e6f126b3de1f9d43.jpg",
     "static/media/TechInvestment_5.jpg": "/static/media/TechInvestment_5.d833ae10473f35bae243.jpg",
@@ -331,20 +331,22 @@
     "static/media/One Slice.otf": "/static/media/One Slice.454ddb3a3aca66a0b208.otf",
     "static/media/PassionOne-Black.ttf": "/static/media/PassionOne-Black.5f79899dac2d04fae688.ttf",
     "static/media/threads.png": "/static/media/threads.ea7fc593de313dda4cc4.png",
+    "static/media/Pancake.png": "/static/media/Pancake.560cedd65dc954849247.png",
     "static/media/mobile_bg.png": "/static/media/mobile_bg.8d187bea88eed3b3facb.png",
     "static/media/Alphakind.otf": "/static/media/Alphakind.80dd257bb267c92016c7.otf",
     "static/media/nftb_2.png": "/static/media/nftb_2.7c3465efd9403a289d24.png",
     "static/media/mobile bg.png": "/static/media/mobile bg.047a8f62fd83de078824.png",
     "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/SparkSwap.png": "/static/media/SparkSwap.1653deeaec63c09b93ef.png",
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/index.html",
     "static/media/chevron-down.svg": "/static/media/chevron-down.932a047472c3455cd9a4d68b8b2179e8.svg",
-    "main.b640b701.css.map": "/static/css/main.b640b701.css.map",
-    "main.58c2da5c.js.map": "/static/js/main.58c2da5c.js.map",
+    "main.6ec911e5.css.map": "/static/css/main.6ec911e5.css.map",
+    "main.7ef5fc37.js.map": "/static/js/main.7ef5fc37.js.map",
     "9160.6f3f824a.chunk.css.map": "/static/css/9160.6f3f824a.chunk.css.map",
-    "9160.a6beb443.chunk.js.map": "/static/js/9160.a6beb443.chunk.js.map",
-    "804.33b89b95.chunk.js.map": "/static/js/804.33b89b95.chunk.js.map",
+    "9160.c8080514.chunk.js.map": "/static/js/9160.c8080514.chunk.js.map",
+    "804.8d764194.chunk.js.map": "/static/js/804.8d764194.chunk.js.map",
     "9400.2dac8d61.chunk.js.map": "/static/js/9400.2dac8d61.chunk.js.map",
     "4912.bffa0825.chunk.js.map": "/static/js/4912.bffa0825.chunk.js.map",
     "8672.f6766b12.chunk.js.map": "/static/js/8672.f6766b12.chunk.js.map",
@@ -461,7 +463,7 @@
     "404.2a91a8a8.chunk.js.map": "/static/js/404.2a91a8a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b640b701.css",
-    "static/js/main.58c2da5c.js"
+    "static/css/main.6ec911e5.css",
+    "static/js/main.7ef5fc37.js"
   ]
 }
