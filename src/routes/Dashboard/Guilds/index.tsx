@@ -38,20 +38,7 @@ const Guilds: FC = () => {
                 setPage(0);
             }else{
                 // setMembers(userGuild.coMembers);
-                console.log("CO MEMBERS");
-                console.log(userGuild.coMembers);
-                console.log("==============");
-                userGuild.coMembers.map((memberType, index) => {
-                    console.log(memberType.RoleName);
-                    memberType.Members.map((member, index) => {
-                        console.log(member);
-                        console.log(member.Lineage);
-                        // if(member.Lineage){
-                        //     console.log(member.Lineage?.master_player_account.Id)
-                        // }
-                    })
-                })
-                console.log("==============");
+
             }
         }
         _getGuildList();
@@ -173,40 +160,43 @@ const Guilds: FC = () => {
                                 <br />
                                 <br />
 
-                                {/* { userGuild && members.map((MemberType, index) => {
+                                { userGuild && userGuild.coMembers.map((member, index) => {
                                             return (
                                                 <>
-                                                    {MemberType.Members.map((member, index) => {
-                                                        return(
-                                                        <>
-                                                        <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                                                                {member.Lineage?.master_player_account.Id === user.PlayFabId ?
+                                                            {member.master_account_id === user.PlayFabId ?
+                                                                <h1 style={{color: '#FFB800'}}>
+                                                                    {member.displayName}
+                                                                </h1>
+                                                                :
+                                                                <h1>
+                                                                    {member.displayName}
+                                                                </h1>
+                                                            }
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <div>
+                                                                {member.master_account_id === user.PlayFabId ?
                                                                     <h1 style={{color: '#FFB800'}}>
-                                                                        {member.Lineage?.master_player_account.Id}
+                                                                        {member.role?.substring(0, member.role.length - 1)}
                                                                     </h1>
                                                                     :
                                                                     <h1>
-                                                                        {member.Lineage?.master_player_account.Id}
+                                                                        {member.role?.substring(0, member.role.length - 1)}
                                                                     </h1>
                                                                 }
                                                             </div>
                                                         </div>
-
-                                                        <div className="flex flex-col justify-center items-center gap-5 w-[50%]">
-                                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                                <div>
-                                                                    <p>{MemberType.RoleName}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        </>)
-                                                    })}
+                                                    </div>
                                                 </>
                                             )
                                         })
-                                    } */}
+                                    }
                             </div>
                         </div>
                     </>

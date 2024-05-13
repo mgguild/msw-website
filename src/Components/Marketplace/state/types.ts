@@ -347,9 +347,9 @@ export interface GuildRole {
 }
 
 export interface MembersRole {
-  RoleName?: string;
-  RoleId?: string
-  Members: MembersData[]
+  displayName?: string;
+  role?: string
+  master_account_id: string;
 }
 
 export interface MembersData {
