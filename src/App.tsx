@@ -12,6 +12,8 @@ import MarketplaceV2 from './Components/Marketplace/views/MarketplaceV2/Marketpl
 import Market from './Components/Marketplace/views/MarketplaceV2/Views/Market/Market';
 import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
 import NFTPage from './Components/Marketplace/views/MarketplaceV2/Views/NFTPage';
+import { ThirdwebProvider } from '@thirdweb-dev/react';
+import {BinanceTestnet} from "@thirdweb-dev/chains";
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
@@ -84,22 +86,27 @@ const Dashboard: FC = () => {
         connect();
     }, [connect]);
     return (
-        <div className='flex flex-col w-full'>
-            <ToastContainer theme="dark" />
-            <Navigation />
-            <div className='mx-[5em] my-[5em]'>
-                <Routes>
-                    <Route path="/" element={<DashboardRewards />} />
-                    <Route path="/rewards" element={<DashboardRewards />} />
-                    <Route path="/wallet" element={<DashboardWallet />} />
-                    <Route path="/exchange" element={<DashboardExchange />} />
-                    <Route path="/membership" element={<DashboardMembership />} />
-                    <Route path="/social" element={<DashboardSocial />} />
-                    {/* <Route path="/guilds" element={<DashboardGuilds />} /> */}
-                    <Route path="/leaderboards" element={<DashboardLeaderboard />} />
-                </Routes>
+        <ThirdwebProvider
+            activeChain={BinanceTestnet}
+            clientId={process.env.REACT_APP_CLIENT_ID}
+        >
+            <div className='flex flex-col w-full'>
+                <ToastContainer theme="dark" />
+                <Navigation />
+                <div className='mx-[5em] my-[5em]'>
+                    <Routes>
+                        <Route path="/" element={<DashboardRewards />} />
+                        <Route path="/rewards" element={<DashboardRewards />} />
+                        <Route path="/wallet" element={<DashboardWallet />} />
+                        <Route path="/exchange" element={<DashboardExchange />} />
+                        <Route path="/membership" element={<DashboardMembership />} />
+                        <Route path="/social" element={<DashboardSocial />} />
+                        {/* <Route path="/guilds" element={<DashboardGuilds />} /> */}
+                        <Route path="/leaderboards" element={<DashboardLeaderboard />} />
+                    </Routes>
+                </div>
             </div>
-        </div>
+        </ThirdwebProvider>
     )
 }
 
