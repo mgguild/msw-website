@@ -4,7 +4,11 @@ import mgg from "../../../Assets/0xFc2dAfe72A1a893363CdE3c18E6C2159De7B7830.png"
 const Membership: FC = () => {
   return (
     <>
-      <div className="text-center">
+    <div className="w-full text-center text-[64px] text-[#FFB800]">
+      <b>Coming Soon</b>
+    </div>
+    {/* todo */}
+      {/* <div className="text-center">
         <p className="text-[48px] uppercase">Membership</p>
       </div>
       <div className="bg-[#0F1637] rounded-[5px] p-5 my-[2em]">
@@ -54,7 +58,7 @@ const Membership: FC = () => {
             <li>Enjoy premium membership perks in game</li>
           </ol>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
