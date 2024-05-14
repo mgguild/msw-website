@@ -15,7 +15,15 @@ const Membership: FC = () => {
   }
 
   const handleSecondStep = async (contract: any) => {
-    await contract.call("buyMembership", [BigNumber.from("1000000000000000000")]);
+    console.log("handleSecondStep");
+    var result = await contract.call("buyMembership", [BigNumber.from("1000000000000000000")]);
+    console.log(result);
+  }
+
+  const handleMembershipSuccess = (e: any) => {
+    console.log("Membership success");
+    console.log(e);
+    setFirstStepSuccess(true)
   }
 
   return (
