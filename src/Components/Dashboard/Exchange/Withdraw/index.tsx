@@ -1,11 +1,11 @@
-import {FC} from "react"
+import { FC } from 'react';
 
 const Withdraw: FC = () => {
-  return (
-    <>
-      <p>Withdraw Section</p>
-    </>
-  )
-}
+    return (
+        <>
+            <p>Withdraw Section</p>
+        </>
+    );
+};
 
-export default Withdraw
+export default Withdraw;

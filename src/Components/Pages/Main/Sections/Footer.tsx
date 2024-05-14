@@ -4,7 +4,7 @@ import { PrivPolTermsCond } from '../../../Modals';
 import React, { useState, useEffect } from 'react';
 import * as FaIconSixModule from 'react-icons/fa6';
 
-const faSixIcons = FaIconSixModule as unknown as { [key: string]: React.FC }
+const faSixIcons = FaIconSixModule as unknown as { [key: string]: React.FC };
 
 const Content = styled.div`
     background-color: #0f0015;
@@ -92,7 +92,7 @@ export default function App() {
 
     React.useEffect(() => {
         setIcon(faSixIcons['FaXTwitter']);
-    }, [])
+    }, []);
 
     return (
         <>
@@ -245,7 +245,11 @@ export default function App() {
                                     className="btn-footer btn-social "
                                     href="https://twitter.com/metasagawarrior"
                                     target="_blank"
-                                    style={{display: 'flex', alignContent: 'center', alignItems: 'center'}}
+                                    style={{
+                                        display: 'flex',
+                                        alignContent: 'center',
+                                        alignItems: 'center',
+                                    }}
                                 >
                                     {icon}
                                 </a>

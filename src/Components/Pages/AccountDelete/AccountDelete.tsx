@@ -222,7 +222,7 @@ const App: React.FC = () => {
     const Logout = async () => {
         setUserInfo('');
         setOpen3(true);
-        await dispatch(delCookies({names: ['playerInfo', 'playerTags', 'userData']}))
+        await dispatch(delCookies({ names: ['playerInfo', 'playerTags', 'userData'] }));
     };
 
     return (

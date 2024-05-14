@@ -19,6 +19,7 @@ import { MdlProps } from './types';
 import { useFetchImg } from '../Marketplace/utils/assetFetch';
 import { useAppDispatch } from '../Marketplace/state';
 import { delCookies } from '../Marketplace/state/cookies/cookies';
+import { playFabLogOut } from '../Marketplace/state/playfab/playfab';
 
 const style = {
     position: 'relative',
@@ -142,6 +143,7 @@ const UserDashboard = ({
     const userTags = usePlayfab((state: any) => state.userTags);
     const userData = usePlayfab((state: any) => state.userData);
     const setUserInfo = usePlayfab((state: any) => state.setUserInfo);
+    const setUserGuild = usePlayfab((state: any) => state.setUserGuild);
 
     const [open, setOpen] = useState(show);
     const [binding, setBinding] = useState(false);
@@ -154,22 +156,26 @@ const UserDashboard = ({
     const _disoconnect = useDisconnect();
     const _signer = useSigner();
 
-    const handleLogout = async() => {
+    const handleLogout = async () => {
         setUserInfo(null);
+        setUserGuild(null);
         setOpen(false);
         _disoconnect();
-        await dispatch(delCookies({names: ['playerInfo', 'playerTags', 'userData']}))
+        await dispatch(playFabLogOut());
+        await dispatch(
+            delCookies({ names: ['playerInfo', 'playerTags', 'userData', 'userGuild'] }),
+        );
     };
 
-    const src= { name: 'mgg', folder: 'logo' }
-    const mgg = useFetchImg(src)
+    const src = { name: 'mgg', folder: 'logo' };
+    const mgg = useFetchImg(src);
 
     useEffect(() => {
         setUserTags(userTags);
         setUserData(userData);
 
-        console.log(`_chain: ${_chain?.name}`);
-        console.log(`_status: ${_status}`);
+        // console.log(`_chain: ${_chain?.name}`);
+        // console.log(`_status: ${_status}`);
     }, [userTags, userData, useChain(), useConnectionStatus()]);
 
     const handleBindWallet = () => {
@@ -227,7 +233,11 @@ const UserDashboard = ({
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 disableEscapeKeyDown={persistent}
-                slotProps={persistent ? {backdrop:{sx:{background: 'rgba(0, 0, 0)'}}} : {}}
+                slotProps={
+                    persistent
+                        ? { backdrop: { sx: { background: 'rgba(0, 0, 0)' } } }
+                        : {}
+                }
             >
                 <Box sx={style}>
                     <CenterFrame>
@@ -258,7 +268,9 @@ const UserDashboard = ({
                                         <span>Bound Wallet Address</span>
                                         <Field>
                                             {_userData
-                                                ? _userData['WalletAddress'] ? _userData['WalletAddress'].Value : ''
+                                                ? _userData['WalletAddress']
+                                                    ? _userData['WalletAddress'].Value
+                                                    : ''
                                                 : ''}
                                         </Field>
                                     </Row>
@@ -359,10 +371,17 @@ const UserDashboard = ({
                     </CenterFrame>
                 </Box>
             </Modal>
-            {showBtn && (
-                mobile ? (
-                    <div onClick={() => setOpen(true)} className="cursor-pointer border-[#606060] pt-4 border-t-2">
-                        <img src={mgg} alt="Meta Gaming Guild" className="w-[60px] h-[60px] rounded-full" />
+            {showBtn &&
+                (mobile ? (
+                    <div
+                        onClick={() => setOpen(true)}
+                        className="cursor-pointer border-[#606060] pt-4 border-t-2"
+                    >
+                        <img
+                            src={mgg}
+                            alt="Meta Gaming Guild"
+                            className="w-[60px] h-[60px] rounded-full"
+                        />
                     </div>
                 ) : (
                     <Button
@@ -372,8 +391,7 @@ const UserDashboard = ({
                     >
                         {user.TitleInfo.DisplayName ?? user.Username}
                     </Button>
-                )
-            )}
+                ))}
         </>
     );
 };

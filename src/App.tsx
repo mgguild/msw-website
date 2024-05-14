@@ -6,8 +6,19 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
-import { DashboardExchange, DashboardGuilds, DashboardHome, DashboardMembership, DashboardRewards, DashboardSocial, DashboardWallet, DashboardLeaderboard } from './routes';
-import {Navigation} from './Components/Dashboard'
+import { useAppDispatch } from './Components/Marketplace/state';
+import { setGuildfromCookies, getGuildList } from './Components/Marketplace/state/playfab/playfab';
+import {
+    DashboardExchange,
+    DashboardGuilds,
+    DashboardHome,
+    DashboardMembership,
+    DashboardRewards,
+    DashboardSocial,
+    DashboardWallet,
+    DashboardLeaderboard,
+} from './routes';
+import { Navigation } from './Components/Dashboard';
 import MarketplaceV2 from './Components/Marketplace/views/MarketplaceV2/Marketplace';
 import Market from './Components/Marketplace/views/MarketplaceV2/Views/Market/Market';
 import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
@@ -25,15 +36,8 @@ function MainApp() {
     const [isScreen550, setIsScreen600] = useState(false);
     const [open, setOpen] = useState(false);
 
-    const connect = usePlayfab((state: any) => state.start);
-
-    useEffect(() => {
-        connect();
-    }, [connect]);
-
     return (
         <>
-            <ToastContainer theme="dark" />
             <Routes>
                 <Route
                     index
@@ -84,30 +88,47 @@ const Dashboard: FC = () => {
         connect();
     }, [connect]);
     return (
-        <div className='flex flex-col w-full'>
-            <ToastContainer theme="dark" />
+          <div className="flex flex-col w-full">
+                <ToastContainer theme="dark" />
             <Navigation />
-            <div className='mx-[5em] my-[5em]'>
-                <Routes>
-                    <Route path="/" element={<DashboardRewards />} />
-                    <Route path="/rewards" element={<DashboardRewards />} />
-                    <Route path="/wallet" element={<DashboardWallet />} />
-                    <Route path="/exchange" element={<DashboardExchange />} />
-                    <Route path="/membership" element={<DashboardMembership />} />
-                    <Route path="/social" element={<DashboardSocial />} />
-                    {/* <Route path="/guilds" element={<DashboardGuilds />} /> */}
-                    <Route path="/leaderboards" element={<DashboardLeaderboard />} />
-                </Routes>
-            </div>
-        </div>
-    )
+                <div className="mx-[5em] my-[5em]">
+                      <Routes>
+                            <Route path="/" element={<DashboardRewards />} />
+                            <Route path="/rewards" element={<DashboardRewards />} />
+                            <Route path="/wallet" element={<DashboardWallet />} />
+                            <Route path="/exchange" element={<DashboardExchange />} />
+                            <Route path="/membership" element={<DashboardMembership />} />
+                            <Route path="/social" element={<DashboardSocial />} />
+                            <Route path="/guilds" element={<DashboardGuilds />} />
+                            <Route path="/leaderboards" element={<DashboardLeaderboard />} />
+                      </Routes>
+                </div>
+          </div>
+    );
 }
 
-const App = () => (
-  <Routes>
-    <Route path='/*' element={<MainApp />} />
-    <Route path='/dashboard/*' element={<Dashboard />} />
-  </Routes>
-)
+const App = () => {
+    const connect = usePlayfab((state: any) => state.start);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        connect();
+        dispatch(setGuildfromCookies());
+
+        setTimeout( () => {
+            dispatch(getGuildList());
+        }, 1500)
+    }, []);
+
+    return (
+        <>
+            <ToastContainer theme="dark" />
+            <Routes>
+                <Route path="/*" element={<MainApp />} />
+                <Route path="/dashboard/*" element={<Dashboard />} />
+            </Routes>
+        </>
+    );
+};
 
 export default App;

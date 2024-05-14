@@ -5,7 +5,7 @@ import Pancake from "./Pancake.png"
 import SparkSwap from "./SparkSwap.png"
 
 const Exchange: FC = () => {
-  const [activeSection, setActiveSection] = useState<number>(0)
+    const [activeSection, setActiveSection] = useState<number>(0);
 
   return (
     <>
@@ -37,4 +37,4 @@ const Exchange: FC = () => {
   )
 }
 
-export default Exchange
+export default Exchange;
