@@ -102,13 +102,13 @@ const Guilds: FC = () => {
                                                             </div> */}
 
                                                             { userGuild.name === guild.GroupName ?
-                                                                <h1 style={{color: '#FFB800'}}>
+                                                                <p className='text-[2rem]' style={{color: '#FFB800'}}>
                                                                     {guild.GroupName}
-                                                                </h1>
+                                                                </p>
                                                                 :
-                                                                <h1>
+                                                                <p className='text-[2rem]'>
                                                                     {guild.GroupName}
-                                                                </h1>
+                                                                </p>
                                                             }
 
                                                         </div>
