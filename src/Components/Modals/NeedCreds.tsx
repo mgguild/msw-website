@@ -64,12 +64,21 @@ const NeedCreds = ({
             user &&
             _userData &&
             _status === 'connected' &&
-            `${_userData['WalletAddress'].Value}`.toUpperCase() !== `${_address}`.toUpperCase()
+            `${_userData['WalletAddress'].Value}`.toUpperCase() !==
+                `${_address}`.toUpperCase()
         ) {
             console.log('REDIRECT TO WALLET ERROR');
             navigate('/WalletError', { replace: true });
         }
-    }, [userTags, userData, _userData, _status, _address, useChain(), useConnectionStatus()]);
+    }, [
+        userTags,
+        userData,
+        _userData,
+        _status,
+        _address,
+        useChain(),
+        useConnectionStatus(),
+    ]);
 
     return (
         <>
@@ -96,7 +105,8 @@ const NeedCreds = ({
                 user &&
                 _userData &&
                 _status === 'connected' &&
-                `${_userData['WalletAddress'].Value}`.toUpperCase() !== `${_address}`.toUpperCase() && <NdSmWltAddrs />}
+                `${_userData['WalletAddress'].Value}`.toUpperCase() !==
+                    `${_address}`.toUpperCase() && <NdSmWltAddrs />}
         </>
     );
 };

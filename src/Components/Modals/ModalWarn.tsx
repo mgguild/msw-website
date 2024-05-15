@@ -69,7 +69,7 @@ const Col = styled.div`
     text-align: start;
 `;
 
-const MdlWarn = ({message = 'Error!'}: {message: string}) => {
+const MdlWarn = ({ message = 'Error!' }: { message: string }) => {
     const [open, setOpen] = useState(true);
 
     return (

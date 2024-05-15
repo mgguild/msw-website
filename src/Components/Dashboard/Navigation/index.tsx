@@ -32,4 +32,4 @@ const Navigation: FC = () => {
   )
 }
 
-export default Navigation
+export default Navigation;

@@ -1,4 +1,4 @@
-import { PlayFab, PlayFabClient } from 'playfab-sdk';
+import { PlayFab, PlayFabClient, PlayFabCloudScript } from 'playfab-sdk';
 import { create } from 'zustand';
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
@@ -9,6 +9,7 @@ const usePlayfab = create(set => ({
   leaderboard: [],
   initialized: false,
   user: '',
+  userGuild: null,
   userTags: [],
   userData: '',
   start: async () => {
@@ -22,21 +23,25 @@ const usePlayfab = create(set => ({
         CustomTags: { AccType: 'AnonymousGuest' },
       },
       async (error, result) => {
-        const ckies = cookies.getAll()
+        const ckies = cookies.getAll();
 
-        if(Object.keys(ckies).length !== 0){
-          if(ckies.playerInfo){
-            set(() => ({user: ckies.playerInfo}))
+        if (Object.keys(ckies).length !== 0) {
+          if (ckies.playerInfo) {
+            set(() => ({ user: ckies.playerInfo }));
           }
 
-          if(ckies.playerTags){
-            set(() => ({userTags: ckies.playerTags}))
+          if (ckies.playerTags) {
+            set(() => ({ userTags: ckies.playerTags }));
           }
 
-          if(ckies.userData){
-            set(() => ({userData: ckies.userData}))
-          }else{
-            set(() => ({userData: {}}))
+          if (ckies.userGuild) {
+            set(() => ({ userGuild: ckies.userGuild }));
+          }
+
+          if (ckies.userData) {
+            set(() => ({ userData: ckies.userData }));
+          } else {
+            set(() => ({ userData: {} }));
           }
         }
 
@@ -57,7 +62,7 @@ const usePlayfab = create(set => ({
     PlayFabClient.GetLeaderboard(
       {
         StartPosition: 0,
-        StatisticName: "Kills"
+        StatisticName: 'Kills',
       },
       (error, result) => {
         if (error) {
@@ -65,8 +70,8 @@ const usePlayfab = create(set => ({
           set({ initialized: false });
           return;
         }
-        set({ leaderboard: result.data.Leaderboard })
-      }
+        set({ leaderboard: result.data.Leaderboard });
+      },
     );
   },
   getTitleData: async () => {
@@ -81,6 +86,21 @@ const usePlayfab = create(set => ({
       },
     );
   },
+  getGuilds: async () => {
+    PlayFabClient.ExecuteCloudScript(
+      {
+        FunctionName: 'GetListGuilds',
+      },
+      (error, result) => {
+        if (error) {
+          toast.error(error.errorMessage);
+          return;
+        } else {
+          console.log(result);
+        }
+      },
+    );
+  },
   setUserInfo: (userInfo: any) => {
     set({ user: userInfo });
   },
@@ -89,6 +109,9 @@ const usePlayfab = create(set => ({
   },
   setUserData: (data: any) => {
     set({ userData: data });
+  },
+  setUserGuild: (data: any) => {
+    set({ userGuild: data });
   },
 }));
 

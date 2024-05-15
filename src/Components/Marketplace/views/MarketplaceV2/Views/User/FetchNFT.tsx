@@ -12,7 +12,12 @@ import SpriteDisplay from '../../components/Card/Display';
 import withGridLayout from '../NFTPage/withGridLayout';
 import { H1, H3, H4, P, TextWrapper } from '../../components/Foundation/Text';
 import Iconloader from '../../components/Foundation/Iconloader';
-import { CardContainer, BadgeContainer, CardHeader, CardText } from '../../components/Card/styled';
+import {
+    CardContainer,
+    BadgeContainer,
+    CardHeader,
+    CardText,
+} from '../../components/Card/styled';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import { Web3Button } from '@thirdweb-dev/react';
 import {
@@ -21,7 +26,7 @@ import {
     useAddress,
     useContractWrite,
     useContractRead,
-    NFT
+    NFT,
 } from '@thirdweb-dev/react';
 import maticToWei from '../../../../utils/maticToWei';
 import axios from 'axios';
@@ -30,7 +35,6 @@ import { getBalanceAmount } from '../../../../utils/formatBalance';
 import ABI from '../../constants/abi.json';
 import { getRarity, getRarityBorder } from './utils';
 import { nftData } from './NftCollection';
-
 
 const contractAddress = '0xa80c5C9d7d3CF9988f33B30492e3A3556F094b78';
 const contractAddressSecond = '0x90ba9328748cf652f9bba12be0436acf4f782076';
@@ -85,14 +89,14 @@ const SellModal = (props: any) => {
         error: approvalError,
     } = useContractRead(approvalContract, 'isApprovedForAll', [
         address,
-        contractAddressSecond
+        contractAddressSecond,
     ]);
 
     const [usedContract, setUsedContract] = useState<string>(contractAddressSecond);
 
     useEffect(() => {
         setModalVisible(modalVisible);
-        console.log("address is approved", approvalData)
+        console.log('address is approved', approvalData);
         if (approvalData) {
             setUsedContract(contractAddressSecond);
         } else {
@@ -103,13 +107,13 @@ const SellModal = (props: any) => {
 
     return (
         <>
-           <Modal
+            <Modal
                 open={modalVisible}
                 onClose={() => setModalVisible(false)}
                 aria-labelledby="modal-selling"
                 aria-describedby="modal-selling"
-           >
-            <div className={`fixed inset-0 w-full h-full bg-black/50`}>
+            >
+                <div className={`fixed inset-0 w-full h-full bg-black/50`}>
                     <div className="flex justify-center items-center w-full h-full">
                         <div className="relative snap-x flex flex-col justify-center items-center bg-gradient-to-b from-[#181020] to-[#2A2964] pb-[5em] w-[727px] px-[2em] pt-[2em] rounded-[20px]">
                             <div
@@ -139,7 +143,9 @@ const SellModal = (props: any) => {
                             <div className="w-full snap-center pb-5 pt-1">
                                 {isSelling ? (
                                     <div className="text-center text-[#C2C2C2] text-[30px]">
-                                        <p>Are you sure you want to cancel the listing?</p>
+                                        <p>
+                                            Are you sure you want to cancel the listing?
+                                        </p>
                                     </div>
                                 ) : (
                                     <>
@@ -165,13 +171,13 @@ const SellModal = (props: any) => {
                                         action={async contract => {
                                             // approve listing
                                             if (!approvalData) {
-                                                console.log("Approving")
+                                                console.log('Approving');
                                                 await contract.erc721.setApprovalForAll(
                                                     contractAddressSecond,
                                                     true,
                                                 );
-                                                console.log("Approved")
-                                                console.log("Cancelling Listing")
+                                                console.log('Approved');
+                                                console.log('Cancelling Listing');
                                                 await contract.call('cancelListing', [
                                                     listingId,
                                                 ]);
@@ -187,7 +193,9 @@ const SellModal = (props: any) => {
                                         }}
                                         onSuccess={res => {
                                             console.log('Listing cancelled');
-                                            toast.success(`Digger #${nft.metadata.id} listing cancelled`)
+                                            toast.success(
+                                                `Digger #${nft.metadata.id} listing cancelled`,
+                                            );
                                             console.log(res);
                                             setModalVisible(false);
                                         }}
@@ -202,23 +210,23 @@ const SellModal = (props: any) => {
                                         contractAddress={usedContract}
                                         contractAbi={ABI}
                                         action={async contract => {
-                                            console.log(usedContract)
+                                            console.log(usedContract);
                                             // approve listing
                                             if (!approvalData) {
-                                                console.log("Approving")
+                                                console.log('Approving');
                                                 await contract.erc721.setApprovalForAll(
                                                     contractAddressSecond,
                                                     true,
                                                 );
-                                                console.log("Approved")
-                                                console.log("Listing...")
+                                                console.log('Approved');
+                                                console.log('Listing...');
                                                 await contract.call('createListing', [
                                                     contractAddress,
                                                     nft.metadata.id,
                                                     weiValue.toString(),
                                                 ]);
                                             } else {
-                                                console.log("creating listing...")
+                                                console.log('creating listing...');
                                                 await contract.call('createListing', [
                                                     contractAddress,
                                                     nft.metadata.id,
@@ -233,12 +241,12 @@ const SellModal = (props: any) => {
                                         onError={res => {
                                             console.log('Error selling!');
                                             console.log(res);
-                                            toast.error(`Error: ${res}`)
+                                            toast.error(`Error: ${res}`);
                                         }}
                                         onSuccess={res => {
                                             console.log('Success selling');
                                             console.log(res);
-                                            toast.success(`NFT is now listed`)
+                                            toast.success(`NFT is now listed`);
                                             setModalVisible(false);
                                         }}
                                     >
@@ -249,13 +257,19 @@ const SellModal = (props: any) => {
                         </div>
                     </div>
                 </div>
-           </Modal>
+            </Modal>
         </>
     );
 };
 
-const FetchNFT:React.FC<Props> = ({data, marketplaceData, start: _start, count: _count, setNftData, setNFTModal}) => {
-
+const FetchNFT: React.FC<Props> = ({
+    data,
+    marketplaceData,
+    start: _start,
+    count: _count,
+    setNftData,
+    setNFTModal,
+}) => {
     const [modalActive, setModalActive] = useState<boolean[]>([]);
 
     const handleToggleModal = (index: number) => {
@@ -269,58 +283,77 @@ const FetchNFT:React.FC<Props> = ({data, marketplaceData, start: _start, count: 
     const handleNFTClick = (data: nftData) => {
         setNftData(data);
         setNFTModal(true);
-    }
+    };
 
     return (
         <>
-            {
-                data?.map((nft, key) => {
-                    const isSelling = marketplaceData.find(
-                        (item: { id: string }) => item.id === nft.metadata.id,
-                    );
+            {data?.map((nft, key) => {
+                const isSelling = marketplaceData.find(
+                    (item: { id: string }) => item.id === nft.metadata.id,
+                );
 
-                    const attributes:any = nft.metadata.attributes ? Object.values(nft.metadata.attributes) : [];
-                    const rarity = getRarity(attributes)
-                    const badgeImg = <img alt="badge-logo" src={ Diggers[ attributes[0].value ].badgeImg} />;
+                const attributes: any = nft.metadata.attributes
+                    ? Object.values(nft.metadata.attributes)
+                    : [];
+                const rarity = getRarity(attributes);
+                const badgeImg = (
+                    <img alt="badge-logo" src={Diggers[attributes[0].value].badgeImg} />
+                );
 
-                    return (
-                        <div key={key} className="w-[300px]">
-                            <CardContainer className="secondary-drop-shadow">
-                                <div onClick={() => handleNFTClick({
-                                        name: nft.metadata.name as string ?? '',
+                return (
+                    <div key={key} className="w-[300px]">
+                        <CardContainer className="secondary-drop-shadow">
+                            <div
+                                onClick={() =>
+                                    handleNFTClick({
+                                        name: (nft.metadata.name as string) ?? '',
                                         image: nft.metadata.image ?? '',
                                         description: nft.metadata.description ?? '',
                                         rarity: rarity,
                                         attributes: attributes,
                                     })
-                                }>
-                                    <img src={nft.metadata.image as string} alt="Digger" />
-                                    <BadgeContainer>
-                                        <SvgIcon Img={badgeImg} width={60} height={60} />
-                                    </BadgeContainer>
-                                    <CardHeader>
-                                        <p className="text-[24px] text-[#C2C2C2] font-bold grow">{nft.metadata.name}</p>
-                                        <p
-                                            className={`border-2 ${getRarityBorder(rarity)} p-2 rounded-[5px] text-[12px]`}
-                                            style={{maxWidth: '6rem'}}
-                                        >{rarity}</p>
-                                    </CardHeader>
-                                </div>
-                                <button onClick={() => handleToggleModal(key)}
-                                    className="uppercase w-100 font-bold text-[24px] py-3 rounded-b-[5px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
-                                >
-                                    {
-                                        isSelling ? 'Cancel Listing' : 'Sell'
-                                    }
-                                </button>
-                                {modalActive[key] && <SellModal key={key} modalActive={modalActive[key]} nft={nft} isSelling={isSelling} marketplaceData={marketplaceData} handleCloseModal={() => handleToggleModal(key)} />}
-                            </CardContainer>
-                        </div>
-                    )
-                })
-            }
+                                }
+                            >
+                                <img src={nft.metadata.image as string} alt="Digger" />
+                                <BadgeContainer>
+                                    <SvgIcon Img={badgeImg} width={60} height={60} />
+                                </BadgeContainer>
+                                <CardHeader>
+                                    <p className="text-[24px] text-[#C2C2C2] font-bold grow">
+                                        {nft.metadata.name}
+                                    </p>
+                                    <p
+                                        className={`border-2 ${getRarityBorder(
+                                            rarity,
+                                        )} p-2 rounded-[5px] text-[12px]`}
+                                        style={{ maxWidth: '6rem' }}
+                                    >
+                                        {rarity}
+                                    </p>
+                                </CardHeader>
+                            </div>
+                            <button
+                                onClick={() => handleToggleModal(key)}
+                                className="uppercase w-100 font-bold text-[24px] py-3 rounded-b-[5px] rounded-t-[0px] text-white bg-gradient-to-b from-[#ECB602] to-[#EC7202]"
+                            >
+                                {isSelling ? 'Cancel Listing' : 'Sell'}
+                            </button>
+                            {modalActive[key] && (
+                                <SellModal
+                                    key={key}
+                                    modalActive={modalActive[key]}
+                                    nft={nft}
+                                    isSelling={isSelling}
+                                    marketplaceData={marketplaceData}
+                                    handleCloseModal={() => handleToggleModal(key)}
+                                />
+                            )}
+                        </CardContainer>
+                    </div>
+                );
+            })}
         </>
-    )
-}
+    );
+};
 
-export default FetchNFT
+export default FetchNFT;

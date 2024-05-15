@@ -1,1 +1,1 @@
-export {default as cookieReducer} from './cookies'
+export { default as cookieReducer } from './cookies';

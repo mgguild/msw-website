@@ -1,10 +1,10 @@
-import {FC} from "react"
-import { ConnectWallet } from "@thirdweb-dev/react"
-import usePlayfab from "../../../Hooks/usePlayfab"
+import { FC } from 'react';
+import { ConnectWallet } from '@thirdweb-dev/react';
+import usePlayfab from '../../../Hooks/usePlayfab';
 
 const Wallet: FC = () => {
-  const user = usePlayfab((state: any) => state.user)
-  console.log(user)
+    const user = usePlayfab((state: any) => state.user);
+    console.log(user);
 
   return (
     <>
@@ -29,4 +29,4 @@ const Wallet: FC = () => {
   )
 }
 
-export default Wallet
+export default Wallet;

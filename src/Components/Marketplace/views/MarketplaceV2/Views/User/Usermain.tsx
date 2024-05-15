@@ -22,83 +22,86 @@ import Table from './Table';
 import TxTab from './TxTab';
 
 const UserMain = (props: any) => {
-  const {
-      controllers: { modal },
-  } = useMarketplaceV2();
+    const {
+        controllers: { modal },
+    } = useMarketplaceV2();
 
-  const {
-    txHistory: { coin, nft },
-    activityHistory,
-    userInfo,
-    tabController: { active },
-    handleFunctions: { handleUserInfo },
-    walletInfo
-  } = props
+    const {
+        txHistory: { coin, nft },
+        activityHistory,
+        userInfo,
+        tabController: { active },
+        handleFunctions: { handleUserInfo },
+        walletInfo,
+    } = props;
 
-  const txD = React.useMemo(() => (active === 0 ? coin : nft), [active, coin, nft])
-  const [enableEdit, setEnableEdit] = useState<boolean>(false)
-  const handleEdit = () => {
-    setEnableEdit(!enableEdit)
-  }
+    const txD = React.useMemo(() => (active === 0 ? coin : nft), [active, coin, nft]);
+    const [enableEdit, setEnableEdit] = useState<boolean>(false);
+    const handleEdit = () => {
+        setEnableEdit(!enableEdit);
+    };
 
-  const src = { name: 'polygon-matic-logo', folder: 'logo' };
-  const imgMatic = useFetchImg(src);
+    const src = { name: 'polygon-matic-logo', folder: 'logo' };
+    const imgMatic = useFetchImg(src);
 
-  const boxInfo = (name: string, tooltip: string) => {
-    return (
-      <Flex alignItems="center" justifyContent="space-between">
-        <H2 fsize="1.2em">{name}</H2>
-        <Flex justifyContent="space-between" flex="0.2" alignItems="center">
-          <IconButton variant="text" className="icon-button">
-            <MiniBox m="0">
-              <Iconloader type="fa" name="Redo" fontSize="1em" />
-            </MiniBox>
-          </IconButton>
-          <BasicTooltip title={tooltip}>
-            <MiniBox m="0" style={{ height: '50%' }}>
-              <Iconloader type="fa" name="InfoCircle" fontSize="1em" />
-            </MiniBox>
-          </BasicTooltip>
-        </Flex>
-      </Flex>
-    )
-  }
-
-    const renderInfo = () => {
+    const boxInfo = (name: string, tooltip: string) => {
         return (
-          <div className="flex flex-wrap justify-end w-full items-center gap-3 my-3">
-            {Object.entries(userInfo).map((info: any) => {
-              const field =
-                FIELD_INFO[info[0] as keyof typeof FIELD_INFO];
-              const val = info[1].toString();
-              return (
-                <div className="grow flex justify-start items-center bg-[#131737] rounded-[10px] pr-[1em]">
-                  <div className="bg-[#181020] p-3 rounded-l-[10px] mr-[1em]">
-                    {field === "EMAIL ADDRESS" ?
-                      <Iconloader type="fa" name={"At"} />
-                      :
-                      <Iconloader type="fa" name={"Wallet"} />
-                    }
-                  </div>
-                  <b>{val}</b>
-                </div>
-              );
-            })}
-            {renderPoint()}
-          </div>
+            <Flex alignItems="center" justifyContent="space-between">
+                <H2 fsize="1.2em">{name}</H2>
+                <Flex justifyContent="space-between" flex="0.2" alignItems="center">
+                    <IconButton variant="text" className="icon-button">
+                        <MiniBox m="0">
+                            <Iconloader type="fa" name="Redo" fontSize="1em" />
+                        </MiniBox>
+                    </IconButton>
+                    <BasicTooltip title={tooltip}>
+                        <MiniBox m="0" style={{ height: '50%' }}>
+                            <Iconloader type="fa" name="InfoCircle" fontSize="1em" />
+                        </MiniBox>
+                    </BasicTooltip>
+                </Flex>
+            </Flex>
         );
     };
 
-  const renderPoint = () => {
-    return (
-      <div className="flex flex-wrap justify-center items-center bg-[#131737] rounded-[10px] pr-[1em]">
-        <div className="bg-[#181020] p-3 rounded-l-[10px] mr-[1em]">
-          <img src={imgMatic} alt="Polygon MATIC" className="w-[30px] h-[30px]" />
-        </div>
-        <b>{walletInfo.balance}</b>
-      </div>
-    )
-  }
+    const renderInfo = () => {
+        return (
+            <div className="flex flex-wrap justify-end w-full items-center gap-3 my-3">
+                {Object.entries(userInfo).map((info: any) => {
+                    const field = FIELD_INFO[info[0] as keyof typeof FIELD_INFO];
+                    const val = info[1].toString();
+                    return (
+                        <div className="grow flex justify-start items-center bg-[#131737] rounded-[10px] pr-[1em]">
+                            <div className="bg-[#181020] p-3 rounded-l-[10px] mr-[1em]">
+                                {field === 'EMAIL ADDRESS' ? (
+                                    <Iconloader type="fa" name={'At'} />
+                                ) : (
+                                    <Iconloader type="fa" name={'Wallet'} />
+                                )}
+                            </div>
+                            <b>{val}</b>
+                        </div>
+                    );
+                })}
+                {renderPoint()}
+            </div>
+        );
+    };
+
+    const renderPoint = () => {
+        return (
+            <div className="flex flex-wrap justify-center items-center bg-[#131737] rounded-[10px] pr-[1em]">
+                <div className="bg-[#181020] p-3 rounded-l-[10px] mr-[1em]">
+                    <img
+                        src={imgMatic}
+                        alt="Polygon MATIC"
+                        className="w-[30px] h-[30px]"
+                    />
+                </div>
+                <b>{walletInfo.balance}</b>
+            </div>
+        );
+    };
 
     const renderCoin = () => (
         <StyledBox p="1em">
@@ -157,14 +160,14 @@ const UserMain = (props: any) => {
         </StyledBox>
     );
 
-  return (
-    <div className="flex flex-row w-full justify-center items-center">
-      {renderInfo()}
-      {/* {renderCoin()} */}
-      {/* {renderActivityHistory()} */}
-      {/* {renderTxHistory()} */}
-    </div>
-  )
-}
+    return (
+        <div className="flex flex-row w-full justify-center items-center">
+            {renderInfo()}
+            {/* {renderCoin()} */}
+            {/* {renderActivityHistory()} */}
+            {/* {renderTxHistory()} */}
+        </div>
+    );
+};
 
 export default UserMain;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PayloadAction } from '@reduxjs/toolkit'
+import { PayloadAction } from '@reduxjs/toolkit';
 import { TWOwnerResult } from '../../../../state/types';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../../../state';
@@ -17,7 +17,12 @@ import SpriteDisplay from '../../components/Card/Display';
 import withGridLayout from '../NFTPage/withGridLayout';
 import { H1, H3, H4, P, TextWrapper } from '../../components/Foundation/Text';
 import Iconloader from '../../components/Foundation/Iconloader';
-import { CardContainer, BadgeContainer, CardHeader, CardText } from '../../components/Card/styled';
+import {
+    CardContainer,
+    BadgeContainer,
+    CardHeader,
+    CardText,
+} from '../../components/Card/styled';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import { Web3Button } from '@thirdweb-dev/react';
 import {
@@ -25,7 +30,7 @@ import {
     useContract,
     useAddress,
     useNFTBalance,
-    NFT
+    NFT,
 } from '@thirdweb-dev/react';
 import { useGetNFTcount } from '../../../../hooks/useSubgraph';
 import maticToWei from '../../../../utils/maticToWei';
@@ -93,7 +98,7 @@ const StatField = styled.div`
     border-radius: 0.5rem;
     font-size: 1rem;
     padding: 0.5rem;
-`
+`;
 
 const ContentWrapper = styled.div`
     width: 100%;
@@ -117,7 +122,7 @@ const Center = styled.div`
     width: 100%;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const NftCollection = (props: any) => {
     const dispatch = useAppDispatch();
@@ -135,7 +140,6 @@ const NftCollection = (props: any) => {
     const [nftState, setNftState] = useState<listData | null | undefined>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [nftError, setError] = useState<any>(null);
-
 
     const query = `
         query {
@@ -199,9 +203,12 @@ const NftCollection = (props: any) => {
     }, [query]);
 
     const OwnedNFTs = () => {
-        const {data, isLoading, error} = useOwnedNFTs(contract, address, {start: (nftStart * 10), count: nftCount})
+        const { data, isLoading, error } = useOwnedNFTs(contract, address, {
+            start: nftStart * 10,
+            count: nftCount,
+        });
         const [MdlNFT, setMdlNFT] = useState(false);
-        const [actData, setActData] = useState<nftData | undefined>()
+        const [actData, setActData] = useState<nftData | undefined>();
 
         // TODO use redux here
         // const [data, setData] = useState<NFT[] | undefined >([]);
@@ -209,133 +216,185 @@ const NftCollection = (props: any) => {
         // const [error, setError] = useState();
 
         const NftMain = () => {
-            return(
+            return (
                 <ContentWrapper>
-                    <Flex justifyContent="center" alignItems="center" style={{flexFlow: 'column nowrap', textAlign: 'center', margin: '0 1rem'}}>
+                    <Flex
+                        justifyContent="center"
+                        alignItems="center"
+                        style={{
+                            flexFlow: 'column nowrap',
+                            textAlign: 'center',
+                            margin: '0 1rem',
+                        }}
+                    >
                         <h1>{actData?.name}</h1>
                         <p
-                            className={`border-2 ${getRarityBorder(actData ? actData.rarity : 'Common')} p-2 rounded-[5px] text-[12px]`}
-                            style={{maxWidth: '6rem'}}
+                            className={`border-2 ${getRarityBorder(
+                                actData ? actData.rarity : 'Common',
+                            )} p-2 rounded-[5px] text-[12px]`}
+                            style={{ maxWidth: '6rem' }}
                         >
                             {actData?.rarity}
                         </p>
                     </Flex>
                     <div>
-                        <SpriteDisplay
-                            {...{ spriteURL: actData ? actData.image : '' }}
-                        />
+                        <SpriteDisplay {...{ spriteURL: actData ? actData.image : '' }} />
                     </div>
-                    <FBox style={{padding: '1rem'}} className="bg-gradient-to-b from-[#2A3169] to-[#141839]">
+                    <FBox
+                        style={{ padding: '1rem' }}
+                        className="bg-gradient-to-b from-[#2A3169] to-[#141839]"
+                    >
                         <TextWrapper align="center">
-                            <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center', gap: '1rem'}}>
-                                <SvgIcon Img={<img alt="badge-logo" src={ Diggers[ actData?.attributes[0].value ].badgeImg} />} width={60} height={60} />
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'left',
+                                    alignItems: 'center',
+                                    gap: '1rem',
+                                }}
+                            >
+                                <SvgIcon
+                                    Img={
+                                        <img
+                                            alt="badge-logo"
+                                            src={
+                                                Diggers[actData?.attributes[0].value]
+                                                    .badgeImg
+                                            }
+                                        />
+                                    }
+                                    width={60}
+                                    height={60}
+                                />
                                 <H4 fsize="1.5em">{actData?.attributes[0].value}</H4>
                             </div>
-                            <p style={{fontWeight: '500', textAlign: 'left', margin: '1rem 0 0 0'}}>
+                            <p
+                                style={{
+                                    fontWeight: '500',
+                                    textAlign: 'left',
+                                    margin: '1rem 0 0 0',
+                                }}
+                            >
                                 {actData?.description}
                             </p>
                         </TextWrapper>
                     </FBox>
                 </ContentWrapper>
-            )
+            );
         };
 
         const NftDetails = () => {
             const isUnique = actData ? actData.attributes[1].trait_type !== '1/1' : false;
-            const digClass = actData ? actData.attributes[0].value : 'Knight'
-            const digHat = actData ? actData.attributes[4].value : 'Giant King'
-            const digEyes = actData ? actData.attributes[5].value : 'Seasoned Veteran'
-            const digNose = actData ? actData.attributes[6].value : 'Seasoned Beard'
-            const digClothes = actData ? actData.attributes[3].value : 'Light Muscle Armor'
+            const digClass = actData ? actData.attributes[0].value : 'Knight';
+            const digHat = actData ? actData.attributes[4].value : 'Giant King';
+            const digEyes = actData ? actData.attributes[5].value : 'Seasoned Veteran';
+            const digNose = actData ? actData.attributes[6].value : 'Seasoned Beard';
+            const digClothes = actData
+                ? actData.attributes[3].value
+                : 'Light Muscle Armor';
 
-            const skillImg = isUnique ?
-                                <img alt="skill-logo" className='rounded-[20rem]' src={ `images/nfts/MSW/abilities/${Diggers[ digClass ].legendary.ability.img}` } />
-                                :
-                                <img alt="skill-logo" className='rounded-[20rem]' src={ `images/nfts/MSW/abilities/${Diggers[ digClass ].hats[ digHat ].ability.img}` } />
-                                ;
-            const eyes = Diggers[ digClass ].eyes
-            const noses = Diggers[ digClass ].noses
-            const clothes = Diggers[ digClass ].clothes
+            const skillImg = isUnique ? (
+                <img
+                    alt="skill-logo"
+                    className="rounded-[20rem]"
+                    src={`images/nfts/MSW/abilities/${Diggers[digClass].legendary.ability.img}`}
+                />
+            ) : (
+                <img
+                    alt="skill-logo"
+                    className="rounded-[20rem]"
+                    src={`images/nfts/MSW/abilities/${Diggers[digClass].hats[digHat].ability.img}`}
+                />
+            );
+            const eyes = Diggers[digClass].eyes;
+            const noses = Diggers[digClass].noses;
+            const clothes = Diggers[digClass].clothes;
 
             const renderStats = () => (
                 <>
                     <Grid container spacing={0.5} mt={0.5}>
-                        {isUnique ?
-                            Diggers[ digClass ].legendary.stat.map((s, ind) => {
-                                const key = ind + 1;
-                                return (
-                                    <Grid item xs={12} sm={6} key={key}>
-                                        <StatField>
-                                            <div>{s.attribute}</div>
-                                            <div style={{fontWeight: 1000}}>{s.modifier}</div>
-                                        </StatField>
-                                    </Grid>
-                                );
-                            })
-                        :
-                            Diggers[ digClass ].baseStats.map((s, ind) => {
-                                const key = ind + 1;
-                                return (
-                                    <Grid item xs={12} sm={6} key={key}>
-                                        <StatField>
-                                            <div>{s.attribute}</div>
-                                            <div style={{fontWeight: 1000}}>{s.modifier}</div>
-                                        </StatField>
-                                    </Grid>
-                                );
-                            })
-                        }
+                        {isUnique
+                            ? Diggers[digClass].legendary.stat.map((s, ind) => {
+                                  const key = ind + 1;
+                                  return (
+                                      <Grid item xs={12} sm={6} key={key}>
+                                          <StatField>
+                                              <div>{s.attribute}</div>
+                                              <div style={{ fontWeight: 1000 }}>
+                                                  {s.modifier}
+                                              </div>
+                                          </StatField>
+                                      </Grid>
+                                  );
+                              })
+                            : Diggers[digClass].baseStats.map((s, ind) => {
+                                  const key = ind + 1;
+                                  return (
+                                      <Grid item xs={12} sm={6} key={key}>
+                                          <StatField>
+                                              <div>{s.attribute}</div>
+                                              <div style={{ fontWeight: 1000 }}>
+                                                  {s.modifier}
+                                              </div>
+                                          </StatField>
+                                      </Grid>
+                                  );
+                              })}
                     </Grid>
-                    {isUnique &&
-                        <div style={{display: 'flex', margin: '0.5rem 0 0 0', flexFlow: 'column', gap: '0.2rem'}}>
+                    {isUnique && (
+                        <div
+                            style={{
+                                display: 'flex',
+                                margin: '0.5rem 0 0 0',
+                                flexFlow: 'column',
+                                gap: '0.2rem',
+                            }}
+                        >
                             <h1>Modifiers</h1>
-                            {eyes &&
+                            {eyes && (
                                 <StatField>
                                     <div>{digEyes}</div>
-                                    <div style={{fontWeight: 1000}}>
+                                    <div style={{ fontWeight: 1000 }}>
                                         {eyes[digEyes].stat.map((s, i) => {
-                                                return(
-                                                    <div key={i}>
-                                                        + {s.modifier} {s.attribute}
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                                            return (
+                                                <div key={i}>
+                                                    + {s.modifier} {s.attribute}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </StatField>
-                            }
-                            {noses &&
+                            )}
+                            {noses && (
                                 <StatField>
                                     <div>{digNose}</div>
-                                    <div style={{fontWeight: 1000}}>
+                                    <div style={{ fontWeight: 1000 }}>
                                         {noses[digNose].stat.map((s, i) => {
-                                                return(
-                                                    <div key={i}>
-                                                        + {s.modifier} {s.attribute}
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                                            return (
+                                                <div key={i}>
+                                                    + {s.modifier} {s.attribute}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </StatField>
-                            }
-                            {clothes &&
+                            )}
+                            {clothes && (
                                 <StatField>
                                     <div>{digClothes}</div>
-                                    <div style={{fontWeight: 1000}}>
+                                    <div style={{ fontWeight: 1000 }}>
                                         {clothes[digClothes].stat.map((s, i) => {
-                                                return(
-                                                    <div key={i}>
-                                                        + {s.modifier} {s.attribute}
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                                            return (
+                                                <div key={i}>
+                                                    + {s.modifier} {s.attribute}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </StatField>
-                            }
+                            )}
                         </div>
-                    }
+                    )}
                 </>
             );
 
@@ -343,16 +402,21 @@ const NftCollection = (props: any) => {
                 return (
                     <div>
                         <MiniBox p="1em">
-                            <div style={{display: 'grid', gridTemplateColumns: '1fr 2fr', width: '100%'}}>
-                                <div style={{width: '100%'}}>
+                            <div
+                                style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: '1fr 2fr',
+                                    width: '100%',
+                                }}
+                            >
+                                <div style={{ width: '100%' }}>
                                     <SvgIcon Img={skillImg} width={80} height={80} />
                                 </div>
                                 <P fsize="0.8em">
-                                    {isUnique ?
-                                        Diggers[ digClass ].legendary.ability.description
-                                    :
-                                        Diggers[ digClass ].hats[ digHat ].ability.description
-                                    }
+                                    {isUnique
+                                        ? Diggers[digClass].legendary.ability.description
+                                        : Diggers[digClass].hats[digHat].ability
+                                              .description}
                                 </P>
                             </div>
                         </MiniBox>
@@ -367,12 +431,12 @@ const NftCollection = (props: any) => {
                             <h1>Base Stats</h1>
                         </Flex>
                         {renderStats()}
-                        <Flex style={{margin: '1rem 0 0 0'}}>
-                            <h2>Ability: {isUnique ?
-                                    Diggers[ digClass ].legendary.ability.name
-                                :
-                                    Diggers[ digClass ].hats[ digHat ].ability.name
-                                }
+                        <Flex style={{ margin: '1rem 0 0 0' }}>
+                            <h2>
+                                Ability:{' '}
+                                {isUnique
+                                    ? Diggers[digClass].legendary.ability.name
+                                    : Diggers[digClass].hats[digHat].ability.name}
                             </h2>
                         </Flex>
                         {renderSkill()}
@@ -384,111 +448,130 @@ const NftCollection = (props: any) => {
         const hndlPrev = async () => {
             setIsFetching(true);
             setNftStart(Math.max(0, nftStart - 1));
-        }
+        };
 
         const hndleNext = async () => {
-            if(data && data?.length >= 10){
+            if (data && data?.length >= 10) {
                 setIsFetching(true);
                 setNftStart(nftStart + 1);
             }
-        }
+        };
 
         const WrappedMain = withGridLayout(NftMain);
         const WrappedDetails = withGridLayout(NftDetails);
 
         useEffect(() => {
-
             // const getNFTs = async () => {
             //     const res: PayloadAction<TWOwnerResult, string, {start: number, count: number}> = await dispatch(getOwnerNFTs({start: nftStart, count: nftCount}))
-
 
             // }
 
             // getNFTs();
 
-            if(data)
-            {
-                console.log('data not emtpy!')
-                if(data.length > 0 && data[0].metadata){
-                    if(data[0].metadata.id !== oldData?.metadata.id){
+            if (data) {
+                console.log('data not emtpy!');
+                if (data.length > 0 && data[0].metadata) {
+                    if (data[0].metadata.id !== oldData?.metadata.id) {
                         console.log(data);
-                        setOldData(data[0])
+                        setOldData(data[0]);
                         setIsFetching(false);
                     }
-                }else{
+                } else {
                     setIsFetching(false);
                 }
             }
-        }, [data, isLoading, nftStart, nftCount])
+        }, [data, isLoading, nftStart, nftCount]);
 
-        return(
-        <>
-            <Modal
-                open={MdlNFT}
-                onClose={() => setMdlNFT(false)}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={mdlStyle}>
-                    <CenterFrame>
-                        <MdlContainer>
-                            <button style={{position: 'absolute', right: '1rem'}} onClick={() => setMdlNFT(false)}>
-                                <Iconloader type='fa' name='RegWindowClose' />
-                            </button>
-                            <Grid container spacing={0.3}>
-                                <WrappedMain />
-                                <WrappedDetails />
-                            </Grid>
-                        </MdlContainer>
-                    </CenterFrame>
-                </Box>
-            </Modal>
-            {isFetching ?
-                <Center>Loading...</Center>
-                :
-                <>
-                    {data && data?.length > 0 ?
-                        <>
-                            <FetchNFT
-                                data={data}
-                                marketplaceData={marketplaceData}
-                                start={nftStart}
-                                count={nftCount}
-                                setNftData={setActData}
-                                setNFTModal={setMdlNFT}
-                            />
-                            <div style={{display: 'flex', gap: '1rem', width: '100%', justifyContent: 'center', alignContent: 'center'}}>
-                                <Button disabled={nftStart <= 0} onClick={() => hndlPrev()}>
-                                    <FaChevronLeft />
-                                </Button>
-                                <h1 style={{justifyItems: 'center'}}>
-                                    page: {nftStart + 1}
-                                </h1>
-                                <Button disabled={data.length < 10} onClick={() => hndleNext()}>
-                                    <FaChevronRight />
-                                </Button>
-                            </div>
-                        </>
-                        :
-                        <Center>No diggers in wallet</Center>
-
-                    }
-                </>
-            }
-        </>)
-    }
+        return (
+            <>
+                <Modal
+                    open={MdlNFT}
+                    onClose={() => setMdlNFT(false)}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={mdlStyle}>
+                        <CenterFrame>
+                            <MdlContainer>
+                                <button
+                                    style={{ position: 'absolute', right: '1rem' }}
+                                    onClick={() => setMdlNFT(false)}
+                                >
+                                    <Iconloader type="fa" name="RegWindowClose" />
+                                </button>
+                                <Grid container spacing={0.3}>
+                                    <WrappedMain />
+                                    <WrappedDetails />
+                                </Grid>
+                            </MdlContainer>
+                        </CenterFrame>
+                    </Box>
+                </Modal>
+                {isFetching ? (
+                    <Center>Loading...</Center>
+                ) : (
+                    <>
+                        {data && data?.length > 0 ? (
+                            <>
+                                <FetchNFT
+                                    data={data}
+                                    marketplaceData={marketplaceData}
+                                    start={nftStart}
+                                    count={nftCount}
+                                    setNftData={setActData}
+                                    setNFTModal={setMdlNFT}
+                                />
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        gap: '1rem',
+                                        width: '100%',
+                                        justifyContent: 'center',
+                                        alignContent: 'center',
+                                    }}
+                                >
+                                    <Button
+                                        disabled={nftStart <= 0}
+                                        onClick={() => hndlPrev()}
+                                    >
+                                        <FaChevronLeft />
+                                    </Button>
+                                    <h1 style={{ justifyItems: 'center' }}>
+                                        page: {nftStart + 1}
+                                    </h1>
+                                    <Button
+                                        disabled={data.length < 10}
+                                        onClick={() => hndleNext()}
+                                    >
+                                        <FaChevronRight />
+                                    </Button>
+                                </div>
+                            </>
+                        ) : (
+                            <Center>No diggers in wallet</Center>
+                        )}
+                    </>
+                )}
+            </>
+        );
+    };
 
     return (
-        <div style={{width: '100%'}}>
+        <div style={{ width: '100%' }}>
             <div className="py-[2em]">
-                <b className="text-[24px] text-[#ECB602] font-black">OWNED CHARACTERS / ITEMS</b>
+                <b className="text-[24px] text-[#ECB602] font-black">
+                    OWNED CHARACTERS / ITEMS
+                </b>
             </div>
-            <div className="flex flex-wrap justify-start items-center gap-3" style={{width: '100%'}}>
+            <div
+                className="flex flex-wrap justify-start items-center gap-3"
+                style={{ width: '100%' }}
+            >
                 <OwnedNFTs />
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default NftCollection;
 

@@ -34,7 +34,7 @@ export const BadgeContainer = styled.div`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-`
+`;
 
 const commonSectionStyle = (props?: {
     justify?: string;

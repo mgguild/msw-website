@@ -36,17 +36,17 @@ export const getRarity = (attributes: any[]) => {
 export const getRarityBorder = (rarity: string) => {
     switch (rarity) {
         case 'Common':
-            return('border-[#C2C2C2] text-[#C2C2C2]');
+            return 'border-[#C2C2C2] text-[#C2C2C2]';
         case 'Uncommon':
-            return('border-[#94FF88] text-[#94FF88]');
+            return 'border-[#94FF88] text-[#94FF88]';
         case 'Rare':
-            return('border-[#4BDEFD] text-[#4BDEFD]');
+            return 'border-[#4BDEFD] text-[#4BDEFD]';
         case 'Epic':
-            return('border-[#EB88FF] text-[#EB88FF]');
+            return 'border-[#EB88FF] text-[#EB88FF]';
         default:
-            return('border-[#C2C2C2] text-[#C2C2C2]');
+            return 'border-[#C2C2C2] text-[#C2C2C2]';
     }
-}
+};
 
 export const getHashId = (str: string): string => {
     const parts = str.split('#');
@@ -55,8 +55,7 @@ export const getHashId = (str: string): string => {
 
 export const getName = (data: any) => {
     if (data.attributes.find((attr: any) => attr.trait_type === '1/1')) {
-        return data.attributes.find((attr: any) => attr.trait_type === '1/1')
-            .value;
+        return data.attributes.find((attr: any) => attr.trait_type === '1/1').value;
     }
 
     return data.name;

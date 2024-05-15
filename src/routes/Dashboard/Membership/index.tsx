@@ -133,4 +133,4 @@ const Membership: FC = () => {
   )
 }
 
-export default Membership
+export default Membership;

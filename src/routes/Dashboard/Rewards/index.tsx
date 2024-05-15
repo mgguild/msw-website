@@ -1,33 +1,33 @@
-import {FC, useState} from "react"
-import usePlayfab from "../../../Hooks/usePlayfab"
+import { FC, useState } from 'react';
+import usePlayfab from '../../../Hooks/usePlayfab';
 
 const EligibleContent: FC = () => {
-  return (
-    <>
-      <p>Eligible Content</p>
-    </>
-  )
-}
+    return (
+        <>
+            <p>Eligible Content</p>
+        </>
+    );
+};
 
 const AllContent: FC = () => {
-  return (
-    <>
-      <p>All Content</p>
-    </>
-  )
-}
+    return (
+        <>
+            <p>All Content</p>
+        </>
+    );
+};
 
 const CompletedContent: FC = () => {
-  return (
-    <>
-      <p>Completed Content</p>
-    </>
-  )
-}
+    return (
+        <>
+            <p>Completed Content</p>
+        </>
+    );
+};
 
 const Rewards: FC = () => {
-  const user = usePlayfab((state: any) => state.user)
-  const [activeTab, setActiveTab] = useState<number>(0)
+    const user = usePlayfab((state: any) => state.user);
+    const [activeTab, setActiveTab] = useState<number>(0);
 
   return (
     <>
@@ -57,4 +57,4 @@ const Rewards: FC = () => {
   )
 }
 
-export default Rewards
+export default Rewards;
