@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PlayFabClient } from 'playfab-sdk'
-import { PlayfabState, EntityKey, UserGuildData, PFGuildData } from '../types'
+import { PlayfabState, EntityKey, UserGuildData, PFGuildData, PFMGGMembership, MembershipData } from '../types'
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
+import { result } from 'lodash';
 
 const cookies = new Cookies(null, { path: '/' });
 
@@ -277,6 +278,184 @@ export const getGuildList = createAsyncThunk<PFGuildData[] | null>(
   },
 );
 
+export const getMembershipT1 = createAsyncThunk<MembershipData, PFMGGMembership>(
+  'playfab/getMembershipT1',
+  async (args) => {
+    var _result: MembershipData = {
+      msg: 'empty',
+      dateData: [],
+      transcHash: '',
+      tier: 'tier1'
+    };
+
+    PlayFabClient.ExecuteCloudScript(
+      {
+        FunctionName: 'MGGMember',
+        FunctionParameter:{
+          playerId: args.playerId,
+          subsTier: 'tier1',
+          transc: args.transc
+        }
+      },
+      (error, result) => {
+        if (error) {
+          toast.error(error.errorMessage);
+          return;
+        } else {
+          _result = {
+            msg: result.data.FunctionResult.msg,
+            dateData: result.data.FunctionResult.dateData,
+            transcHash: args.transc,
+            tier: 'tier1'
+          }
+        }
+      },
+    );
+
+    await timeout(2000)
+    if (_result === null) {
+      toast.error(`Somthing went wrong!`);
+      console.warn(`Get Membership function timeout!`)
+    }
+
+    return _result
+  },
+);
+
+export const getMembershipT2 = createAsyncThunk<MembershipData, PFMGGMembership>(
+  'playfab/getMembershipT2',
+  async (args) => {
+    var _result: MembershipData = {
+      msg: 'empty',
+      dateData: [],
+      transcHash: '',
+      tier: 'tier2'
+    };
+
+    PlayFabClient.ExecuteCloudScript(
+      {
+        FunctionName: 'MGGMember',
+        FunctionParameter:{
+          playerId: args.playerId,
+          subsTier: 'tier2',
+          transc: args.transc
+        }
+      },
+      (error, result) => {
+        if (error) {
+          toast.error(error.errorMessage);
+          return;
+        } else {
+          _result = {
+            msg: result.data.FunctionResult.msg,
+            dateData: result.data.FunctionResult.dateData,
+            transcHash: args.transc,
+            tier: 'tier2'
+          }
+        }
+      },
+    );
+
+    await timeout(2000)
+    if (_result === null) {
+      toast.error(`Somthing went wrong!`);
+      console.warn(`Get Membership function timeout!`)
+    }
+
+    return _result
+  },
+);
+
+export const getMembershipT3 = createAsyncThunk<MembershipData, PFMGGMembership>(
+  'playfab/getMembershipT3',
+  async (args) => {
+    var _result: MembershipData = {
+      msg: 'empty',
+      dateData: [],
+      transcHash: '',
+      tier: 'tier3',
+    };
+
+    PlayFabClient.ExecuteCloudScript(
+      {
+        FunctionName: 'MGGMember',
+        FunctionParameter:{
+          playerId: args.playerId,
+          subsTier: 'tier3',
+          transc: args.transc
+        }
+      },
+      (error, result) => {
+        if (error) {
+          toast.error(error.errorMessage);
+          return;
+        } else {
+          _result = {
+            msg: result.data.FunctionResult.msg,
+            dateData: result.data.FunctionResult.dateData,
+            transcHash: args.transc,
+            tier: 'tier3'
+          }
+        }
+      },
+    );
+
+    await timeout(2000)
+    if (_result === null) {
+      toast.error(`Somthing went wrong!`);
+      console.warn(`Get Membership function timeout!`)
+    }
+
+    return _result
+  },
+);
+
+export const getMembershipData = createAsyncThunk<MembershipData, {playerId: string}>(
+  'playfab/getMembershipData',
+  async (args) => {
+    var _result: MembershipData = {
+      dateData: [],
+      transcHash: '',
+      tier: ''
+    };
+
+    PlayFabClient.ExecuteCloudScript(
+      {
+        FunctionName: 'GetMGGMemberData',
+        FunctionParameter:{
+          playerId: args.playerId,
+        }
+      },
+      (error, result) => {
+        if (error) {
+          toast.error(error.errorMessage);
+          return;
+        } else {
+          console.log("asdasdasdas");
+          console.log(result);
+          if(Object.hasOwn(result.data.FunctionResult, 'MGG_Membership')){
+            let res = JSON.parse(result.data.FunctionResult.MGG_Membership.Value);
+            _result = {
+              dateData: res.dateData ?? [],
+              transcHash: res.transcHash ?? '',
+              tier: res.tier ?? '',
+            }
+          }
+        }
+      },
+    );
+
+    await timeout(2000)
+    if (_result === null) {
+      toast.error(`Somthing went wrong!`);
+      console.warn(`Get Membership function timeout!`)
+    }
+
+    return _result
+  },
+);
+
+
 export const playFabLogOut = createAsyncThunk<any>(
   'playfab/logout',
   async () => {
@@ -294,7 +473,6 @@ export const playfabSlice = createSlice({
   extraReducers: (builder) => {
     //Create player guild
     builder.addCase(createGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log("PAYLOAD");
       console.log(action.payload)
       if(action.payload.status === 'success'){
         state.user.guild = action.payload;
@@ -303,7 +481,6 @@ export const playfabSlice = createSlice({
 
     //Edit player guild
     builder.addCase(editGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log("PAYLOAD");
       console.log(action.payload)
       if(action.payload.status === 'success'){
         state.user.guild = action.payload;
@@ -312,7 +489,6 @@ export const playfabSlice = createSlice({
 
     //Delete player guild
     builder.addCase(deleteGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log("PAYLOAD");
       console.log(action.payload)
       if(action.payload.status === 'succesfully deleted'){
         state.user.guild = action.payload;
@@ -321,7 +497,6 @@ export const playfabSlice = createSlice({
 
     //Get player guild if any
     builder.addCase(getPlyrGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log("PAYLOAD");
       console.log(action.payload)
       if(action.payload.status === 'success'){
         state.user.guild = action.payload;
@@ -344,6 +519,38 @@ export const playfabSlice = createSlice({
         status: null,
         coMembers: [],
       };
+    });
+
+    builder.addCase(getMembershipT1.fulfilled, (state, action: PayloadAction<MembershipData>) => {
+      state.user.mggMembership = {
+        dateData: action.payload.dateData,
+        transcHash: action.payload.transcHash,
+        tier: action.payload.tier
+      }
+    });
+
+    builder.addCase(getMembershipT2.fulfilled, (state, action: PayloadAction<MembershipData>) => {
+      state.user.mggMembership = {
+        dateData: action.payload.dateData,
+        transcHash: action.payload.transcHash,
+        tier: action.payload.tier
+      }
+    });
+
+    builder.addCase(getMembershipT3.fulfilled, (state, action: PayloadAction<MembershipData>) => {
+      state.user.mggMembership = {
+        dateData: action.payload.dateData,
+        transcHash: action.payload.transcHash,
+        tier: action.payload.tier
+      }
+    });
+
+    builder.addCase(getMembershipData.fulfilled, (state, action: PayloadAction<MembershipData>) => {
+      state.user.mggMembership = {
+        dateData: action.payload.dateData,
+        transcHash: action.payload.transcHash,
+        tier: action.payload.tier
+      }
     });
 
   },

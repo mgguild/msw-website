@@ -7,7 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
 import { useAppDispatch } from './Components/Marketplace/state';
-import { setGuildfromCookies, getGuildList } from './Components/Marketplace/state/playfab/playfab';
+import { setGuildfromCookies, getGuildList, getMembershipData } from './Components/Marketplace/state/playfab/playfab';
 import {
     DashboardExchange,
     DashboardGuilds,
@@ -116,6 +116,7 @@ const Dashboard: FC = () => {
 
 const App = () => {
     const connect = usePlayfab((state: any) => state.start);
+    const user = usePlayfab((state: any) => state.user);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -126,6 +127,16 @@ const App = () => {
             dispatch(getGuildList());
         }, 1500)
     }, []);
+
+    useEffect(() => {
+        const fetchData = async() => {
+            await dispatch(getMembershipData({playerId: user.PlayFabId}))
+        }
+
+        if(user){
+            fetchData();
+        }
+    }, [user]);
 
     return (
         <>
