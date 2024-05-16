@@ -29,14 +29,11 @@ const Membership: FC = () => {
 
   useEffect(() => {
     setUserData(userData);
-    console.log(pfUser);
   },[userData, pfUser])
 
   const [firstStepSuccess, setFirstStepSuccess] = useState<boolean>(false)
   const [secondStepSuccess, setSecondStepSuccess] = useState<boolean>(false)
   const handleFirstStep = async (contract:  any) => {
-    console.log(_userData['WalletAddress'].Value)
-    console.log(_address)
     if(!_userData['WalletAddress']){
       toast.warn('User needs to bind a wallet account');
       return;
@@ -47,7 +44,6 @@ const Membership: FC = () => {
     }
 
     var ctrqReq = await contract.call("approve", ["0xd827E487c1d4E3ccFBd21Cc1Bae99E590f8926D1", BigNumber.from("1000000000000000000")]);
-    console.log(ctrqReq);
     if(ctrqReq.receipt.status){
       setFirstStepSuccess(true);
     }else{
@@ -56,7 +52,6 @@ const Membership: FC = () => {
   }
 
   const handleSecondStep = async (contract: any) => {
-    console.log("handleSecondStep");
     var ctrqReq = await contract.call("buyMembership", [BigNumber.from("1000000000000000000")]);
 
     if(ctrqReq.receipt.status){
@@ -67,11 +62,6 @@ const Membership: FC = () => {
     }
   }
 
-  const handleMembershipSuccess = (e: any) => {
-    console.log("Membership success");
-    console.log(e);
-    setFirstStepSuccess(true)
-  }
 
   return (
     <>
