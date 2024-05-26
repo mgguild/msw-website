@@ -32,17 +32,19 @@ const Membership: FC = () => {
 
   const [firstStepSuccess, setFirstStepSuccess] = useState<boolean>(false)
   const [secondStepSuccess, setSecondStepSuccess] = useState<boolean>(false)
-  const handleFirstStep = async (contract:  any) => {
+  const handleFirstStep = async (contract:  any, price: string) => {
     if(!_userData['WalletAddress']){
       toast.warn('User needs to bind a wallet account');
       return;
     }
+    /*
     if(`${_userData['WalletAddress'].Value}`.toUpperCase() !== `${_address}`.toUpperCase()){
       toast.warn('Connected wallet must be same with bound wallet. Please switch wallet account that is bound to user');
       return;
     }
+    */
 
-    var ctrqReq = await contract.call("approve", ["0xd827E487c1d4E3ccFBd21Cc1Bae99E590f8926D1", BigNumber.from("1000000000000000000")]);
+    var ctrqReq = await contract.call("approve", ["0xE92A44a9a8F421885666ec566435726E7Ab21b0e", BigNumber.from("1000000000000000000")]);
     if(ctrqReq.receipt.status){
       setFirstStepSuccess(true);
     }else{
@@ -107,7 +109,9 @@ const Membership: FC = () => {
                     <Web3Button
                       contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
                       contractAbi={ABI}
-                      action={handleFirstStep}
+                      action={(contract) => {
+                        handleFirstStep(contract, "1000000000000000000");
+                      }}
                       onError={(e) => console.error(e)}
                     >
                       <b>Approve Contract</b>
@@ -116,7 +120,7 @@ const Membership: FC = () => {
 
                   {firstStepSuccess && user && !secondStepSuccess && (
                       <Web3Button
-                        contractAddress={"0xd827E487c1d4E3ccFBd21Cc1Bae99E590f8926D1"}
+                        contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
                         contractAbi={ABIMembership}
                         action={(contract) => {
                           handleSecondStep(contract, 1, "1000000000000000000");
@@ -147,7 +151,9 @@ const Membership: FC = () => {
                     <Web3Button
                       contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
                       contractAbi={ABI}
-                      action={handleFirstStep}
+                      action={(contract) => {
+                        handleFirstStep(contract, "1000000000000000000");
+                      }}
                       onError={(e) => console.error(e)}
                     >
                       <b>Approve Contract</b>
@@ -156,7 +162,7 @@ const Membership: FC = () => {
 
                   {firstStepSuccess && user && !secondStepSuccess && (
                       <Web3Button
-                        contractAddress={"0xd827E487c1d4E3ccFBd21Cc1Bae99E590f8926D1"}
+                        contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
                         contractAbi={ABIMembership}
                         action={(contract) => {
                           handleSecondStep(contract, 2, "2000000000000000000")
@@ -187,7 +193,9 @@ const Membership: FC = () => {
                     <Web3Button
                       contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
                       contractAbi={ABI}
-                      action={handleFirstStep}
+                      action={(contract) => {
+                        handleFirstStep(contract, "1000000000000000000");
+                      }}
                       onError={(e) => console.error(e)}
                     >
                       <b>Approve Contract</b>
@@ -196,7 +204,7 @@ const Membership: FC = () => {
 
                   {firstStepSuccess && user && !secondStepSuccess && (
                       <Web3Button
-                        contractAddress={"0xd827E487c1d4E3ccFBd21Cc1Bae99E590f8926D1"}
+                        contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
                         contractAbi={ABIMembership}
                         action={(contract) => {
                           handleSecondStep(contract, 3, "3000000000000000000")
