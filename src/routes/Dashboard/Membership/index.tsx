@@ -37,14 +37,12 @@ const Membership: FC = () => {
       toast.warn('User needs to bind a wallet account');
       return;
     }
-    /*
     if(`${_userData['WalletAddress'].Value}`.toUpperCase() !== `${_address}`.toUpperCase()){
       toast.warn('Connected wallet must be same with bound wallet. Please switch wallet account that is bound to user');
       return;
     }
-    */
 
-    var ctrqReq = await contract.call("approve", ["0xE92A44a9a8F421885666ec566435726E7Ab21b0e", BigNumber.from("1000000000000000000")]);
+    var ctrqReq = await contract.call("approve", ["0xE92A44a9a8F421885666ec566435726E7Ab21b0e", BigNumber.from(price)]);
     if(ctrqReq.receipt.status){
       setFirstStepSuccess(true);
     }else{
