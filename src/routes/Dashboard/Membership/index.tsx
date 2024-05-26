@@ -106,11 +106,20 @@ const Membership: FC = () => {
         <div className="bg-[#0F1637] rounded-[5px] p-5 my-[2em]">
           <div className="flex flex-wrap justify-around items-center w-full">
             <div>
-              { pfUser.mggMembership?.transcHash !== ""  ?
-                <p>Premium Membership: <span className="text-[#00FF3C]">Active</span></p>
-                :
-                <p>Premium Membership: <span className="text-[#ff0000]">NonActive</span></p>
-              }
+              <p>Premium Membership: &nbsp;
+                { pfUser.mggMembership && pfUser.mggMembership?.transcHash !== ""  ?
+                  <>
+                  { pfUser.mggMembership?.dateData[1] <= Date.now() ?
+                    <span className="text-[#ff6200]">Expired</span>
+                    :
+                    <span className="text-[#00FF3C]">Active</span>
+                  }
+                  </>
+                  :
+                  <span className="text-[#ff0000]">Non-Active</span>
+                }
+
+              </p>
             </div>
             { pfUser.mggMembership?.dateData[0] &&
               <div>
