@@ -1,7 +1,8 @@
 import {FC, useEffect, useState} from "react"
 import styled from "styled-components";
 import mgg from "../../../Assets/0xFc2dAfe72A1a893363CdE3c18E6C2159De7B7830.png"
-import { Web3Button, useAddress } from "@thirdweb-dev/react";
+import { Web3Button, useAddress, SmartContract } from "@thirdweb-dev/react";
+import { BaseContract } from "ethers";
 import { BigNumber } from "ethers";
 import usePlayfab from "../../../Hooks/usePlayfab";
 import { useAppDispatch } from "../../../Components/Marketplace/state";
@@ -35,8 +36,8 @@ const Membership: FC = () => {
   const [selectedTier, setSelectedTier] = useState<number>(0)
   const [cntrctLoding, setCntrctLoading] = useState<boolean>(false)
   const [secondStepSuccess, setSecondStepSuccess] = useState<boolean>(false)
-  
-  const handleFirstStep = async (contract:  any, tier: number, price: string) => {
+
+  const handleFirstStep = async (contract: SmartContract<BaseContract>, tier: number, price: string) => {
     setSelectedTier(tier)
     if(!_userData['WalletAddress']){
       toast.warn('User needs to bind a wallet account');
@@ -47,9 +48,15 @@ const Membership: FC = () => {
       return;
     }
 
-    var ctrqReq = await contract.call("approve", ["0xE92A44a9a8F421885666ec566435726E7Ab21b0e", BigNumber.from(price)]);
     setCntrctLoading(true);
-    if(ctrqReq.receipt.status){
+    var ctrqReq: any = null;
+    await contract.call("approve", ["0xE92A44a9a8F421885666ec566435726E7Ab21b0e", BigNumber.from(price)]).then((res) => {
+      ctrqReq = res;
+    }).catch((e) => {
+      console.log(e);
+    });
+
+    if(ctrqReq && ctrqReq.receipt.status){
       setFirstStepSuccess(tier);
       toast.success('Contract approved!');
     }else{
@@ -58,8 +65,14 @@ const Membership: FC = () => {
     setCntrctLoading(false);
   }
 
-  const handleSecondStep = async (contract: any, tier: number, price: string) => {
-    var ctrqReq = await contract.call("buyMembership", [tier, BigNumber.from(price)]);
+  const handleSecondStep = async (contract: SmartContract<BaseContract>, tier: number, price: string) => {
+    var ctrqReq: any = null;
+    await contract.call("approve", ["0xE92A44a9a8F421885666ec566435726E7Ab21b0e", BigNumber.from(price)]).then((res) => {
+      ctrqReq = res;
+    }).catch((e) => {
+      console.log(e);
+    });
+
     setCntrctLoading(true);
 
     if(ctrqReq.receipt.status){
