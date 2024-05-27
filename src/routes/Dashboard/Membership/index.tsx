@@ -51,6 +51,7 @@ const Membership: FC = () => {
     setCntrctLoading(true);
     if(ctrqReq.receipt.status){
       setFirstStepSuccess(tier);
+      toast.success('Contract approved!');
     }else{
       toast.success('Somthing went wrong');
     }
