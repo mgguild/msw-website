@@ -84,11 +84,6 @@ function MainApp() {
 }
 
 const Dashboard: FC = () => {
-    const connect = usePlayfab((state: any) => state.start);
-
-    useEffect(() => {
-        connect();
-    }, [connect]);
     return (
         <ThirdwebProvider
             activeChain={BinanceTestnet}

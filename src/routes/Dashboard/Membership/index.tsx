@@ -6,7 +6,8 @@ import { BigNumber } from "ethers";
 import usePlayfab from "../../../Hooks/usePlayfab";
 import { useAppDispatch } from "../../../Components/Marketplace/state";
 import { useGetUser } from "../../../Components/Marketplace/state/hooks";
-import { getMembershipT1 } from "../../../Components/Marketplace/state/playfab/playfab";
+import { getMembershipT1, getMembershipT2, getMembershipT3 } from "../../../Components/Marketplace/state/playfab/playfab";
+import { Blocks } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 import moment from "moment";
 
@@ -30,9 +31,13 @@ const Membership: FC = () => {
     setUserData(userData);
   },[userData, pfUser])
 
-  const [firstStepSuccess, setFirstStepSuccess] = useState<boolean>(false)
+  const [firstStepSuccess, setFirstStepSuccess] = useState<number>(0)
+  const [selectedTier, setSelectedTier] = useState<number>(0)
+  const [cntrctLoding, setCntrctLoading] = useState<boolean>(false)
   const [secondStepSuccess, setSecondStepSuccess] = useState<boolean>(false)
-  const handleFirstStep = async (contract:  any, price: string) => {
+  
+  const handleFirstStep = async (contract:  any, tier: number, price: string) => {
+    setSelectedTier(tier)
     if(!_userData['WalletAddress']){
       toast.warn('User needs to bind a wallet account');
       return;
@@ -43,22 +48,48 @@ const Membership: FC = () => {
     }
 
     var ctrqReq = await contract.call("approve", ["0xE92A44a9a8F421885666ec566435726E7Ab21b0e", BigNumber.from(price)]);
+    setCntrctLoading(true);
     if(ctrqReq.receipt.status){
-      setFirstStepSuccess(true);
+      setFirstStepSuccess(tier);
     }else{
       toast.success('Somthing went wrong');
     }
+    setCntrctLoading(false);
   }
 
   const handleSecondStep = async (contract: any, tier: number, price: string) => {
     var ctrqReq = await contract.call("buyMembership", [tier, BigNumber.from(price)]);
+    setCntrctLoading(true);
 
     if(ctrqReq.receipt.status){
-      await dispatch(getMembershipT1({playerId: user.PlayFabId, transc: ctrqReq.receipt.transactionHash}));
+      switch (tier) {
+        case 1:
+          await dispatch(getMembershipT1({playerId: user.PlayFabId, transc: ctrqReq.receipt.transactionHash}));
+        break;
+
+        case 2:
+          await dispatch(getMembershipT2({playerId: user.PlayFabId, transc: ctrqReq.receipt.transactionHash}));
+        break;
+
+        case 3:
+          await dispatch(getMembershipT3({playerId: user.PlayFabId, transc: ctrqReq.receipt.transactionHash}));
+        break;
+
+        default:
+          toast.error("Wrong call tier")
+        break;
+      }
       toast.success('You are now a member');
+      setSecondStepSuccess(true);
     }else{
-      toast.success('Somthing went wrong');
+      toast.success('Something went wrong');
     }
+    setCntrctLoading(false);
+  }
+
+  const handleError = (error: any) => {
+    setCntrctLoading(false);
+    console.error(error)
   }
 
 
@@ -70,22 +101,33 @@ const Membership: FC = () => {
       <div className="text-center">
         <p className="text-[48px] uppercase">Membership</p>
       </div>
-      <div className="bg-[#0F1637] rounded-[5px] p-5 my-[2em]">
-        <div className="flex flex-wrap justify-around items-center w-full">
-          <div>
-            { pfUser.mggMembership ?
-              <p>Premium Membership: <span className="text-[#00FF3C]">Active</span></p>
-              :
-              <p>Premium Membership: <span className="text-[#ff0000]">NonActive</span></p>
+      { user &&
+        <div className="bg-[#0F1637] rounded-[5px] p-5 my-[2em]">
+          <div className="flex flex-wrap justify-around items-center w-full">
+            <div>
+              <p>Premium Membership: &nbsp;
+                { pfUser.mggMembership && pfUser.mggMembership?.transcHash !== ""  ?
+                  <>
+                  { pfUser.mggMembership?.dateData[1] <= Date.now() ?
+                    <span className="text-[#ff6200]">Expired</span>
+                    :
+                    <span className="text-[#00FF3C]">Active</span>
+                  }
+                  </>
+                  :
+                  <span className="text-[#ff0000]">Non-Active</span>
+                }
+
+              </p>
+            </div>
+            { pfUser.mggMembership?.dateData[0] &&
+              <div>
+                <p>Expires On: <span>{moment.unix(pfUser.mggMembership.dateData[1]/1000).format("LL")}</span></p>
+              </div>
             }
           </div>
-          { pfUser.mggMembership?.dateData[0] &&
-            <div>
-              <p>Expires On: <span>{moment.unix(pfUser.mggMembership.dateData[1]/1000).format("LL")}</span></p>
-            </div>
-          }
         </div>
-      </div>
+      }
       <div className="bg-[#0F1637] rounded-[5px] p-5 pb-[5em] my-[2em] text-center">
         <div>
           <p className="text-[28px] mb-[1em] uppercase">Pricing</p>
@@ -100,23 +142,37 @@ const Membership: FC = () => {
               {!user &&
                 <NdUsrBtn disabled>Need user login</NdUsrBtn>
               }
-              {pfUser.mggMembership?.tier === 'tier1' ? <></>
-                :
-                <>
-                  {!firstStepSuccess && user && (
+                  {firstStepSuccess === 0 && user && (
                     <Web3Button
                       contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
                       contractAbi={ABI}
                       action={(contract) => {
-                        handleFirstStep(contract, "1000000000000000000");
+                        handleFirstStep(contract, 1, "1000000000000000000");
                       }}
                       onError={(e) => console.error(e)}
+                      isDisabled={cntrctLoding}
                     >
-                      <b>Approve Contract</b>
+                      <b>
+                    {(cntrctLoding && selectedTier === 1)  ?
+                      <>
+                        <Blocks
+                          height="20"
+                          color="#000000"
+                          ariaLabel="tailspin-loading"
+                          wrapperStyle={{}}
+                          visible={true}
+                        />
+                      </>
+                      :
+                      <>
+                        Approve Contract
+                      </>
+                    }
+                  </b>
                     </Web3Button>
                   )}
 
-                  {firstStepSuccess && user && !secondStepSuccess && (
+                  {firstStepSuccess === 1 && user && !secondStepSuccess && (
                       <Web3Button
                         contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
                         contractAbi={ABIMembership}
@@ -124,13 +180,36 @@ const Membership: FC = () => {
                           handleSecondStep(contract, 1, "1000000000000000000");
                         }}
                         onError={(e) => console.error(e)}
-                        onSuccess={(e) => setSecondStepSuccess(true)}
+                        onSuccess={(e) => {}}
+                        isDisabled={cntrctLoding}
                       >
-                        <b>Buy Membership</b>
+                        <b>
+                    {cntrctLoding ?
+                      <>
+                        <Blocks
+                          height="20"
+                          color="#000000"
+                          ariaLabel="tailspin-loading"
+                          wrapperStyle={{}}
+                          visible={true}
+                        />
+                      </>
+                      :
+                      <>
+                        {pfUser.mggMembership?.tier !== '' ?
+                          <>
+                            Extend membership
+                          </>
+                          :
+                          <>
+                            Buy Membership
+                          </>
+                        }
+                      </>
+                    }
+                    </b>
                       </Web3Button>
                   )}
-                </>
-              }
             </div>
             <div className="bg-[#19297F] rounded-[5px] w-[30%] py-[3em] flex flex-col justify-center items-center gap-3">
               <b className="font-black text-[24px]">6 Months</b>
@@ -138,41 +217,73 @@ const Membership: FC = () => {
                   <img src={mgg} alt="mgg logo" width={70} height={80} />
                   <b className="text-[32px] font-black">16632.09 MGG</b>
               </div>
-              <div id="initial-button"></div>
-              {!user &&
-                <NdUsrBtn disabled>Need user login</NdUsrBtn>
-              }
-              {pfUser.mggMembership?.tier === 'tier2' ? <></>
-                :
-                <>
-                  {!firstStepSuccess && user && (
-                    <Web3Button
-                      contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
-                      contractAbi={ABI}
-                      action={(contract) => {
-                        handleFirstStep(contract, "1000000000000000000");
-                      }}
-                      onError={(e) => console.error(e)}
-                    >
-                      <b>Approve Contract</b>
-                    </Web3Button>
-                  )}
+                {!user &&
+                  <NdUsrBtn disabled>Need user login</NdUsrBtn>
+                }
+                {firstStepSuccess === 0 && user && (
+                  <Web3Button
+                    contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
+                    contractAbi={ABI}
+                    action={(cntrct) => {handleFirstStep(cntrct, 2, "2000000000000000000")}}
+                    onError={(e) => handleError(e)}
+                    isDisabled={cntrctLoding}
+                  >
+                    <b>
+                    {(cntrctLoding && selectedTier === 2) ?
+                      <>
+                        <Blocks
+                          height="20"
+                          color="#000000"
+                          ariaLabel="tailspin-loading"
+                          wrapperStyle={{}}
+                          visible={true}
+                        />
+                      </>
+                      :
+                      <>
+                        Approve Contract
+                      </>
+                    }
+                    </b>
+                  </Web3Button>
+                )}
 
-                  {firstStepSuccess && user && !secondStepSuccess && (
-                      <Web3Button
-                        contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
-                        contractAbi={ABIMembership}
-                        action={(contract) => {
-                          handleSecondStep(contract, 2, "2000000000000000000")
-                        }}
-                        onError={(e) => console.error(e)}
-                        onSuccess={(e) => setSecondStepSuccess(true)}
-                      >
-                        <b>Buy Membership</b>
-                      </Web3Button>
-                  )}
-                </>
-              }
+                {firstStepSuccess === 2 && user && !secondStepSuccess && (
+                  <Web3Button
+                    contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
+                    contractAbi={ABIMembership}
+                    action={(cntrct => {handleSecondStep(cntrct, 2, "2000000000000000000")})}
+                    onError={(e) => handleError(e)}
+                    onSuccess={(e) => {}}
+                    isDisabled={cntrctLoding}
+                  >
+                    <b>
+                    {cntrctLoding ?
+                      <>
+                        <Blocks
+                          height="20"
+                          color="#000000"
+                          ariaLabel="tailspin-loading"
+                          wrapperStyle={{}}
+                          visible={true}
+                        />
+                      </>
+                      :
+                      <>
+                        {pfUser.mggMembership?.tier !== '' ?
+                          <>
+                            Extend membership
+                          </>
+                          :
+                          <>
+                            Buy Membership
+                          </>
+                        }
+                      </>
+                    }
+                    </b>
+                  </Web3Button>
+                )}
             </div>
             <div className="bg-[#19297F] rounded-[5px] w-[30%] py-[3em] flex flex-col justify-center items-center gap-3">
               <b className="font-black text-[24px]">12 Months</b>
@@ -180,42 +291,74 @@ const Membership: FC = () => {
                   <img src={mgg} alt="mgg logo" width={70} height={80} />
                   <b className="text-[32px] font-black">23147.32 MGG</b>
               </div>
-              <div id="initial-button"></div>
-              {!user &&
-                <NdUsrBtn disabled>Need user login</NdUsrBtn>
-              }
-              {pfUser.mggMembership?.tier === 'tier3' ? <></>
-                :
-                <>
-                  {!firstStepSuccess && user && (
-                    <Web3Button
-                      contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
-                      contractAbi={ABI}
-                      action={(contract) => {
-                        handleFirstStep(contract, "1000000000000000000");
-                      }}
-                      onError={(e) => console.error(e)}
-                    >
-                      <b>Approve Contract</b>
-                    </Web3Button>
-                  )}
+                {!user &&
+                  <NdUsrBtn disabled>Need user login</NdUsrBtn>
+                }
+                {firstStepSuccess === 0 && user && (
+                  <Web3Button
+                    contractAddress={"0xb67F3922042B8c4546DFD9E55C1E55CaC7aE1F3f"}
+                    contractAbi={ABI}
+                    action={(cntrct) => {handleFirstStep(cntrct, 3, "3000000000000000000")}}
+                    onError={(e) => handleError(e)}
+                    isDisabled={cntrctLoding}
+                  >
+                    <b>
+                    {(cntrctLoding && selectedTier === 3) ?
+                      <>
+                        <Blocks
+                          height="20"
+                          color="#000000"
+                          ariaLabel="tailspin-loading"
+                          wrapperStyle={{}}
+                          visible={true}
+                        />
+                      </>
+                      :
+                      <>
+                        Approve Contract
+                      </>
+                    }
+                    </b>
+                  </Web3Button>
+                )}
 
-                  {firstStepSuccess && user && !secondStepSuccess && (
-                      <Web3Button
-                        contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
-                        contractAbi={ABIMembership}
-                        action={(contract) => {
-                          handleSecondStep(contract, 3, "3000000000000000000")
-                        }}
-                        onError={(e) => console.error(e)}
-                        onSuccess={(e) => setSecondStepSuccess(true)}
-                      >
-                        <b>Buy Membership</b>
-                      </Web3Button>
-                  )}
-                </>
-              }
-           </div>
+                {firstStepSuccess === 3 && user && !secondStepSuccess && (
+                  <Web3Button
+                    contractAddress={"0xE92A44a9a8F421885666ec566435726E7Ab21b0e"}
+                    contractAbi={ABIMembership}
+                    action={(cntrct => {handleSecondStep(cntrct, 3, "3000000000000000000")})}
+                    onError={(e) => handleError(e)}
+                    onSuccess={(e) => {}}
+                    isDisabled={cntrctLoding}
+                  >
+                    <b>
+                    {cntrctLoding ?
+                      <>
+                        <Blocks
+                          height="20"
+                          color="#000000"
+                          ariaLabel="tailspin-loading"
+                          wrapperStyle={{}}
+                          visible={true}
+                        />
+                      </>
+                      :
+                      <>
+                        {pfUser.mggMembership?.tier !== '' ?
+                          <>
+                            Extend membership
+                          </>
+                          :
+                          <>
+                            Buy Membership
+                          </>
+                        }
+                      </>
+                    }
+                    </b>
+                  </Web3Button>
+                )}
+            </div>
           </div>
         </div>
         <div>

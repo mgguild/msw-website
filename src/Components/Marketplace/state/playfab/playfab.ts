@@ -431,8 +431,6 @@ export const getMembershipData = createAsyncThunk<MembershipData, {playerId: str
           toast.error(error.errorMessage);
           return;
         } else {
-          console.log("asdasdasdas");
-          console.log(result);
           if(Object.hasOwn(result.data.FunctionResult, 'MGG_Membership')){
             let res = JSON.parse(result.data.FunctionResult.MGG_Membership.Value);
             _result = {
@@ -473,7 +471,7 @@ export const playfabSlice = createSlice({
   extraReducers: (builder) => {
     //Create player guild
     builder.addCase(createGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log(action.payload)
+
       if(action.payload.status === 'success'){
         state.user.guild = action.payload;
       }
@@ -481,7 +479,6 @@ export const playfabSlice = createSlice({
 
     //Edit player guild
     builder.addCase(editGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log(action.payload)
       if(action.payload.status === 'success'){
         state.user.guild = action.payload;
       }
@@ -489,7 +486,6 @@ export const playfabSlice = createSlice({
 
     //Delete player guild
     builder.addCase(deleteGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log(action.payload)
       if(action.payload.status === 'succesfully deleted'){
         state.user.guild = action.payload;
       }
@@ -497,7 +493,6 @@ export const playfabSlice = createSlice({
 
     //Get player guild if any
     builder.addCase(getPlyrGuild.fulfilled, (state, action: PayloadAction<UserGuildData>) => {
-      console.log(action.payload)
       if(action.payload.status === 'success'){
         state.user.guild = action.payload;
       }

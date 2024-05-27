@@ -96,7 +96,7 @@ const usePlayfab = create(set => ({
           toast.error(error.errorMessage);
           return;
         } else {
-          console.log(result);
+          // console.log(result);
         }
       },
     );
