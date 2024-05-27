@@ -53,7 +53,7 @@ const Membership: FC = () => {
     if(ctrqReq.receipt.status){
       setFirstStepSuccess(tier);
     }else{
-      toast.success('Somthing went wrong');
+      toast.error('Somthing went wrong');
     }
     setCntrctLoading(false);
   }
@@ -83,7 +83,7 @@ const Membership: FC = () => {
       toast.success('You are now a member');
       setSecondStepSuccess(true);
     }else{
-      toast.success('Something went wrong');
+      toast.error('Something went wrong');
     }
     setCntrctLoading(false);
   }
