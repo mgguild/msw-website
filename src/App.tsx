@@ -24,7 +24,7 @@ import Market from './Components/Marketplace/views/MarketplaceV2/Views/Market/Ma
 import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
 import NFTPage from './Components/Marketplace/views/MarketplaceV2/Views/NFTPage';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
-import {BinanceTestnet} from "@thirdweb-dev/chains";
+import {BinanceTestnet, Binance} from "@thirdweb-dev/chains";
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
@@ -86,7 +86,7 @@ function MainApp() {
 const Dashboard: FC = () => {
     return (
         <ThirdwebProvider
-            activeChain={BinanceTestnet}
+            activeChain={Binance}
             clientId={process.env.REACT_APP_CLIENT_ID}
         >
             <div className='flex flex-col w-full'>
