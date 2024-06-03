@@ -67,7 +67,7 @@ const Membership: FC = () => {
 
   const handleSecondStep = async (contract: SmartContract<BaseContract>, tier: number, price: string) => {
     var ctrqReq: any = null;
-    await contract.call("approve", ["0x7F8d5a597d03b6a1e6f6578c333522707E29C168", BigNumber.from(price)]).then((res) => {
+    await contract.call("buyMembership", [tier, BigNumber.from(price)]).then((res) => {
       ctrqReq = res;
     }).catch((e) => {
       console.log(e);
