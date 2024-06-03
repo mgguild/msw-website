@@ -7,6 +7,7 @@ import { useAppDispatch } from '../state';
 import { orderBy } from 'lodash';
 import {
   PlayfabState,
+  PlayfabUserData,
   PlayfabCloudScriptResult,
   PFGuildData,
   UserGuildData,
@@ -33,4 +34,9 @@ export const useRGuild = (): UserGuildData => {
 export const useFetchGuildList = (): PFGuildData[] | null => {
   const list = useSelector((state: State) => state.playfab.guildList);
   return list;
+}
+
+export const useGetUser = (): PlayfabUserData => {
+  const user = useSelector((state: State) => state.playfab.user);
+  return user;
 }

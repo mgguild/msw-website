@@ -324,6 +324,18 @@ export interface PlayfabCloudScriptResult {
 
 export interface PlayfabUserData {
   guild: UserGuildData;
+  mggMembership?: {
+    transcHash: string;
+    dateData: number[],
+    tier: string;
+  };
+}
+
+export interface MembershipData {
+  msg?: string;
+  transcHash: string;
+  dateData: number[];
+  tier: string;
 }
 
 export interface UserGuildData {
@@ -339,6 +351,11 @@ export interface PFGuildData {
   Group: EntityKey;
   ProfileVersion: number;
   Roles: GuildRole[]
+}
+
+export interface PFMGGMembership {
+  playerId: string;
+  transc: string;
 }
 
 export interface GuildRole {

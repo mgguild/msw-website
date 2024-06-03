@@ -7,7 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import usePlayfab from './Hooks/usePlayfab';
 import { useAppDispatch } from './Components/Marketplace/state';
-import { setGuildfromCookies, getGuildList } from './Components/Marketplace/state/playfab/playfab';
+import { setGuildfromCookies, getGuildList, getMembershipData } from './Components/Marketplace/state/playfab/playfab';
 import {
     DashboardExchange,
     DashboardGuilds,
@@ -23,6 +23,8 @@ import MarketplaceV2 from './Components/Marketplace/views/MarketplaceV2/Marketpl
 import Market from './Components/Marketplace/views/MarketplaceV2/Views/Market/Market';
 import User from './Components/Marketplace/views/MarketplaceV2/Views/User';
 import NFTPage from './Components/Marketplace/views/MarketplaceV2/Views/NFTPage';
+import { ThirdwebProvider } from '@thirdweb-dev/react';
+import {BinanceTestnet, Binance} from "@thirdweb-dev/chains";
 
 const Main = lazy(() => import('./Components/Pages/Main'));
 const AccountDelete = lazy(() => import('./Components/Pages/AccountDelete'));
@@ -82,33 +84,34 @@ function MainApp() {
 }
 
 const Dashboard: FC = () => {
-    const connect = usePlayfab((state: any) => state.start);
-
-    useEffect(() => {
-        connect();
-    }, [connect]);
     return (
-          <div className="flex flex-col w-full">
+        <ThirdwebProvider
+            activeChain={Binance}
+            clientId={process.env.REACT_APP_CLIENT_ID}
+        >
+            <div className='flex flex-col w-full'>
                 <ToastContainer theme="dark" />
-            <Navigation />
-                <div className="mx-[5em] my-[5em]">
-                      <Routes>
-                            <Route path="/" element={<DashboardRewards />} />
-                            <Route path="/rewards" element={<DashboardRewards />} />
-                            <Route path="/wallet" element={<DashboardWallet />} />
-                            <Route path="/exchange" element={<DashboardExchange />} />
-                            <Route path="/membership" element={<DashboardMembership />} />
-                            <Route path="/social" element={<DashboardSocial />} />
-                            <Route path="/guilds" element={<DashboardGuilds />} />
-                            <Route path="/leaderboards" element={<DashboardLeaderboard />} />
-                      </Routes>
+                <Navigation />
+                <div className='mx-[5em] my-[5em]'>
+                    <Routes>
+                        <Route path="/" element={<DashboardRewards />} />
+                        <Route path="/rewards" element={<DashboardRewards />} />
+                        <Route path="/wallet" element={<DashboardWallet />} />
+                        <Route path="/exchange" element={<DashboardExchange />} />
+                        <Route path="/membership" element={<DashboardMembership />} />
+                        <Route path="/social" element={<DashboardSocial />} />
+                        {/* <Route path="/guilds" element={<DashboardGuilds />} /> */}
+                        <Route path="/leaderboards" element={<DashboardLeaderboard />} />
+                    </Routes>
                 </div>
-          </div>
-    );
+            </div>
+        </ThirdwebProvider>
+    )
 }
 
 const App = () => {
     const connect = usePlayfab((state: any) => state.start);
+    const user = usePlayfab((state: any) => state.user);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -119,6 +122,16 @@ const App = () => {
             dispatch(getGuildList());
         }, 1500)
     }, []);
+
+    useEffect(() => {
+        const fetchData = async() => {
+            await dispatch(getMembershipData({playerId: user.PlayFabId}))
+        }
+
+        if(user){
+            fetchData();
+        }
+    }, [user]);
 
     return (
         <>
