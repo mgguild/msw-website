@@ -1,5 +1,11 @@
 import { FC } from 'react';
+import styled from 'styled-components';
 import { Button } from '../../../Components/Dashboard';
+import { FaSquareXTwitter, FaSquareFacebook, FaDiscord, FaTelegram } from 'react-icons/fa6';
+
+const Text = styled.span`
+    font-family: 'Mustica Pro';
+`
 
 const Social: FC = () => {
     return (
@@ -11,17 +17,14 @@ const Social: FC = () => {
                 <div className="bg-[#0F1637] rounded-[5px] p-[2em] w-[60%]">
                     <div className="text-center my-[2em]">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. In
-                            atque consectetur necessitatibus minus eius. Sed quia nihil
-                            deserunt sit, voluptatem, vitae, praesentium aliquid impedit
-                            fuga rem dolores corrupti quaerat natus.
+                        Connect your social media account to unlock exclusive in-game rewards and share your achievements with friends! Click here to bind your account and join the community fun.
                         </p>
                     </div>
                     <div className="bg-[#19297F] rounded-[5px] py-[2em] flex flex-wrap justify-center items-center gap-5">
                         <div className="flex flex-col justify-center items-center gap-5 w-[40%]">
                             <div className="flex flex-wrap justify-center items-center gap-5">
-                                <p>Logo</p>
-                                <p>Not Connected</p>
+                                <FaSquareXTwitter size={'3rem'} />
+                                <Text>Not Connected</Text>
                             </div>
                             <div>
                                 <Button value="Connect" />
@@ -29,8 +32,8 @@ const Social: FC = () => {
                         </div>
                         <div className="flex flex-col justify-center items-center gap-5 w-[40%]">
                             <div className="flex flex-wrap justify-center items-center gap-5">
-                                <p>Logo</p>
-                                <p>Not Connected</p>
+                                <FaSquareFacebook size={'3rem'} />
+                                <Text>Not Connected</Text>
                             </div>
                             <div>
                                 <Button value="Connect" />
@@ -38,8 +41,8 @@ const Social: FC = () => {
                         </div>
                         <div className="flex flex-col justify-center items-center gap-5 w-[40%]">
                             <div className="flex flex-wrap justify-center items-center gap-5">
-                                <p>Logo</p>
-                                <p>Not Connected</p>
+                                <FaDiscord size={'3rem'} />
+                                <Text>Not Connected</Text>
                             </div>
                             <div>
                                 <Button value="Connect" />
@@ -47,8 +50,8 @@ const Social: FC = () => {
                         </div>
                         <div className="flex flex-col justify-center items-center gap-5 w-[40%]">
                             <div className="flex flex-wrap justify-center items-center gap-5">
-                                <p>Logo</p>
-                                <p>test@gmail.com</p>
+                                <FaTelegram size={'3rem'} />
+                                <Text>Not Connected</Text>
                             </div>
                             <div>
                                 <Button value="Change" secondary />
@@ -61,7 +64,7 @@ const Social: FC = () => {
                         <p className="text-[36px] uppercase">Account Deletion</p>
                     </div>
                     <div>
-                        <p>Lorem ipsum dolor sit amet, consetetur sodipscing elitr?</p>
+                        <p>Deleting your account will automatically revoke your in-game access. Please proceed with caution.</p>
                     </div>
                     <div>
                         <Button value="Delete Account" secondary />
