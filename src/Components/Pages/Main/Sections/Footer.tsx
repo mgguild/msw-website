@@ -221,7 +221,7 @@ export default function App() {
                                             style={{ width: '8rem' }}
                                             src={require('../../../../Assets/img/MSW_Logo_header.png')}
                                             alt=""
-                                            className="w-5 px-xl-0"
+                                            className="w-28 px-xl-0"
                                         />
                                     </a>
                                 </ImgContainer>
