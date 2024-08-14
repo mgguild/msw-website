@@ -356,7 +356,7 @@ const UserDashboard = ({
                                             </Button>
                                         )}
                                     </Link>
-                                    <ConnectWallet theme={'dark'} modalSize={'wide'} />
+                                    {!_userTags.includes('title.D4F8F.BoundWallet') && <ConnectWallet theme={'dark'} modalSize={'wide'} />}
                                     <Button
                                         onClick={() => handleLogout()}
                                         borderRadius="8px"
