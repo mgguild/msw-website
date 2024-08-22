@@ -9,8 +9,8 @@ export default [
     answer: 'MetaSaga Warriors is built on Polygon Network.',
   },
   {
-    question: 'How do I acquire MetaSaga Warriors?',
-    answer: 'To acquire MetaSaga Warriors, you can purchase them directly on OpenSea.',
+    question: 'How do I acquire Diggers?',
+    answer: 'To acquire Diggers, you can purchase them directly on OpenSea.',
   },
   {
     question:
