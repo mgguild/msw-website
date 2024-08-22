@@ -215,7 +215,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                         </YtBtn>
                     </div>
                     <PlayBtns>
-                        {/* <GrowBtn isSmallScreen={isScreen550}>
+                        <GrowBtn isSmallScreen={isScreen550}>
                             <a
                                 className="btn-googleplay hover-shadow"
                                 target="_blank"
@@ -226,7 +226,7 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                                     src={require('../../../../Assets/img/7a3njak3278u099fg.png')}
                                 />
                             </a>
-                        </GrowBtn> */}
+                        </GrowBtn>
                         <GrowBtn isSmallScreen={isScreen550}>
                             <a
                                 className="btn-googleplay hover-shadow"
