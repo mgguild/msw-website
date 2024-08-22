@@ -36,18 +36,18 @@ export default [
     bgImg: 'Aldrick_Bonaobra.png',
     img: 'Aldrick_Bonaobra_Blockchain_Developer.png',
   },
-  {
-    name: 'John Anthony Balbin',
-    role: 'QA Specialist',
-    bgImg: 'John_Anthony_Balbin.png',
-    img: 'John_Anthony_Balbin_QA_Specialist.png',
-  },
-  {
-    name: 'Emmanuel Adornado',
-    role: 'QA Specialist',
-    bgImg: 'Emman_adonardo.png',
-    img: 'Emman_adonardo_qa_specialist_720.png',
-  },
+  // {
+  //   name: 'John Anthony Balbin',
+  //   role: 'QA Specialist',
+  //   bgImg: 'John_Anthony_Balbin.png',
+  //   img: 'John_Anthony_Balbin_QA_Specialist.png',
+  // },
+  // {
+  //   name: 'Emmanuel Adornado',
+  //   role: 'QA Specialist',
+  //   bgImg: 'Emman_adonardo.png',
+  //   img: 'Emman_adonardo_qa_specialist_720.png',
+  // },
   {
     name: 'Alfonse Cristofano Nasayao',
     role: 'Game Artist',
