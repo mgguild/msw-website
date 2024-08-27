@@ -214,7 +214,7 @@ function App() {
                 </DropdownButton>
                 <a
                     target="_blank"
-                    href="https://opensea.io/collection/metasagawarriors"
+                    href="https://www.metagg.com/msw-webgl-build/"
                     className="ViewCollectionButton"
                 >
                     Play Now!
