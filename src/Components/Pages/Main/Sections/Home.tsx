@@ -231,11 +231,11 @@ const App: React.FC<{ isScreen550: boolean }> = ({ isScreen550 }) => {
                             <a
                                 className="btn-googleplay hover-shadow"
                                 target="_blank"
-                                href="https://play.google.com/store/apps/details?id=com.metagg"
+                                href="https://drive.google.com/file/d/1nCFNMzPMrbYmCmW27H9HZPqMbBjg4WJ_/view?usp=sharing"
                             >
                                 <img
                                     className="btn-googleplay"
-                                    src={require('../../../../Assets/img/5a902dbf7f96951c82922875.png')}
+                                    src={require('../../../../Assets/img/apk.png')}
                                 />
                             </a>
                         </GrowBtn>
