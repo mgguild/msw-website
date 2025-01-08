@@ -114,13 +114,13 @@ const Profile: React.FC<{ bgImg: string; img: string; name: string; role: string
 export default function App() {
     var count = 0;
     const [isScreen800, setIsScreen800] = useState(false);
-    const [sequence, setSequence] = useState([3, 5, 8]);
+    const [sequence, setSequence] = useState([3, 5, 7]);
 
     const handleResize = () => {
         if (window.innerWidth < 800) {
-            setSequence([8]);
+            setSequence([7]);
         } else {
-            setSequence([4, 8]);
+            setSequence([3, 7]);
         }
     };
 
