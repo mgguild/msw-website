@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.3590f371.css",
-    "main.js": "/static/js/main.3c5aba44.js",
+    "main.js": "/static/js/main.36550790.js",
     "static/css/9160.6f3f824a.chunk.css": "/static/css/9160.6f3f824a.chunk.css",
-    "static/js/9160.a577b478.chunk.js": "/static/js/9160.a577b478.chunk.js",
+    "static/js/9160.5efe4fca.chunk.js": "/static/js/9160.5efe4fca.chunk.js",
     "static/js/804.357124c9.chunk.js": "/static/js/804.357124c9.chunk.js",
     "static/js/9400.ee2f181e.chunk.js": "/static/js/9400.ee2f181e.chunk.js",
     "static/js/4912.bffa0825.chunk.js": "/static/js/4912.bffa0825.chunk.js",
@@ -269,6 +269,7 @@
     "static/media/Altillery.png": "/static/media/Altillery.8e0bbd333c509b9cf850.png",
     "static/media/Plague_Doctor.png": "/static/media/Plague_Doctor.842c664eb3ec8c4dadcd.png",
     "static/media/Rico_Zuñiga_CTO.png": "/static/media/Rico_Zuñiga_CTO.dc7fae7cb3b9743d05a7.png",
+    "static/media/apk.png": "/static/media/apk.a866eb4b1a2cfeaae66f.png",
     "static/media/John_Carlo_Ariola_Game_Developer.png": "/static/media/John_Carlo_Ariola_Game_Developer.c9a8b510281aebb15155.png",
     "static/media/Aldrick_Bonaobra_Blockchain_Developer.png": "/static/media/Aldrick_Bonaobra_Blockchain_Developer.cb45337f0ca086f94eff.png",
     "static/media/Berserker.png": "/static/media/Berserker.b5050f26b811b8d4bdae.png",
@@ -344,9 +345,9 @@
     "index.html": "/index.html",
     "static/media/chevron-down.svg": "/static/media/chevron-down.932a047472c3455cd9a4d68b8b2179e8.svg",
     "main.3590f371.css.map": "/static/css/main.3590f371.css.map",
-    "main.3c5aba44.js.map": "/static/js/main.3c5aba44.js.map",
+    "main.36550790.js.map": "/static/js/main.36550790.js.map",
     "9160.6f3f824a.chunk.css.map": "/static/css/9160.6f3f824a.chunk.css.map",
-    "9160.a577b478.chunk.js.map": "/static/js/9160.a577b478.chunk.js.map",
+    "9160.5efe4fca.chunk.js.map": "/static/js/9160.5efe4fca.chunk.js.map",
     "804.357124c9.chunk.js.map": "/static/js/804.357124c9.chunk.js.map",
     "9400.ee2f181e.chunk.js.map": "/static/js/9400.ee2f181e.chunk.js.map",
     "4912.bffa0825.chunk.js.map": "/static/js/4912.bffa0825.chunk.js.map",
@@ -465,6 +466,6 @@
   },
   "entrypoints": [
     "static/css/main.3590f371.css",
-    "static/js/main.3c5aba44.js"
+    "static/js/main.36550790.js"
   ]
 }
