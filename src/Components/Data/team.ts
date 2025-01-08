@@ -8,7 +8,7 @@ export default [
   },
   {
     name: 'Rico Zuñiga',
-    role: 'CTO',
+    role: 'Advisor',
     bgImg: 'Rico_Zuñiga.png',
     img: 'Rico_Zuñiga_CTO.png',
   },
@@ -18,12 +18,12 @@ export default [
     bgImg: 'Mike_Reñevo.png',
     img: 'Mike_Reñevo_Lead_Game_Designer.png',
   },
-  {
-    name: 'Harvin Cadag',
-    role: 'Game Artist',
-    bgImg: 'Harvin_Cadag.png',
-    img: 'Harvin_Cadag_Game_Artist.png',
-  },
+  // {
+  //   name: 'Harvin Cadag',
+  //   role: 'Game Artist',
+  //   bgImg: 'Harvin_Cadag.png',
+  //   img: 'Harvin_Cadag_Game_Artist.png',
+  // },
   {
     name: 'Salvador Amba Jr.',
     role: 'Game Developer',
